@@ -1,0 +1,90 @@
+export const Meta = {
+    title: "The Importance of Documentation",
+    description: "A discussion on the importance of documenting software and how it doesn't have to be a pain.",
+    date: new Date("04/05/2024"),
+    readTime: "10 min",
+    cover: "/Deepdive/ArticleCovers/Documentation.jpg",
+    visibility:"public"
+}
+import KeeganAuther from "@/Components/Deepdive/Authors/Keegan/index.tsx";
+import NextPage from "@/Components/Deepdive/NextPage/index.tsx";
+
+<div className="titleSection">
+    <span id="title">{Meta.title}</span>
+</div>
+
+<KeeganAuther />
+
+Technical documentation is important to me. I find that writing helps me to think more in depth as well as refine/reorder my thoughts. 
+I also find that once I move onto working on individual pieces of a project, I loose my original thoughts on the project overview. 
+Writing them down allows me to go back and resume from where I left off. Good documentation is like a user-friendly error message. 
+It guides you through a problem, helping you understand and resolve it.
+
+In terms of what that looks like to me. I like to start with a project proposal that focuses on clearly defining the project's/feature's 
+intended goal. I usually divide the proposal into the following main sections: description, use-cases, user stories, existing architecture 
+/ environment, data-flow and then finally phases of development. The goal of the proposal is to set the project direction / intended outcome 
+and get a plan for what tasks are involved and how it would fit into our deployment strategy.
+
+
+After the proposal, I generally convert that beginning structure into a more comprehensive overview document that focuses on implementation details 
+and the reasoning behind them. This document is then updated to keep up with the lifecycle of the codebase, unlike the proposal which is no longer the 
+focus once development starts. Unlike the Swagger / API Docs / Library Tutorial / etc (usability docs) documentation that focuses on how to use the resulting 
+product / API / Library, the project overview documentation focuses on the architecture and the reasoning behind developmental decisions.
+
+And finally, the aforementioned usability documentation is created when the resulting codebase is to be used by others (whether that's publicly or cross-team). 
+These docs take the form of whatever is best suited for the particular outcome. For APIs I often use Swagger and for libraries or packages I often use Docusaurous 
+as its a quick way to produce a static site from markdown. 
+
+
+### So, what do you do if the product people do not provide such extensive and detailed documentation? Also, what do you do if the product vision or scope shifts significantly halfway through development?
+
+The proposal is what I produce from discussions with the product people. It can be developed from as little as a base description of the intended outcome. 
+The proposal also helps with directing the initial discussions about how a product or feature operates. I have often had times where the client would provide 
+a basic description and I then expanded from there while occasionally checking back in to make sure that the user stories and use-cases I developed from the description 
+matches their vision.
+
+The main goal of the documentation is to provide visibility to what has already been produced and what will be produced. Changes in the scope are expected and 
+having good visibility on what is currently developed can help you understand what parts of the project can be utilized and what tasks have to be modified to fit 
+the new scope.
+
+The overview documentation that is updated with the lifecycle of development often lags behind the actual decisions and implementation. 
+It acts as a map or were we've been, so in the case that the scope shifts, we can back track to the right place and chart a new course.
+
+### Documentation In Action
+
+The proposal documentation is always the structure I use to get acquainted with the project. I often am able to get most of it written during the clarity discussion. 
+The proposal's purpose is to provide clarity to a projects direction, and it's goal is to prevent wasting time on the wrong direction. 
+But sometimes working in a unintended direction can't be helped.
+
+Okay, so you have the proposal, built the new features, and gotten a response that this feature is not actually what they want. 
+
+The next discussion would be about what is not to their liking, trying to compare and contrast to the proposal documentation (which is just a record of intent, 
+so compare the intent to what failed as the result). The proposal is useful in this case as it can be refined with these comparisons. Without some kind of record 
+of intent, it is easier to get caught in misunderstandings and stuck in a circular pattern. But with a more in depth comparison, you can figure out where the nuance 
+in the user stories and use cases that caused the difference in the intended outcome.
+
+### What if you're working on a project with a developer who is less inclined to write extensive documentation or update said documentation and they are changing all sorts of stuff without going to these lengths with the documentation. Would you still consider the original documentation to be useful?
+
+The documentation is how I think deeply about what I'm working on. I would consider the documentation useful because it still details my work and my previous train of 
+thought. But the overview documentation should not suffer because of too few updates, as even I probably won't have time to constantly update the doc. 
+The overview document is not necessarily useful during development but as a historical reference for if the scope changes or if we need to review the thought process 
+of the design. It shouldn't become irrelevant because of specific changes by a developer. Because the documentation should remain high-level, unless there are major 
+scope changes that I am not included in, the documentation should still provide a good reference to what was already built at an architectural level. 
+
+
+### Conclusion
+
+In conclusion, the significance of technical documentation cannot be overstated. It serves as a tool for refining thoughts, maintaining project clarity, 
+and preserving the trajectory of development efforts. From the initial project proposal delineating goals and strategies to the ongoing overview documentation 
+capturing implementation details and rationale, each document plays a crucial role in guiding development and understanding project evolution.
+
+When faced with shifting product visions or scopes, comprehensive documentation becomes invaluable. It provides a historical reference, allowing teams to 
+backtrack, reassess, and chart new courses as needed. Even in scenarios where developers may not prioritize extensive documentation, the original documentation 
+retains its utility, serving as a repository of past insights and guiding future decisions.
+
+Ultimately, documentation acts as a roadmap, fostering collaboration, preventing misunderstandings, and ensuring continuity amidst changing circumstances. 
+Its value lies not only in its immediate usefulness during development but also in its enduring relevance as a record of project intent and progression. 
+By recognizing and embracing the importance of technical documentation, teams can enhance efficiency, mitigate risks, and achieve greater success in their endeavors.
+
+
+<NextPage />

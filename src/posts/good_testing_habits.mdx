@@ -1,0 +1,33 @@
+export const Meta = {
+    title: "My Idea of Good Testing Habits",
+    description: "My thoughts why testing is important, what makes test good, and what habits to develop.",
+    date: new Date("04/10/2024"),
+    readTime: "6 min",
+    visibility:"unlisted"
+}
+import KeeganAuther from "@/Components/Deepdive/Authors/Keegan/index.tsx";
+import NextPage from "@/Components/Deepdive/NextPage/index.tsx";
+
+<div className="titleSection">
+    <span id="title">{Meta.title}</span>
+</div>
+
+<KeeganAuther />
+
+I find that unit testing is essential, especially when working on larger codebases. It helps catch easily avoidable adverse issues for new features. 
+Also was a huge help when we rebuilt some of the legacy features, had specific use cases we wanted it to handle and used them as milestones to tackle. 
+Now id have to mention that we still be missing edge cases so we couldn't fully rely on just the unit tests. I've also seen first hand how much integration 
+tests can speed up feature turn around and maintaining user experience. 
+
+## What Makes For A Good Test?
+
+
+
+## What Habits Should You Develop?
+
+As for habits, I like the idea of test driven development but often find that my structure changes as I start building the idea. 
+My unit tests often start out as more of a way to see the structure and output of a functionality based on a few of the use-cases 
+defined in the proposal. But towards the end of the feature, I find it a useful time investment to revisit the unit tests and refactor 
+them into structured tests. As discussed above, this will save time in the long run and helps enforce the functionality of the proposal specified use-cases.
+
+<NextPage />

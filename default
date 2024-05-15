@@ -1,0 +1,46 @@
+##
+# You should look at the following URL's in order to grasp a solid understanding
+# of Nginx configuration files in order to fully unleash the power of Nginx.
+# https://www.nginx.com/resources/wiki/start/
+# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+# https://wiki.debian.org/Nginx/DirectoryStructure
+#
+# In most cases, administrators will remove this file from sites-enabled/ and
+# leave it as reference inside of sites-available where it will continue to be
+# updated by the nginx packaging team.
+#
+# This file will automatically load configuration files provided by other
+# applications, such as Drupal or Wordpress. These applications will be made
+# available underneath a path with that package name, such as /drupal8.
+#
+# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+##
+
+# Default server configuration
+#
+server {
+  listen 80;
+  server_name keeganbruer.com;
+    
+  listen              443 ssl;
+  ssl_certificate /www/ssl/tls.crt;
+  ssl_certificate_key /www/ssl/tls.key;
+  ssl_protocols       TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+  ssl_ciphers         HIGH:!aNULL:!MD5;
+  root /www/app;
+ 
+  location / {
+      try_files $uri $uri.html $uri/ =404;
+  }
+ 
+  # This is necessary when `trailingSlash: false`.
+  # You can omit this when `trailingSlash: true`.
+  location /blog/ {
+      rewrite ^/blog/(.*)$ /blog/$1.html break;
+  }
+ 
+  error_page 404 /404.html;
+  location = /404.html {
+      internal;
+  }
+}

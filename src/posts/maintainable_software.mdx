@@ -1,0 +1,36 @@
+export const Meta = {
+    title: "Building Maintainable Software",
+    description: "My thoughts designing software with the specific focus on maintainability.",
+    date: new Date("04/05/2024"),
+    readTime: "6 min",
+    visibility:"unlisted"
+}
+import KeeganAuther from "@/Components/Deepdive/Authors/Keegan/index.tsx";
+import NextPage from "@/Components/Deepdive/NextPage/index.tsx";
+
+<div className="titleSection">
+    <span id="title">{Meta.title}</span>
+</div>
+
+<KeeganAuther />
+
+Join me while I research and try to understand what makes code maintainable. A large part of maintainabilty is the documentation, 
+so make sure you also check out my article ["The Importance Of Documentation"]("/Deepdive/importance_of_documentation")
+
+## What makes software maintainable?
+
+The most important factor in building maintainable software is to write unit tests. That way, you can be certain that when you try to change some features, 
+that it doesn't cause unintended side effects across the codebase.
+
+A large factor in designing a code-base is to separate your concerns and make sure the functions are not closely tied. This relates back to the data-flow section 
+of the documentation, in that you ensure the inputs and outputs are solid and then the internal functionality can be maintained independently of each other. 
+It's one of the reason's I enjoy micro-service architecture once the product includes enough interdependent functionalities. These micro-service endpoints 
+can have a well defined data-flow and the implementation details can be maintained independently to the whole system.
+
+## Conclusion
+
+Even if your not working in web-dev or are working on a monolithic codebase, the "micro-service mindset" can be used in the form of a Model View Controller 
+or other similar design concepts focusing on separation of concerns.
+
+
+<NextPage />

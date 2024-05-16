@@ -4,8 +4,8 @@ import StyledComponentsRegistry from './registry'
 import { Body } from "./globalStyles";
 import Head from "next/head";
 import { DefaultMeta } from "./metaDefaults";
-import { CONFIG } from "../../site_config";
-
+import { CONFIG as _CONFIG } from "../../site_config";
+const CONFIG: any = _CONFIG;
 export const metadata: Metadata = DefaultMeta;
 
 export default function RootLayout({
@@ -18,11 +18,13 @@ export default function RootLayout({
       <StyledComponentsRegistry>
         <Body>
           {children}
-          <script
+          {CONFIG.google_as_id != undefined && (
+            <script
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${CONFIG.google_as_id}`}
             crossOrigin="anonymous"
-          ></script>
+            ></script>
+          )}
         </Body>
       </StyledComponentsRegistry>
     </html>

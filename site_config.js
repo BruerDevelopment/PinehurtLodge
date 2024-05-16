@@ -1,13 +1,12 @@
 
-const HOSTNAME = "keeganbruer.github.io";
-const BASE_PATH = "/ParkerPortfolio";
+const HOSTNAME = "Pinehurt-Lodge.com";
+const BASE_PATH = "";
 export const CONFIG = {
     HOSTNAME,
     BASE_PATH,
     BASE_URL: `https://${HOSTNAME}${BASE_PATH}`,
-    google_as_id:"ca-pub-3821979167237241",
     page_meta: {
-        title: "Parker Bruer",
+        title: "Pinehurt Lodge",
         description:""
     }
 }

@@ -13,7 +13,9 @@ import { PageFooter, PurpleSection, Section, responsiveMobileWidth } from "@/app
 export default () => {
   return (
     <>
-      <Section style={{"marginBottom":"-6px"}}>
+      <Section style={{ "marginBottom": "-6px" }}>
+        <h1>Pinehurst Lodge</h1>
+        <p>Website is currently in development, please check back soon.</p>
       </Section>
     </>
   );

@@ -8,7 +8,7 @@ export const MapConfigs: {
     mapOptions:{
         center:[39.92045455108784, -105.2],
         zoom: 10,
-        maxZoom: 18,
+        maxZoom: 17,
         minZoom: 1,
     }
 }
@@ -39,7 +39,7 @@ export const geo_data = {
         newFeature({
             id: ["rollinsville", "toss"],
             name: "Toss: Wood Fired Eatery",
-            zoomRadius:0.0001,
+            zoomRadius:0.0005,
             coords: [39.91703686820486, -105.50130467180907],
             details: {
                 description:TossPizza

@@ -64,7 +64,7 @@ export default (props:{params:{areaDetails:string[]}}) => {
         <div id="titlebar">
           <div>
             {props.params.areaDetails != undefined && (
-              <Link href={pathname.split("/").slice(0, -1).join("/")} replace={true} prefetch={true}>Back</Link>
+              <Link href={pathname.split("/").slice(0, -1).join("/")} replace={false} prefetch={true}>Back</Link>
             )}
           </div>
           <h1 className="heading">Pinehurst Lodge Area Guide</h1>
@@ -75,7 +75,7 @@ export default (props:{params:{areaDetails:string[]}}) => {
               <div>{
                 filteredFeatures.map((feature, i) => {
                   return (
-                    <Link key={"navLink"+i}  href={`/area-guide/${feature.properties.id.join("/")}`} replace={true} prefetch={true}>
+                    <Link key={"navLink"+i}  href={`/area-guide/${feature.properties.id.join("/")}`} replace={false} prefetch={true}>
                       {feature.properties.name}
                     </Link>
                   )
@@ -87,7 +87,7 @@ export default (props:{params:{areaDetails:string[]}}) => {
                 <WhatsNearbyLabel>What's Nearby</WhatsNearbyLabel>
                 {recommendedFeatures.map((feature, i) => {
                   return (
-                    <Link key={"nearbyLink"+i} href={`/area-guide/${feature.properties.id.join("/")}`} replace={true} prefetch={true}>
+                    <Link key={"nearbyLink"+i} href={`/area-guide/${feature.properties.id.join("/")}`} replace={false} prefetch={true}>
                       {feature.properties.name}
                     </Link>
                   )

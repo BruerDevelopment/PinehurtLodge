@@ -39,7 +39,7 @@ function ConstructLeafletMap() {
     //Tilemap
     //const TilemapURL = 'https://api.mapbox.com/styles/v1/bruersh/clvdvvqxl01x301phdzrv45pv/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYnJ1ZXJzaCIsImEiOiJjbHU3NGI1OGswMjVtMmtvajR4N2EzbXV1In0.57h-WWEL0ulj_ywXWyRgVQ';
     //const TilemapURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    const TilemapURL = 'https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.png';
+    const TilemapURL = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
     L.tileLayer(TilemapURL).addTo(map_obj)
     
     //Scale bar

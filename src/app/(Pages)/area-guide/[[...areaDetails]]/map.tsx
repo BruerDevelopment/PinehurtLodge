@@ -11,7 +11,7 @@ import { usePathname, useRouter } from "next/navigation";
 export default function MyMap(props: { params: { areaDetails: string[] } }) {
     let router = useRouter();
     let nav = (path:string) => {
-        router.replace(path)
+        router.push(path)
     }
     useEffect(() => {
         start(nav, props.params.areaDetails)

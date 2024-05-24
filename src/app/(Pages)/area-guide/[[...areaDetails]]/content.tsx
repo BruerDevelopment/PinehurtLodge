@@ -67,7 +67,7 @@ export default (props:{params:{areaDetails:string[]}}) => {
               <Link href={pathname.split("/").slice(0, -1).join("/")} replace={true} prefetch={true}>Back</Link>
             )}
           </div>
-          <h1 className="heading">Pinehurst Lodge Area Guide - { pathname}</h1>
+          <h1 className="heading">Pinehurst Lodge Area Guide</h1>
         </div>
         <MapWrapper>
           <div id="sidebar">
@@ -150,6 +150,11 @@ const ContentWrapper = styled.div`
       }
     }
     div {
+      @media screen and (max-width: ${() => responsiveMobileWidth}) {
+        & {
+          display: none;
+        }
+      }
       min-width: var(--sidebar-width);
       display: flex;
       justify-content: center;
@@ -181,6 +186,14 @@ const MapWrapper = styled.div`
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    @media screen and (max-width: ${() => responsiveMobileWidth}) {
+      & {
+        min-width: 0px;
+        max-width: 0px;
+        width: 0px;
+        overflow: hidden;
+      } 
+    }
     div {
       display: flex;
       flex-direction: column;

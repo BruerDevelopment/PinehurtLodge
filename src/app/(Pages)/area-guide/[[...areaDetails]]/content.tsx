@@ -148,6 +148,11 @@ const ContentWrapper = styled.div`
           padding-top: 30px;
         }
       }
+      @media screen and (max-width: ${() => responsiveMobileWidth}) {
+        & {
+          padding-top: 0px;
+        }
+      }
     }
     div {
       @media screen and (max-width: ${() => responsiveMobileWidth}) {
@@ -220,6 +225,12 @@ const MapWrapper = styled.div`
     flex-direction: column;
     width: 100%;
     height: calc(100vh - 90px);
+    @media screen and (max-width: ${() => responsiveMobileWidth}) {
+      & {
+        height: calc(100vh - 120px);
+
+      }
+    }
     #place_details {
       height: 1000px;
       max-height: 0px;

@@ -73,9 +73,9 @@ export default (props:{params:{areaDetails:string[]}}) => {
           <div id="sidebar">
             {(selectedFeature == undefined || selectedFeature.properties.details == undefined) && (
               <div>{
-                filteredFeatures.map((feature) => {
+                filteredFeatures.map((feature, i) => {
                   return (
-                    <Link href={`/area-guide/${feature.properties.id.join("/")}`} replace={true} prefetch={true}>
+                    <Link key={"navLink"+i}  href={`/area-guide/${feature.properties.id.join("/")}`} replace={true} prefetch={true}>
                       {feature.properties.name}
                     </Link>
                   )
@@ -85,9 +85,9 @@ export default (props:{params:{areaDetails:string[]}}) => {
             {(selectedFeature != undefined && selectedFeature.properties.details != undefined) && (
             <div>
                 <WhatsNearbyLabel>What's Nearby</WhatsNearbyLabel>
-                {recommendedFeatures.map((feature) => {
+                {recommendedFeatures.map((feature, i) => {
                   return (
-                    <Link href={`/area-guide/${feature.properties.id.join("/")}`} replace={true} prefetch={true}>
+                    <Link key={"nearbyLink"+i} href={`/area-guide/${feature.properties.id.join("/")}`} replace={true} prefetch={true}>
                       {feature.properties.name}
                     </Link>
                   )

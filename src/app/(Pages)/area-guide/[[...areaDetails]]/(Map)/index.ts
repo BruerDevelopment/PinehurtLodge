@@ -24,7 +24,13 @@ export function start(nav:(path:string)=>void, starting_id?:string[]) {
         
         //Bounds
         let bounds = L.latLngBounds(corner1, corner2);
-        map_obj.fitBounds(bounds);
+        mymap.fitBounds(bounds);
+    } else {
+        if (window.innerWidth < 600) {
+            console.log("mobile")
+            mymap.setZoom(9);
+
+        }
     }
 }
 

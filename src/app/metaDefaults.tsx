@@ -1,5 +1,6 @@
 
 import {CONFIG} from "@/../site_config"
+import { Metadata } from "next";
 
 
 export const openGraphMeta = {
@@ -29,7 +30,7 @@ export const BuildPageMeta = (details: {
     url?: string,
     socialCover?:string,
     og_description?:string,
-}) => {
+}):Metadata => {
     const Title = details.title != undefined ? details.title : CONFIG.page_meta.title
     const Description = details.description != undefined
         ? details.description
@@ -42,6 +43,7 @@ export const BuildPageMeta = (details: {
         metadataBase: new URL(CONFIG.BASE_URL),
         title: Title,
         description: Description,
+        
         openGraph: {
             title: Title,
             description: og_description,

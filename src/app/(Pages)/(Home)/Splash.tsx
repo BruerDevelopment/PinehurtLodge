@@ -7,12 +7,18 @@ import LandingPage from "@/assets/LandingPage.svg";
 import MobileLandingPage from "@/assets/MobileLandingPage.svg";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import { responsiveMobileWidth } from "@/app/globalStyles";
+import Link from "next/link";
 export default function Splash() {
   return (
     <SplashWrap>
-      <div className="Desktop"><LandingPage /></div>
+      <div className="Desktop"><img src="/HousePhotos/exterior/exterior_from_back.jpg" /></div>
       <div className="Mobile"><MobileLandingPage /></div>
       <Overlay>
+        <div id="title">
+          <h1>Pinehurst Lodge</h1>
+          <h2>The Perfect Mountain Getaway</h2>
+          <Link href="#">Book Your Next Adventure Now!</Link>
+        </div>
         <div id="scrollIndicator">
           <h1>Explore</h1>
           <FaAngleDoubleDown />
@@ -28,6 +34,32 @@ const Overlay = styled.div`
   bottom: 0px;
   left: 0px;
   right: 0px;
+  #title {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 25%;
+    left: 50px;
+    color: white;
+    text-shadow: var(--theme-text-shadow);
+    h1 {
+      margin: 0px;
+      font-size: 48px;
+    }
+    h2 {
+      font-size: 30px;
+    }
+    a {
+      background-color: var(--theme-color-5);
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      text-shadow: none;
+      font-size: 28px;
+
+    }
+  }
   #scrollIndicator {
     display: flex;
     flex-direction: column;
@@ -70,20 +102,20 @@ const SplashWrap = styled.div`
   container-type: size;
   overflow: hidden;
   .Desktop {   
-    svg {
+    img, svg {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
     }
 
-    @media screen and (min-width: 160vh) {
-      svg {
+    @media screen and (min-width: 1040px) {
+      img, svg {
         width: 100%;
       }
     }
-    @media not screen and (min-width: 160vh) {
-      svg {
+    @media not screen and (min-width: 1040px) {
+      img, svg {
         height: 100%;
       }
     }
@@ -91,7 +123,7 @@ const SplashWrap = styled.div`
   }
   .Mobile {
     display: none;
-    svg {
+    img, svg {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -99,12 +131,12 @@ const SplashWrap = styled.div`
     }
 
     @media screen and (min-width: 355px) {
-      svg {
+      img, svg {
         width: 100%;
       }
     }
     @media not screen and (min-width: 355px) {
-      svg {
+      img, svg {
         height: 100%;
       }
     }

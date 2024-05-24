@@ -10,6 +10,7 @@ export const metadata: Metadata = BuildPageMeta({})
 export default function Home() {
   return (
     <div>
+      <Splash></Splash>
       <Content></Content>
     </div>
   );

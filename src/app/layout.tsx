@@ -14,9 +14,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{"overflow":"hidden"}}>
+    <html lang="en" style={{ "overflow": "hidden" }}>
       <StyledComponentsRegistry>
-        <Body>
+        <Body data-themeid="light">
           {children}
           {CONFIG.google_as_id != undefined && (
             <script
@@ -30,3 +30,11 @@ export default function RootLayout({
     </html>
   );
 }
+
+/*
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.7.0/dist/leaflet.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
+*/

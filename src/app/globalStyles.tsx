@@ -1,8 +1,10 @@
 "use client";
 
-import styled from "styled-components";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
+import styled, { IStyledComponent } from "styled-components";
+import { FastOmit } from "styled-components/dist/types";
 
-export const responsiveMobileWidth = "769px"
+export const responsiveMobileWidth = "600px"
 
 export const Body = styled("body")`
     margin: 0px;
@@ -13,39 +15,57 @@ export const Body = styled("body")`
     left: 0px;
     overflow: hidden;
     overflow-y: scroll;
+    &[data-themeid="light"] {
+      --theme-color-1: #DE9F4A;
+      --theme-color-2: #F5D8AA;
+      --theme-color-3: #CE5144;
+      --theme-color-4: #233F4C;
+      --theme-color-5: #2A7E77;
+
+      --theme-text-shadow: 0px 4px 4px black;
+    }
 `
 
 export const Section = styled.div`
-    position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 20px;
-  margin-bottom: 100px;
+  background-color: var(--theme-color-2);
+  padding-top: 60px;
+  padding-bottom: 60px;
+  --heading-color: var(--theme-color-5);
+  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+    & {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
   .heading {
     max-width: min(800px, 80%);
     text-align: center;
+    color: var(--heading-color);
   }
+
   p {
-    max-width: min(800px, 80%);
-    text-align: center;
-    font-size: 20px;
+    font-size: 21px;
     margin: 5px 0px;
   }
 `
 
-export const PurpleSection = styled(Section)`
-  background-color: #6E07F3;
+export const AlternateSection = styled(Section)`
+  background-color: var(--theme-color-5);
   color: white;
-
+  --heading-color: white;
   .heading {
-    color: white;
+    color: var(--heading-color);
   }
   p {
     color: white;
   }
 `
-export const PageFooter = styled(PurpleSection)`
+export const PageFooter = styled(AlternateSection)`
   margin-top: 50px;
   min-height: 200px;
   margin-bottom: 0px;

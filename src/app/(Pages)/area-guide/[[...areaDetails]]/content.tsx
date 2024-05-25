@@ -14,7 +14,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname, useSearchParams } from "next/navigation";
 import { geo_data } from "./(Map)/GeoData";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { MDXProps } from "mdx/types";
 import { addMenuStateListener } from "@/hooks/useMenuState";
 export default (props:{params:{areaDetails:string[]}}) => {
@@ -59,8 +59,6 @@ export default (props:{params:{areaDetails:string[]}}) => {
       return a.properties.id.join("/") == starting_id.join("/")
     })[0];
   }, [props.params.areaDetails])
-  let searchParams = useSearchParams();
-  let hideNav = searchParams.has("hideNav");
   return (
     <>
       <ContentWrapper style={{ "paddingTop": "0px" }}>
@@ -68,7 +66,7 @@ export default (props:{params:{areaDetails:string[]}}) => {
         <div id="titlebar">
           <div>
             {props.params.areaDetails != undefined && (
-              <Link href={`${pathname.split("/").slice(0, -1).join("/")}${hideNav ? "?hideNav": ""}`} replace={false} prefetch={true}>Back</Link>
+              <AddQueriesLink href={`${pathname.split("/").slice(0, -1).join("/")}`} replace={false} prefetch={true}>Back</AddQueriesLink>
             )}
           </div>
           <h1 className="heading">Pinehurst Lodge Area Guide</h1>
@@ -79,9 +77,9 @@ export default (props:{params:{areaDetails:string[]}}) => {
               <div>{
                 filteredFeatures.map((feature, i) => {
                   return (
-                    <Link key={"navLink"+i}  href={`/area-guide/${feature.properties.id.join("/")}${hideNav ? "?hideNav": ""}`} replace={false} prefetch={true}>
+                    <AddQueriesLink key={"navLink"+i}  href={`/area-guide/${feature.properties.id.join("/")}`} replace={false} prefetch={true}>
                       {feature.properties.name}
-                    </Link>
+                    </AddQueriesLink>
                   )
                 })
               }</div>
@@ -91,9 +89,9 @@ export default (props:{params:{areaDetails:string[]}}) => {
                 <WhatsNearbyLabel>What's Nearby</WhatsNearbyLabel>
                 {recommendedFeatures.map((feature, i) => {
                   return (
-                    <Link key={"nearbyLink"+i} href={`/area-guide/${feature.properties.id.join("/")}${hideNav ? "?hideNav": ""}`} replace={false} prefetch={true}>
+                    <AddQueriesLink key={"nearbyLink"+i} href={`/area-guide/${feature.properties.id.join("/")}`} replace={false} prefetch={true}>
                       {feature.properties.name}
-                    </Link>
+                    </AddQueriesLink>
                   )
                 })}
             </div>
@@ -110,6 +108,24 @@ export default (props:{params:{areaDetails:string[]}}) => {
       
     </>
   );
+}
+
+function AddQueriesLink(props: any) {
+  return (
+    <Suspense fallback={(
+      <div>link</div>
+    )}>
+      <SuspensedLink {...props} />
+    </Suspense>
+  )
+}
+
+function SuspensedLink(props: any) {
+  let searchParams = useSearchParams();
+  let hideNav = searchParams.has("hideNav");
+  return (
+      <Link href={props.href+hideNav ? "?hideNav": ""}>{ props.children}</Link>
+  )
 }
 
 const WhatsNearbyLabel = styled.div`

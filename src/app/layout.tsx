@@ -6,6 +6,7 @@ import Head from "next/head";
 import { DefaultMeta } from "./metaDefaults";
 import { CONFIG as _CONFIG } from "../../site_config";
 import MenuBar from "@/Components/MenuBar";
+import { Suspense } from "react";
 const CONFIG: any = _CONFIG;
 export const metadata: Metadata = DefaultMeta;
 
@@ -30,7 +31,9 @@ export default function RootLayout({
       </head>
       <StyledComponentsRegistry>
         <Body data-themeid="light">
-          <MenuBar />
+          <Suspense>
+            <MenuBar />
+          </Suspense>
           {children}
           {CONFIG.google_as_id != undefined && (
             <script

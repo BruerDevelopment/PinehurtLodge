@@ -12,6 +12,8 @@ import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/
 import Link from "next/link";
 import SetupOfferings from "./(Sections)/SetupOfferings";
 import Accommodations from "./(Sections)/Accommodations";
+import LocalActivities from "./(Sections)/LocalActivities";
+import OutdoorExploration from "./(Sections)/OutdoorExploration";
 
 export default () => {
   return (
@@ -28,14 +30,9 @@ export default () => {
       </Section>
       <SetupOfferings></SetupOfferings>
       <Accommodations />
-      <AlternateSection>
-        <h1 className="heading">Plenty of Local Activities</h1>
-
-      </AlternateSection>
-      <Section>
-        <h1 className="heading">Outdoor Exploration</h1>
-        
-      </Section>
+      <LocalActivities />
+      <OutdoorExploration />
+      
     </>
   );
 }

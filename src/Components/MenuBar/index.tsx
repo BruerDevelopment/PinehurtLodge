@@ -4,7 +4,7 @@ import { responsiveMobileWidth } from "@/app/globalStyles";
 import { useMenuState } from "@/hooks/useMenuState";
 import { useScrollPos } from "@/hooks/useScrollPos";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaInstagram } from "react-icons/fa";
@@ -18,6 +18,7 @@ export default () => {
   let scroll = useScrollPos();
   let pathname = usePathname();
   let router = useRouter();
+  let searchParams = useSearchParams();
   let [menuOpen, setMenuOpen] = useMenuState();
   let nav = (el: any) => {
     let href = el.getAttribute("href");
@@ -25,7 +26,7 @@ export default () => {
     setMenuOpen(false);
     getDialog("exper_dialog")?.close();
   }
-  //if (pathname.includes("/area-guide")) return;
+  if (searchParams.has("hideNav")) return;
   if (scroll == 0 && pathname == "/") return;
   return (
     <>

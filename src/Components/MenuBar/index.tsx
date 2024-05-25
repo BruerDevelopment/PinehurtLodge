@@ -7,7 +7,13 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import { FaInstagram } from "react-icons/fa";
+function getDialog(id:string) {
+  let el: any = document.getElementById(id);
+  if (el == null) return;
+  let dialog: HTMLDialogElement = el;
+  return dialog;
+}
 export default () => {
   let scroll = useScrollPos();
   let pathname = usePathname();
@@ -17,15 +23,47 @@ export default () => {
     let href = el.getAttribute("href");
     router.push(href)
     setMenuOpen(false);
+    getDialog("exper_dialog")?.close();
   }
   //if (pathname.includes("/area-guide")) return;
   if (scroll == 0 && pathname == "/") return;
   return (
     <>
-      <Bar>
+      <Bar aria-hidden={!menuOpen}>
         <Link href="/"><h1>The Pinehurst Lodge</h1></Link>
         <div id="spacer"></div>
-        <div id="nav"></div>
+        <div id="nav">
+          <Link href="/" onClick={(e: any) => nav(e.target)}>Home</Link>
+          <MenuDropdown
+            onClick={() => {
+              getDialog("exper_dialog")?.show();
+            }}
+            onMouseEnter={() => {
+              getDialog("exper_dialog")?.show();
+            }}
+            onMouseLeave={() => {
+              getDialog("exper_dialog")?.close();
+            }}
+            
+          >
+            <span>Experiences</span>
+            <dialog id="exper_dialog" open={false}
+              onMouseEnter={() => {
+                getDialog("exper_dialog")?.show();
+              }}
+              onMouseLeave={() => {
+                getDialog("exper_dialog")?.close();
+              }}
+            >
+              <Link href="/outdoor-rec" onClick={(e:any)=>nav(e.target)}>Outdoor Recreation “Base-Camp”</Link>
+              <Link href="/scrapbooking-crafting-retreat" onClick={(e:any)=>nav(e.target)}>Crafting Retreat</Link>
+              <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Ski Lodge</Link>
+            </dialog>
+          </MenuDropdown>
+          <Link href="/gallery" onClick={(e:any)=>nav(e.target)}>Gallery</Link>
+          <Link href="/accommodations" onClick={(e:any)=>nav(e.target)}>Accommodations</Link>
+          <Link href="/area-guide" onClick={(e:any)=>nav(e.target)}>Area Guide</Link>
+        </div>
         <Link id="book_now" href="https://www.airbnb.com/rooms/1043540721907281297">Book Now</Link>
         <Menu onClick={() => {
           setMenuOpen(!menuOpen);
@@ -36,13 +74,51 @@ export default () => {
         </Menu>
       </Bar>
       <MobileMenu data-open={menuOpen}>
-        <Link href="/" onClick={(e:any)=>nav(e.target)}>Home</Link>
+        <h1>The Pinehurst Lodge</h1>
+        <Link href="/" onClick={(e: any) => nav(e.target)}>Home</Link>
+        <div className="subtab">
+          <span>Experiences</span>
+          <Link href="/outdoor-rec" onClick={(e:any)=>nav(e.target)}>Outdoor Recreation “Base-Camp”</Link>
+          <Link href="/scrapbooking-crafting-retreat" onClick={(e:any)=>nav(e.target)}>Crafting Retreat</Link>
+          <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Ski Lodge</Link>
+        </div>
+        <Link href="/gallery" onClick={(e:any)=>nav(e.target)}>Gallery</Link>
         <Link href="/accommodations" onClick={(e:any)=>nav(e.target)}>Accommodations</Link>
-        <Link href="/area-guide" onClick={(e:any)=>nav(e.target)}>Area Guide</Link>
+        <Link href="/area-guide" onClick={(e: any) => nav(e.target)}>Area Guide</Link>
+        <div id="link_buttons">
+
+          <Link href="https://www.airbnb.com/rooms/1043540721907281297" id="book_now">Book Now</Link>
+          <Link href="/area-guide" id="instagram"><FaInstagram />Follow Us</Link>
+        </div>
       </MobileMenu>
     </>
   );
 }
+
+const MenuDropdown = styled.div`
+  position: relative;
+  dialog {
+    &[open=""] {
+      display: flex;
+    }
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    flex-direction: column;
+    background-color: var(--theme-color-5);
+    z-index: 102;
+    box-shadow: 0px 10px 10px 0px black;
+    border: 0px;
+    padding: 0px;
+    
+    a {
+      min-height: 20px;
+      padding: 10px;
+      width: 230px;
+    }
+  }
+  
+`
 
 const Menu = styled.div`
   display: none;
@@ -57,6 +133,7 @@ const Menu = styled.div`
     height: 5px;
     background-color: black;
   }
+  
   @media screen and (max-width: ${()=>responsiveMobileWidth}) {
       & {
         display: flex;
@@ -78,7 +155,7 @@ const MobileMenu = styled.div`
   &[data-open="true"] {
     left: 0px;
   }
-  a {
+  h1 {
     width: 100%;
     height: 30px;
     display: flex;
@@ -86,6 +163,76 @@ const MobileMenu = styled.div`
     align-items: center;
     color: white;
     text-decoration: none;
+    font-size: 30px;
+    text-shadow: 0 4px 6px black;
+  }
+  a {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 10px 0px;
+    padding-left: 20px;
+  }
+  .subtab {
+    span {
+      width: 100%;
+      height: 30px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      color: white;
+      font-size: 30px;
+      padding: 10px 0px;
+      padding-left: 20px;
+    }
+    a {
+      padding-left: 40px;
+      font-size: 20px;
+    }
+  }
+  #link_buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+
+    #book_now {
+      width: 60%;
+      background-color: var(--theme-color-2);
+      padding: 5px 10px;
+      color: black;
+      text-decoration: none;
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #instagram {
+      width: 60%;
+      background-color: var(--theme-color-4);
+      padding: 5px 10px;
+      color: black;
+      text-decoration: none;
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      gap: 20px;
+      color: white;
+      svg {
+        width: 30px;
+        height: 30px;
+        color: white;
+      }
+    }
   }
 `
 const Bar = styled.div`
@@ -119,9 +266,23 @@ const Bar = styled.div`
   }
   div#nav {
     flex: 1;
+    display: flex;
+    justify-content: end;
+    padding-right: 20px;
     @media screen and (max-width: ${()=>responsiveMobileWidth}) {
       & {
         display: none;
+      }
+    }
+    a, div {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      min-height: 20px;
+      padding: 10px;
+
+      &:hover {
+        background-color: var(--theme-color-4);
       }
     }
   }

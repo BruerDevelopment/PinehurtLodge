@@ -59,10 +59,6 @@ export default (props:{params:{areaDetails:string[]}}) => {
       return a.properties.id.join("/") == starting_id.join("/")
     })[0];
   }, [props.params.areaDetails])
-
-  let [menuState, setMenuSTate] = useState(false);
-  useEffect(() => { addMenuStateListener((val) => setMenuSTate(val)) }, [])
-
   return (
     <>
       <ContentWrapper style={{ "paddingTop": "0px" }}>
@@ -101,7 +97,7 @@ export default (props:{params:{areaDetails:string[]}}) => {
             </div>
             )}
           </div>
-          <div id="mapWrapper" data-visible={!menuState}>
+          <div id="mapWrapper">
             <Map params={props.params} />
             <div id="place_details" data-open={selectedFeature != undefined && selectedFeature.properties.details != undefined}>
               <PlaceDetails comp={selectedFeature?.properties.details?.description} />
@@ -253,6 +249,6 @@ const MapWrapper = styled.div`
       }
     }
   }
-  #area-guide-map {width: 100%; height: 100%; flex: 1; margin:0; background: #fff; }
+  #area-guide-map {width: 100%; height: 100%; flex: 1; margin:0; background: #fff;z-index: 1; }
 `
 

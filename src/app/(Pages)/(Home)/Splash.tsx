@@ -3,8 +3,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
-import LandingPage from "@/assets/LandingPage.svg";
-import MobileLandingPage from "@/assets/MobileLandingPage.svg";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import { responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
@@ -12,7 +10,7 @@ export default function Splash() {
   return (
     <SplashWrap>
       <div className="Desktop"><img src="/HousePhotos/exterior/exterior_from_back.jpg" /></div>
-      <div className="Mobile"><MobileLandingPage /></div>
+      <div className="Mobile"><img src="/HousePhotos/exterior/exterior_from_back.jpg" /></div>
       <Overlay>
         <div id="title">
           <h1>Pinehurst Lodge</h1>
@@ -42,12 +40,28 @@ const Overlay = styled.div`
     left: 50px;
     color: white;
     text-shadow: var(--theme-text-shadow);
+    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+      & {
+        justify-content: center;
+        align-items: center;
+      }
+    }
     h1 {
       margin: 0px;
       font-size: 48px;
+      @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+        & {
+          font-size: 35px;
+        }
+      }
     }
     h2 {
       font-size: 30px;
+      @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+        & {
+          font-size: 18px;
+        }
+      }
     }
     a {
       background-color: var(--theme-color-5);
@@ -57,7 +71,11 @@ const Overlay = styled.div`
       border-radius: 6px;
       text-shadow: none;
       font-size: 28px;
-
+      @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+        & {
+          font-size: 18px;
+        }
+      }
     }
   }
   #scrollIndicator {
@@ -124,10 +142,12 @@ const SplashWrap = styled.div`
   .Mobile {
     display: none;
     img, svg {
+      object-fit: cover;
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      height: 100%;
     }
 
     @media screen and (min-width: 355px) {

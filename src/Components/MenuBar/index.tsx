@@ -88,7 +88,7 @@ export default () => {
         <div id="link_buttons">
 
           <Link href="https://www.airbnb.com/rooms/1043540721907281297" id="book_now">Book Now</Link>
-          <Link href="/area-guide" id="instagram"><FaInstagram />Follow Us</Link>
+          <Link href="https://www.instagram.com/pinehurst_lodge_co?igsh=eXo2YmRmY3U5N3pr" id="instagram"><FaInstagram />Follow Us</Link>
         </div>
       </MobileMenu>
     </>

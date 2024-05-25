@@ -127,6 +127,11 @@ function PlaceDetails(props:{comp?:((props: MDXProps) => JSX.Element)}) {
 }
 const ContentWrapper = styled.div`
   padding: 20px;
+  @media screen and (max-width: ${() => responsiveMobileWidth}) {
+    & {
+      padding: 0px;        
+    }
+  }
   position: absolute;
   top: 0px;
   left: 0px;
@@ -138,6 +143,11 @@ const ContentWrapper = styled.div`
     color: white;
     display: flex;
     flex-direction: row;
+    @media screen and (max-width: ${() => responsiveMobileWidth}) {
+      & {
+        display: none;
+      }
+    }
     h1 {
       @media screen and (max-width: 900px) {
         & {
@@ -232,7 +242,7 @@ const MapWrapper = styled.div`
     height: calc(100vh - 90px - 40px);
     @media screen and (max-width: ${() => responsiveMobileWidth}) {
       & {
-        height: calc(100vh - 120px);
+        height: calc(100vh - 100px);
 
       }
     }

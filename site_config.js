@@ -6,7 +6,7 @@ export const CONFIG = {
     BASE_PATH,
     BASE_URL: `https://${HOSTNAME}${BASE_PATH}`,
     page_meta: {
-        title: "Pinehurt Lodge",
+        title: "Pinehurst Lodge",
         description:""
     }
 }

@@ -14,8 +14,9 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { geo_data } from "./(Map)/GeoData";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MDXProps } from "mdx/types";
+import { addMenuStateListener } from "@/hooks/useMenuState";
 export default (props:{params:{areaDetails:string[]}}) => {
   let pathname = usePathname();
   const Map = dynamic(() => import("./map"), {
@@ -58,9 +59,14 @@ export default (props:{params:{areaDetails:string[]}}) => {
       return a.properties.id.join("/") == starting_id.join("/")
     })[0];
   }, [props.params.areaDetails])
+
+  let [menuState, setMenuSTate] = useState(false);
+  useEffect(() => { addMenuStateListener((val) => setMenuSTate(val)) }, [])
+
   return (
     <>
       <ContentWrapper style={{ "paddingTop": "0px" }}>
+        <div style={{"height":"40px"}}></div>
         <div id="titlebar">
           <div>
             {props.params.areaDetails != undefined && (
@@ -95,7 +101,7 @@ export default (props:{params:{areaDetails:string[]}}) => {
             </div>
             )}
           </div>
-          <div id="mapWrapper">
+          <div id="mapWrapper" data-visible={!menuState}>
             <Map params={props.params} />
             <div id="place_details" data-open={selectedFeature != undefined && selectedFeature.properties.details != undefined}>
               <PlaceDetails comp={selectedFeature?.properties.details?.description} />
@@ -187,7 +193,7 @@ const MapWrapper = styled.div`
 
   #sidebar {
     min-width: var(--sidebar-width);
-    height: calc(100vh - 90px);
+    height: calc(100vh - 90px - 40px);
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -220,11 +226,14 @@ const MapWrapper = styled.div`
     }
   }
   #mapWrapper {
+    &[data-visible="false"] {
+      display: none;
+    }
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 90px);
+    height: calc(100vh - 90px - 40px);
     @media screen and (max-width: ${() => responsiveMobileWidth}) {
       & {
         height: calc(100vh - 120px);

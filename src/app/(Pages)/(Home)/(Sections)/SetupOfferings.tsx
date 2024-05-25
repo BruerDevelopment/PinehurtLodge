@@ -26,7 +26,7 @@ export default () => {
         </IntroArea>
         <Spacer aria-hidden="true"></Spacer>
         <IntroArea data-coloralternate="1" >
-          <img src="/HousePhotos/downstairs_living/game_shelf.jpg"></img>
+          <img src="/HousePhotos/craft_area/craft_6.jpg"></img>
           <div id="text">
             <h3>Create Your Cozy Scrapbooking Retreat </h3>
             <p>Come scrapbookers, crafters, gamers & quilters! 6 tables (3’x6’), 6 padded chairs, 6 magnifying ring lamps & 6 waste bins offer optional creative and play spaces. Request the setup ahead of time and it will be ready for you. Alternately available to set up yourself if desired.</p>

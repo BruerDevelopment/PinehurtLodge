@@ -1,5 +1,5 @@
 
-const HOSTNAME = "Pinehurt-Lodge.com";
+const HOSTNAME = "Pinehurst-Lodge.com";
 const BASE_PATH = "";
 export const CONFIG = {
     HOSTNAME,

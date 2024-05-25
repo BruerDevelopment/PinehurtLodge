@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export let menu_listeners:((val:boolean)=>void)[] = [];
-export function isMobile(): boolean {
+export function useIsMobile(): boolean {
     let [isMobile, setIsMobile] = useState(false)
     useEffect(() => {
         setIsMobile(window.innerWidth < 600);

@@ -10,7 +10,7 @@ import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
-import { isMobile } from "@/hooks/isMobile";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default () => {
   let Accom = [
@@ -97,7 +97,7 @@ export default () => {
       </div>
     </div>
   ]
-  let is_mobile = isMobile();
+  let is_mobile = useIsMobile();
   return (
     <>
       <Section>

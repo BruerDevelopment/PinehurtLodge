@@ -33,7 +33,7 @@ export const geo_data = {
             zoomRadius:0.0005,
             coords: [39.917881821148285, -105.49984261378904],
             details: {
-                description:PinehurstLodge
+                markdown:PinehurstLodge
             }
         }),
         newFeature({
@@ -42,7 +42,7 @@ export const geo_data = {
             zoomRadius:0.0005,
             coords: [39.91703686820486, -105.50130467180907],
             details: {
-                description:TossPizza
+                markdown:TossPizza
             }
         }),
         newFeature({
@@ -90,7 +90,7 @@ function newFeature(options: {
     coords: number[],
     zoomRadius?: number,
     details?: {
-        description:typeof TossPizza
+        markdown:typeof TossPizza
     }
 }) {
     return {

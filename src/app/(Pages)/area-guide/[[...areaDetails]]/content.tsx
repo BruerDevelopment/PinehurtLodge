@@ -100,7 +100,7 @@ export default (props:{params:{areaDetails:string[]}}) => {
           <div id="mapWrapper">
             <Map params={props.params} />
             <div id="place_details" data-open={selectedFeature != undefined && selectedFeature.properties.details != undefined}>
-              <PlaceDetails comp={selectedFeature?.properties.details?.description} />
+              <PlaceDetails comp={selectedFeature?.properties.details?.markdown} />
             </div>
           </div>
         </MapWrapper>

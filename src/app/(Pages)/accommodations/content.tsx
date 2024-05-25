@@ -11,13 +11,13 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
 import SetupOfferings from "./(Sections)/SetupOfferings";
-import Accommodations from "./(Sections)/Accommodations";
 
 export default () => {
   return (
     <>
       <Section style={{ "paddingTop": "0px" }}>
-        <h1 className="heading">Welcome to the Pinehurst Lodge</h1>
+        <div style={{"height":"60px"}}></div>
+        <h1 className="heading">Pinehurst Lodge <br /> Accommodations & Amenities</h1>
         <IntroArea>
           <img src="/HousePhotos/downstairs_living/downstairs_living_room_6.jpg"></img>
           <div id="text">
@@ -25,16 +25,20 @@ export default () => {
             <p>In historic, quaint and tiny Rollinsville, Colorado sits Pinehurst Lodge. Easily accessible at just a 1/4 mile off the Peak to Peak Highway, the lodge has a deep-in-the-mountains feel, offering a breathtaking view of the Continental Divide in the Front Range. At 8900’, the lodge overlooks the valley and passing trains below and offers constantly changing scenery with the continual change of light and weather. Come adventure in the great Colorado outdoors and then refresh, renew and relax with plenty of space for friends and family at Pinehurst Lodge.</p>
           </div>
         </IntroArea>
-      </Section>
-      <SetupOfferings></SetupOfferings>
-      <Accommodations />
-      <AlternateSection>
-        <h1 className="heading">Plenty of Local Activities</h1>
-
-      </AlternateSection>
-      <Section>
-        <h1 className="heading">Outdoor Exploration</h1>
-        
+        <IntroArea>
+          <img src="/HousePhotos/downstairs_living/downstairs_living_room_6.jpg"></img>
+          <div id="text">
+            <h3>Surrounded by the beautiful Rocky Mountains, 10 minutes from the historic town of Black Hawk, lies The Pinehurst Lodge. </h3>
+            <p>In historic, quaint and tiny Rollinsville, Colorado sits Pinehurst Lodge. Easily accessible at just a 1/4 mile off the Peak to Peak Highway, the lodge has a deep-in-the-mountains feel, offering a breathtaking view of the Continental Divide in the Front Range. At 8900’, the lodge overlooks the valley and passing trains below and offers constantly changing scenery with the continual change of light and weather. Come adventure in the great Colorado outdoors and then refresh, renew and relax with plenty of space for friends and family at Pinehurst Lodge.</p>
+          </div>
+        </IntroArea>
+        <IntroArea>
+          <img src="/HousePhotos/downstairs_living/downstairs_living_room_6.jpg"></img>
+          <div id="text">
+            <h3>Surrounded by the beautiful Rocky Mountains, 10 minutes from the historic town of Black Hawk, lies The Pinehurst Lodge. </h3>
+            <p>In historic, quaint and tiny Rollinsville, Colorado sits Pinehurst Lodge. Easily accessible at just a 1/4 mile off the Peak to Peak Highway, the lodge has a deep-in-the-mountains feel, offering a breathtaking view of the Continental Divide in the Front Range. At 8900’, the lodge overlooks the valley and passing trains below and offers constantly changing scenery with the continual change of light and weather. Come adventure in the great Colorado outdoors and then refresh, renew and relax with plenty of space for friends and family at Pinehurst Lodge.</p>
+          </div>
+        </IntroArea>
       </Section>
     </>
   );

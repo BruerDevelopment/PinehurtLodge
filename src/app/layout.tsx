@@ -5,6 +5,7 @@ import { Body } from "./globalStyles";
 import Head from "next/head";
 import { DefaultMeta } from "./metaDefaults";
 import { CONFIG as _CONFIG } from "../../site_config";
+import MenuBar from "@/Components/MenuBar";
 const CONFIG: any = _CONFIG;
 export const metadata: Metadata = DefaultMeta;
 
@@ -15,8 +16,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ "overflow": "hidden" }}>
+      <head>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2a7e77" />
+        <meta name="msapplication-TileColor" content="#f5d8aa" />
+        <meta name="theme-color" content="#f5d8aa" />
+
+
+      </head>
       <StyledComponentsRegistry>
         <Body data-themeid="light">
+          <MenuBar />
           {children}
           {CONFIG.google_as_id != undefined && (
             <script

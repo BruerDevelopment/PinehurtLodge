@@ -1,0 +1,20 @@
+{
+    "name": "Pinehurst Lodge",
+    "short_name": "Pinehurst Lodge",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#f5d8aa",
+    "background_color": "#f5d8aa",
+    "start_url": "https://www.pinehurst-lodge.com/",
+    "display": "standalone"
+}

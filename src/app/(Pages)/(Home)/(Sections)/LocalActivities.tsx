@@ -21,8 +21,8 @@ export default () => {
           <div className="Card">
             <TwoColumns data-reverse="true">
               <TwoImages>
-                <img src="/AreaAttractions/Toss_Pizza.jpg"></img>
-                <img src="/AreaAttractions/Toss_Pizza_exterior.png"></img>
+                <img src="/AreaAttractions/Toss_Pizza.jpg"  loading="lazy"></img>
+                <img src="/AreaAttractions/Toss_Pizza_exterior.png"  loading="lazy"></img>
               </TwoImages>
               <CenterColumn>
                 <h3>Toss Pizza </h3>
@@ -34,8 +34,8 @@ export default () => {
           <div className="Card">
             <TwoColumns>
               <TwoImages>
-                <img src="/AreaAttractions/Redrocks.jpg"></img>
-                <img src="/AreaAttractions/Red-Rocks-Amphitheatre.jpeg"></img>
+                <img src="/AreaAttractions/Redrocks.jpg"  loading="lazy"></img>
+                <img src="/AreaAttractions/Red-Rocks-Amphitheatre.jpeg"  loading="lazy"></img>
               </TwoImages>
               <CenterColumn>
                 <h3>Red Rocks Park & Amphitheatre</h3>
@@ -49,8 +49,8 @@ export default () => {
           <div className="Card">
             <TwoColumns data-reverse="true">
               <TwoImages>
-                <img src="/AreaAttractions/GoldDirtDistillery3.jpg"></img>
-                <img src="/AreaAttractions/GoldDirtBuilding.webp"></img>
+                <img src="/AreaAttractions/GoldDirtDistillery3.jpg"  loading="lazy"></img>
+                <img src="/AreaAttractions/GoldDirtBuilding.webp"  loading="lazy"></img>
               </TwoImages>
               <CenterColumn>
                 <h3>Gold Dirt Distillery </h3>
@@ -64,8 +64,8 @@ export default () => {
           <div className="Card">
             <TwoColumns>
               <TwoImages>
-                <img src="/StockPhotos/rocky_mountain_state_park_1.jpg"></img>
-                <img src="/StockPhotos/rocky_mountain_state_park.jpg"></img>
+                <img src="/StockPhotos/rocky_mountain_state_park_1.jpg"  loading="lazy"></img>
+                <img src="/StockPhotos/rocky_mountain_state_park.jpg"  loading="lazy"></img>
               </TwoImages>
               <CenterColumn>
                 <h3>Rocky Mountain National Park </h3>

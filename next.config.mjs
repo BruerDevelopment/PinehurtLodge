@@ -18,6 +18,7 @@ const nextConfig = {
             ssr: true
         },
     },
+    images: { unoptimized: true }
 };
 
 export default withMDX(nextConfig);

@@ -17,8 +17,8 @@ export default () => {
     <div key="Accom 1">
       <span>Master Suite</span>
       <div className="images">
-        <img src="/HousePhotos/bedroom1/master_with_moons.jpg"></img>
-        <img src="/HousePhotos/bedroom1/master_2.jpg"></img>
+        <img src="/HousePhotos/bedroom1/master_with_moons.jpg" loading="lazy"></img>
+        <img src="/HousePhotos/bedroom1/master_2.jpg" loading="lazy"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -27,8 +27,8 @@ export default () => {
     <div key="Accom 2">
       <span>Bedroom 1</span>
       <div className="images">
-        <img src="/HousePhotos/bedroom2/queen_1.jpg"></img>
-        <img src="/HousePhotos/bedroom2/queen_2.jpg"></img>
+        <img src="/HousePhotos/bedroom2/queen_1.jpg" loading="lazy"></img>
+        <img src="/HousePhotos/bedroom2/queen_2.jpg" loading="lazy"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -37,8 +37,8 @@ export default () => {
     <div key="Accom 3">
     <span>Bedroom 2</span>
     <div className="images">
-      <img src="/HousePhotos/bedroom3/down_master_8.jpg"></img>
-      <img src="/HousePhotos/bedroom3/down_master_1.jpg"></img>
+      <img src="/HousePhotos/bedroom3/down_master_8.jpg" loading="lazy"></img>
+      <img src="/HousePhotos/bedroom3/down_master_1.jpg" loading="lazy"></img>
     </div>
     <div id="more">
       <Link href="/accommodations#">Learn More</Link>
@@ -47,8 +47,8 @@ export default () => {
     <div key="Accom 4">
       <span>Bedroom 3</span>
       <div className="images">
-        <img src="/HousePhotos/bedroom4/dorm_3.jpg"></img>
-        <img src="/HousePhotos/bedroom4/dorm_1.jpg"></img>
+        <img src="/HousePhotos/bedroom4/dorm_3.jpg" loading="lazy"></img>
+        <img src="/HousePhotos/bedroom4/dorm_1.jpg" loading="lazy"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -57,8 +57,8 @@ export default () => {
     <div key="Accom 5" style={{"marginTop":"40px"}}>
       <span style={{"justifyContent":"center", "display":"flex"}}>Trundled Twins to King</span>
       <div className="images">
-        <img src="/HousePhotos/downstairs_living/trundle_2.jpg"></img>
-        <img src="/HousePhotos/downstairs_living/trundle_6.jpg"></img>
+        <img src="/HousePhotos/downstairs_living/trundle_2.jpg" loading="lazy"></img>
+        <img src="/HousePhotos/downstairs_living/trundle_6.jpg" loading="lazy"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -69,8 +69,8 @@ export default () => {
     <div key="Amenities 1">
       <span>Fully Equipped Kitchens</span>
       <div className="images">
-        <img src="/HousePhotos/upstairs_kitchen/kitchen_main.jpg"></img>
-        <img src="/HousePhotos/downstairs_kitchen/kitchen_main.jpg"></img>
+        <img src="/HousePhotos/upstairs_kitchen/kitchen_main.jpg" loading="lazy"></img>
+        <img src="/HousePhotos/downstairs_kitchen/kitchen_main.jpg" loading="lazy"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -79,8 +79,8 @@ export default () => {
     <div key="Amenities 2">
       <span>Spacious Living Rooms</span>
       <div className="images">
-        <img src="/HousePhotos/upstairs_living/main.jpg"></img>
-        <img src="/HousePhotos/craft_area/craft_20.jpg"></img>
+        <img src="/HousePhotos/upstairs_living/main.jpg" loading="lazy"></img>
+        <img src="/HousePhotos/craft_area/craft_20.jpg" loading="lazy"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -89,8 +89,8 @@ export default () => {
     <div key="Amenities 3">
     <span>Work / Crafting Area</span>
     <div className="images">
-      <img src="/HousePhotos/craft_area/craft_21.jpg"></img>
-      <img src="/HousePhotos/craft_area/magnifying_lamp_2.jpg"></img>
+      <img src="/HousePhotos/craft_area/craft_21.jpg" loading="lazy"></img>
+      <img src="/HousePhotos/craft_area/magnifying_lamp_2.jpg" loading="lazy"></img>
     </div>
     <div id="more">
       <Link href="/accommodations#">Learn More</Link>
@@ -99,8 +99,8 @@ export default () => {
     <div key="Amenities 4">
       <span>Hot Tub & Pool Table</span>
       <div className="images">
-        <img src="/HousePhotos/"></img>
-        <img src="/HousePhotos/"></img>
+        <img src="/HousePhotos/"  loading="lazy"></img>
+        <img src="/HousePhotos/"  loading="lazy"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>

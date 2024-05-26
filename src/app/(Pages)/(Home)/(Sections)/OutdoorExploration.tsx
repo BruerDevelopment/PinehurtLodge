@@ -33,7 +33,7 @@ export default () => {
 
           <Link href="/area-guide" target="_blank">Expore The Full Guide<BsBoxArrowUpRight /></Link>
         </ToolBar>
-        <IFrame src="/area-guide?hideNav"></IFrame>
+        <IFrame src="/area-guide?hideNav" loading="lazy"></IFrame>
       </Section>
     </>
   );

@@ -41,7 +41,7 @@ export default () => {
                 <h3>Redrocks </h3>
                 <p>
                 </p>
-                <Link href="#" target="_blank">Visit Redrocks Online <BsBoxArrowUpRight /></Link>
+                <Link href="https://www.redrocksonline.com/" target="_blank">Visit Redrocks Online <BsBoxArrowUpRight /></Link>
               </CenterColumn>
             </TwoColumns>
           </div>
@@ -56,7 +56,7 @@ export default () => {
                 <p>
                   Located just down the street from Pinehurst Lodge sits one of the finest distilleries of quality craft spirits. Open Wed - Sun, they offer a delicious variety of hand crafted cocktails and an array of spirits including Rose Gin, Lavender Infused Gin, Honey Spirit, High & Dry Gin and more.
                 </p>
-                <Link href="#" target="_blank">Explore Gold Dirt's Website<BsBoxArrowUpRight /></Link>
+                <Link href="https://www.golddirtdistillery.com/" target="_blank">Explore Gold Dirt's Website<BsBoxArrowUpRight /></Link>
               </CenterColumn>
             </TwoColumns>
           </div>

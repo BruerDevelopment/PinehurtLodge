@@ -21,14 +21,14 @@ export const geo_data = {
         
         newFeature({
             id: ["rollinsville"],
-            isHome: true,
+            marker: "blue_home_teardrop",
             name: "Rollinsville",
             zoomRadius:0.005,
             coords:[39.91799228205519, -105.50102393425145]
         }),
         newFeature({
             id: ["rollinsville", "pinehurst"],
-            isHome: true,
+            marker: "blue_home_teardrop",
             name: "Pinehurst Lodge",
             zoomRadius:0.0005,
             coords: [39.917881821148285, -105.49984261378904],
@@ -40,7 +40,25 @@ export const geo_data = {
             id: ["rollinsville", "toss"],
             name: "Toss: Wood Fired Eatery",
             zoomRadius:0.0005,
-            coords: [39.91703686820486, -105.50130467180907],
+            coords: [39.91690804377914, -105.50125934094717],
+            details: {
+                markdown:TossPizza
+            }
+        }),
+        newFeature({
+            id: ["rollinsville", "gold-dirt"],
+            name: "Gold Dirt Distillery",
+            zoomRadius:0.0005,
+            coords: [39.91709557418429, -105.50150669884258],
+            details: {
+                markdown:TossPizza
+            }
+        }),
+        newFeature({
+            id: ["rollinsville", "post-office"],
+            name: "Rollinsville Post Office",
+            zoomRadius:0.0005,
+            coords: [39.91640881608291, -105.50064959313626],
             details: {
                 markdown:TossPizza
             }
@@ -86,7 +104,7 @@ export const geo_data = {
 function newFeature(options: {
     id: string[],
     name?: string,
-    isHome?: boolean,
+    marker?: string,
     coords: number[],
     zoomRadius?: number,
     details?: {
@@ -97,7 +115,7 @@ function newFeature(options: {
         "type": "Feature",
         "properties": {
             "id":options.id,
-            "isHome":options.isHome == true ? true :false,
+            "marker":options.marker != undefined ? options.marker :"blue_teardrop",
             "name": options.name != undefined ? options.name :"Unknown",
             "lat": options.coords[0],
             "long": options.coords[1],
@@ -113,20 +131,39 @@ function newFeature(options: {
 
 
 //@ts-ignore
-export function getGeoData(starting_id?:string[]): GeoJsonObject {
+export function getGeoData(starting_id?: string[]): GeoJsonObject {
+    let selectedFeature = geo_data.features.filter(a => a.properties.id.join("/") == starting_id?.join("/"))[0];
     let filtered_features = geo_data.features.filter(a => {
         let comp_id = a.properties.id;
         if (starting_id == undefined)
             return comp_id.length == 1
+        if (selectedFeature != undefined && selectedFeature.properties.details != undefined) {
+            if (comp_id.length == 1) return;
+            for (let i = 0; i < starting_id.length-1; i++) {
+                if (starting_id[i] != comp_id[i]) return false;
+            }
+            return true
+        }
         if (comp_id.length == 1) return;
         for (let i = 0; i < starting_id.length; i++) {
             if (starting_id[i] != comp_id[i]) return false;
         }
         return true
     });
+    let mapped_features = filtered_features.map(f => {
+        return {
+            ...f,
+            properties: {
+                ...f.properties,
+                marker: (starting_id != undefined && starting_id?.join("/") == f.properties.id.join("/"))
+                    ? "red_teardrop"
+                    : f.properties.marker 
+            }
+        }
+    })
     let data:any = {
         ...geo_data,
-        features:filtered_features
+        features:mapped_features
     }
     return data;
 };

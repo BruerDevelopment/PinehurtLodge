@@ -148,7 +148,7 @@ function SuspensedLink(props: any) {
   let searchParams = useSearchParams();
   let hideNav = searchParams.has("hideNav");
   return (
-      <Link href={props.href+hideNav ? "?hideNav": ""}>{ props.children}</Link>
+      <Link href={props.href+(hideNav ? "?hideNav": "")}>{ props.children}</Link>
   )
 }
 

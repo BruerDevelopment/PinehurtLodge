@@ -16,6 +16,15 @@ export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPa
         shadowAnchor: [4, 62],  // the same for the shadow
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
     })
+    let RedMarkerIcon = L.icon({
+        iconUrl: '/red_marker.png',
+    
+        iconSize:     [38, 38], // size of the icon
+        shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [19, 38], // point of the icon which will correspond to marker's location
+        shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    })
     let HomeMarkerIcon = L.icon({
         iconUrl: '/home.png',
     
@@ -25,6 +34,12 @@ export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPa
         shadowAnchor: [4, 62],  // the same for the shadow
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
     })
+
+    let getIcon = (marker: string) => {
+        if (marker == "blue_home_teardrop") return HomeMarkerIcon;
+        if (marker == "red_teardrop") return RedMarkerIcon;
+        return BlankMarkerIcon
+    }
     let CorkPubs = null;
     /**
      * Defines how GeoJSON points spawn Leaflet layers. It is internally called when data is added, 
@@ -38,7 +53,7 @@ export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPa
         else if (feature.properties.rating <= 4.0) id = 0; 
 
         return L.marker(latlng, {
-            icon: feature.properties.isHome == true ? HomeMarkerIcon : BlankMarkerIcon
+            icon: getIcon(feature.properties.marker)
         })
     }
     /**

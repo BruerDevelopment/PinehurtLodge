@@ -38,8 +38,9 @@ export default () => {
                 <img src="/AreaAttractions/Red-Rocks-Amphitheatre.jpeg"></img>
               </TwoImages>
               <CenterColumn>
-                <h3>Redrocks </h3>
+                <h3>Red Rocks Park & Amphitheatre</h3>
                 <p>
+                  One of the most beautiful and renowned concert venues in the United States, Red Rocks Park & Amphitheatre draws a vast array of well-known artists from around the world. At 36 miles away, it is easily accessible to the Pinehurst Lodge.
                 </p>
                 <Link href="https://www.redrocksonline.com/" target="_blank">Visit Redrocks Online <BsBoxArrowUpRight /></Link>
               </CenterColumn>
@@ -63,12 +64,13 @@ export default () => {
           <div className="Card">
             <TwoColumns>
               <TwoImages>
-                <img src="/HousePhotos/downstairs_living/downstairs_living_room_6.jpg"></img>
-                <img src="/HousePhotos/downstairs_living/downstairs_living_room_6.jpg"></img>
+                <img src="/StockPhotos/rocky_mountain_state_park_1.jpg"></img>
+                <img src="/StockPhotos/rocky_mountain_state_park.jpg"></img>
               </TwoImages>
               <CenterColumn>
                 <h3>Rocky Mountain National Park </h3>
                 <p>
+                  33 miles north of the PInehurst Lodge lies the spectacular Rocky Mountain National Park. With over 300 miles of hiking trails, abundant wildlife, towering peaks and glistening alpine lakes, there is something for everyone to explore and enjoy!
                 </p>
                 <Link href="#" target="_blank">Checkout The Park's Website  <BsBoxArrowUpRight /></Link>
               </CenterColumn>
@@ -171,17 +173,15 @@ const TwoImages = styled.div`
     object-fit: cover;
     --width: 180px;
     --height: 180px;
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+    @media screen and (min-width: ${()=>responsiveMobileWidth}) {
       & {
-        --width: 80px;
-        --height: 80px;
+        width: var(--width);
+        min-width: var(--width);
+        max-width: var(--width);
+        height: var(--height);
+        min-height: var(--height);
+        max-height: var(--height);
       }
     }
-    width: var(--width);
-    min-width: var(--width);
-    max-width: var(--width);
-    height: var(--height);
-    min-height: var(--height);
-    max-height: var(--height);
   }
 `

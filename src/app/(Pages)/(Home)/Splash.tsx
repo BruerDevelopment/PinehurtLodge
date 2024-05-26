@@ -6,15 +6,20 @@ import styled from "styled-components";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import { responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
+import { useIsMobile } from "@/hooks/useIsMobile";
 export default function Splash() {
+  let isMobile = useIsMobile();
   return (
     <SplashWrap>
-      <DesktopSplash>
-        <img alt="Desktop Splash" src="/HousePhotos/exterior/exterior_from_back.jpg"/>
-      </DesktopSplash>
-      <MobileSplash>
-        <img alt="Mobile Splash" src="/HousePhotos/exterior/exterior_from_back_mobile.jpg"/>
-      </MobileSplash>
+      {isMobile == false ? (
+        <DesktopSplash>
+          <img alt="Desktop Splash" src="/HousePhotos/exterior/exterior_from_back.jpg"/>
+        </DesktopSplash>
+      ): (
+        <MobileSplash>
+          <img alt="Mobile Splash" src="/HousePhotos/exterior/exterior_from_back_mobile.jpg"/>
+        </MobileSplash>
+      )}
       <Overlay>
         <div id="title">
           <h1>Pinehurst Lodge</h1>
@@ -68,7 +73,7 @@ const DesktopSplash = styled.div`
 `
 const MobileSplash = styled.div`
   img {
-    background-image: url("/HousePhotos/exterior/exterior_from_back_mobile.jpg");
+    background-image: url("/HousePhotos/exterior/exterior_from_back_mobile_small.jpg");
     &::before {
       color: transparent;
     }

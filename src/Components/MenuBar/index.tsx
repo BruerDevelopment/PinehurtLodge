@@ -62,8 +62,8 @@ export default () => {
               <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Ski Lodge</Link>
             </dialog>
           </MenuDropdown>
-          <Link href="/gallery" onClick={(e:any)=>nav(e.target)}>Gallery</Link>
           <Link href="/accommodations" onClick={(e:any)=>nav(e.target)}>Accommodations</Link>
+          <Link href="/gallery" onClick={(e:any)=>nav(e.target)}>Gallery</Link>
           <Link href="/area-guide" onClick={(e:any)=>nav(e.target)}>Area Guide</Link>
         </div>
         <Link id="book_now" href="https://www.airbnb.com/rooms/1043540721907281297">Book Now</Link>
@@ -91,8 +91,8 @@ export default () => {
           <Link href="/scrapbooking-crafting-retreat" onClick={(e:any)=>nav(e.target)}>Crafting Retreat</Link>
           <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Ski Lodge</Link>
         </div>
-        <Link href="/gallery" onClick={(e:any)=>nav(e.target)}>Gallery</Link>
         <Link href="/accommodations" onClick={(e:any)=>nav(e.target)}>Accommodations</Link>
+        <Link href="/gallery" onClick={(e:any)=>nav(e.target)}>Photo Gallery</Link>
         <Link href="/area-guide" onClick={(e: any) => nav(e.target)}>Area Guide</Link>
         <div id="link_buttons">
 
@@ -138,6 +138,7 @@ const Menu = styled.div`
   padding: 0px 10px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   svg {
    width: 40px; 
    height: 40px; 
@@ -200,6 +201,7 @@ const MobileMenu = styled.div`
   }
   .subtab {
     span {
+      cursor: pointer;
       width: 100%;
       height: 30px;
       display: flex;

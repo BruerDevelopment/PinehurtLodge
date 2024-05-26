@@ -156,6 +156,12 @@ const CenterColumn = styled.div`
       height: 20px;
       color: white;
     }
+    font-size: 15px;
+    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+      & {
+        font-size: 12px;
+      }
+    }
   }
 `
 const TwoImages = styled.div`

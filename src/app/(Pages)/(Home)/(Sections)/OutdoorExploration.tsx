@@ -10,6 +10,7 @@ import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
+import { BsBoxArrowUpRight } from "react-icons/bs";
 
 export default () => {
   return (
@@ -24,6 +25,10 @@ export default () => {
           and get ready to embark on a journey of discovery in the enchanting surroundings of Pinehurst Lodge.
         </Paragraph>
         <Spacer />
+        <ToolBar>
+
+          <Link href="/area-guide" target="_blank">Expore The Full Guide<BsBoxArrowUpRight /></Link>
+        </ToolBar>
         <IFrame src="/area-guide?hideNav"></IFrame>
       </Section>
     </>
@@ -32,6 +37,26 @@ export default () => {
 
 const Spacer = styled.div`
   height: 20px;
+`
+const ToolBar = styled.div`
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  width: 90%;
+  max-width: 900px;
+  box-sizing: border-box;
+  z-index: 10;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    background-color: var(--theme-color-4);
+    padding: 5px 10px;
+    gap: 5px;
+    border-radius: 6px 6px 0px 0px;
+  }
 `
 
 const Paragraph = styled.div`

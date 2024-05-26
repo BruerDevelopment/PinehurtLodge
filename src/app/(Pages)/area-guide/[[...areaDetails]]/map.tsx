@@ -6,12 +6,14 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import L from "leaflet"
 import { useEffect } from "react"
 import { start, stop } from "./(Map)"
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function MyMap(props: { params: { areaDetails: string[] } }) {
     let router = useRouter();
+    let searchParams = useSearchParams();
+    let hideNav = searchParams.has("hideNav");
     let nav = (path:string) => {
-        router.push(path)
+        router.push(path + (hideNav ? "?hideNav" : ""))
     }
     useEffect(() => {
         start(nav, props.params.areaDetails)

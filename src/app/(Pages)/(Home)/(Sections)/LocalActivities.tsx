@@ -16,8 +16,38 @@ export default () => {
     <>
       <AlternateSection>
         <h1 className="heading">Plenty of Local Activities</h1>
+        <CardWrapper>
+          <div className="Card">
+            
+          </div>
+          <div className="Card">
 
+          </div>
+          <div className="Card">
+
+          </div>
+          <div className="Card">
+
+          </div>
+        </CardWrapper>
       </AlternateSection>
     </>
   );
 }
+
+
+const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 900px;
+  gap: 20px;
+
+  .Card {
+    border-radius: 10px;
+    width: 100%;
+    height: 100px;
+    background-color: var(--theme-color-1);
+  }
+
+`

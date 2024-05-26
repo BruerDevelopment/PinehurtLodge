@@ -26,4 +26,7 @@ const IFrame = styled("iframe")`
   width: 90%;
   max-width: 900px;
   aspect-ratio: 3/2;
+  @media screen and (max-width: ${() => responsiveMobileWidth}) {
+    aspect-ratio: 3/4;
+  }
 `

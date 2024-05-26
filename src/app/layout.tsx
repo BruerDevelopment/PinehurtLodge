@@ -7,6 +7,7 @@ import { DefaultMeta } from "./metaDefaults";
 import { CONFIG as _CONFIG } from "../../site_config";
 import MenuBar from "@/Components/MenuBar";
 import { Suspense } from "react";
+import Footer from "@/Components/Footer";
 const CONFIG: any = _CONFIG;
 export const metadata: Metadata = DefaultMeta;
 
@@ -35,6 +36,7 @@ export default function RootLayout({
             <MenuBar />
           </Suspense>
           {children}
+          <Footer />
           {CONFIG.google_as_id != undefined && (
             <script
             async

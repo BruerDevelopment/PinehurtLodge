@@ -19,6 +19,28 @@ import { MDXProps } from "mdx/types";
 import { addMenuStateListener } from "@/hooks/useMenuState";
 export default (props:{params:{areaDetails:string[]}}) => {
   let pathname = usePathname();
+  return (
+    <>
+      <ContentWrapper style={{ "paddingTop": "0px" }}>
+        <SuspendedSpacer />
+        <div id="titlebar">
+          <div>
+            {props.params.areaDetails != undefined && (
+              <AddQueriesLink href={`${pathname.split("/").slice(0, -1).join("/")}`} replace={false} prefetch={true}>Back</AddQueriesLink>
+            )}
+          </div>
+          <h1 className="heading">Pinehurst Lodge Area Guide</h1>
+        </div>
+        <Suspense>
+          <MapArea {...props} />
+        </Suspense>
+      </ContentWrapper>
+      
+    </>
+  );
+}
+
+function MapArea(props:any) {
   const Map = dynamic(() => import("./map"), {
     loading: () => <div id="area-guide-map"></div>,
     ssr: false
@@ -59,55 +81,57 @@ export default (props:{params:{areaDetails:string[]}}) => {
       return a.properties.id.join("/") == starting_id.join("/")
     })[0];
   }, [props.params.areaDetails])
+  let searchParams = useSearchParams();
+  let hideNav = searchParams.has("hideNav");
   return (
-    <>
-      <ContentWrapper style={{ "paddingTop": "0px" }}>
-        <div style={{"height":"40px"}}></div>
-        <div id="titlebar">
-          <div>
-            {props.params.areaDetails != undefined && (
-              <AddQueriesLink href={`${pathname.split("/").slice(0, -1).join("/")}`} replace={false} prefetch={true}>Back</AddQueriesLink>
-            )}
-          </div>
-          <h1 className="heading">Pinehurst Lodge Area Guide</h1>
+    <MapWrapper data-hide-nav={hideNav}>
+      <div id="sidebar">
+        {(selectedFeature == undefined || selectedFeature.properties.details == undefined) && (
+          <div>{
+            filteredFeatures.map((feature, i) => {
+              return (
+                <AddQueriesLink key={"navLink"+i}  href={`/area-guide/${feature.properties.id.join("/")}`} replace={false} prefetch={true}>
+                  {feature.properties.name}
+                </AddQueriesLink>
+              )
+            })
+          }</div>
+        )}
+        {(selectedFeature != undefined && selectedFeature.properties.details != undefined) && (
+        <div>
+            <WhatsNearbyLabel>What's Nearby</WhatsNearbyLabel>
+            {recommendedFeatures.map((feature, i) => {
+              return (
+                <AddQueriesLink key={"nearbyLink"+i} href={`/area-guide/${feature.properties.id.join("/")}`} replace={false} prefetch={true}>
+                  {feature.properties.name}
+                </AddQueriesLink>
+              )
+            })}
         </div>
-        <MapWrapper>
-          <div id="sidebar">
-            {(selectedFeature == undefined || selectedFeature.properties.details == undefined) && (
-              <div>{
-                filteredFeatures.map((feature, i) => {
-                  return (
-                    <AddQueriesLink key={"navLink"+i}  href={`/area-guide/${feature.properties.id.join("/")}`} replace={false} prefetch={true}>
-                      {feature.properties.name}
-                    </AddQueriesLink>
-                  )
-                })
-              }</div>
-            )}
-            {(selectedFeature != undefined && selectedFeature.properties.details != undefined) && (
-            <div>
-                <WhatsNearbyLabel>What's Nearby</WhatsNearbyLabel>
-                {recommendedFeatures.map((feature, i) => {
-                  return (
-                    <AddQueriesLink key={"nearbyLink"+i} href={`/area-guide/${feature.properties.id.join("/")}`} replace={false} prefetch={true}>
-                      {feature.properties.name}
-                    </AddQueriesLink>
-                  )
-                })}
-            </div>
-            )}
-          </div>
-          <div id="mapWrapper">
-            <Map params={props.params} />
-            <div id="place_details" data-open={selectedFeature != undefined && selectedFeature.properties.details != undefined}>
-              <PlaceDetails comp={selectedFeature?.properties.details?.markdown} />
-            </div>
-          </div>
-        </MapWrapper>
-      </ContentWrapper>
-      
-    </>
-  );
+        )}
+      </div>
+      <div id="mapWrapper">
+        <Map params={props.params} />
+        <div id="place_details" data-open={selectedFeature != undefined && selectedFeature.properties.details != undefined}>
+          <PlaceDetails comp={selectedFeature?.properties.details?.markdown} />
+        </div>
+      </div>
+    </MapWrapper>
+  )
+}
+
+function SuspendedSpacer() {
+  const Spacer = () => {
+    let searchParams = useSearchParams();
+    let hideNav = searchParams.has("hideNav");
+    if (hideNav) return;
+    return <div style={{ "height": "40px" }}></div>
+  }
+  return (
+    <Suspense>
+      <Spacer />
+    </Suspense>
+  )
 }
 
 function AddQueriesLink(props: any) {
@@ -214,10 +238,14 @@ const MapWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-
+  --top-spacer: 40px;
+  --map-height: calc(100vh - 90px - var(--top-spacer));
+  &[data-hide-nav="true"] {
+      --top-spacer: 0px;
+  }
   #sidebar {
     min-width: var(--sidebar-width);
-    height: calc(100vh - 90px - 40px);
+    height: var(--map-height);
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -257,10 +285,15 @@ const MapWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 90px - 40px);
+    height: var(--map-height);
     @media screen and (max-width: ${() => responsiveMobileWidth}) {
       & {
-        height: calc(100vh - 100px);
+        position: absolute;
+        top: var(--top-spacer);
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        height: auto;
 
       }
     }

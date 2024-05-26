@@ -8,6 +8,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaInstagram } from "react-icons/fa";
+import { IoCloseSharp } from "react-icons/io5";
 function getDialog(id:string) {
   let el: any = document.getElementById(id);
   if (el == null) return;
@@ -31,7 +32,7 @@ export default () => {
   return (
     <>
       <Bar aria-hidden={!menuOpen}>
-        <Link href="/"><h1>The Pinehurst Lodge</h1></Link>
+        <Link href="/"><h1>Pinehurst Lodge</h1></Link>
         <div id="spacer"></div>
         <div id="nav">
           <Link href="/" onClick={(e: any) => nav(e.target)}>Home</Link>
@@ -68,14 +69,21 @@ export default () => {
         <Link id="book_now" href="https://www.airbnb.com/rooms/1043540721907281297">Book Now</Link>
         <Menu onClick={() => {
           setMenuOpen(!menuOpen);
-        }} >
+        }}>
           <div></div>
           <div></div>
           <div></div>
         </Menu>
       </Bar>
       <MobileMenu data-open={menuOpen}>
-        <h1>The Pinehurst Lodge</h1>
+        <div id="title">
+          <h1>Pinehurst Lodge</h1>
+          <Menu onClick={() => {
+            setMenuOpen(!menuOpen);
+          }} style={{"paddingTop":"10px", "paddingRight":"20px"}}>
+            <IoCloseSharp />
+          </Menu>
+        </div>
         <Link href="/" onClick={(e: any) => nav(e.target)}>Home</Link>
         <div className="subtab">
           <span>Experiences</span>
@@ -128,7 +136,12 @@ const Menu = styled.div`
   width: 30px;
   margin-left: 10px;
   padding: 0px 10px;
-
+  justify-content: center;
+  align-items: center;
+  svg {
+   width: 40px; 
+   height: 40px; 
+  }
   div {
     width: 100%;
     height: 5px;
@@ -156,16 +169,22 @@ const MobileMenu = styled.div`
   &[data-open="true"] {
     left: 0px;
   }
-  h1 {
-    width: 100%;
-    height: 30px;
+  #title {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    font-size: 30px;
-    text-shadow: 0 4px 6px black;
+    justify-content: space-between;
+    h1 {
+      padding-left: 20px;
+      width: 100%;
+      height: 30px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-size: 30px;
+      text-shadow: 0 4px 6px black;
+      margin-bottom: 0px;
+    }
   }
   a {
     width: 100%;

@@ -4,6 +4,7 @@ import Content from "./content";
 import { Metadata, ResolvingMetadata } from "next";
 import { geo_data } from "./(Map)/GeoData";
 import { BuildPageMeta } from "@/app/metaDefaults";
+import { CONFIG } from "../../../../../site_config";
 
 type Props = {
   params: { areaDetails: string[] }
@@ -24,7 +25,8 @@ export const generateMetadata = async (
     }
   }
   return BuildPageMeta({
-    title
+    title,
+    socialCover:`${CONFIG.BASE_URL}/area_guide_social_card.png`
   })
 }
 

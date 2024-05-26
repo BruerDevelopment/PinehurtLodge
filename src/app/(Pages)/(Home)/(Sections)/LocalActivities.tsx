@@ -129,6 +129,7 @@ const CenterColumn = styled.div`
     color: black;
     font-size: 20px;
     margin-bottom: 0px;
+    text-align: center;
     @media screen and (max-width: ${()=>responsiveMobileWidth}) {
       & {
         margin-top: 0px;

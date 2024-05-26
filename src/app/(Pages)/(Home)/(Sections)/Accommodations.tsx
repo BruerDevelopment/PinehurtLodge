@@ -17,8 +17,8 @@ export default () => {
     <div key="Accom 1">
       <span>Master Suite</span>
       <div className="images">
-        <img src="#"></img>
-        <img src="#"></img>
+        <img src="/HousePhotos/bedroom1/master_with_moons.jpg"></img>
+        <img src="/HousePhotos/bedroom1/master_2.jpg"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -27,8 +27,8 @@ export default () => {
     <div key="Accom 2">
       <span>Bedroom 1</span>
       <div className="images">
-        <img src="#"></img>
-        <img src="#"></img>
+        <img src="/HousePhotos/bedroom2/queen_1.jpg"></img>
+        <img src="/HousePhotos/bedroom2/queen_2.jpg"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -37,8 +37,8 @@ export default () => {
     <div key="Accom 3">
     <span>Bedroom 2</span>
     <div className="images">
-      <img src="#"></img>
-      <img src="#"></img>
+      <img src="/HousePhotos/bedroom3/down_master_8.jpg"></img>
+      <img src="/HousePhotos/bedroom3/down_master_1.jpg"></img>
     </div>
     <div id="more">
       <Link href="/accommodations#">Learn More</Link>
@@ -47,8 +47,18 @@ export default () => {
     <div key="Accom 4">
       <span>Bedroom 3</span>
       <div className="images">
-        <img src="#"></img>
-        <img src="#"></img>
+        <img src="/HousePhotos/bedroom4/dorm_3.jpg"></img>
+        <img src="/HousePhotos/bedroom4/dorm_1.jpg"></img>
+      </div>
+      <div id="more">
+        <Link href="/accommodations#">Learn More</Link>
+      </div>
+    </div>,
+    <div key="Accom 5" style={{"marginTop":"40px"}}>
+      <span style={{"justifyContent":"center", "display":"flex"}}>Trundled Twins to King</span>
+      <div className="images">
+        <img src="/HousePhotos/downstairs_living/trundle_2.jpg"></img>
+        <img src="/HousePhotos/downstairs_living/trundle_6.jpg"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -57,20 +67,20 @@ export default () => {
   ]
   let Amenities = [
     <div key="Amenities 1">
-      <span>Fully Equipped Kitchen</span>
+      <span>Fully Equipped Kitchens</span>
       <div className="images">
-        <img src="#"></img>
-        <img src="#"></img>
+        <img src="/HousePhotos/upstairs_kitchen/kitchen_main.jpg"></img>
+        <img src="/HousePhotos/downstairs_kitchen/kitchen_main.jpg"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
       </div>
     </div>,
     <div key="Amenities 2">
-      <span>Spacious Living Room</span>
+      <span>Spacious Living Rooms</span>
       <div className="images">
-        <img src="#"></img>
-        <img src="#"></img>
+        <img src="/HousePhotos/upstairs_living/main.jpg"></img>
+        <img src="/HousePhotos/craft_area/craft_20.jpg"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -79,18 +89,18 @@ export default () => {
     <div key="Amenities 3">
     <span>Work / Crafting Area</span>
     <div className="images">
-      <img src="#"></img>
-      <img src="#"></img>
+      <img src="/HousePhotos/craft_area/craft_21.jpg"></img>
+      <img src="/HousePhotos/craft_area/magnifying_lamp_2.jpg"></img>
     </div>
     <div id="more">
       <Link href="/accommodations#">Learn More</Link>
     </div>
   </div>,
     <div key="Amenities 4">
-      <span>Games and Indoor Activities</span>
+      <span>Hot Tub & Pool Table</span>
       <div className="images">
-        <img src="#"></img>
-        <img src="#"></img>
+        <img src="/HousePhotos/"></img>
+        <img src="/HousePhotos/"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#">Learn More</Link>
@@ -130,6 +140,20 @@ export default () => {
             )}
           </div>
         </PictureCollumns>
+        <PictureCollumns>
+          <div id="column">
+            {is_mobile == false ? (
+              <>
+                {Accom[4]}
+              </>
+            ) : (
+              <>
+                {Accom[4]}
+              </>
+            )}
+          </div>
+         
+        </PictureCollumns>
 
         <h1 className="heading">With Top-Class Amenities</h1>
         <PictureCollumns>
@@ -166,7 +190,7 @@ export default () => {
 }
 
 const PictureCollumns = styled.div`
-  max-width: 1200px;
+  max-width: 900px;
   width: 95%;
   display: flex;
   flex-direction: row;
@@ -180,8 +204,9 @@ const PictureCollumns = styled.div`
   #column {
     display: flex;
     flex-direction: column;
-
-    div { //line
+    
+    & > div { //line
+      margin-top: 40px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -193,7 +218,7 @@ const PictureCollumns = styled.div`
         gap: 10px;
         img {
           width: 150px;
-          aspect-ratio: 1 / 1;
+          aspect-ratio: 3/2;
           border-radius: 6px;
           @media screen and (max-width: ${()=>responsiveMobileWidth}) {
             & {

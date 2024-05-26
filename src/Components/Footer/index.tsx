@@ -9,11 +9,22 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaInstagram } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
-
+import { FaAirbnb } from "react-icons/fa";
 export default () => {
+  
+  let pathname = usePathname();
+  if (pathname.includes("/area-guide")) return
   return (
     <Footer>
-      hi
+      <div id="socials">
+        <Link href="https://www.airbnb.com/rooms/1043540721907281297" target="_blank">
+          <FaAirbnb />
+        </Link>
+        <Link href="https://www.instagram.com/pinehurst_lodge_co" target="_blank">
+          <FaInstagram />
+        </Link>
+      </div>
+      <span id="copywrite">&copy; 2024 Big Pinehurst LLP | All Rights Reserved</span>
     </Footer>
   );
 }
@@ -22,4 +33,29 @@ const Footer = styled.div`
   background-color: var(--theme-color-4);
   height: 300px;
   width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+
+  #socials {
+    display: flex;
+    gap: 10px;
+    svg {
+      width: 50px;
+      height: 50px;
+      color: white;
+    }
+  }
+  #copywrite {
+    
+    color: white;
+    font-size: 23px;
+    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+      & {
+        font-size: 16px;
+      }
+    }
+  }
 `

@@ -20,11 +20,14 @@ export default () => {
     <>
       <Section style={{ "paddingTop": "0px" }}>
         <h1 className="heading">Welcome to the Pinehurst Lodge</h1>
+        <SubTitle>Gather your friends, relax and enjoy the beautiful mountain environment.</SubTitle>
         <IntroArea>
           <img src="/HousePhotos/downstairs_living/downstairs_living_room_6.jpg"></img>
           <div id="text">
-            <h3>Surrounded by the beautiful Rocky Mountains, 10 minutes from the historic town of Black Hawk, lies The Pinehurst Lodge. </h3>
-            <p>In historic, quaint and tiny Rollinsville, Colorado sits Pinehurst Lodge. Easily accessible at just a 1/4 mile off the Peak to Peak Highway, the lodge has a deep-in-the-mountains feel, offering a breathtaking view of the Continental Divide in the Front Range. At 8900’, the lodge overlooks the valley and passing trains below and offers constantly changing scenery with the continual change of light and weather. Come adventure in the great Colorado outdoors and then refresh, renew and relax with plenty of space for friends and family at Pinehurst Lodge.</p>
+            <h3>In the beautiful Rocky Mountains, with a fabulous view and a large, brand new Arctic Spas hot tub, awaits the Pinehurst Lodge. </h3>
+            <p>
+              In historic, quaint and tiny Rollinsville, Colorado sits Pinehurst Lodge. Easily accessible at just a 1/4 mile off the Peak to Peak Scenic Byway, the lodge has a deep-in-the-mountains feel, offering a breathtaking view of the Continental Divide in the Front Range. At 8900’, the lodge overlooks the valley and passing trains below and offers constantly changing scenery with the continual change of light and weather. Come adventure in the great Colorado outdoors and then refresh, renew and relax with plenty of space for friends and family at Pinehurst Lodge.
+            </p>
           </div>
         </IntroArea>
       </Section>
@@ -37,6 +40,14 @@ export default () => {
   );
 }
 
+const SubTitle = styled.h2`
+  padding: 0px 2.5%;
+  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+    & {
+      //width: 95%;
+    }
+  }
+`
 
 const IntroArea = styled.div`
   max-width: 1200px;

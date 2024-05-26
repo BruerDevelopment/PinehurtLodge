@@ -65,7 +65,7 @@ export const geo_data = {
         }),
         newFeature({
             id: ["boulder"],
-            name:"Bolder",
+            name:"Boulder",
             coords:[40.015609194989395, -105.27637299175895]
         }),
         newFeature({

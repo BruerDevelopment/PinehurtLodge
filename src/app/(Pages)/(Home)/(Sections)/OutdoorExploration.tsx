@@ -16,12 +16,28 @@ export default () => {
     <>
       <Section>
         <h1 className="heading">Outdoor Exploration</h1>
+        <Paragraph>
+          Whether you're seeking outdoor adventures, cultural exploration, or culinary delights,
+          our guide is your passport to discovering the hidden gems and cherished landmarks
+          that make our area so special. Each recommendation in our guide has been handpicked
+          to ensure you make the most of your stay. So, grab your map, lace up your hiking boots,
+          and get ready to embark on a journey of discovery in the enchanting surroundings of Pinehurst Lodge.
+        </Paragraph>
+        <Spacer />
         <IFrame src="/area-guide?hideNav"></IFrame>
       </Section>
     </>
   );
 }
 
+const Spacer = styled.div`
+  height: 20px;
+`
+
+const Paragraph = styled.div`
+  max-width: 900px;
+  width: 90%;
+`
 const IFrame = styled("iframe")`
   width: 90%;
   max-width: 900px;

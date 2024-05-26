@@ -9,7 +9,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPanel: any, starting_id?:string[]) {
     let BlankMarkerIcon = L.icon({
         iconUrl: '/marker.png',
-    
+        className:"marker",
         iconSize:     [38, 38], // size of the icon
         shadowSize:   [50, 64], // size of the shadow
         iconAnchor:   [19, 38], // point of the icon which will correspond to marker's location
@@ -18,7 +18,7 @@ export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPa
     })
     let RedMarkerIcon = L.icon({
         iconUrl: '/red_marker.png',
-    
+        className:"marker",
         iconSize:     [38, 38], // size of the icon
         shadowSize:   [50, 64], // size of the shadow
         iconAnchor:   [19, 38], // point of the icon which will correspond to marker's location
@@ -27,7 +27,7 @@ export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPa
     })
     let HomeMarkerIcon = L.icon({
         iconUrl: '/home.png',
-    
+        className:"marker",
         iconSize:     [38, 38], // size of the icon
         shadowSize:   [50, 64], // size of the shadow
         iconAnchor:   [19, 38], // point of the icon which will correspond to marker's location
@@ -53,7 +53,7 @@ export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPa
         else if (feature.properties.rating <= 4.0) id = 0; 
 
         return L.marker(latlng, {
-            icon: getIcon(feature.properties.marker)
+            icon: getIcon(feature.properties.marker),
         })
     }
     /**
@@ -66,7 +66,9 @@ export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPa
         `
         let tooltip = L.tooltip({
             content: rating,
-            offset: L.point(10, 0)
+            offset: L.point(10, -20),
+            permanent: true,
+            className: 'leaflet-tooltip'
         })
         layer.bindTooltip(tooltip);
 

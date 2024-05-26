@@ -6,7 +6,7 @@ export const MapConfigs: {
     mapOptions:L.MapOptions
 } = {
     mapOptions:{
-        center:[39.92045455108784, -105.2],
+        center:[39.85015455108784, -105.2],
         zoom: 10,
         maxZoom: 17,
         minZoom: 1,
@@ -23,8 +23,8 @@ export const geo_data = {
             id: ["rollinsville"],
             marker: "blue_home_teardrop",
             name: "Rollinsville",
-            zoomRadius:0.005,
-            coords:[39.91799228205519, -105.50102393425145]
+            zoomRadius:0.0001,
+            coords:[39.91724285209795, -105.50051337993732]
         }),
         newFeature({
             id: ["rollinsville", "pinehurst"],

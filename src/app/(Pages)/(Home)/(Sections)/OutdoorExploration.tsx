@@ -25,6 +25,10 @@ export default () => {
           and get ready to embark on a journey of discovery in the enchanting surroundings of Pinehurst Lodge.
         </Paragraph>
         <Spacer />
+        <Paragraph>
+          Click the different locations to explore! 
+        </Paragraph>
+        <Spacer />
         <ToolBar>
 
           <Link href="/area-guide" target="_blank">Expore The Full Guide<BsBoxArrowUpRight /></Link>

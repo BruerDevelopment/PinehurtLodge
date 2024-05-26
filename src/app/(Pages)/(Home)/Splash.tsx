@@ -9,8 +9,8 @@ import Link from "next/link";
 export default function Splash() {
   return (
     <SplashWrap>
-      <div className="Desktop"><img src="/HousePhotos/exterior/exterior_from_back.jpg" /></div>
-      <div className="Mobile"><img src="/HousePhotos/exterior/exterior_from_back.jpg" /></div>
+      <div className="Desktop"><Image alt="" src="/HousePhotos/exterior/exterior_from_back.jpg" /></div>
+      <div className="Mobile"><Image alt="" src="/HousePhotos/exterior/exterior_from_back.jpg" /></div>
       <Overlay>
         <div id="title">
           <h1>Pinehurst Lodge</h1>

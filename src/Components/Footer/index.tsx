@@ -16,7 +16,7 @@ export default () => {
   if (pathname.includes("/area-guide")) return
   return (
     <Footer>
-      <div id="socials">
+      <div id="socials_links">
         <Link href="https://www.airbnb.com/rooms/1043540721907281297" target="_blank">
           <FaAirbnb />
         </Link>
@@ -39,7 +39,7 @@ const Footer = styled.div`
   justify-content: end;
   align-items: center;
 
-  #socials {
+  #socials_links {
     display: flex !important;
     gap: 10px;
     svg {

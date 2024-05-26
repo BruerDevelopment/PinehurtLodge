@@ -40,7 +40,7 @@ const Footer = styled.div`
   align-items: center;
 
   #socials {
-    display: flex;
+    display: flex !important;
     gap: 10px;
     svg {
       width: 50px;

@@ -30,7 +30,7 @@ export const geo_data = {
             id: ["rollinsville", "pinehurst"],
             marker: "blue_home_teardrop",
             name: "Pinehurst Lodge",
-            zoomRadius:0.0005,
+            zoomRadius:0.0001,
             coords: [39.917881821148285, -105.49984261378904],
             details: {
                 markdown:PinehurstLodge
@@ -39,7 +39,7 @@ export const geo_data = {
         newFeature({
             id: ["rollinsville", "toss"],
             name: "Toss: Wood Fired Eatery",
-            zoomRadius:0.0005,
+            zoomRadius:0.0001,
             coords: [39.91690804377914, -105.50125934094717],
             details: {
                 markdown:TossPizza
@@ -48,7 +48,7 @@ export const geo_data = {
         newFeature({
             id: ["rollinsville", "gold-dirt"],
             name: "Gold Dirt Distillery",
-            zoomRadius:0.0005,
+            zoomRadius:0.0001,
             coords: [39.91709557418429, -105.50150669884258],
             details: {
                 markdown:TossPizza
@@ -57,7 +57,7 @@ export const geo_data = {
         newFeature({
             id: ["rollinsville", "post-office"],
             name: "Rollinsville Post Office",
-            zoomRadius:0.0005,
+            zoomRadius:0.0001,
             coords: [39.91640881608291, -105.50064959313626],
             details: {
                 markdown:TossPizza

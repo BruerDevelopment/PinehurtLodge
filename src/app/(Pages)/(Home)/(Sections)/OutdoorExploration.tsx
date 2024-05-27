@@ -26,7 +26,7 @@ export default () => {
         </Paragraph>
         <Spacer />
         <Paragraph>
-          Click the different locations to explore! 
+          Click the different locations to explore! (The map may take a minute or two to load on 4G LTE.)
         </Paragraph>
         <Spacer />
         <ToolBar>

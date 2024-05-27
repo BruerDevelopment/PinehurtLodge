@@ -15,7 +15,7 @@ export default () => {
   return (
     <>
       <AlternateSection>
-        <h1 className="heading">Welcome to the Pinehurst Lodge</h1>
+        <Title className="heading">This cozy getaway has something for every mountain vacation:</Title>
         <IntroArea data-coloralternate="1" data-direction="reverse">
           <img src="/AreaAttractions/Hiking_Trails_mountain_lake.jpg" loading="lazy"></img>
           <div id="text">
@@ -46,6 +46,9 @@ export default () => {
     </>
   );
 }
+const Title = styled.h1`
+  font-size: 21px;
+`
 const Spacer = styled.div`
   height: 20px;
   @media screen and (max-width: ${() => responsiveMobileWidth}) {

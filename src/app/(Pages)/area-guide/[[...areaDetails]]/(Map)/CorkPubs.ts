@@ -1,12 +1,14 @@
 import L from "leaflet";
-import { getGeoData } from "./GeoData";
+import { getGeoData, geo_data } from "./GeoData";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 /**
  * 
  * @param {*} map_obj 
  * @param {*} ReviewPanel 
  */
-export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPanel: any, starting_id?:string[]) {
+export function ConstructGeoJSON(nav: (path: string) => void, map_obj: any, ReviewPanel: any, starting_id?: string[]) {
+    let selectedFeature = geo_data.features.filter(a => a.properties.id.join("/") == starting_id?.join("/"))[0];
+    let isDetailedLocation = selectedFeature?.properties.details != undefined
     let BlankMarkerIcon = L.icon({
         iconUrl: '/marker.png',
         className:"marker",
@@ -67,7 +69,7 @@ export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPa
         let tooltip = L.tooltip({
             content: rating,
             offset: L.point(10, -20),
-            permanent: true,
+            permanent: isDetailedLocation ? false : true,
             className: 'leaflet-tooltip'
         })
         layer.bindTooltip(tooltip);
@@ -92,6 +94,7 @@ export function ConstructGeoJSON(nav:(path:string)=>void, map_obj: any, ReviewPa
         });
     }
     let data = getGeoData(starting_id);
+
     CorkPubs = L.geoJSON(data, {
         pointToLayer,
         onEachFeature,

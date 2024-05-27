@@ -68,6 +68,7 @@ const TwoStackedImages = styled.div`
   flex: 1;
   img {
     aspect-ratio: 3 / 2;
+    max-height: none !important;
   }
   img:first-child {
     position: absolute;

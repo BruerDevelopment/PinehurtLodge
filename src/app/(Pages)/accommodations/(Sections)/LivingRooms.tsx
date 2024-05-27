@@ -50,10 +50,30 @@ export default () => {
             
           </div>
         </TwoColumns>
+        <MoreLink>
+          <Link href="#">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
+        </MoreLink>
       </Section>
     </>
   );
 }
+
+const MoreLink = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    background-color: var(--theme-color-3);
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 30px;
+    text-align: center;
+  }
+`
 const Spacer = styled.div`
   height: 20px;
   @media screen and (max-width: ${() => responsiveMobileWidth}) {

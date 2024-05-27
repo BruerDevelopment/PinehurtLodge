@@ -46,6 +46,7 @@ export const Section = styled.div`
     max-width: min(800px, 80%);
     text-align: center;
     color: var(--heading-color);
+    scroll-margin-top: 100px;
   }
 
   p {

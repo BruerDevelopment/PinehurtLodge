@@ -21,7 +21,7 @@ export default () => {
         <img src="/HousePhotos/bedroom1/master_2.jpg" loading="lazy"></img>
       </div>
       <div id="more">
-        <Link href="/accommodations#">Learn More</Link>
+        <Link href="/accommodations#UpstairsBedrooms">Learn More</Link>
       </div>
     </div>,
     <div key="Accom 2">
@@ -31,7 +31,7 @@ export default () => {
         <img src="/HousePhotos/bedroom2/queen_2.jpg" loading="lazy"></img>
       </div>
       <div id="more">
-        <Link href="/accommodations#">Learn More</Link>
+        <Link href="/accommodations#UpstairsBedrooms">Learn More</Link>
       </div>
     </div>,
     <div key="Accom 3">
@@ -41,7 +41,7 @@ export default () => {
       <img src="/HousePhotos/bedroom3/down_master_1.jpg" loading="lazy"></img>
     </div>
     <div id="more">
-      <Link href="/accommodations#">Learn More</Link>
+      <Link href="/accommodations#DownstairsBedrooms">Learn More</Link>
     </div>
   </div>,
     <div key="Accom 4">
@@ -51,7 +51,7 @@ export default () => {
         <img src="/HousePhotos/bedroom4/dorm_1.jpg" loading="lazy"></img>
       </div>
       <div id="more">
-        <Link href="/accommodations#">Learn More</Link>
+        <Link href="/accommodations#DownstairsBedrooms">Learn More</Link>
       </div>
     </div>,
     <div key="Accom 5" style={{"marginTop":"40px"}}>
@@ -73,7 +73,7 @@ export default () => {
         <img src="/HousePhotos/downstairs_kitchen/kitchen_main.jpg" loading="lazy"></img>
       </div>
       <div id="more">
-        <Link href="/accommodations#">Learn More</Link>
+        <Link href="/accommodations#Kitchens">Learn More</Link>
       </div>
     </div>,
     <div key="Amenities 2">
@@ -83,7 +83,7 @@ export default () => {
         <img src="/HousePhotos/craft_area/craft_20.jpg" loading="lazy"></img>
       </div>
       <div id="more">
-        <Link href="/accommodations#">Learn More</Link>
+        <Link href="/accommodations#LivingRooms">Learn More</Link>
       </div>
     </div>,
     <div key="Amenities 3">
@@ -93,7 +93,7 @@ export default () => {
       <img src="/HousePhotos/craft_area/magnifying_lamp_2.jpg" loading="lazy"></img>
     </div>
     <div id="more">
-      <Link href="/accommodations#">Learn More</Link>
+      <Link href="/accommodations#Scrapbooking">Learn More</Link>
     </div>
   </div>,
     <div key="Amenities 4">
@@ -103,7 +103,7 @@ export default () => {
         <img src="/HousePhotos/"  loading="lazy"></img>
       </div>
       <div id="more">
-        <Link href="/accommodations#">Learn More</Link>
+        <Link href="/accommodations#Activities">Learn More</Link>
       </div>
     </div>
   ]

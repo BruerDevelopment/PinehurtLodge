@@ -103,8 +103,8 @@ const TwoStackedImages = styled.div`
   }
   img:last-child {
     position: absolute;
-    top: 100px;
-    right: 0px;
+    top: 85px;
+    right: 30px;
     width: 60%;
   }
   @media screen and (max-width: 810px) {
@@ -136,14 +136,14 @@ const TwoStackedImages = styled.div`
     }
     img:first-child {
       position: relative;
-      width: 100%;
+      width: 50%;
       top: auto;
       right: auto;
       left: auto;
     }
     img:last-child {
       position: relative;
-      width: 100%;
+      width: 50%;
       top: auto;
       right: auto;
       left: auto;
@@ -166,16 +166,7 @@ const TwoColumns = styled.div`
   div {
     display: flex;
   }
-  img {
-    flex: 1;
-    aspect-ratio: 3 / 2;
-    max-height: 130px;
-    background-color: red;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-
-  }
+  
   h3 {
     margin: 0px;
   }
@@ -191,6 +182,17 @@ const TwoColumns = styled.div`
     gap: 20px;
     & > div {
       gap: 20px;
+      width: 100%;
+      img {
+        flex: 1;
+        aspect-ratio: 3 / 2;
+        max-height: 130px;
+        background-color: red;
+        width: 50%;
+        object-fit: cover;
+        border-radius: 6px;
+
+      }
     }
   }
 `

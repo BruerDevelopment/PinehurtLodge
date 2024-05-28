@@ -80,11 +80,13 @@ const Rooms = styled.div`
         & {
           width: 100%;
         }
+        img {
+          width: 50%;
+        }
       }
     }
     img {
       background-color: red;
-      width: 100%;
       object-fit: cover;
       border-radius: 6px;
       width: 100%;

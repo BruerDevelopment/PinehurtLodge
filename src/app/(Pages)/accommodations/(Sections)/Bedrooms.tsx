@@ -54,16 +54,26 @@ export default () => {
               <img src="#" />
               <img src="#" />
             </div>
+            <h3>Trundle Bed in Downstairs Living Room</h3>
+            <div>
+              <img src="#" />
+              <img src="#" />
+            </div>
           </div>
           <div>
             <h2 id="DownstairsBedrooms">Downstairs Bedrooms</h2>
+            <div className="GapP">
+              
             <p>
               The Downstairs Master Suite has a queen sized bed along with a desk, a large closet and a spectacular view!
             </p>
             <p>
               The other downstairs bedroom has a queen bed and two twin beds (bunked) with stairs for easy access. There is also a dresser, chair and hooks with space for your suitcases and clothing.
             </p>
-            
+            <p>
+              Often arranged as a sofa/daybed in the downstairs living room, this trundle bed can be set up as a king size bed or two separated twins.
+            </p>
+            </div>
           </div>
         </TwoColumns>
         <MoreLink>
@@ -110,6 +120,16 @@ const TwoColumns = styled.div`
       flex-direction: column;
     }
   }
+  .GapP {
+    display: flex;
+    flex-direction: column;
+    gap: 85px;
+    @media screen and (max-width: ${() => responsiveMobileWidth}) {
+      & {
+        gap: 10px;
+      }
+    }
+  }
   div {
     display: flex;
   }
@@ -117,6 +137,9 @@ const TwoColumns = styled.div`
     flex: 1;
     aspect-ratio: 3 / 2;
     max-height: 130px;
+    background-color: red;
+    border-radius: 6px;
+
   }
   h3 {
     margin: 0px;

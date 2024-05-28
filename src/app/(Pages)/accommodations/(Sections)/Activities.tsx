@@ -23,12 +23,12 @@ export default () => {
             <img alt="" src="#"/>
           </div>
           <div id="text">
-            <h2 className="heading">Pool Table, 6-Person Hot Tub, Board-Games, and Two Smart TVs</h2>
+            <h2 className="heading">Pool Table, 7-Person Hot Tub, Board-Games, and Two Smart TVs</h2>
             <p>
-            Plenty of indoor activities for those rest days or if your just fully vegging.  Each of the two gathering space is equipped with a Smart TV where you can sign into all of your streaming services, perfect for movie nights or blasting music during a gaming session.
+              Pinehurst Lodge provides plenty of activities for after outdoor adventures and rest days.  Each of the two gathering spaces is equipped with a Smart TV where you can sign into all of your streaming services, perfect for movie nights or background music while socializing, scrapbooking, crafting or gaming.
             </p>
             <p>
-              Enjoy a large social Arctic Spas hot tub with a mountain view. Cleaned before every stay, with maintenance instructions and supplies detailed in the welcome package.
+              Enjoy a large social Arctic Spas hot tub with a mountain view. Cleaned before every stay, with maintenance instructions and supplies detailed in the welcome package, this brand new, top-of-the-line spa is the perfect place to unwind and relax with a beautiful view of the Continental Divide, the surrounding mountains and the Rollinsville valley below.
             </p>
           </div>
         </Content>
@@ -69,6 +69,9 @@ const Content = styled.div`
       flex: 1;
       aspect-ratio: 3 / 2;
       max-height: 200px;
+      background-color: red;
+      border-radius: 6px;
+
     }
   }
   #text {

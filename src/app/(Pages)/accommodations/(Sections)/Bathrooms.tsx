@@ -16,7 +16,39 @@ export default () => {
     <>
       <AlternateSection>
         <h1 className="heading">Bathrooms</h1>
-        
+        <Rooms>
+          <div>
+            <div>
+              <h3>Master Bathroom</h3>
+              <p>
+              The Master Bedroom comes with an en suite bathroom which features a glass shower, two sinks and a fabulous view! The shower offers shampoo, conditioner & body wash dispensers. The sink area offers handsoap, Q-tips & cotton swabs.
+              </p>
+            </div>
+            <img src="#"/>
+          </div>
+          <div>
+            <div>
+              <h3>Upstairs Bathroom</h3>
+              <p>
+                The central bathroom upstairs has a tub/shower combination and a heater/temperature controlled tile floor. The shower offers shampoo, conditioner & body wash dispensers. The sink area offers hand soap, Q-tips & cotton swabs.
+              </p>
+            </div>
+            <img src="#"/>
+          </div>
+          <div>
+            <div>
+              <h3>Downstairs Bathroom</h3>
+              <p>
+                The downstairs bathroom has a tub/shower combination and a heater/temperature controlled tile floor. The shower offers shampoo, conditioner & body wash dispensers. The sink area offers hand soap, Q-tips & cotton swabs.
+              </p>
+            </div>
+            <div id="double">
+
+              <img style={{"aspectRatio":"3 / 4"}} src="#"/>
+              <img style={{"aspectRatio":"3 / 4"}} src="#"/>
+            </div>
+          </div>
+        </Rooms>
         <MoreLink>
           <Link href="#">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
         </MoreLink>
@@ -24,7 +56,40 @@ export default () => {
     </>
   );
 }
-
+const Rooms = styled.div`
+  width: 90%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0px;
+  & > div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+      & {
+        flex-direction: column;
+      }
+    }
+    #double {
+      width: 200%;
+      display: flex;
+      gap: 10px;
+      @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+        & {
+          width: 100%;
+        }
+      }
+    }
+    img {
+      background-color: red;
+      border-radius: 6px;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+    }
+  }
+`
 const MoreLink = styled.div`
   display: flex;
   justify-content: center;

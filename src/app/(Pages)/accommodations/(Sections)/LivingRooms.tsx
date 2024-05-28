@@ -89,6 +89,9 @@ const TwoStackedImages = styled.div`
   img {
     aspect-ratio: 3 / 2;
     max-height: none !important;
+    background-color: red;
+    border-radius: 6px;
+
   }
   img:first-child {
     position: absolute;
@@ -164,6 +167,9 @@ const TwoColumns = styled.div`
     flex: 1;
     aspect-ratio: 3 / 2;
     max-height: 130px;
+    background-color: red;
+    border-radius: 6px;
+
   }
   h3 {
     margin: 0px;

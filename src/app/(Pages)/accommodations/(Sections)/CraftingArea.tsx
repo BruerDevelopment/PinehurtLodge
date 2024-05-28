@@ -76,6 +76,8 @@ const PosterboardImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   img {
+    background-color: red;
+    border-radius: 6px;
     flex: 0.5;
     aspect-ratio: 3 / 2;
     --width: calc(50% - 10px);
@@ -212,6 +214,7 @@ const TwoColumns = styled.div`
     display: flex;
   }
   img {
+    border-radius: 6px;
     flex: 1;
     aspect-ratio: 3 / 2;
   }

@@ -16,7 +16,7 @@ export default () => {
     <>
       <AlternateSection>
         <h1 className="heading" id="Kitchens">Two Fully Equipped Kitchens</h1>
-        <h2>Enjoy Every Meal with a View!</h2>
+        <H2>Enjoy Every Meal with a View!</H2>
         <P>
         The lodge comes with two full kitchens for all your culinary needs. Each kitchen comes fully equipped with appliances, cookware, dishware, utensils, glassware & silverware. Each kitchen comes with a large dining table that expands with stored leaves inside the table, offering plenty of gathering space.
         </P>
@@ -41,15 +41,15 @@ export default () => {
             </p>
           </div>
         </TwoColumns>
-        <TwoColumns data-reverse="true">
+        <TwoColumns data-reverse="true" id="GrillDetails">
           <div className="centerImages">
             <div>
               <img src="#" />
               <img src="#" />
             </div>
           </div>
-          <div>
-            <h2 className="centerHeading">Deck Grill</h2>
+          <div id="grillText">
+            <h2>Deck Grill</h2>
             <p>
               On the Deck: Large outdoor grill, 2 tables, 6 chairs and such a view!
             </p>
@@ -94,11 +94,17 @@ const MoreLink = styled.div`
     text-align: center;
   }
 `
+const H2 = styled.h2`
+  width: 90%;
+  max-width: 900px;
+  box-sizing: border-box;
+  padding: 0px 20px;
+`
 const P = styled.p`
   width: 90%;
   max-width: 900px;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 0px 20px;
 `
 const Spacer = styled.div`
   height: 20px;
@@ -121,13 +127,29 @@ const TwoColumns = styled.div`
       flex-direction: column-reverse;
     }
   }
+  &#GrillDetails {
+    #grillText {
+      @media screen and (min-width: ${()=>responsiveMobileWidth}) {
+        &, &[data-reverse="true"] {
+          max-width: 200px;
+        }
+      }
+      max-width: auto;
+    }
+    img {
+      max-height: 215px;
+    }
+  }
   div {
     display: flex;
   }
   img {
+    background-color: red;
     flex: 1;
     aspect-ratio: 3 / 2;
     max-height: 130px;
+    border-radius: 6px;
+
   }
   h3 {
     margin: 0px;

@@ -16,9 +16,18 @@ export default () => {
     <>
       <Section>
         <h1 className="heading">Garage</h1>
-        <Content>
-          
-        </Content>
+        <TwoColumns>
+          <img />
+          <div>
+            <h2>Indoor Parking for 2 Vehicles!</h2>
+            <p>
+            Enjoy the luxury of indoor parking for two large vehicles at Pinehurst Lodge. Although no remote is provided, the door is opened easily from a button inside. Let the snow melt and keep your gear secure inside the garage which is available to our guests.
+            </p>
+            <p>
+            Please keep the garage door closed at all times. There are many wild animals that enjoy roaming our area, including bears. We ask your assistance in keeping our garage area secure.
+            </p>
+          </div>
+        </TwoColumns>
         <MoreLink>
           <Link href="#">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
         </MoreLink>
@@ -43,6 +52,48 @@ const MoreLink = styled.div`
   }
 `
 
-const Content = styled.div`
+const TwoColumns = styled.div`
+  width: 95%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  padding: 20px 0px;
   
+  &[data-reverse="true"] {
+    flex-direction: row-reverse;
+  }
+  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+    &, &[data-reverse="true"] {
+      flex-direction: column-reverse;
+    }
+  }
+  div {
+    display: flex;
+  }
+  img {
+    flex: 1;
+    aspect-ratio: 3 / 2;
+    border-radius: 6px;
+    background-color: red;
+    margin: 20px;
+    box-sizing: border-box;
+  }
+  h3 {
+    margin: 0px;
+  }
+  h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+  & > div {
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+    & > div {
+      gap: 20px;
+    }
+  }
 `

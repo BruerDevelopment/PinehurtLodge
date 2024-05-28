@@ -24,7 +24,7 @@ export default () => {
               The Master Bedroom comes with an en suite bathroom which features a glass shower, two sinks and a fabulous view! The shower offers shampoo, conditioner & body wash dispensers. The sink area offers handsoap, Q-tips & cotton swabs.
               </p>
             </div>
-            <img src="#"/>
+            <img src="/HousePhotos/bathrooms/master_bath1.jpg"/>
           </div>
           <div>
             <div>
@@ -33,7 +33,7 @@ export default () => {
                 The central bathroom upstairs has a tub/shower combination and a heater/temperature controlled tile floor. The shower offers shampoo, conditioner & body wash dispensers. The sink area offers hand soap, Q-tips & cotton swabs.
               </p>
             </div>
-            <img src="#"/>
+            <img src="/HousePhotos/bathrooms/hallway_bathroom1.jpg"/>
           </div>
           <div>
             <div>
@@ -44,13 +44,13 @@ export default () => {
             </div>
             <div id="double">
 
-              <img style={{"aspectRatio":"3 / 4"}} src="#"/>
-              <img style={{"aspectRatio":"3 / 4"}} src="#"/>
+              <img style={{"aspectRatio":"3 / 4"}} src="/HousePhotos/bathrooms/DownstairsBathroom2.png"/>
+              <img style={{"aspectRatio":"3 / 4"}} src="/HousePhotos/bathrooms/DownstairsBathroom.png"/>
             </div>
           </div>
         </Rooms>
         <MoreLink>
-          <Link href="#">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
+          <Link href="/gallery#bathrooms">View More Of the Bathrooms <br /> In Our Photos Gallery</Link>
         </MoreLink>
       </AlternateSection>
     </>
@@ -84,6 +84,8 @@ const Rooms = styled.div`
     }
     img {
       background-color: red;
+      width: 100%;
+      object-fit: cover;
       border-radius: 6px;
       width: 100%;
       aspect-ratio: 3 / 2;

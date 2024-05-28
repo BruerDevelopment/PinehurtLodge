@@ -19,12 +19,12 @@ export default () => {
         <TwoColumns data-reverse="true">
           <div>
             <div>
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/upstairs_living/main.jpg" />
+              <img src="/HousePhotos/upstairs_living/living_room_entrance5.jpg" />
             </div>
             <div>
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/upstairs_kitchen/upstairs_dining_table.jpg" />
+              <img src="/HousePhotos/upstairs_living/living_room_dining_area.jpg" />
             </div>
           </div>
           <div>
@@ -38,8 +38,8 @@ export default () => {
         <TwoColumns>
           <div>
             <TwoStackedImages>
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/craft_area/craft_20.jpg" />
+              <img src="/HousePhotos/craft_area/craft_1.jpg" />
             </TwoStackedImages>
           </div>
           <div>
@@ -51,7 +51,7 @@ export default () => {
           </div>
         </TwoColumns>
         <MoreLink>
-          <Link href="#">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
+          <Link href="/gallery#living_rooms">View More Of the Living Rooms <br /> In Our Photos Gallery</Link>
         </MoreLink>
       </Section>
     </>
@@ -90,7 +90,9 @@ const TwoStackedImages = styled.div`
     aspect-ratio: 3 / 2;
     max-height: none !important;
     background-color: red;
+    object-fit: cover;
     border-radius: 6px;
+    width: 100%;
 
   }
   img:first-child {
@@ -109,6 +111,7 @@ const TwoStackedImages = styled.div`
     & {
       display: flex;
       flex-direction: column;
+      width: 50%;
     }
     img:first-child {
       position: relative;
@@ -168,6 +171,8 @@ const TwoColumns = styled.div`
     aspect-ratio: 3 / 2;
     max-height: 130px;
     background-color: red;
+    width: 100%;
+    object-fit: cover;
     border-radius: 6px;
 
   }

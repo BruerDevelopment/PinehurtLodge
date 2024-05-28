@@ -16,17 +16,18 @@ export default () => {
     <>
       <Section>
         <h1 className="heading">Pinehurst Lodge <br /> Accommodations & Amenities</h1>
+        <h2 className="heading">Bedrooms</h2>
         <TwoColumns data-reverse="true">
           <div>
             <h3>Upstairs Master Suite</h3>
             <div>
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/bedroom1/master_with_moons.jpg" loading="lazy"></img>
+              <img src="/HousePhotos/bedroom1/master_2.jpg" loading="lazy"></img>
             </div>
             <h3>Upstairs Queen Bedroom</h3>
             <div>
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/bedroom2/queen_1.jpg" loading="lazy"></img>
+              <img src="/HousePhotos/bedroom2/queen_2.jpg" loading="lazy"></img>
             </div>
           </div>
           <div>
@@ -46,18 +47,18 @@ export default () => {
           <div>
             <h3>Downstairs Master Suite</h3>
             <div>
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/bedroom3/down_master_8.jpg" loading="lazy"></img>
+              <img src="/HousePhotos/bedroom3/down_master_1.jpg" loading="lazy"></img>
             </div>
             <h3>Downstairs Queen & Bunks</h3>
             <div>
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/bedroom4/dorm_3.jpg" loading="lazy"></img>
+              <img src="/HousePhotos/bedroom4/dorm_1.jpg" loading="lazy"></img>
             </div>
             <h3>Trundle Bed in Downstairs Living Room</h3>
             <div>
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/downstairs_living/trundle_2.jpg" loading="lazy"></img>
+              <img src="/HousePhotos/downstairs_living/trundle_6.jpg" loading="lazy"></img>
             </div>
           </div>
           <div>
@@ -77,7 +78,7 @@ export default () => {
           </div>
         </TwoColumns>
         <MoreLink>
-          <Link href="#">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
+          <Link href="/gallery#bedrooms">View More Of the Bedrooms <br /> In Our Photos Gallery</Link>
         </MoreLink>
       </Section>
     </>
@@ -134,11 +135,13 @@ const TwoColumns = styled.div`
     display: flex;
   }
   img {
-    flex: 1;
-    aspect-ratio: 3 / 2;
+    //flex: 1;
     max-height: 130px;
     background-color: red;
+    //width: 100%;
+    object-fit: cover;
     border-radius: 6px;
+    width: 50%;
 
   }
   h3 {

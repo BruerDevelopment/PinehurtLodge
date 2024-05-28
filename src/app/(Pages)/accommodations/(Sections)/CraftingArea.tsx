@@ -20,12 +20,12 @@ export default () => {
         <TwoColumns>
           <div className="centerImages">
             <PosterboardImages>
-              <img id="image1" src="#" />
-              <img id="image2" src="#" />
-              <img id="image6" src="#" />
-              <img id="image4" src="#" />
-              <img id="image5" src="#" />
-              <img id="image3" src="#" />
+              <img id="image1" src="/HousePhotos/craft_area/craft_20.jpg" />
+              <img id="image2" src="/HousePhotos/craft_area/magnifying_lamp_2.jpg" />
+              <img id="image6" src="/HousePhotos/craft_area/craft_1.jpg" />
+              <img id="image4" src="/HousePhotos/craft_area/craft_23.jpg" />
+              <img id="image5" src="/HousePhotos/craft_area/craft_22.jpg" />
+              <img id="image3" src="/HousePhotos/craft_area/craft_21.jpg" />
             </PosterboardImages>
           </div>
           <div>
@@ -39,7 +39,7 @@ export default () => {
           </div>
         </TwoColumns>
         <MoreLink>
-          <Link href="#">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
+          <Link href="/gallery#scrapbooking">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
         </MoreLink>
       </AlternateSection>
     </>
@@ -77,6 +77,8 @@ const PosterboardImages = styled.div`
   flex-wrap: wrap;
   img {
     background-color: red;
+    width: 100%;
+    object-fit: cover;
     border-radius: 6px;
     flex: 0.5;
     aspect-ratio: 3 / 2;

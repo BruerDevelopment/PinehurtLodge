@@ -18,9 +18,9 @@ export default () => {
         <h1 className="heading" id="Activities">Games & Activities at the Pinehurst Lodge</h1>
         <Content>
           <div id="images">
-            <img alt="" src="#"/>
-            <img alt="" src="#"/>
-            <img alt="" src="#"/>
+            <img alt="" src="/HousePhotos/downstairs_living/pool_table4.jpg"/>
+            <img alt="" src="/HousePhotos/downstairs_living/game_shelf.jpg"/>
+            <img alt="" src="/HousePhotos/downstairs_living/pool_20.jpg"/>
           </div>
           <div id="text">
             <h2 className="heading">Pool Table, 7-Person Hot Tub, Board-Games, and Two Smart TVs</h2>
@@ -33,7 +33,7 @@ export default () => {
           </div>
         </Content>
         <MoreLink>
-          <Link href="#">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
+          <Link href="/gallery#entertainment">View More Of The Entertainment <br /> In Our Photos Gallery</Link>
         </MoreLink>
       </Section>
     </>
@@ -65,11 +65,12 @@ const Content = styled.div`
     flex-direction: row;
     gap: 10px;
     img {
-      width: 100%;
       flex: 1;
       aspect-ratio: 3 / 2;
       max-height: 200px;
       background-color: red;
+      width: 30%;
+      object-fit: cover;
       border-radius: 6px;
 
     }

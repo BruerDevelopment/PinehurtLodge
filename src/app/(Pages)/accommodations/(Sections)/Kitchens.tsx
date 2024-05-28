@@ -26,12 +26,12 @@ export default () => {
         <TwoColumns>
           <div className="centerImages">
             <div>
-              <img src="#" style={{"maxHeight":"275px"}} />
+              <img src="/HousePhotos/upstairs_kitchen/kitchen_main.jpg" style={{"maxHeight":"275px"}} />
             </div>
             <div>
-              <img src="#" />
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/upstairs_kitchen/coffee_area.jpg" style={{"maxWidth":"85px"}} />
+              <img src="/HousePhotos/upstairs_kitchen/upstairs_dining_table.jpg" />
+              <img src="/HousePhotos/upstairs_kitchen/BigFridge.png" style={{"maxWidth":"85px"}}/>
             </div>
           </div>
           <div>
@@ -44,8 +44,8 @@ export default () => {
         <TwoColumns data-reverse="true" id="GrillDetails">
           <div className="centerImages">
             <div>
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/upstairs_deck/up_deck1.jpg" />
+              <img src="/HousePhotos/upstairs_deck/upstairs_deck1.jpg" />
             </div>
           </div>
           <div id="grillText">
@@ -58,8 +58,8 @@ export default () => {
         <TwoColumns>
           <div className="centerImages">
             <div>
-              <img src="#" />
-              <img src="#" />
+              <img src="/HousePhotos/downstairs_kitchen/kitchen_main.jpg" />
+              <img src="/HousePhotos/downstairs_kitchen/down_kitchen2.jpg" />
             </div>
             
           </div>
@@ -72,7 +72,7 @@ export default () => {
           </div>
         </TwoColumns>
         <MoreLink>
-          <Link href="#">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
+          <Link href="/gallery#kitchens">View More Of the Kitchens <br /> In Our Photos Gallery</Link>
         </MoreLink>
       </AlternateSection>
     </>
@@ -145,11 +145,12 @@ const TwoColumns = styled.div`
   }
   img {
     background-color: red;
+    object-fit: cover;
     flex: 1;
-    aspect-ratio: 3 / 2;
+    //aspect-ratio: 3 / 2;
     max-height: 130px;
     border-radius: 6px;
-
+    width: 30%;
   }
   h3 {
     margin: 0px;

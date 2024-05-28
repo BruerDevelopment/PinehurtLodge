@@ -17,7 +17,7 @@ export default () => {
       <Section>
         <h1 className="heading">Garage</h1>
         <TwoColumns>
-          <img />
+          <img src="/HousePhotos/garage/garage.jpg"/>
           <div>
             <h2>Indoor Parking for 2 Vehicles!</h2>
             <p>
@@ -29,7 +29,7 @@ export default () => {
           </div>
         </TwoColumns>
         <MoreLink>
-          <Link href="#">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
+          <Link href="/gallery#garage">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
         </MoreLink>
       </Section>
     </>
@@ -75,8 +75,10 @@ const TwoColumns = styled.div`
     aspect-ratio: 3 / 2;
     border-radius: 6px;
     background-color: red;
+    object-fit: cover;
     margin: 20px;
     box-sizing: border-box;
+    width: 90%;
   }
   h3 {
     margin: 0px;

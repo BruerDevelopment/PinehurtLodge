@@ -162,7 +162,7 @@ const MapComp = (props: {
                 })}
                 
                 {ungrouped_markers.map(p => (
-                    <Marker position={convertLocationArrayToPos(p.location)}/>
+                    <Marker key={p.id} position={convertLocationArrayToPos(p.location)}/>
                 ))}
             </GoogleMap>
             <div id="details" key={selectedMeta.id}  className={(selectedMeta == undefined || selectedMeta.isGroup) ? "hidden" : ""}>

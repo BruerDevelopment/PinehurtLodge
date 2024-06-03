@@ -33,6 +33,9 @@ export const generateStaticParams = async () => {
     params.push({
         article:[""]
     })
+    params.push({
+        article:[]
+    })
     return params;
 }
 export default async (props: { params: any }) => {

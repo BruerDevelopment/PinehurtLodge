@@ -22,7 +22,7 @@ export const Map = (props: {
     }[],
     selectedID: string[],
 }) => {
-
+    
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY as string,
         libraries: ["places"],
@@ -78,7 +78,7 @@ const MapComp = (props: {
         clickableIcons: false,
     }), []);
     let groups = props.places.filter(p => p.isGroup).map(p=>p.groupid);
-    let ungrouped_markers = props.places.filter(p => p.isGroup !=true && p.group == undefined);
+    let ungrouped_markers = props.places.filter(p => p.isGroup != true && p.group == undefined);
     const onLoad = useCallback((map:any) => (mapRef.current = map), []);
     let router = useRouter();
     let searchParams = useSearchParams();
@@ -92,15 +92,33 @@ const MapComp = (props: {
             map.setZoom(nextSelected.zoom)
             map.panTo(convertLocationArrayToPos(nextSelected.location))
         } 
-        if (path == undefined) {
+        if (path == undefined || path == "") {
             let url = "/area-guide"+(hideNav ? "?hideNav" : "");
-            window.history.pushState(undefined, "", url)
+            window.history.pushState(url, "", url)
             return setSelectedPlace([""]);
         }
         let url = "/area-guide/"+(path + (hideNav ? "?hideNav" : ""));
         window.history.pushState(undefined, "", url)
         setSelectedPlace(path.split("/"))
     }
+    useEffect(() => {
+        window.addEventListener("popstate", (e) => {
+            //@ts-expect-error
+            let url = new URL(e.target.location);
+            let pID = url.pathname.replace("/area-guide/", "").replace("/area-guide", "")
+            console.log(pID);
+            if (mapRef.current == undefined) return;
+            let map = mapRef.current;
+            let nextSelected = props.places.filter(p => p.id == pID || `${p.id}/index` == pID)[0]
+            if (nextSelected) {
+                //@ts-expect-error
+                map.setZoom(nextSelected.zoom)
+                map.panTo(convertLocationArrayToPos(nextSelected.location))
+            } 
+            
+            setSelectedPlace(pID.split("/"))
+        })
+    }, [])
     return (
         <MapContainer>
             <div id="backnav" className={selectedPlace.join("/") == "" ? "hidden" : ""} onClick={() => {
@@ -143,9 +161,9 @@ const MapComp = (props: {
                     )
                 })}
                 
-                {/* {ungrouped_markers.map(p => (
+                {ungrouped_markers.map(p => (
                     <Marker position={convertLocationArrayToPos(p.location)}/>
-                ))} */}
+                ))}
             </GoogleMap>
             <div id="details" key={selectedMeta.id}  className={(selectedMeta == undefined || selectedMeta.isGroup) ? "hidden" : ""}>
                 {Details}

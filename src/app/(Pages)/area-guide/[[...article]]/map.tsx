@@ -121,7 +121,7 @@ const MapComp = (props: {
                 {groups.map((g) => {
                     let places = props.places.filter(p => p.isGroup !=true && p.group == g)
                     return (
-                        <MarkerClusterer zoomOnClick={false} onClick={(e) => {
+                        <MarkerClusterer key={g} zoomOnClick={false} onClick={(e) => {
                             nav(g)
                             return false;
                         }}>
@@ -129,6 +129,7 @@ const MapComp = (props: {
                                 <>
                                     {places.map(p => (
                                         <Marker
+                                            key={p.id}
                                             position={convertLocationArrayToPos(p.location)}
                                             clusterer={clusterer}
                                             onClick={() => {

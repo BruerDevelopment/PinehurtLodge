@@ -28,7 +28,12 @@ export default () => {
     getDialog("exper_dialog")?.close();
   }
   if (searchParams.has("hideNav")) return;
-  if (scroll == 0 && pathname == "/") return;
+  if (scroll == 0 && [
+    "/",
+    "/scrapbooking-retreat",
+    "/cozy-ski-cabin",
+    "/outdoor-rec",
+  ].includes(pathname)) return;
   return (
     <>
       <Bar aria-hidden={!menuOpen}>
@@ -58,7 +63,7 @@ export default () => {
               }}
             >
               <Link href="/outdoor-rec" onClick={(e:any)=>nav(e.target)}>Outdoor Recreation “Base-Camp”</Link>
-              <Link href="/scrapbooking-crafting-retreat" onClick={(e:any)=>nav(e.target)}>Scrapbooking / Crafting Retreat</Link>
+              <Link href="/scrapbooking-retreat" onClick={(e:any)=>nav(e.target)}>Scrapbooking / Crafting Retreat</Link>
               <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Ski Lodge</Link>
             </dialog>
           </MenuDropdown>
@@ -88,7 +93,7 @@ export default () => {
         <div className="subtab">
           <span>Experiences</span>
           <Link href="/outdoor-rec" onClick={(e:any)=>nav(e.target)}>Outdoor Recreation “Base-Camp”</Link>
-          <Link href="/scrapbooking-crafting-retreat" onClick={(e:any)=>nav(e.target)}>Scrapbooking / Crafting Retreat</Link>
+          <Link href="/scrapbooking-retreat" onClick={(e:any)=>nav(e.target)}>Scrapbooking / Crafting Retreat</Link>
           <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Ski Lodge</Link>
         </div>
         <Link href="/accommodations" onClick={(e:any)=>nav(e.target)}>Accommodations</Link>

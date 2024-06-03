@@ -5,31 +5,32 @@ import matter from 'gray-matter';
 import { useEffect } from 'react';
 import dynamic, { LoaderComponent } from 'next/dynamic';
 const env:"development" | "production" | "test" = "production"//process.env.NODE_ENV//
-const postsDirectory = path.join(process.cwd(), '/src/posts');
+const postsDirectory = path.join(process.cwd(), '/src/area_guide_places');
 
-export type PostMeta = {
+export type PlaceMeta = {
     id: string,
     date: Date,
     title: string,
-    visibility: "public" | "unlisted" | "private"
-    description:string,
-    readTime: string,
+    visibility: "public" | "unlisted" | "private",
+    isGroup: boolean,
+    zoom:number,
+    location:[number, number],
     cover: string,
-    nextPost?:string,
-    prevPost?:string,
+    groupid: string,
+    group:string
 }
-export async function getPostData(subPostDir?: string, options?:{visibilityOverride:boolean}): Promise<PostMeta[]> {
+export async function getPlacesData(subPostDir?: string, options?:{visibilityOverride:boolean}): Promise<PlaceMeta[]> {
     "use client";
-    // Get file names under /posts
+    // Get file names under /area_guide_places
     let dir = subPostDir == undefined ? "" : subPostDir;
     let readPath = path.join(postsDirectory, dir);
     const fileNames = fs.readdirSync(readPath);
-    let allPostsData:PostMeta[] = [];
+    let allPostsData:PlaceMeta[] = [];
     for (let i = 0; i < fileNames.length; i++) {
         const fileName = fileNames[i];
         let fullPath = path.join(readPath, fileName)
         if (fs.statSync(fullPath).isDirectory()) {
-            let subposts: PostMeta[] = await getPostData(path.join(dir, fileName), options);
+            let subposts: PlaceMeta[] = await getPlacesData(path.join(dir, fileName), options);
             
             allPostsData.push(...subposts)
             continue;
@@ -37,17 +38,29 @@ export async function getPostData(subPostDir?: string, options?:{visibilityOverr
         // Remove ".md" from file name to get id
         const id = path.join(dir, fileName).split("\\").join("/").replace(/\.md$/, '').replace(/\.mdx$/, '');
         // Read markdown file as jsx
-        const library = await import(`@/posts/${id}.mdx`);
+        const library = await import(`@/area_guide_places/${id}.mdx`);
         const meta = library.Meta
         
         // Combine the data with the id
-        let post:PostMeta  = {
+        let post:PlaceMeta  = {
             id,
             ...meta
         };
         allPostsData.push( post);
 
-    }   
+    }
+    return allPostsData.map((post, i) => {
+        let _id = post.id.split("/");
+        if (_id[_id.length - 1] == "index") {
+            _id = _id.slice(0, -1);
+        }
+        let id = _id.join("/");
+        return {
+            ...post,
+            id,
+        }
+    });
+
     let FilteredPosts = allPostsData
         //transform index page ids
         .map((post, i) => {
@@ -95,29 +108,42 @@ export async function getPostData(subPostDir?: string, options?:{visibilityOverr
         });
 }
 
-export async function getPostContent(article: string[]) {
-    let p = new Promise<LoaderComponent>((resolve, reject) => {
-        import(`@/posts/${article.join("/")}.mdx`).then((component) => {
-            return resolve(component)
-        }).catch(() => {
-            article.push("index")
-            import(`@/posts/${article.join("/")}.mdx`).then((component) => {
+export async function getPlacesContent(article: string[]) {
+    let p = new Promise<LoaderComponent | undefined>((resolve, reject) => {
+        try {
+
+            import(`@/area_guide_places/${article.join("/")}.mdx`).then((component) => {
                 return resolve(component)
+            }).catch(() => {
+                article.push("index")
+                import(`@/area_guide_places/${article.join("/")}.mdx`).then((component) => {
+                    return resolve(component)
+                }).catch(() => {
+                    return resolve(undefined)
+                })
             })
-        })
+        } catch (e) {
+            return resolve(undefined)
+        }
     })
-    return dynamic(async ()=> await p);
+    let loader = await p;
+    if (loader == undefined) return;
+    return dynamic(async ()=> loader);
 }   
-export async function getPostMeta(article: string[]): Promise<PostMeta> {
-    let p = new Promise<PostMeta>((resolve, reject) => {
-        import(`@/posts/${article.join("/")}.mdx`).then((library) => {
-            return resolve(library.Meta)
-        }).catch(() => {
-            article.push("index")
-            import(`@/posts/${article.join("/")}.mdx`).then((library) => {
+export async function getPlaceMeta(article: string[]): Promise < PlaceMeta | undefined> {
+    let p = new Promise<PlaceMeta | undefined>((resolve, reject) => {
+        try {
+            import(`@/area_guide_places/${article.join("/")}.mdx`).then((library) => {
                 return resolve(library.Meta)
+            }).catch(() => {
+                article.push("index")
+                import(`@/area_guide_places/${article.join("/")}.mdx`).then((library) => {
+                    return resolve(library.Meta)
+                })
             })
-        })
+        } catch (e) {
+            return resolve(undefined)
+        }
     })
     return await p;
 }   

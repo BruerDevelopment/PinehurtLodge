@@ -13,6 +13,7 @@ export type PlaceMeta = {
     title: string,
     visibility: "public" | "unlisted" | "private",
     isGroup: boolean,
+    isHome: boolean,
     zoom:number,
     location:[number, number],
     cover: string,

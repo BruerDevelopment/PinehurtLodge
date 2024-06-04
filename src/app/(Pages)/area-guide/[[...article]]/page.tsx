@@ -18,7 +18,7 @@ export const generateMetadata = async (
     // read route params
     const { article } = params
     return BuildPageMeta({
-        title: "",
+        title: "Local Area Guide - Pinehurst Lodge",
         description: "",
         socialCover:""
     })

@@ -5,21 +5,13 @@ import { ComponentType, ReactElement, useCallback, useEffect, useMemo, useRef, u
 import { GoogleMap, Marker, MarkerClusterer, useLoadScript } from "@react-google-maps/api";
 import styled from "styled-components";
 import { useRouter, useSearchParams } from "next/navigation";
+import { IoChevronBackOutline } from "react-icons/io5";
+import { IoMdOptions } from "react-icons/io";
 
 export const Map = (props: {
-    places: {
+    places: (PlaceMeta & {
         PostComp: JSX.Element | undefined;
-        id: string;
-        date: Date;
-        title: string;
-        visibility: "public" | "unlisted" | "private";
-        isGroup: boolean;
-        zoom: number;
-        location: [number, number];
-        cover: string;
-        groupid: string;
-        group: string;
-    }[],
+    })[],
     selectedID: string[],
 }) => {
     
@@ -27,6 +19,7 @@ export const Map = (props: {
         googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY as string,
         libraries: ["places"],
     });
+    
     if (isLoaded == false) return (
         <div>
             Loading Map
@@ -42,19 +35,9 @@ function convertLocationArrayToPos(location:[number, number]) {
     return { lat: location[0], lng: location[1] }
 }
 const MapComp = (props: {
-    places: {
+    places: (PlaceMeta & {
         PostComp: JSX.Element | undefined;
-        id: string;
-        date: Date;
-        title: string;
-        visibility: "public" | "unlisted" | "private";
-        isGroup: boolean;
-        zoom: number;
-        location: [number, number];
-        cover: string;
-        groupid: string;
-        group: string;
-    }[],
+    })[],
     selectedID: string[]
 }) => {
     const mapRef = useRef<GoogleMap>();
@@ -79,10 +62,24 @@ const MapComp = (props: {
     }), []);
     let groups = props.places.filter(p => p.isGroup).map(p=>p.groupid);
     let ungrouped_markers = props.places.filter(p => p.isGroup != true && p.group == undefined);
-    const onLoad = useCallback((map:any) => (mapRef.current = map), []);
+    let [showClusterLabels, setShowClusterLabels] = useState(zoom < 14);
+    const onLoad = useCallback((map: any) => {
+        map.addListener('zoom_changed', () => {
+            const zoom = map.getZoom();
+            console.log("zoom changed", zoom)
+            if (zoom > 14) {
+                setShowClusterLabels(false);
+            } else {
+                setShowClusterLabels(true);
+
+            }
+        });
+        return (mapRef.current = map)
+    }, []);
     let router = useRouter();
     let searchParams = useSearchParams();
     let hideNav = searchParams.has("hideNav");
+    
     let nav = (path: string | undefined) => {
         if (mapRef.current == undefined) return;
         let map = mapRef.current;
@@ -94,7 +91,7 @@ const MapComp = (props: {
         } 
         if (path == undefined || path == "") {
             let url = "/area-guide"+(hideNav ? "?hideNav" : "");
-            window.history.pushState(url, "", url)
+            window.history.pushState(undefined, "", url)
             return setSelectedPlace([""]);
         }
         let url = "/area-guide/"+(path + (hideNav ? "?hideNav" : ""));
@@ -102,6 +99,7 @@ const MapComp = (props: {
         setSelectedPlace(path.split("/"))
     }
     useEffect(() => {
+        
         window.addEventListener("popstate", (e) => {
             //@ts-expect-error
             let url = new URL(e.target.location);
@@ -118,46 +116,81 @@ const MapComp = (props: {
             
             setSelectedPlace(pID.split("/"))
         })
+        
+    
     }, [])
     return (
-        <MapContainer>
+        <MapContainer data-hidenav={ hideNav}>
             <div id="backnav" className={selectedPlace.join("/") == "" ? "hidden" : ""} onClick={() => {
                 let id = "";
                 let t = selectedPlace?.slice(0, selectedPlace.length-1);
-                if (t != undefined && t.length > 0) {
+                if (t != undefined) {
                     id = t?.join("/")
                 }
+                console.log("back", id)
                 nav(id);
-            }}>back</div>
+            }}><IoChevronBackOutline /></div>
+            <div id="filterbutton"><IoMdOptions /></div>
             <GoogleMap
-            zoom={zoom}
-            center={center}
-            mapContainerClassName="map-container"
-            options={options}
-            onLoad={onLoad}
+                zoom={zoom}
+                center={center}
+                mapContainerClassName="map-container"
+                options={options}
+                onLoad={onLoad}
             >
                 {groups.map((g) => {
+                    let groupMeta = props.places.filter(p => p.isGroup ==true && p.groupid == g)[0]
                     let places = props.places.filter(p => p.isGroup !=true && p.group == g)
                     return (
-                        <MarkerClusterer key={g} zoomOnClick={false} onClick={(e) => {
-                            nav(g)
-                            return false;
-                        }}>
+                        <>
+                            <Marker
+                                key={"main"+g}
+                                position={convertLocationArrayToPos(places[0].location)}
+                                clickable={false}
+                                visible={showClusterLabels && places.length > 1}
+                                icon={{
+                                    url: "https://transparenttextures.com/patterns/debut-light.png",
+                                    size: new google.maps.Size(20, 20)
+                                }}
+                                label={{
+                                    text: groupMeta.title,
+                                    className: "marker_label group_label " + (groupMeta.isHome == true ? "home_marker" : ""),
+                                    color:"white"
+                                    
+                                }}
+                            />
+                        <MarkerClusterer
+                            key={g}
+                            zoomOnClick={false}
+                            onClick={(e) => {
+                                nav(g)
+                                return false;
+                            }}
+                        >
                             {(clusterer) => (
                                 <>
+                                    
                                     {places.map(p => (
                                         <Marker
-                                            key={p.id}
-                                            position={convertLocationArrayToPos(p.location)}
-                                            clusterer={clusterer}
-                                            onClick={() => {
-                                                nav(p.id)
+                                        
+                                        key={p.id}
+                                        position={convertLocationArrayToPos(p.location)}
+                                        clusterer={clusterer}
+                                        onClick={() => {
+                                            nav(p.id)
                                             }}
+                                        
+                                        label={{
+                                            text: p.title,
+                                            className: "marker_label " + (p.isHome == true ? "home_marker" : ""),
+                                            color:"white"
+                                        }}
                                         />
                                     ))}
                                 </>
                             )}
                         </MarkerClusterer>
+                            </>
                     )
                 })}
                 
@@ -179,19 +212,81 @@ const MapContainer = styled.div`
     bottom: 0px;
     left: 0px;
     right: 0px;
+    &[data-hidenav="false"] {
+        top: 40px;
+    }
     #backnav {
         position: absolute;
-        top:0px;
-        left: 0px;
-        padding: 10px;
+        top: 10px;
+        left: 10px;
         z-index: 100;
         background-color: white;
+        border-radius: 20px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+            min-width: 30px;
+            min-height: 30px;
+        }
+        &.hidden {
+            display: none;
+        }
+    }
+    #filterbutton {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 100;
+        background-color: white;
+        border-radius: 20px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+            min-width: 30px;
+            min-height: 30px;
+        }
         &.hidden {
             display: none;
         }
     }
     .map-container {
         flex: 1;
+        .marker_label {
+            background-color: var(--theme-color-5);
+            color: white;
+            position: absolute;
+            top: 50%;
+            transform: translate(0px, -50%);
+            left: 10px;
+            padding: 5px;
+            border-radius: 4px;
+            &.group_label {
+                top: auto;
+                bottom: 40%;
+                transform: translate(0px, 50%);
+                left: 20px;
+            }
+            &.home_marker::before {
+                color: white;
+                margin-right: 10px;
+                content: "HO";
+                background-image: url("/Icons/home.svg");
+                background-size: cover;
+                color: transparent;
+                svg {
+                    color: white;
+                }
+                width: 30px;
+                min-width: 30px;
+                height: 100%;
+            }
+        }
     }
     #details {
         &.hidden {

@@ -7,6 +7,7 @@ import { BuildPageMeta } from "@/app/metaDefaults";
 import { getPlacesContent, getPlacesData, getPlaceMeta } from "@/hooks/getPostData";
 import dynamic from "next/dynamic";
 import { Map } from "./map";
+import { CONFIG } from "../../../../../site_config";
 type Props = {
     params: { article: string[] }
     searchParams: { [key: string]: string | string[] | undefined }
@@ -20,7 +21,7 @@ export const generateMetadata = async (
     return BuildPageMeta({
         title: "Local Area Guide - Pinehurst Lodge",
         description: "",
-        socialCover:""
+        socialCover:`${CONFIG.BASE_URL}/area_guide_social_card.png`
     })
 
 }

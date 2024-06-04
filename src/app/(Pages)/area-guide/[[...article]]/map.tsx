@@ -199,7 +199,7 @@ const MapComp = (props: {
                 ))}
             </GoogleMap>
             <div id="details" key={selectedMeta.id}  className={(selectedMeta == undefined || selectedMeta.isGroup) ? "hidden" : ""}>
-                {Details}
+                <div>{Details}</div>
             </div>
             
         </MapContainer>
@@ -293,8 +293,24 @@ const MapContainer = styled.div`
             max-height: 0px;
         }
         max-height: 100vh;
-        transition: max-height 1s;
         flex: 3;
+        display: flex;
+        justify-content: center;
+        background-color: var(--theme-color-2);
+        overflow: hidden;
+        overflow-y: scroll;
+        & > div {
+            width: 80%;
+            max-width: 900px;
+            transition: max-height 1s;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            h1 {
+                text-align: center;
+                margin-bottom: 0px;
+            }
+        }
     }
     display: flex;
     flex-direction: column;

@@ -18,6 +18,13 @@ export const generateMetadata = async (
   ): Promise<Metadata> => {
     // read route params
     const { article } = params
+    let meta = await getPlaceMeta(article)
+    if (meta != undefined) 
+        return BuildPageMeta({
+            title: meta.title +" - Local Area Guide - Pinehurst Lodge",
+            description: "",
+            socialCover:`${CONFIG.BASE_URL}/area_guide_social_card.png`
+        })
     return BuildPageMeta({
         title: "Local Area Guide - Pinehurst Lodge",
         description: "",

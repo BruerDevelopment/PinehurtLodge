@@ -282,8 +282,8 @@ const MapContainer = styled.div`
                 svg {
                     color: white;
                 }
-                width: 30px;
-                min-width: 30px;
+                width: 20px;
+                min-width: 20px;
                 height: 100%;
             }
         }

@@ -31,7 +31,7 @@ export function ClientContent() {
             </main>
             <Section varient={1} maxSize={1200} align="left">
                 {Object.keys(photo_group_data).map(key => (
-                    <PhotoList>
+                    <PhotoList key={key}>
                         <h1 id={key}>{photo_group_data[key].heading}</h1>
                         <div id="CarouselWrapper">
                             <Carousel

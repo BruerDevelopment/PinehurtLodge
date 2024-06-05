@@ -1,9 +1,5 @@
 "use client";
 
-import { responsiveMobileWidth } from "@/app/globalStyles";
-import { useMenuState } from "@/hooks/useMenuState";
-import { useScrollPos } from "@/hooks/useScrollPos";
-import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styled from "styled-components";

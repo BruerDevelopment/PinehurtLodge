@@ -29,6 +29,10 @@ const SectionVarient1 = styled.section<{$varient:number, $size:number, $align:"l
     position: relative;
     padding-top: 60px;
     padding-bottom: 60px;
+    h1, h2, h3 {
+        font-weight: bold;
+
+    }
     .section-heading {
         text-align: center;
         scroll-margin-top: 100px;
@@ -46,6 +50,7 @@ const SectionVarient1 = styled.section<{$varient:number, $size:number, $align:"l
         font-weight: bold;
         padding: 10px;
     }
+
     ${matchProp("$varient", 1, css`
         background-color: var(--theme-color-5);
         color: white;

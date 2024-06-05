@@ -71,7 +71,7 @@ const PictureCollumns = styled.div`
           color: white;
           padding: 10px;
           border-radius: 6px;
-          width: 100px;
+          width: 130px;
           text-align: center;
         }
       }

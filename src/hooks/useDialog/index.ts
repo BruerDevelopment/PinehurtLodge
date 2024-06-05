@@ -1,10 +1,42 @@
 import { RefObject, useEffect, useRef } from "react"
 
-export type DIALOG_HOOK = [RefObject<HTMLDialogElement>, (_type: string) => void, () => void]
-export function useDialog(): [RefObject<HTMLDialogElement>, (_type: string) => void, () => void] {
+export type DIALOG_HOOK = {
+    ref: RefObject<HTMLDialogElement>,
+    open: (_type: string) => void,
+    close: () => void,
+    addEventListener: (_type:"open"|"close", func:()=>void) => void,
+}
+export function useDialog(): DIALOG_HOOK {
     let ref = useRef<HTMLDialogElement>(null);
+    let events:{
+        "open": (()=>void)[],
+        "close":(()=>void)[]
+    } = {
+        "open": [],
+        "close":[]
+    }
+    const openFunc = (_type?: string) => {
+        if (ref.current == null) return;
+        for (let i = 0; i < events.open.length; i++) {
+            events.open[i]()
+        }
+        if (_type == "modal") {
+            ref.current.showModal();
+            return;
+        }
+        ref.current.show();
+    }
+    const closeFunc = () => {
+        if (ref.current == null) return;
+        for (let i = 0; i < events.close.length; i++) {
+            events.close[i]()
+        }
+        ref.current.close();
+
+    }
     useEffect(() => {
         if (ref.current == null) return;
+        
         let dialog = ref.current;
         ref.current.addEventListener('click', (e) => {
             
@@ -24,22 +56,18 @@ export function useDialog(): [RefObject<HTMLDialogElement>, (_type: string) => v
             );
 
             if (clickedInDialog === false)
-                ele.close();
+                closeFunc();
         });
 
     })
-    const openFunc = (_type?: string) => {
-        if (ref.current == null) return;
-        if (_type == "modal") {
-            ref.current.showModal();
-            return;
-        }
-        ref.current.show();
+    
+    const addEventListener = (_type:"open"|"close", func:()=>void) => {
+        events[_type].push(func);
     }
-    const closeFunc = () => {
-        if (ref.current == null) return;
-        ref.current.close();
-
+    return {
+        ref,
+        open: openFunc,
+        close: closeFunc,
+        addEventListener
     }
-    return [ref, openFunc, closeFunc]
 }

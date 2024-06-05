@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { DIALOG_HOOK } from "../../hooks/useDialog";
 import { Dispatch, SetStateAction, useEffect, useMemo, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import FullCarousel from "../FullCarousel";
+import { ImCross } from "react-icons/im";
 export default (props: {
   state: [number, Dispatch<SetStateAction<number>>],
   images: {
@@ -17,150 +19,68 @@ export default (props: {
   let imgCount = props.images.length;
   let atBeginning = (currIndex - 1 < 0);
   let atEnd = (currIndex + 1 >= imgCount);
-  let [translateAmount, setTranslateAmount] = useState(0);
-  let mouseRef = useRef<false | { x: number, y: number }>(false);
-  let amountRef = useRef(0);
   let currImage = useMemo(() => props.images[currIndex], [currIndex]);
+  let reloadRef = useRef<()=>void>(()=>{})
+  useEffect(() => {
+    props.controls.addEventListener("open", () => {
+      
+      reloadRef.current();
+    })
+  }, [])
+  if (currImage == undefined) return;
   return (
-    <Dialog ref={props.controls[0]}>
+    <Dialog ref={props.controls.ref}>
       <div>
+        <button id="exit" onClick={()=>props.controls.close()}><ImCross /></button>
         {currImage.heading && <h1>{ currImage.heading}</h1>}
-        <div
-          id="image"
-          onMouseDown={(e) => {
-            mouseRef.current = { x: e.clientX, y: e.clientY }
-            amountRef.current = 0;
-          }}
-          onMouseUp={(e) => {
-            mouseRef.current = false
-            if (amountRef.current < -10) {
-              if (!atEnd) return setCurrIndex(currIndex + 1)
-            } else if (amountRef.current > 10) {
-              if (!atBeginning) return setCurrIndex(currIndex - 1)
-            }
-            let nodes: HTMLElement[]= ((e.target as HTMLElement).parentElement?.childNodes) as any;
-            if (nodes == undefined) return;
-            amountRef.current = 0
-            for (let i = 0; i < nodes.length; i++) {
-              nodes[i].style.transform = `translateX(calc(calc(${currIndex} * -100%) + ${amountRef.current}px)`
-            }
-          }}
-          onMouseLeave={() => {
-            mouseRef.current = false
-          }}
-          onMouseMove={(e) => {
-            if (mouseRef.current == false) return;
-            let x_distance = e.clientX - mouseRef.current.x;
-            let nodes: HTMLElement[]= ((e.target as HTMLElement).parentElement?.childNodes) as any;
-            if (nodes == undefined) return;
-            amountRef.current += x_distance
-            mouseRef.current = {x:e.clientX, y:e.clientY}
-            for (let i = 0; i < nodes.length; i++) {
-              nodes[i].style.transform = `translateX(calc(calc(${currIndex} * -100%) + ${amountRef.current}px)`
-            }
-          }}
-        >
-          {props.images.map((img, i) => (
-            <img draggable={false}  style={{
-              "left":`calc(${i} * 100%)`,
-              "transform": `translateX(calc(calc(${currIndex} * -100%)`
-            }} src={img.src}></img>
-          ))}
-        </div>
-        <div
-          id="backwards"
-          style={{ "display": atEnd ? "none" : "" }}
-          onClick={() => {
-            if (atEnd) return;
-            setCurrIndex(currIndex + 1)
-          }}
-        ><FaChevronRight /></div>
-        <div
-          id="forward"
-          style={{"display": atBeginning ? "none" : ""}}
-          onClick={() => {
-            if (atBeginning) return;
-            setCurrIndex(currIndex - 1)
-          }}
-        >
-          <FaChevronLeft />
-        </div>
+        <FullCarousel startingIndex={currIndex}  reloadRef={reloadRef} images={props.images} />
       </div>
     </Dialog>
   );
 }
 
 const Dialog = styled.dialog`
-  width: fit-content;
-  height: fit-content;
+  width: 100vw;
+  height: 100vh;
   padding: 0px;
   border: 0px;
   outline: none;
   background: transparent;
+
   &::backdrop {
     background-color: black;
     opacity: 0.6;
   }
-  h1 {
+  #exit {
     color: white;
-    text-decoration: none;
-    font-size: 30px;
-    text-shadow: 0 4px 6px black;
-    text-align: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    outline: none;
+    border: 0px;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
   }
   & > div {
-    position: relative;
-    padding: 0px 40px;
-  }
-  div#image {
-    height: 80vh;
-    aspect-ratio: 3 / 2;
-    position: relative;
-    overflow: clip;
-  }
-  img {
-    transition: transform 0.2s linear;
-    object-fit: contain;
+    background-color: var(--theme-color-5);
+    border-radius: 6px;
     height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-  }
-
-  div#forward, div#backwards {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    width: 150px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    cursor: pointer;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      svg {
-        opacity: 1;
-      }
+    justify-content: center;
+    h1 {
+      color: white;
     }
-    svg {
-      opacity: 0.2;
-      width: 100px;
-      height: 100px;
+    & > div {
+      width: 100%;
+      height: 90%;
+      background-color: black;
       color: white;
     }
   }
-
-  div#forward {
-    left: 0px;
-    svg {
-      left: 0px;
-    }
-  }
-  div#backwards {
-    right: 0px;
-    svg {
-      right: 0px;
-    }
-  }
+  
 `

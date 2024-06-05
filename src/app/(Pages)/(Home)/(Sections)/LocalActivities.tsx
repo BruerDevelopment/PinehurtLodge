@@ -108,7 +108,9 @@ const TwoColumns = styled.div`
     flex-direction: row-reverse;
   }
   ${isMobile(css`
-    flex-direction: column;
+    &, &[data-reverse="true"] {
+      flex-direction: column;
+    }
   `)}
   img {
     width: 100px;
@@ -175,16 +177,7 @@ const TwoImages = styled.div`
     border-radius: 6px;
     flex: 1;
     object-fit: cover;
-    --width: 180px;
-    --height: 180px;
-    ${isMobile(css`
-      width: var(--width);
-      min-width: var(--width);
-      max-width: var(--width);
-      height: var(--height);
-      min-height: var(--height);
-      max-height: var(--height);
-    `)}
+    width: 50%;
       
   }
 `

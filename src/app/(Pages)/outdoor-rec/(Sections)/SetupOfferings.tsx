@@ -39,7 +39,9 @@ export default () => {
   );
 }
 const Title = styled.h1`
-  font-size: 21px;
+  &.section-heading {
+    font-size: 21px !important;
+  }
 `
 const Spacer = styled.div`
   height: 20px;

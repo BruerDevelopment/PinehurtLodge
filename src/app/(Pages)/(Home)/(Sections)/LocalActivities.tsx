@@ -16,7 +16,7 @@ import { isMobile } from "../../../../../styles/GlobalStyles";
 export default () => {
   return (
     <>
-      <Section varient={1}>
+      <Section varient={1} maxSize={1200}>
         <h1 className="section-heading">Plenty of Local Activities</h1>
         <CardWrapper>
           <div className="Card">
@@ -91,11 +91,12 @@ const CardWrapper = styled.div`
   width: 90%;
   max-width: 900px;
   gap: 20px;
-
+  
   .Card {
     border-radius: 10px;
     width: 100%;
     background-color: var(--theme-color-1);
+    padding: 10px;
   }
 
 `
@@ -136,7 +137,7 @@ const CenterColumn = styled.div`
   }
   p {
     color: black;
-    font-size: 18px;
+    font-size: 16px;
   }
   a {
     width: 80%;

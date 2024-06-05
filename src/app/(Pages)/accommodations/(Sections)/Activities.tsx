@@ -8,14 +8,14 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
+import { Section } from "../../../../../styles/Section";
 
 export default () => {
   return (
     <>
-      <Section>
-        <h1 className="heading" id="Activities">Games & Activities at the Pinehurst Lodge</h1>
+      <Section varient={2}>
+        <h1 className="section-heading" id="Activities">Games & Activities at the Pinehurst Lodge</h1>
         <Content>
           <div id="images">
             <img alt="" src="/HousePhotos/downstairs_living/pool_table4.jpg"/>
@@ -23,7 +23,7 @@ export default () => {
             <img alt="" src="/HousePhotos/downstairs_living/pool_20.jpg"/>
           </div>
           <div id="text">
-            <h2 className="heading">Pool Table, 7-Person Hot Tub, Board-Games, and Two Smart TVs</h2>
+            <h2 className="section-heading">Pool Table, 7-Person Hot Tub, Board-Games, and Two Smart TVs</h2>
             <p>
               Pinehurst Lodge provides plenty of activities for after outdoor adventures and rest days.  Each of the two gathering spaces is equipped with a Smart TV where you can sign into all of your streaming services, perfect for movie nights or background music while socializing, scrapbooking, crafting or gaming.
             </p>

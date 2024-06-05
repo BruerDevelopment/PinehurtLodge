@@ -1,15 +1,9 @@
-import Head from "next/head";
-import Image from "next/image";
-import Content from "./content";
-import { Metadata } from "next";
-
-import { BuildPageMeta } from "@/app/metaDefaults";
-export const metadata: Metadata = BuildPageMeta({})
+import { ClientContent } from "./client";
 
 export default function Home() {
   return (
-    <div>
-      <Content></Content>
-    </div>
+      <ClientContent />
   );
 }
+
+

@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,15 +8,16 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
 import { BsBoxArrowUpRight } from "react-icons/bs";
+import { Section } from "../../../../../styles/Section";
+import { isMobile } from "../../../../../styles/GlobalStyles";
 
 export default () => {
   return (
     <>
-      <AlternateSection>
-        <h1 className="heading">Plenty of Local Activities</h1>
+      <Section varient={1}>
+        <h1 className="section-heading">Plenty of Local Activities</h1>
         <CardWrapper>
           <div className="Card">
             <TwoColumns data-reverse="true">
@@ -78,7 +79,7 @@ export default () => {
           </div>
          
         </CardWrapper>
-      </AlternateSection>
+      </Section>
     </>
   );
 }
@@ -105,11 +106,9 @@ const TwoColumns = styled.div`
   &[data-reverse="true"] {
     flex-direction: row-reverse;
   }
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-    &, &[data-reverse="true"] {
-      flex-direction: column;
-    }
-  }
+  ${isMobile(css`
+    flex-direction: column;
+  `)}
   img {
     width: 100px;
     aspect-ratio: 3 / 2;
@@ -130,11 +129,10 @@ const CenterColumn = styled.div`
     font-size: 20px;
     margin-bottom: 0px;
     text-align: center;
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        margin-top: 0px;
-      }
-    }
+    
+    ${isMobile(css`
+      margin-top: 0px;
+    `)}
   }
   p {
     color: black;
@@ -158,11 +156,9 @@ const CenterColumn = styled.div`
       color: white;
     }
     font-size: 15px;
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        font-size: 12px;
-      }
-    }
+    ${isMobile(css`
+      font-size: 12px;
+    `)}
   }
 `
 const TwoImages = styled.div`
@@ -180,15 +176,14 @@ const TwoImages = styled.div`
     object-fit: cover;
     --width: 180px;
     --height: 180px;
-    @media screen and (min-width: ${()=>responsiveMobileWidth}) {
-      & {
-        width: var(--width);
-        min-width: var(--width);
-        max-width: var(--width);
-        height: var(--height);
-        min-height: var(--height);
-        max-height: var(--height);
-      }
-    }
+    ${isMobile(css`
+      width: var(--width);
+      min-width: var(--width);
+      max-width: var(--width);
+      height: var(--height);
+      min-height: var(--height);
+      max-height: var(--height);
+    `)}
+      
   }
 `

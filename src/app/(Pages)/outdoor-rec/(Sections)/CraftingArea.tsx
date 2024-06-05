@@ -8,16 +8,16 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
+import { Section } from "../../../../../styles/Section";
 
 export default () => {
   return (
     <>
-      <AlternateSection>
-        <Title className="heading">Close To A Plethora of Adventurous Outdoor Recreation</Title>
+      <Section varient={2}>
+        <Title className="section-heading">Close To A Plethora of Adventurous Outdoor Recreation</Title>
         
-      </AlternateSection>
+      </Section>
     </>
   );
 }

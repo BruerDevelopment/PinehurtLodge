@@ -5,14 +5,14 @@ export function useScrollPos() {
     const [scrollPosition, setScrollPosition] = useState(0);
     
     useEffect(() => {
-        setScrollPosition(document.body.scrollTop);
+        setScrollPosition(window.scrollY);
         const handleScroll = (e: any) => {
-            setScrollPosition(document.body.scrollTop);
+            setScrollPosition(window.scrollY);
         };
-        document.body.addEventListener('scroll', handleScroll);
+        document.addEventListener('scroll', handleScroll);
         
         return () => {
-            document.body.removeEventListener('scroll', handleScroll);
+            document.removeEventListener('scroll', handleScroll);
         };
     }, []);
     return scrollPosition;

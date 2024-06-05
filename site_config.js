@@ -8,5 +8,6 @@ export const CONFIG = {
     page_meta: {
         title: "Pinehurst Lodge",
         description:""
-    }
+    },
+    google_as_id:undefined
 }

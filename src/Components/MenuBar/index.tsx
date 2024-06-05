@@ -1,14 +1,14 @@
 "use client";
 
-import { responsiveMobileWidth } from "@/app/globalStyles";
-import { useMenuState } from "@/hooks/useMenuState";
-import { useScrollPos } from "@/hooks/useScrollPos";
+
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { FaInstagram } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
+import { useScrollPos } from "@/hooks/useScrollPos";
+import { isMobile } from "../../../styles/GlobalStyles";
 function getDialog(id:string) {
   let el: any = document.getElementById(id);
   if (el == null) return;
@@ -20,7 +20,7 @@ export default () => {
   let pathname = usePathname();
   let router = useRouter();
   let searchParams = useSearchParams();
-  let [menuOpen, setMenuOpen] = useMenuState();
+  let [menuOpen, setMenuOpen] = useState<boolean>(false);
   let nav = (el: any) => {
     let href = el.getAttribute("href");
     router.push(href)
@@ -128,7 +128,7 @@ const MenuDropdown = styled.div`
     a {
       min-height: 20px;
       padding: 10px;
-      width: 230px;
+      width: 300px;
     }
   }
   
@@ -153,12 +153,10 @@ const Menu = styled.div`
     height: 5px;
     background-color: black;
   }
+  ${isMobile(css`
+    display: flex;
+  `)}
   
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        display: flex;
-      }
-    }
 `
 
 const MobileMenu = styled.div`
@@ -285,22 +283,19 @@ const Bar = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        font-size: 16px;
-      }
-    }
+    
+    ${isMobile(css`
+      font-size: 16px;
+    `)}
   }
   div#nav {
     flex: 1;
     display: flex;
     justify-content: end;
     padding-right: 20px;
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        display: none;
-      }
-    }
+    ${isMobile(css`
+      display: none;
+    `)}
     a, div {
       color: white;
       text-decoration: none;
@@ -316,11 +311,9 @@ const Bar = styled.div`
   div#spacer {
     flex: 1;
     display: none;
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        display: flex;
-      }
-    }
+    ${isMobile(css`
+      display: flex;
+    `)}
   }
   #book_now {
     background-color: var(--theme-color-2);

@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,20 +8,23 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
 import SetupOfferings from "./(Sections)/SetupOfferings";
 import Amenities from "./(Sections)/Amenities";
 import LocalActivities from "./(Sections)/LocalActivities";
 import OutdoorExploration from "./(Sections)/OutdoorExploration";
 import CraftingArea from "./(Sections)/CraftingArea";
+import { isMobile } from "../../../../styles/GlobalStyles";
+import { Section } from "../../../../styles/Section";
 
 export default () => {
   return (
     <>
-      <Section style={{ "paddingTop": "0px" }}>
-        <h1 className="heading">The Pinehurst Lodge Scrapbooking Retreat</h1>
-        <SubTitle>This cozy getaway is ideal for scrapbooking, quilting, crafting, sewing & gaming, or groups of friends and family.</SubTitle>
+      <Section varient={1} maxSize={1200}>
+        <h1 className="section-heading">The Pinehurst Lodge Scrapbooking Retreat</h1>
+        <h2 className="section-subheading">
+          This cozy getaway is ideal for scrapbooking, quilting, crafting, sewing & gaming, or groups of friends and family.
+        </h2>
         <IntroArea>
           <img src="/HousePhotos/craft_area/craft_1.jpg"></img>
           <div id="text">
@@ -84,14 +87,6 @@ export default () => {
   );
 }
 
-const SubTitle = styled.h2`
-  padding: 0px 2.5%;
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-    & {
-      //width: 95%;
-    }
-  }
-`
 
 const IntroArea = styled.div`
   max-width: 1200px;
@@ -104,12 +99,12 @@ const IntroArea = styled.div`
   &[data-direction="reverse"] {
       flex-direction: row-reverse;
   }
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-    & {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+  ${isMobile(css`
+    flex-direction: column;
+    align-items: center;
+    
+  `)}
+  
   --adjust-height: 400px;
   --adjust-width: 530px;
   @media screen and (max-width: 1070px) {
@@ -124,12 +119,12 @@ const IntroArea = styled.div`
         --adjust-height: 200px;
       } 
     }
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        --adjust-width: 100%;
-        --adjust-height: auto;
-      } 
-    }
+    ${isMobile(css`
+      --adjust-width: 100%;
+      --adjust-height: auto;
+    
+    `)}
+    
   img {
     border-radius: 6px;
     object-fit: cover;

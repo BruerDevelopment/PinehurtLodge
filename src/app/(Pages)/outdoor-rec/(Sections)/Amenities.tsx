@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,17 +8,16 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { isMobile } from "../../../../../styles/GlobalStyles";
+import { Section } from "../../../../../styles/Section";
 
 export default () => {
   
-  let is_mobile = useIsMobile();
   return (
     <>
-      <Section>
-        <h1 className="heading">Amazing Amenities For All Kinds of Outdoor Recreation</h1>
+      <Section varient={1}>
+        <h1 className="section-heading">Amazing Amenities For All Kinds of Outdoor Recreation</h1>
         
       </Section>
     </>
@@ -32,11 +31,11 @@ const PictureCollumns = styled.div`
   flex-direction: row;
   justify-content: space-around;
   gap: 20px;  
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-    & {
-      flex-direction: column;
-    }
-  }
+  ${isMobile(css`
+    flex-direction: column;
+    
+  `)}
+  
   #column {
     display: flex;
     flex-direction: column;
@@ -56,11 +55,10 @@ const PictureCollumns = styled.div`
           width: 150px;
           aspect-ratio: 3/2;
           border-radius: 6px;
-          @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-            & {
-              width: 50%;
-            }
-          }
+          ${isMobile(css`
+            width: 50%;
+          `)}
+          
         }
       }
       #more {

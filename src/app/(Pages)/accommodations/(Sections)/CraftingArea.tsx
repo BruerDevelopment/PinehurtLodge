@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,14 +8,15 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
+import { isMobile } from "../../../../../styles/GlobalStyles";
+import { Section } from "../../../../../styles/Section";
 
 export default () => {
   return (
     <>
-      <AlternateSection>
-        <h1 className="heading" id="Scrapbooking">Scrapbooking / Crafting Setup & Work Areas</h1>
+      <Section varient={1} maxSize={1200}>
+        <h1 className="section-heading" id="Scrapbooking">Scrapbooking / Crafting Setup & Work Areas</h1>
         
         <TwoColumns>
           <div className="centerImages">
@@ -41,7 +42,7 @@ export default () => {
         <MoreLink>
           <Link href="/gallery#scrapbooking">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
         </MoreLink>
-      </AlternateSection>
+      </Section>
     </>
   );
 }
@@ -181,11 +182,10 @@ const PosterboardImages = styled.div`
 `
 const Spacer = styled.div`
   height: 20px;
-  @media screen and (max-width: ${() => responsiveMobileWidth}) {
-    & {
-      height: 40px;
-    }
-  }
+  ${isMobile(css`
+    height: 40px;
+  `)}
+  
 `
 const TwoColumns = styled.div`
   width: 90%;
@@ -206,12 +206,13 @@ const TwoColumns = styled.div`
       margin-bottom: 250px;
     }
   }
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+  ${isMobile(css`
     &, &[data-reverse="true"] {
       margin-bottom: 0px;
       flex-direction: column-reverse;
     }
-  }
+  `)}
+  
   div {
     display: flex;
   }

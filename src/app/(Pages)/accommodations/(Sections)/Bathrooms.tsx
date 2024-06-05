@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,14 +8,15 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
+import { Section } from "../../../../../styles/Section";
+import { isMobile } from "../../../../../styles/GlobalStyles";
 
 export default () => {
   return (
     <>
-      <AlternateSection>
-        <h1 className="heading">Bathrooms</h1>
+      <Section varient={1}>
+        <h1 className="section-heading">Bathrooms</h1>
         <Rooms>
           <div>
             <div>
@@ -52,7 +53,7 @@ export default () => {
         <MoreLink>
           <Link href="/gallery#bathrooms">View More Of the Bathrooms <br /> In Our Photos Gallery</Link>
         </MoreLink>
-      </AlternateSection>
+      </Section>
     </>
   );
 }
@@ -67,23 +68,22 @@ const Rooms = styled.div`
     display: flex;
     gap: 10px;
     align-items: center;
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        flex-direction: column;
-      }
-    }
+    ${isMobile(css`
+      flex-direction: column;
+    `)}
     #double {
       width: 200%;
       display: flex;
       gap: 10px;
-      @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+      ${isMobile(css`
         & {
           width: 100%;
         }
         img {
           width: 50%;
-        }
-      }
+        }  
+      `)}
+      
     }
     img {
       background-color: red;

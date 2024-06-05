@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,19 +8,20 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
 import SetupOfferings from "./(Sections)/SetupOfferings";
 import Accommodations from "./(Sections)/Accommodations";
 import LocalActivities from "./(Sections)/LocalActivities";
 import OutdoorExploration from "./(Sections)/OutdoorExploration";
+import { Section } from "../../../../styles/Section";
+import { isMobile } from "../../../../styles/GlobalStyles";
 
 export default () => {
   return (
     <>
-      <Section style={{ "paddingTop": "0px" }}>
-        <h1 className="heading">Welcome to the Pinehurst Lodge</h1>
-        <SubTitle>Gather your friends, relax and enjoy the beautiful mountain environment.</SubTitle>
+      <Section varient={2} maxSize={1200}>
+        <h1 className="section-heading">Welcome to the Pinehurst Lodge</h1>
+        <h2 className="section-subheading">Gather your friends, relax and enjoy the beautiful mountain environment.</h2>
         <IntroArea>
           <img src="/HousePhotos/downstairs_living/downstairs_living_room_6.jpg"></img>
           <div id="text">
@@ -40,14 +41,6 @@ export default () => {
   );
 }
 
-const SubTitle = styled.h2`
-  padding: 0px 2.5%;
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-    & {
-      //width: 95%;
-    }
-  }
-`
 
 const IntroArea = styled.div`
   max-width: 1200px;
@@ -60,12 +53,10 @@ const IntroArea = styled.div`
   &[data-direction="reverse"] {
       flex-direction: row-reverse;
   }
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-    & {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+  ${isMobile(css`
+    flex-direction: column;
+    align-items: center;
+  `)}
   --adjust-height: 400px;
   --adjust-width: 530px;
   @media screen and (max-width: 1070px) {
@@ -80,12 +71,11 @@ const IntroArea = styled.div`
         --adjust-height: 200px;
       } 
     }
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        --adjust-width: 100%;
-        --adjust-height: auto;
-      } 
-    }
+    ${isMobile(css`
+      --adjust-width: 100%;
+      --adjust-height: auto;
+    `)}
+    
   img {
     border-radius: 6px;
     object-fit: cover;

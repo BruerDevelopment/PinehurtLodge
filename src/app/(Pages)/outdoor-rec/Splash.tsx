@@ -2,11 +2,11 @@
 
 import Head from "next/head";
 import Image from "next/image";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { FaAngleDoubleDown } from "react-icons/fa";
-import { responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { isMobile } from "../../../../styles/GlobalStyles";
 export default function Splash() {
   let isMobile = useIsMobile();
   return (
@@ -66,12 +66,11 @@ const DesktopSplash = styled.div`
       height: 100%;
     }
   }
+  ${isMobile(css`
+    display: none;
+    
+  `)}
   
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-    & {
-      display: none;
-    }
-  }
 `
 const MobileSplash = styled.div`
   img {
@@ -105,12 +104,10 @@ const MobileSplash = styled.div`
       height: 100%;
     }
   }
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+  ${isMobile(css`
+    display: flex;
     
-    & {
-      display: flex;
-    }
-  }
+  `)}
 `
 
 const Overlay = styled.div`
@@ -130,32 +127,29 @@ const Overlay = styled.div`
     text-shadow: var(--theme-text-shadow);
     align-items: center;
     width: min(800px, 80%);
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        width: 90%;
-        left: 50%;
-        transform: translateX(-50%);
-        justify-content: center;
-        align-items: center;
-      }
-    }
+    ${isMobile(css`
+      width: 90%;
+      left: 50%;
+      transform: translateX(-50%);
+      justify-content: center;
+      align-items: center;
+    `)}
+    
     h1 {
       margin: 0px;
       font-size: 80px;
-      @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-        & {
-          font-size: 35px;
-        }
-      }
+      ${isMobile(css`
+        font-size: 35px;
+      `)}
+      
     }
     h2 {
       font-size: 45px;
       margin-top: 0px;
-      @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-        & {
-          font-size: 18px;
-        }
-      }
+      ${isMobile(css`
+        font-size: 18px;
+      `)}
+      
     }
     span {
       margin-top: 24px;
@@ -170,11 +164,10 @@ const Overlay = styled.div`
       text-shadow: none;
       font-size: 28px;
       width: fit-content;
-      @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-        & {
-          font-size: 18px;
-        }
-      }
+      ${isMobile(css`
+        font-size: 18px;
+      `)}
+      
     }
   }
   #scrollIndicator {

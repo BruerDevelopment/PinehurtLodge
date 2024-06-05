@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,15 +8,16 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
 import { BsBoxArrowUpRight } from "react-icons/bs";
+import { Section } from "../../../../../styles/Section";
+import { isMobile } from "../../../../../styles/GlobalStyles";
 
 export default () => {
   return (
     <>
-      <Section>
-        <h1 className="heading">Outdoor Exploration</h1>
+      <Section varient={2}>
+        <h1 className="section-heading">Outdoor Exploration</h1>
         <Paragraph>
           Whether you're seeking outdoor adventures, cultural exploration, or culinary delights,
           our guide is your passport to discovering the hidden gems and cherished landmarks
@@ -71,7 +72,8 @@ const IFrame = styled("iframe")`
   width: 90%;
   max-width: 900px;
   aspect-ratio: 3/2;
-  @media screen and (max-width: ${() => responsiveMobileWidth}) {
+  ${isMobile(css`
     aspect-ratio: 3/4;
-  }
+  `)}
+  
 `

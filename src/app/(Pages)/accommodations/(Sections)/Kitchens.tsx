@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,15 +8,16 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
+import { Section } from "../../../../../styles/Section";
+import { isMobile } from "../../../../../styles/GlobalStyles";
 
 export default () => {
   return (
     <>
-      <AlternateSection>
-        <h1 className="heading" id="Kitchens">Two Fully Equipped Kitchens</h1>
-        <H2>Enjoy Every Meal with a View!</H2>
+      <Section varient={1}>
+        <h1 className="section-heading" id="Kitchens">Two Fully Equipped Kitchens</h1>
+        <H2 className="section-heading">Enjoy Every Meal with a View!</H2>
         <P>
         The lodge comes with two full kitchens for all your culinary needs. Each kitchen comes fully equipped with appliances, cookware, dishware, utensils, glassware & silverware. Each kitchen comes with a large dining table that expands with stored leaves inside the table, offering plenty of gathering space.
         </P>
@@ -74,7 +75,7 @@ export default () => {
         <MoreLink>
           <Link href="/gallery#kitchens">View More Of the Kitchens <br /> In Our Photos Gallery</Link>
         </MoreLink>
-      </AlternateSection>
+      </Section>
     </>
   );
 }
@@ -108,11 +109,10 @@ const P = styled.p`
 `
 const Spacer = styled.div`
   height: 20px;
-  @media screen and (max-width: ${() => responsiveMobileWidth}) {
-    & {
-      height: 40px;
-    }
-  }
+  ${isMobile(css`
+    height: 40px;
+  `)}
+  
 `
 const TwoColumns = styled.div`
   width: 90%;
@@ -122,18 +122,20 @@ const TwoColumns = styled.div`
   &[data-reverse="true"] {
     flex-direction: row-reverse;
   }
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+  ${isMobile(css`
     &, &[data-reverse="true"] {
       flex-direction: column-reverse;
     }
-  }
+  `)}
+  
   &#GrillDetails {
     #grillText {
-      @media screen and (min-width: ${()=>responsiveMobileWidth}) {
+      ${isMobile(css`
         &, &[data-reverse="true"] {
           max-width: 200px;
         }
-      }
+      `)}
+      
       max-width: auto;
     }
     img {

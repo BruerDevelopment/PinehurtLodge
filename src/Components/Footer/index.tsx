@@ -1,15 +1,13 @@
 "use client";
 
-import { responsiveMobileWidth } from "@/app/globalStyles";
-import { useMenuState } from "@/hooks/useMenuState";
-import { useScrollPos } from "@/hooks/useScrollPos";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { FaInstagram } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaAirbnb } from "react-icons/fa";
+import { isMobile } from "../../../styles/GlobalStyles";
 export default () => {
   
   let pathname = usePathname();
@@ -52,10 +50,8 @@ const Footer = styled.div`
     
     color: white;
     font-size: 23px;
-    @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-      & {
-        font-size: 16px;
-      }
-    }
+    ${isMobile(css`
+      font-size: 16px;
+    `)}
   }
 `

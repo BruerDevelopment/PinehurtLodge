@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,14 +8,15 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
+import { Section } from "../../../../../styles/Section";
+import { isMobile } from "../../../../../styles/GlobalStyles";
 
 export default () => {
   return (
     <>
-      <AlternateSection>
-        <Title className="heading">This cozy getaway has something for every mountain vacation:</Title>
+      <Section varient={1}>
+        <Title className="section-heading">This cozy getaway has something for every mountain vacation:</Title>
         <IntroArea data-coloralternate="1" data-direction="reverse">
           <img src="/AreaAttractions/Hiking_Trails_mountain_lake.jpg" loading="lazy"></img>
           <div id="text">
@@ -42,20 +43,21 @@ export default () => {
             <div id="link"><Link href="/cozy-ski-cabin">Learn More</Link></div>
           </div>
         </IntroArea>
-      </AlternateSection>
+      </Section>
     </>
   );
 }
 const Title = styled.h1`
-  font-size: 21px;
+  &.section-heading {
+    font-size: 21px !important;
+  }
 `
 const Spacer = styled.div`
   height: 20px;
-  @media screen and (max-width: ${() => responsiveMobileWidth}) {
-    & {
-      height: 40px;
-    }
-  }
+  
+  ${isMobile(css`
+    height: 40px;
+  `)}
 `
 
 const IntroArea = styled.div`
@@ -69,12 +71,13 @@ const IntroArea = styled.div`
   &[data-direction="reverse"] {
       flex-direction: row-reverse;
   }
-  @media screen and (max-width: ${() => responsiveMobileWidth}) {
+  ${isMobile(css`
     &, &[data-direction="reverse"] {
       flex-direction: column;
       align-items: center;
     }
-  }
+  `)}
+  
   --adjust-height: 266px;
   --adjust-width: 353px;
   
@@ -84,12 +87,10 @@ const IntroArea = styled.div`
       --adjust-height: 200px;
     } 
   }
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
-    & {
-      --adjust-width: 100%;
-      --adjust-height: auto;
-    } 
-  }
+  ${isMobile(css`
+    --adjust-height: auto;
+    --adjust-width: 100%;
+  `)}
   img {
     border-radius: 6px;
     object-fit: cover;

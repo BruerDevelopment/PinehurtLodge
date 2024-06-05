@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,15 +8,16 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
+import { Section } from "../../../../../styles/Section";
+import { isMobile } from "../../../../../styles/GlobalStyles";
 
 export default () => {
   return (
     <>
-      <Section>
-        <h1 className="heading">Pinehurst Lodge <br /> Accommodations & Amenities</h1>
-        <h2 className="heading">Bedrooms</h2>
+      <Section varient={2}>
+        <h1 className="section-heading">Pinehurst Lodge <br /> Accommodations & Amenities</h1>
+        <h2 className="section-heading">Bedrooms</h2>
         <TwoColumns data-reverse="true">
           <div>
             <h3>Upstairs Master Suite</h3>
@@ -102,12 +103,11 @@ const MoreLink = styled.div`
 `
 const Spacer = styled.div`
   height: 20px;
-  @media screen and (max-width: ${() => responsiveMobileWidth}) {
-    & {
-      height: 40px;
-    }
-  }
-  `
+  ${isMobile(css`
+    height: 40px;
+  `)}
+  
+`
 const TwoColumns = styled.div`
   width: 90%;
   max-width: 900px;
@@ -116,20 +116,20 @@ const TwoColumns = styled.div`
   &[data-reverse="true"] {
     flex-direction: row-reverse;
   }
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+  ${isMobile(css`
     &, &[data-reverse="true"] {
       flex-direction: column;
     }
-  }
+  `)}
+  
   .GapP {
     display: flex;
     flex-direction: column;
     gap: 85px;
-    @media screen and (max-width: ${() => responsiveMobileWidth}) {
-      & {
-        gap: 10px;
-      }
-    }
+    ${isMobile(css`
+      gap: 10px;
+    `)}
+    
   }
   div {
     display: flex;

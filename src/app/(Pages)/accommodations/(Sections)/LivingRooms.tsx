@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import DesktopClipart from "@/assets/DesktopClipart.svg"
 import { CiServer } from "react-icons/ci";
 import { FaGear } from "react-icons/fa6";
@@ -8,14 +8,15 @@ import { LuBrainCircuit } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { PageFooter, AlternateSection, Section, responsiveMobileWidth } from "@/app/globalStyles";
 import Link from "next/link";
+import { Section } from "../../../../../styles/Section";
+import { isMobile } from "../../../../../styles/GlobalStyles";
 
 export default () => {
   return (
     <>
-      <Section>
-        <h1 className="heading" id="LivingRooms">Spacious Gathering Spaces / Living Rooms</h1>
+      <Section varient={2}>
+        <h1 className="section-heading" id="LivingRooms">Spacious Gathering Spaces / Living Rooms</h1>
         <TwoColumns data-reverse="true">
           <div>
             <div>
@@ -62,6 +63,10 @@ const MoreLink = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
+  @media screen and (max-width: 810px) {
+    margin-top: 0px;
+  }
   a {
     background-color: var(--theme-color-3);
     border-radius: 6px;
@@ -72,15 +77,15 @@ const MoreLink = styled.div`
     align-items: center;
     padding: 5px 30px;
     text-align: center;
+    
   }
 `
 const Spacer = styled.div`
   height: 20px;
-  @media screen and (max-width: ${() => responsiveMobileWidth}) {
-    & {
-      height: 40px;
-    }
-  }
+  ${isMobile(css`
+    height: 40px;
+  `)}
+  
 `
 const TwoStackedImages = styled.div`
   position: relative;
@@ -128,7 +133,7 @@ const TwoStackedImages = styled.div`
       left: auto;
     }
   }
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+  ${isMobile(css`
     & {
       display: flex;
       flex-direction: row;
@@ -148,7 +153,8 @@ const TwoStackedImages = styled.div`
       right: auto;
       left: auto;
     }
-  }
+  `)}
+  
 `
 const TwoColumns = styled.div`
   width: 90%;
@@ -158,11 +164,12 @@ const TwoColumns = styled.div`
   &[data-reverse="true"] {
     flex-direction: row-reverse;
   }
-  @media screen and (max-width: ${()=>responsiveMobileWidth}) {
+  ${isMobile(css`
     &, &[data-reverse="true"] {
       flex-direction: column-reverse;
     }
-  }
+  `)}
+  
   div {
     display: flex;
   }

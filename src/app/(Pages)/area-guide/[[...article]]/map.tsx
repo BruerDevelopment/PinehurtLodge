@@ -86,7 +86,8 @@ const MapComp = (props: {
             
             map.fitBounds(bounds);
         }
-        return (mapRef.current = map)
+        mapRef.current = map;
+        return
     }, []);
     let router = useRouter();
     let searchParams = useSearchParams();
@@ -120,7 +121,6 @@ const MapComp = (props: {
             let map = mapRef.current;
             let nextSelected = props.places.filter(p => p.id == pID || `${p.id}/index` == pID)[0]
             if (nextSelected) {
-                //@ts-expect-error
                 map.setZoom(nextSelected.zoom)
                 map.panTo(convertLocationArrayToPos(nextSelected.location))
             } 

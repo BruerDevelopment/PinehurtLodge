@@ -56,17 +56,16 @@ const MapComp = (props: {
     );
     const zoom = useMemo(()=>selectedMeta != undefined ? selectedMeta.zoom : 10, []);
     const options = useMemo<MapOptions>(() => ({
-        mapId: "b181cac70f27f5e6",
+        mapId: "6afb7634bb596e57",
         disableDefaultUI: true,
         clickableIcons: false,
     }), []);
-    let groups = props.places.filter(p => p.isGroup).map(p=>p.groupid);
+    let groups = props.places.filter(p => p.isGroup && p.groupid != undefined).map(p=>p.groupid);
     let ungrouped_markers = props.places.filter(p => p.isGroup != true && p.group == undefined);
     let [showClusterLabels, setShowClusterLabels] = useState(zoom < 14);
     const onLoad = useCallback((map: any) => {
         map.addListener('zoom_changed', () => {
             const zoom = map.getZoom();
-            console.log("zoom changed", zoom)
             if (zoom > 14) {
                 setShowClusterLabels(false);
             } else {
@@ -137,6 +136,7 @@ const MapComp = (props: {
                 mapContainerClassName="map-container"
                 options={options}
                 onLoad={onLoad}
+                clickableIcons={ false}
             >
                 {groups.map((g) => {
                     let groupMeta = props.places.filter(p => p.isGroup ==true && p.groupid == g)[0]
@@ -155,9 +155,9 @@ const MapComp = (props: {
                                 label={{
                                     text: groupMeta.title,
                                     className: "marker_label group_label " + (groupMeta.isHome == true ? "home_marker" : ""),
-                                    color:"white"
-                                    
+                                    color:"white",
                                 }}
+                                zIndex={Number(google.maps.Marker.MAX_ZINDEX) + 1}
                             />
                         <MarkerClusterer
                             key={g}
@@ -166,6 +166,8 @@ const MapComp = (props: {
                                 nav(g)
                                 return false;
                             }}
+                                maxZoom={16}
+                            clusterClass="cluster_style"
                         >
                             {(clusterer) => (
                                 <>
@@ -195,7 +197,19 @@ const MapComp = (props: {
                 })}
                 
                 {ungrouped_markers.map(p => (
-                    <Marker key={p.id} position={convertLocationArrayToPos(p.location)}/>
+                    <Marker
+                        key={p.id}
+                        position={convertLocationArrayToPos(p.location)}
+                        onClick={() => {
+                            nav(p.id)
+                        }}
+                        
+                        label={{
+                            text: p.title,
+                            className: "marker_label " + (p.isHome == true ? "home_marker" : ""),
+                            color:"white"
+                        }}
+                    />
                 ))}
             </GoogleMap>
             <div id="details" key={selectedMeta.id}  className={(selectedMeta == undefined || selectedMeta.isGroup) ? "hidden" : ""}>
@@ -214,6 +228,11 @@ const MapContainer = styled.div`
     right: 0px;
     &[data-hidenav="false"] {
         top: 40px;
+    }
+    .cluster_style {
+        z-index: 1;
+        position: relative;
+        opacity: 0.3;
     }
     #backnav {
         position: absolute;
@@ -260,10 +279,10 @@ const MapContainer = styled.div`
         .marker_label {
             background-color: var(--theme-color-5);
             color: white;
-            position: absolute;
-            top: 50%;
+            margin-bottom: 10px;
+            /* top: 50%;
             transform: translate(0px, -50%);
-            left: 10px;
+            left: 10px; */
             padding: 5px;
             border-radius: 4px;
             &.group_label {

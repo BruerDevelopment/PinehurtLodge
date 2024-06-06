@@ -6,6 +6,7 @@ const nextConfig = {
     output: 'export',
     pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
     webpack(config) {
+        config.resolve.alias["@"] = join(__dirname);
         config.module.rules.push({
           test: /\.svg$/,
           use: ["@svgr/webpack"]

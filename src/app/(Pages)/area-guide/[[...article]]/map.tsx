@@ -1,12 +1,15 @@
 "use client";
 
 import { PlaceMeta, getPlacesData } from "@/hooks/getPostData"
-import { ComponentType, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { ComponentType, Fragment, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { GoogleMap, Marker, MarkerClusterer, useLoadScript } from "@react-google-maps/api";
 import styled from "styled-components";
 import { useRouter, useSearchParams } from "next/navigation";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { IoMdOptions } from "react-icons/io";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 
 export const Map = (props: {
     places: (PlaceMeta & {
@@ -17,7 +20,7 @@ export const Map = (props: {
     
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY as string,
-        libraries: ["places"],
+        libraries: ["places", "marker"],
     });
     
     if (isLoaded == false) return (
@@ -40,7 +43,7 @@ const MapComp = (props: {
     })[],
     selectedID: string[]
 }) => {
-    const mapRef = useRef<GoogleMap>();
+    const mapRef = useRef<google.maps.Map>();
     let [selectedPlace, setSelectedPlace] = useState<string[]>(props.selectedID || [""])
     let selectedMeta = useMemo(
         () => props.places.filter(p => p.id == selectedPlace.join("/") || `${p.id}/index` == selectedPlace.join("/"))[0]
@@ -63,16 +66,26 @@ const MapComp = (props: {
     let groups = props.places.filter(p => p.isGroup && p.groupid != undefined).map(p=>p.groupid);
     let ungrouped_markers = props.places.filter(p => p.isGroup != true && p.group == undefined);
     let [showClusterLabels, setShowClusterLabels] = useState(zoom < 14);
-    const onLoad = useCallback((map: any) => {
+    const onLoad = useCallback((map: google.maps.Map) => {
         map.addListener('zoom_changed', () => {
             const zoom = map.getZoom();
-            if (zoom > 14) {
+            if (zoom != undefined && zoom > 14) {
                 setShowClusterLabels(false);
             } else {
                 setShowClusterLabels(true);
 
             }
         });
+        console.log("selectedPlace", selectedPlace)
+        if (selectedPlace.length == 1 && selectedPlace[0] == "") {
+            var markers = props.places.map(p=>new google.maps.LatLng(convertLocationArrayToPos(p.location)));//some array
+            var bounds = new google.maps.LatLngBounds();
+            for (var i = 0; i < markers.length; i++) {
+                bounds.extend(markers[i]);
+            }
+            
+            map.fitBounds(bounds);
+        }
         return (mapRef.current = map)
     }, []);
     let router = useRouter();
@@ -84,7 +97,6 @@ const MapComp = (props: {
         let map = mapRef.current;
         let nextSelected = props.places.filter(p => p.id == path || `${p.id}/index` == path)[0]
         if (nextSelected) {
-            //@ts-expect-error
             map.setZoom(nextSelected.zoom)
             map.panTo(convertLocationArrayToPos(nextSelected.location))
         } 
@@ -119,17 +131,40 @@ const MapComp = (props: {
     
     }, [])
     return (
-        <MapContainer data-hidenav={ hideNav}>
-            <div id="backnav" className={selectedPlace.join("/") == "" ? "hidden" : ""} onClick={() => {
-                let id = "";
-                let t = selectedPlace?.slice(0, selectedPlace.length-1);
-                if (t != undefined) {
-                    id = t?.join("/")
-                }
-                console.log("back", id)
-                nav(id);
-            }}><IoChevronBackOutline /></div>
-            <div id="filterbutton"><IoMdOptions /></div>
+        <MapContainer data-hidenav={hideNav}>
+            <Tooltip>
+                <TooltipTrigger asChild>
+                    <div id="backnav" className={selectedPlace.join("/") == "" ? "hidden" : ""} onClick={() => {
+                        let id = "";
+                        let t = selectedPlace?.slice(0, selectedPlace.length-1);
+                        if (t != undefined) {
+                            id = t?.join("/")
+                        }
+                        console.log("back", id)
+                        nav(id);
+                    }}><IoChevronBackOutline /></div>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                    <p>Go Up A Level</p>
+                </TooltipContent>
+            </Tooltip>
+            <Popover>   
+                <Tooltip>
+                    <PopoverTrigger asChild>
+                        <TooltipTrigger asChild>
+                            <Button id="filterbutton"><IoMdOptions /></Button>
+                        </TooltipTrigger>
+                    </PopoverTrigger>
+                    <TooltipContent side="bottom">
+                    <p>Filter Places</p>
+                    </TooltipContent>
+                </Tooltip>
+                <PopoverContent className="w-80">
+                Place content for the popover here.
+                </PopoverContent>
+            </Popover>
+            
+            
             <GoogleMap
                 zoom={zoom}
                 center={center}
@@ -142,7 +177,7 @@ const MapComp = (props: {
                     let groupMeta = props.places.filter(p => p.isGroup ==true && p.groupid == g)[0]
                     let places = props.places.filter(p => p.isGroup !=true && p.group == g)
                     return (
-                        <>
+                        <Fragment key={g}>
                             <Marker
                                 key={"main"+g}
                                 position={convertLocationArrayToPos(places[0].location)}
@@ -192,7 +227,7 @@ const MapComp = (props: {
                                 </>
                             )}
                         </MarkerClusterer>
-                            </>
+                            </Fragment>
                     )
                 })}
                 
@@ -240,6 +275,7 @@ const MapContainer = styled.div`
         left: 10px;
         z-index: 100;
         background-color: white;
+        box-shadow: 0px 3px 10px 0px black;
         border-radius: 20px;
         width: 40px;
         height: 40px;
@@ -266,9 +302,11 @@ const MapContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        box-shadow: 0px 3px 10px 0px black;
         svg {
             min-width: 30px;
             min-height: 30px;
+            color: black;
         }
         &.hidden {
             display: none;

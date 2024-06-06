@@ -31,6 +31,9 @@ export default GlobalStyles;
 export function isMobile(...content: Interpolation<FastOmit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>[]): Interpolation<object> { 
     return screenLessThan("mobile", content)
 }
+export function isNotMobile(...content: Interpolation<FastOmit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>[]): Interpolation<object> { 
+    return screenGreaterThan("mobile", content)
+}
 
 export function screenLessThan(size:"mobile"|number, ...content: Interpolation<FastOmit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>[]): Interpolation<object> {
     let _size = `${size}px`;
@@ -39,6 +42,19 @@ export function screenLessThan(size:"mobile"|number, ...content: Interpolation<F
     }
     return `
     @media screen and (max-width: ${_size}) {
+        & {
+            ${content.join("")}
+        }
+    }
+    `
+}
+export function screenGreaterThan(size:"mobile"|number, ...content: Interpolation<FastOmit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>[]): Interpolation<object> {
+    let _size = `${size}px`;
+    if (size == "mobile") {
+        _size = "600px"
+    }
+    return `
+    @media screen and (min-width: ${_size}) {
         & {
             ${content.join("")}
         }

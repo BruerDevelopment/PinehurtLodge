@@ -7,6 +7,7 @@ import MenuBar from "@/components/MenuBar";
 import Footer from "@/components/Footer";
 import { CONFIG } from "../../site_config";
 import GAnalytics from "@/components/GAnalytics";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -37,7 +38,9 @@ export default function RootLayout({
           <Suspense>
             <MenuBar />
           </Suspense>
-          {children}
+          <TooltipProvider>
+            {children}
+          </TooltipProvider>
           <Footer />
           <GAnalytics />
           {CONFIG.google_as_id != undefined && (

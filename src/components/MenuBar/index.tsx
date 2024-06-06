@@ -138,7 +138,7 @@ const Menu = styled.div`
   display: none;
   flex-direction: column;
   gap: 5px;
-  width: 30px;
+  width: 50px;
   margin-left: 10px;
   padding: 0px 10px;
   justify-content: center;
@@ -176,6 +176,7 @@ const MobileMenu = styled.div`
   #title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     h1 {
       padding-left: 20px;
       width: 100%;
@@ -192,7 +193,7 @@ const MobileMenu = styled.div`
   }
   a {
     width: 100%;
-    height: 30px;
+    height: 50px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -206,7 +207,7 @@ const MobileMenu = styled.div`
     span {
       cursor: pointer;
       width: 100%;
-      height: 30px;
+      height: 50px;
       display: flex;
       justify-content: start;
       align-items: center;

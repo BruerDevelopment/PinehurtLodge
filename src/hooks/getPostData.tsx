@@ -8,6 +8,7 @@ const postsDirectory = path.join(process.cwd(), '/src/area_guide_places');
 
 export type PlaceMeta = {
     id: string,
+    ignore?:boolean,
     date: Date,
     title: string,
     visibility: "public" | "unlisted" | "private",
@@ -49,7 +50,7 @@ export async function getPlacesData(subPostDir?: string, options?:{visibilityOve
         allPostsData.push( post);
 
     }
-    return allPostsData.map((post, i) => {
+    let places_data = allPostsData.map((post, i) => {
         let _id = post.id.split("/");
         if (_id[_id.length - 1] == "index") {
             _id = _id.slice(0, -1);
@@ -60,6 +61,8 @@ export async function getPlacesData(subPostDir?: string, options?:{visibilityOve
             id,
         }
     });
+
+    return places_data.filter(p=>p.ignore != true)
 
     let FilteredPosts = allPostsData
         //transform index page ids

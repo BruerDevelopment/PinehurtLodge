@@ -63,31 +63,60 @@ export const photo_group_data: {
     "kitchens": {
       heading:"Two Full Kitchens",
       imgs:[
-        { src: "/HousePhotos/craft_area/craft_21.jpg" },
+        { src: "/HousePhotos/upstairs_kitchen/kitchen_main.jpg" },
+        { src: "/HousePhotos/upstairs_kitchen/upstairs_kitchen_1.jpg" },
+        { src: "/HousePhotos/upstairs_kitchen/upstairs_dining_table.jpg" },
+        { src: "/HousePhotos/upstairs_kitchen/table_with_champagne.jpg" },
+        { src: "/HousePhotos/upstairs_kitchen/coffee_area.jpg" },
+        { src: "/HousePhotos/upstairs_kitchen/BigFridge.png" },
+        { src: "/HousePhotos/upstairs_kitchen/beverage_area.jpg" },
+        { src: "/HousePhotos/downstairs_kitchen/kitchen_main.jpg" },
+        { src: "/HousePhotos/downstairs_kitchen/down_kitchen2.jpg" },
+        { src: "/HousePhotos/downstairs_kitchen/down_kitchen3.jpg" },
       ]
     },
     "decks": {
       heading:"Two Large Decks",
       imgs:[
-        { src: "/HousePhotos/craft_area/craft_21.jpg" },
+        { src: "/HousePhotos/upstairs_deck/up_deck1.jpg" },
+        { src: "/HousePhotos/upstairs_deck/upstairs_deck_3.jpg" },
+        { src: "/HousePhotos/upstairs_deck/upstairs_deck_facing_south.jpg" },
+        { src: "/HousePhotos/upstairs_deck/upstairs_porch_view.jpg" },
+        { src: "/HousePhotos/upstairs_deck/grill_with_food_and_view.jpg" },
+        { src: "/HousePhotos/upstairs_deck/GrillFrontView.png" },
+        { src: "/HousePhotos/downstairs_deck/down_deck.jpg" },
       ]
     },
     "bathrooms": {
       heading:"3 Full Bathrooms",
       imgs:[
-        { src: "/HousePhotos/craft_area/craft_21.jpg" },
+        { src: "/HousePhotos/bathrooms/master_bath_3.jpg" },
+        { src: "/HousePhotos/bathrooms/hallway_bathroom1.jpg" },
+        { src: "/HousePhotos/bathrooms/DownstairsBathroom2.png" },
+        { src: "/HousePhotos/bathrooms/DownstairsBathroom.png" },
       ]
     },
     "garage": {
       heading:"Garage",
       imgs:[
-        { src: "/HousePhotos/craft_area/craft_21.jpg" },
+        { src: "/HousePhotos/garage/Garage1.png" },
+        { src: "/HousePhotos/garage/garage.jpg" },
       ]
     },
     "laundries": {
       heading:"Two Full Laundries",
       imgs:[
-        { src: "/HousePhotos/craft_area/craft_21.jpg" },
+        { src: "/HousePhotos/laundry/upstairs_laundry2.jpg" },
+        { src: "/HousePhotos/laundry/downstairs_laundry.jpg" },
+      ]
+    },
+    "view": {
+      heading:"Mountain Top View",
+      imgs:[
+        { src: "/HousePhotos/view/view_with_snow.jpg" },
+        { src: "/HousePhotos/view/view_moon_vertical2.jpg" },
+        { src: "/HousePhotos/view/view_light_snow14.jpg" },
+        { src: "/HousePhotos/view/view_light_snow15.jpg" },
       ]
     },
   }

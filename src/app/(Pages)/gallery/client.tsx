@@ -145,13 +145,13 @@ const PhotoList = styled.div`
     }
 `
 const Image = styled.img`
-  width: 400px;
+  height: 300px;
   
   ${screenLessThan(900, css`
-    width: 300px;
+  height: 250px;
   `)}
   ${isMobile(css`
-    width: 200px;
+  height: 200px;
   `)}
   
 `

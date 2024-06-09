@@ -35,15 +35,15 @@ export default () => {
           <div className="Card">
             <TwoColumns>
               <TwoImages>
-                <img src="/AreaAttractions/Redrocks.jpg"  loading="lazy"></img>
-                <img src="/AreaAttractions/Red-Rocks-Amphitheatre.jpeg"  loading="lazy"></img>
+                <img src="/AreaAttractions/Nederland_bridge.jpg"  loading="lazy"></img>
+                <img src="/AreaAttractions/Nederland.jpg"  loading="lazy"></img>
               </TwoImages>
               <CenterColumn>
-                <h3>Red Rocks Park & Amphitheatre</h3>
+                <h3>The Town of Nederland</h3>
                 <p>
-                  One of the most beautiful and renowned concert venues in the United States, Red Rocks Park & Amphitheatre draws a vast array of well-known artists from around the world. At 36 miles away, it is easily accessible to the Pinehurst Lodge.
+                  This scenic mountain town, located 17 miles west of Boulder, is the gateway to the Indian Peaks Wilderness Area. There are many recreational, historical, dining and retail opportunities that await the Colorado visitor.
                 </p>
-                <Link href="https://www.redrocksonline.com/" target="_blank">Visit Redrocks Online <BsBoxArrowUpRight /></Link>
+                <Link href="https://www.redrocksonline.com/" target="_blank">Visit Nederland <BsBoxArrowUpRight /></Link>
               </CenterColumn>
             </TwoColumns>
           </div>

@@ -16,7 +16,7 @@ export default () => {
   return (
     <>
       <Section varient={1}>
-        <Title className="section-heading">This cozy getaway has something for every mountain vacation:</Title>
+        <Title className="section-heading">View Other Experiences This Rental Offers</Title>
         <IntroArea data-coloralternate="1" data-direction="reverse">
           <img src="/HousePhotos/craft_area/craft_6.jpg" loading="lazy"></img>
           <div id="text">
@@ -40,6 +40,7 @@ export default () => {
 }
 const Title = styled.h1`
   &.section-heading {
+    margin-bottom: 30px;
     font-size: 21px !important;
   }
 `

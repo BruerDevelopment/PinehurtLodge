@@ -22,10 +22,10 @@ export default () => {
           <img src="/AreaAttractions/Railroad_4.jpeg"></img>
           <div id="text">
             <h3>
-              6-Person Hot Tub!
+              7-Person Hot Tub!
             </h3>
             <p>
-              A relaxing soak after gnarly day on the slopes. Sit back and enjoy a spacious Arctic Spas tub with strong massaging jets and an ozonating purification system.
+              A relaxing soak after gnarly day on the slopes or out in the forest. Sit back and enjoy a spacious Arctic Spas tub with strong massaging jets and a double ozonating purification system.
             </p>
               
           </div>
@@ -37,15 +37,26 @@ export default () => {
               Pool Table and Game Room
             </h3>
             <p>
-              The perfect place to hang out after the relaxing soak in the hot tub. Enjoy a bar pool table, a Google smart TV and a wide variety of tabletop board games, all within close proximity to the kitchen for snacks and refreshments.
+              The perfect place to hang out after a relaxing soak in the hot tub. Enjoy a pool table, a Google smart TV and a wide variety of tabletop board games, all within close proximity to the kitchen for snacks and refreshments, and the lower deck offering beautiful views, fresh mountain air and access to the large back yard.
             </p>
               
           </div>
         </IntroArea>
+        <MoreLink href="/accommodations#Activities">View All Accommodations & Amenities</MoreLink>
       </Section>
     </>
   );
 }
+
+const MoreLink = styled(Link)`
+  background-color: var(--theme-color-3);
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 50px;
+`
 const IntroArea = styled.div`
   max-width: 1200px;
   width: 95%;

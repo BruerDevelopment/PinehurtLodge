@@ -21,18 +21,19 @@ export default () => {
   return (
     <>
       <Section varient={1} maxSize={1200}>
-        <h1 className="section-heading">The Pinehurst Lodge, Your Luxury “Base-Camp”</h1>
+        <h1 className="section-heading">The Pinehurst Lodge ~ Your Luxury Base Camp</h1>
         <h2 className="section-subheading">
-          This cozy getaway is ideal for hikers, fishermen, rafters, mountain bikers and rock climbers <br />
+          This cozy getaway is ideal for hikers, fishermen, rafters, mountain bikers and rock climbers 
           or groups of friends and family.
         </h2>
         <IntroArea>
           <img src="/AreaAttractions/Railroad_4.jpeg"></img>
           <div id="text">
             <h3>
-            Surrounded by the beautiful Rocky Mountains, enjoy the breathtaking view of the Continental Divide while you scrapbook, craft or sew with friends at the Pinehurst Scrapbooking Retreat.             </h3>
+              Surrounded by the beautiful Rocky Mountains, enjoy the breathtaking view of the Continental Divide while you relax, soak in the hot tub and plan the next days’ adventures!
+            </h3>
             <p>
-              Nestled in the cozy Front Range town of Rollinsville, Colorado, Pinehurst Lodge offers a mountain cabin not far off the beaten path. Access is easy, less than a 1/4 mile off the main highway. Yet the neighbors are few and the breathtaking view is visible from both the interior and decks of the house.
+              Nestled in the cozy Front Range town of Rollinsville, Colorado, Pinehurst Lodge offers a mountain cabin not far off the beaten path. Access is easy, less than a 1/4 mile off the Peak to Peak Scenic Byway. Yet the neighbors are few and the breathtaking view is visible from both the interior and decks of the house.
             </p>
               
           </div>

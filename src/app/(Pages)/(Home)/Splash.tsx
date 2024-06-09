@@ -151,6 +151,8 @@ const Overlay = styled.div`
       border-radius: 6px;
       text-shadow: none;
       font-size: 28px;
+      width: fit-content;
+      margin-top: 30px;
       ${isMobile(css`
         font-size: 18px;
       `)}

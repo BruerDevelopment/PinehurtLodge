@@ -23,7 +23,7 @@ export default function Splash() {
       <Overlay>
         <div id="title">
           <h1>Pinehurst Lodge</h1>
-          <span>The Ideal Luxury “Base-Camp” For Your Next</span>
+          <span style={{"fontSize":"30px"}}>The Ideal Luxury Base Camp for your next </span>
           <h2>Outdoor Adventure</h2>
           <Link href="https://www.airbnb.com/rooms/1043540721907281297">Book Your Next Adventure Now!</Link>
         </div>
@@ -110,6 +110,7 @@ const MobileSplash = styled.div`
   `)}
 `
 
+
 const Overlay = styled.div`
   position: absolute;
   top: 0px;
@@ -120,13 +121,10 @@ const Overlay = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 25%;
+    left: 50px;
     color: white;
     text-shadow: var(--theme-text-shadow);
-    align-items: center;
-    width: min(800px, 80%);
     ${isMobile(css`
       width: 90%;
       left: 50%;
@@ -137,23 +135,18 @@ const Overlay = styled.div`
     
     h1 {
       margin: 0px;
-      font-size: 80px;
+      font-size: 48px;
       ${isMobile(css`
         font-size: 35px;
       `)}
       
     }
     h2 {
-      font-size: 45px;
-      margin-top: 0px;
+      font-size: 30px;
       ${isMobile(css`
         font-size: 18px;
       `)}
       
-    }
-    span {
-      margin-top: 24px;
-      font-size: 20px;
     }
     a {
       background-color: var(--theme-color-5);
@@ -164,6 +157,8 @@ const Overlay = styled.div`
       text-shadow: none;
       font-size: 28px;
       width: fit-content;
+      margin-top: 30px;
+
       ${isMobile(css`
         font-size: 18px;
       `)}

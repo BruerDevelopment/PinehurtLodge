@@ -54,6 +54,7 @@ export default () => {
             
           </div>
         </TwoColumns>
+        <MoreLink href="/accommodations#Activities">View All Accommodations & Amenities</MoreLink>
       </Section>
     </>
   );
@@ -66,6 +67,15 @@ const Title = styled.h1`
 `
 
 
+const MoreLink = styled(Link)`
+  background-color: var(--theme-color-3);
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 50px;
+`
 
 const TwoColumns = styled.div`
   width: 90%;
@@ -106,6 +116,7 @@ const TwoColumns = styled.div`
     & > div {
       gap: 20px;
       width: 100%;
+      justify-content: center;
       img {
         max-height: 130px;
         background-color: red;

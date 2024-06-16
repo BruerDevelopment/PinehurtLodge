@@ -54,7 +54,7 @@ export default () => {
             
           </div>
         </TwoColumns>
-        <MoreLink href="/accommodations#Activities">View All Accommodations & Amenities</MoreLink>
+        <MoreLink href="/accommodations">View All Accommodations & Amenities</MoreLink>
       </Section>
     </>
   );

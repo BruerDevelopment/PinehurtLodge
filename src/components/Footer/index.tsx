@@ -32,14 +32,14 @@ Please contact me through the following email:
   if (pathname.includes("/area-guide")) return
   return (
     <Footer>
-      <div>
+      {/* <div>
         <a style={{ "color": "white" }} href={`mailto:example@example.com?${Object.keys(email).reduce((s, n) => {
           if (s == "") return n + "=" + email[n].replaceAll(" ", "%20").replaceAll("\n","%0A");
           return `${s}&${n}=` + email[n].replaceAll(" ", "%20").replaceAll("\n","%0A")
         }, "").trim()}`}
         
         >Contact US</a>
-      </div>
+      </div> */}
       <div id="socials_links">
         <Link href="https://www.airbnb.com/rooms/1043540721907281297" target="_blank">
           <FaAirbnb />

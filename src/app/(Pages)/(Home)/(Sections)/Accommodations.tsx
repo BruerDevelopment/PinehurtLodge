@@ -62,7 +62,7 @@ export default () => {
         <img src="/HousePhotos/downstairs_living/trundle_6.jpg" loading="lazy"></img>
       </div>
       <div id="more">
-        <Link href="/accommodations#">Learn More</Link>
+        <Link href="/accommodations#DownstairsBedrooms">Learn More</Link>
       </div>
     </div>
   ]
@@ -101,7 +101,7 @@ export default () => {
       <span>Hot Tub & Pool Table</span>
       <div className="images">
         <img src="/HousePhotos/"  loading="lazy"></img>
-        <img src="/HousePhotos/"  loading="lazy"></img>
+        <img src="/HousePhotos/downstairs_living/pool_table3.jpg"  loading="lazy"></img>
       </div>
       <div id="more">
         <Link href="/accommodations#Activities">Learn More</Link>
@@ -219,6 +219,7 @@ const PictureCollumns = styled.div`
           width: 150px;
           aspect-ratio: 3/2;
           border-radius: 6px;
+          object-fit: cover;
           ${isMobile(css`
             width: 50%;
           `)}

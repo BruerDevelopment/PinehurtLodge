@@ -16,7 +16,7 @@ export default () => {
   return (
     <>
       <Section varient={1}>
-        <Title className="section-heading">View Other Experiences This Rental Offers</Title>
+        <h1 className="section-heading">View Other Experiences This Rental Offers</h1>
         <IntroArea data-coloralternate="1" data-direction="reverse">
           <img src="/AreaAttractions/Hiking_Trails_mountain_lake.jpg" loading="lazy"></img>
           <div id="text">
@@ -97,6 +97,8 @@ const IntroArea = styled.div`
     display: flex;
     flex-direction: column;
     min-height: var(--adjust-height);
+    justify-content: center;
+    gap: 20px;
 
     h3 {
       text-align: center;
@@ -105,7 +107,6 @@ const IntroArea = styled.div`
       margin-top: 0px;
     }
     p {
-      flex: 1;
     }
     #link {
       display: flex;

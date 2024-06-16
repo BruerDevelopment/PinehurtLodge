@@ -16,7 +16,7 @@ import { Section } from "../../../../../styles/Section";
 export default () => {
   return (
     <>
-      <Section varient={2} maxSize={1200}>
+      <Section varient={1} maxSize={1200}>
         <h1 className="section-heading">Plenty of Local Activities</h1>
         <CardWrapper>
           <div className="Card">
@@ -39,11 +39,11 @@ export default () => {
                 <img src="/AreaAttractions/Red-Rocks-Amphitheatre.jpeg"  loading="lazy"></img>
               </TwoImages>
               <CenterColumn>
-                <h3>Red Rocks Park & Amphitheatre</h3>
+                <h3>Black Hawk</h3>
                 <p>
-                  One of the most beautiful and renowned concert venues in the United States, Red Rocks Park & Amphitheatre draws a vast array of well-known artists from around the world. At 36 miles away, it is easily accessible to the Pinehurst Lodge.
+                  Founded in 1860 after the discovery of gold, this  town is filled with quaint shops, fine restaurants and over a dozen casinos, all nestled in historic architecture amid the backdrop of the Rocky Mountains! Dine, walk, shop or gamble in one of Colorado’s top destination cities.
                 </p>
-                <Link href="https://www.redrocksonline.com/" target="_blank">Visit Redrocks Online <BsBoxArrowUpRight /></Link>
+                <Link href="https://www.colorado.com/cities-and-towns/black-hawk" target="_blank">Visit Black Hawk <BsBoxArrowUpRight /></Link>
               </CenterColumn>
             </TwoColumns>
           </div>

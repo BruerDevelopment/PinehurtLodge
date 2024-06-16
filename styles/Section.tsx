@@ -37,6 +37,7 @@ const SectionVarient1 = styled.section<{$varient:number, $size:number, $align:"l
         text-align: center;
         scroll-margin-top: 100px;
         font-weight: bold;
+        margin-bottom: 20px;
     }
     h1.section-heading {
         font-size: 32px;

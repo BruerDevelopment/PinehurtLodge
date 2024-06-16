@@ -20,13 +20,13 @@ import { Section } from "../../../../styles/Section";
 export default () => {
   return (
     <>
-      <Section varient={1} maxSize={1200}>
-        <h1 className="section-heading">The Pinehurst Lodge Scrapbooking Retreat</h1>
+      <Section varient={2} maxSize={1200}>
+        <h1 className="section-heading">The Pinehurst Lodge ~ Scrapbooking Retreat</h1>
         <h2 className="section-subheading">
           This cozy getaway is ideal for scrapbooking, quilting, crafting, sewing & gaming, or groups of friends and family.
         </h2>
         <IntroArea>
-          <img src="/HousePhotos/craft_area/craft_1.jpg"></img>
+          <img src="/HousePhotos/craft_area/craft_22.jpg"></img>
           <div id="text">
             <h3>
               Surrounded by the beautiful Rocky Mountains, enjoy the breathtaking view of the Continental Divide while you scrapbook, craft or sew with friends at the Pinehurst Scrapbooking Retreat.

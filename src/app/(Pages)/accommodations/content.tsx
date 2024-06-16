@@ -9,6 +9,7 @@ import CraftingArea from "./(Sections)/CraftingArea";
 import Activities from "./(Sections)/Activities";
 import Bathrooms from "./(Sections)/Bathrooms";
 import Garage from "./(Sections)/Garage";
+import Laundries from "./(Sections)/Laundries";
 
 export default () => {
   return (
@@ -19,6 +20,7 @@ export default () => {
       <CraftingArea />
       <Activities />
       <Bathrooms />
+      <Laundries />
       <Garage />
     </>
   );

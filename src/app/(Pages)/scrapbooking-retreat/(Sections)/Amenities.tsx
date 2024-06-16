@@ -17,67 +17,173 @@ export default () => {
   
   return (
     <>
-      <Section>
-        <h1 className="section-heading">Amazing Amenities For All Kinds of Scrapbooking and Crafts</h1>
-        
+      <Section varient={2} maxSize={1200}>
+        <Title className="section-heading">Amazing Amenities For All Kinds of Scrapbooking and Crafts</Title>
+        <TwoColumns>
+          <div>
+            <TwoStackedImages>
+              <img src="/HousePhotos/laundry/downstairs_laundry.jpg" />
+              <img src="/HousePhotos/laundry/upstairs_laundry2.jpg" />
+            </TwoStackedImages>
+          </div>
+          <div>
+            <h2>2 Full Laundries</h2>
+            <p>
+              This retreat features a laundry room both upstairs and downstairs, each offering a full-sized washer and dryer.
+            </p>
+            
+          </div>
+        </TwoColumns>
+        <TwoColumns data-reverse="true">
+          <div>
+            <div>
+              <img src="/HousePhotos/upstairs_kitchen/kitchen_main.jpg" />
+              <img src="/HousePhotos/downstairs_kitchen/kitchen_main.jpg" />
+            </div>
+            <div>
+              <img src="/HousePhotos/upstairs_kitchen/upstairs_dining_table.jpg" />
+              <img src="/HousePhotos/upstairs_kitchen/coffee_area.jpg" />
+              <img src="/HousePhotos/upstairs_kitchen/BeverageFridge.png" />
+            </div>
+          </div>
+          <div>
+            <h2>2 Fully Equipped Kitchens</h2>
+            <p>
+              Each kitchen comes fully equipped with appliances, cookware, dishware, utensils, glassware & silverware. Each kitchen comes with a large dining table that expands with stored leaves inside the table offering plenty of additional work or gathering space.
+            </p>
+            
+          </div>
+        </TwoColumns>
       </Section>
     </>
   );
 }
 
-const PictureCollumns = styled.div`
+const Title = styled.h1`
+  &.section-heading {
+    font-size: 26px !important;
+  }
+`
+
+
+
+const TwoColumns = styled.div`
+  width: 90%;
   max-width: 900px;
-  width: 95%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  gap: 20px;  
+  &[data-reverse="true"] {
+    flex-direction: row-reverse;
+    margin-top: 120px;
+    @media screen and (max-width: 810px) {
+      margin-top: 0px;
+    }
+  }
   ${isMobile(css`
-    flex-direction: column;
-    
+    &, &[data-reverse="true"] {
+      flex-direction: column-reverse;
+    }
   `)}
   
-  #column {
+  div {
     display: flex;
+  }
+  
+  h3 {
+    margin: 0px;
+  }
+  h2 {
+    margin-bottom: 0px;
+    text-align: center;
+  }
+  & > div {
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 1;
     flex-direction: column;
-    
-    & > div { //line
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-weight: bold;
+    justify-content: center;
+    gap: 20px;
+    & > div {
+      gap: 20px;
+      width: 100%;
+      img {
+        flex: 1;
+        max-height: 130px;
+        background-color: red;
+        object-fit: cover;
+        border-radius: 6px;
 
-      .images {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        img {
-          width: 150px;
-          aspect-ratio: 3/2;
-          border-radius: 6px;
-          ${isMobile(css`
-            width: 50%;
-    
-          `)}
-          
-        }
-      }
-      #more {
-        display: flex;
-        justify-content: end;
-        flex-direction: row;
-        a {
-          background-color: var(--theme-color-3);
-          text-decoration: none;
-          color: white;
-          padding: 10px;
-          border-radius: 6px;
-          width: 130px;
-          text-align: center;
-        }
       }
     }
   }
 `
 
+const TwoStackedImages = styled.div`
+  position: relative;
+  padding: 20px;
+  flex: 1;
+  img {
+    aspect-ratio: 3 / 2;
+    max-height: none !important;
+    background-color: red;
+    object-fit: cover;
+    border-radius: 6px;
+    width: 100%;
+
+  }
+  img:first-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+  }
+  img:last-child {
+    position: absolute;
+    top: 85px;
+    right: 30px;
+    width: 60%;
+  }
+  @media screen and (max-width: 810px) {
+    & {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    }
+    img:first-child {
+      position: relative;
+      width: 100%;
+      top: auto;
+      right: auto;
+      left: auto;
+    }
+    img:last-child {
+      position: relative;
+      width: 100%;
+      top: auto;
+      right: auto;
+      left: auto;
+    }
+  }
+  ${isMobile(css`
+    & {
+      display: flex;
+      flex-direction: row;
+      padding: 0px;
+    }
+    img:first-child {
+      position: relative;
+      width: 50%;
+      top: auto;
+      right: auto;
+      left: auto;
+    }
+    img:last-child {
+      position: relative;
+      width: 50%;
+      top: auto;
+      right: auto;
+      left: auto;
+    }
+  `)}
+  
+`

@@ -38,7 +38,7 @@ export default function Splash() {
 
 const DesktopSplash = styled.div`
   img {
-    background-image: url("/HousePhotos/craft_area/craft_21.jpg");
+    background-image: url("/AreaAttractions/mountain.jpg");
     &::before {
       color: transparent;
     }

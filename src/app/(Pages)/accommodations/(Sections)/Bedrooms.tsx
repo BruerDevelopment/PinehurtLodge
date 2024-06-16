@@ -125,7 +125,9 @@ const TwoColumns = styled.div`
   .GapP {
     display: flex;
     flex-direction: column;
-    gap: 85px;
+    justify-content: space-between;
+    flex: 1;
+    margin-bottom: 35px;
     ${isMobile(css`
       gap: 10px;
     `)}

@@ -16,10 +16,10 @@ export default () => {
   
   return (
     <>
-      <Section varient={1} maxSize={1200}>
+      <Section varient={1}>
         <h1 className="section-heading">Amazing Amenities For All Kinds of Outdoor Recreation</h1>
         <IntroArea>
-          <img src="/AreaAttractions/Railroad_4.jpeg"></img>
+          <img src="/"></img>
           <div id="text">
             <h3>
               7-Person Hot Tub!
@@ -31,7 +31,7 @@ export default () => {
           </div>
         </IntroArea>
         <IntroArea data-direction="reverse">
-          <img src="/AreaAttractions/Railroad_4.jpeg"></img>
+          <img src="/HousePhotos/craft_area/craft_10.jpg"></img>
           <div id="text">
             <h3>
               Pool Table and Game Room
@@ -75,8 +75,8 @@ const IntroArea = styled.div`
     }
   `)}
   
-  --adjust-height: 400px;
-  --adjust-width: 530px;
+  --adjust-height: 300px;
+  --adjust-width: 400px;
   @media screen and (max-width: 1070px) {
       & {
         --adjust-width: 353px;

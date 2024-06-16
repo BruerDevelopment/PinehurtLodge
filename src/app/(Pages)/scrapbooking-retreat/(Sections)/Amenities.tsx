@@ -41,7 +41,7 @@ export default () => {
               <img src="/HousePhotos/downstairs_kitchen/kitchen_main.jpg" />
             </div>
             <div>
-              <img src="/HousePhotos/upstairs_kitchen/upstairs_dining_table.jpg" />
+              <img style={{"width":"90%"}} src="/HousePhotos/upstairs_kitchen/upstairs_dining_table.jpg" />
               <img src="/HousePhotos/upstairs_kitchen/coffee_area.jpg" />
               <img src="/HousePhotos/upstairs_kitchen/BeverageFridge.png" />
             </div>
@@ -107,11 +107,11 @@ const TwoColumns = styled.div`
       gap: 20px;
       width: 100%;
       img {
-        flex: 1;
         max-height: 130px;
         background-color: red;
         object-fit: cover;
         border-radius: 6px;
+        width: 50%;
 
       }
     }

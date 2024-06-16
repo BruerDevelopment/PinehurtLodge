@@ -139,6 +139,7 @@ const Menu = styled.div`
   flex-direction: column;
   gap: 5px;
   width: 50px;
+  min-width: 50px;
   margin-left: 10px;
   padding: 0px 10px;
   justify-content: center;

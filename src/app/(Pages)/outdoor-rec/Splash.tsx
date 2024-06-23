@@ -7,17 +7,19 @@ import { FaAngleDoubleDown } from "react-icons/fa";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { isMobile } from "../../../../styles/GlobalStyles";
+const SPLASH_URL = "/HousePhotos/view/view_main.jpg";
+const MOBILE_SPLASH_URL = SPLASH_URL;
 export default function Splash() {
   let isMobile = useIsMobile();
   return (
     <SplashWrap>
       {isMobile == false ? (
         <DesktopSplash>
-          <img alt="Desktop Splash" src="/AreaAttractions/mountain.jpg"/>
+          <img alt="Desktop Splash" src={SPLASH_URL} />
         </DesktopSplash>
       ): (
         <MobileSplash>
-          <img alt="Mobile Splash" src="/HousePhotos/craft_area/craft_21.jpg"/>
+          <img alt="Mobile Splash" src={MOBILE_SPLASH_URL}/>
         </MobileSplash>
       )}
       <Overlay>
@@ -38,7 +40,7 @@ export default function Splash() {
 
 const DesktopSplash = styled.div`
   img {
-    background-image: url("/AreaAttractions/mountain.jpg");
+    background-image: url(${SPLASH_URL});
     &::before {
       color: transparent;
     }
@@ -74,7 +76,7 @@ const DesktopSplash = styled.div`
 `
 const MobileSplash = styled.div`
   img {
-    background-image: url("/AreaAttractions/mountain.jpg");
+    background-image: url(${MOBILE_SPLASH_URL});
     &::before {
       color: transparent;
     }
@@ -125,6 +127,7 @@ const Overlay = styled.div`
     left: 50px;
     color: white;
     text-shadow: var(--theme-text-shadow);
+    
     ${isMobile(css`
       width: 90%;
       left: 50%;

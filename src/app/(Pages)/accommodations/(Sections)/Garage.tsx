@@ -10,7 +10,7 @@ import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { Section } from "../../../../../styles/Section";
-import { isMobile } from "../../../../../styles/GlobalStyles";
+import { isMobile, isNotMobile } from "../../../../../styles/GlobalStyles";
 
 export default () => {
   return (
@@ -80,6 +80,10 @@ const TwoColumns = styled.div`
     margin: 20px;
     box-sizing: border-box;
     width: 90%;
+    ${isNotMobile(css`
+      width: 350px;
+      height: 280px;
+    `)}
   }
   h3 {
     margin: 0px;

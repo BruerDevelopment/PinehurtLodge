@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
 import GlobalStyles from "../../styles/GlobalStyles";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import MenuBar from "@/components/MenuBar";
 import Footer from "@/components/Footer";
 import { CONFIG } from "../../site_config";
@@ -16,10 +16,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  userAgent
 }: Readonly<{
   children: React.ReactNode;
+  userAgent:any
 }>) {
-  
   return (
     <html lang="en">
       <head>

@@ -48,7 +48,7 @@ function PhotoCoursel(props:{id:string}) {
     }, [api])
     return (
         <PhotoList key={key}>
-                        <h1 id={key}>{photo_group_data[key].heading}</h1>
+                        <h2 id={key}>{photo_group_data[key].heading}</h2>
                         <div id="CarouselWrapper">
                             <Carousel
                                 opts={{
@@ -97,7 +97,8 @@ const PhotoList = styled.div`
             width: 100%;
         `)}
     }
-    h1 {
+    h1, h2 {
+        scroll-margin-top: 100px;
         padding: 0px 3rem ;
         font-size: 21px;
         font-weight: bold;

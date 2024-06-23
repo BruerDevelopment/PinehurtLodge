@@ -85,7 +85,7 @@ export default () => {
           <h1>Pinehurst Lodge</h1>
           <Menu onClick={() => {
             setMenuOpen(!menuOpen);
-          }} style={{"paddingTop":"10px", "paddingRight":"20px"}}>
+          }}>
             <IoCloseSharp />
           </Menu>
         </div>
@@ -140,8 +140,7 @@ const Menu = styled.div`
   gap: 5px;
   width: 50px;
   min-width: 50px;
-  margin-left: 10px;
-  padding: 0px 10px;
+  padding: 10px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -176,11 +175,10 @@ const MobileMenu = styled.div`
   }
   #title {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    padding: 0px 20px;
     h1 {
-      padding-left: 20px;
-      width: 100%;
+      flex: 1;
       height: 30px;
       display: flex;
       justify-content: start;
@@ -188,7 +186,7 @@ const MobileMenu = styled.div`
       color: white;
       text-decoration: none;
       font-size: 30px;
-      text-shadow: 0 4px 6px black;
+      text-shadow: var(--theme-text-shadow);
       margin-bottom: 0px;
     }
   }
@@ -276,7 +274,7 @@ const Bar = styled.div`
   align-items: center;
   padding: 0px 10px;
   h1 {
-    text-shadow: 0 4px 6px black;
+    text-shadow: var(--theme-text-shadow);
     padding: 0px;
     padding-left: 0px;
     margin: 0px;

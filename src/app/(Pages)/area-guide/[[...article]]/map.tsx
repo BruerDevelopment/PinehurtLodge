@@ -59,9 +59,28 @@ const MapComp = (props: {
     );
     const zoom = useMemo(()=>selectedMeta != undefined ? selectedMeta.zoom : 10, []);
     const options = useMemo<MapOptions>(() => ({
-        mapId: "6afb7634bb596e57",
         disableDefaultUI: true,
         clickableIcons: false,
+        styles: [
+            {
+              "featureType": "all",
+              "elementType": "labels.text",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "elementType": "labels.icon",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            }
+        ]
     }), []);
     let groups = props.places.filter(p => p.isGroup && p.groupid != undefined).map(p=>p.groupid);
     let ungrouped_markers = props.places.filter(p => p.isGroup != true && p.group == undefined);

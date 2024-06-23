@@ -45,6 +45,7 @@ const DesktopSplash = styled.div`
     height: 100%;
     background-position: center;
     background-size: cover;
+    object-fit: cover;
 
   }
   img, svg {
@@ -79,6 +80,7 @@ const MobileSplash = styled.div`
     height: 100%;
     background-position: center;
     background-size: cover;
+    object-fit: cover;
   }
   display: none;
   img, svg {

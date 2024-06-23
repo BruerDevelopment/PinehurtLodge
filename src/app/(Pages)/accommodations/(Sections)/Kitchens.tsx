@@ -130,11 +130,7 @@ const TwoColumns = styled.div`
   
   &#GrillDetails {
     #grillText {
-      ${isMobile(css`
-        &, &[data-reverse="true"] {
-          max-width: 200px;
-        }
-      `)}
+      
       
       max-width: auto;
     }

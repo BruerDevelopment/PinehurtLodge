@@ -3,6 +3,19 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 import styled, { FastOmit, Interpolation, createGlobalStyle, css } from 'styled-components';
 
+function loadBrowser() {
+    try {
+        let body = document.body;
+        if (body == undefined) return;
+        if (navigator == undefined) return;
+        console.log(navigator.userAgent)
+        if (navigator.userAgent.includes("Chrome")) {
+            body.setAttribute("data-browser", "chrome")
+        }
+    } catch(e) {}
+}
+loadBrowser();
+
 const GlobalStyles = createGlobalStyle`
   body {
     margin: 0px;
@@ -20,7 +33,7 @@ const GlobalStyles = createGlobalStyle`
       --theme-color-4: #233F4C;
       --theme-color-5: #2A7E77;
 
-      --theme-text-shadow: 0px 4px 4px black;
+      --theme-text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, -2px 4px 6px black;;
     }
     
   }
@@ -34,6 +47,7 @@ export function isMobile(...content: Interpolation<FastOmit<DetailedHTMLProps<HT
 export function isNotMobile(...content: Interpolation<FastOmit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>[]): Interpolation<object> { 
     return screenGreaterThan("mobile", content)
 }
+
 
 export function screenLessThan(size:"mobile"|number, ...content: Interpolation<FastOmit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>[]): Interpolation<object> {
     let _size = `${size}px`;
@@ -58,6 +72,20 @@ export function screenGreaterThan(size:"mobile"|number, ...content: Interpolatio
         & {
             ${content.join("")}
         }
+    }
+    `
+}
+export function isBrowser(browser:"chrome", ...content: Interpolation<FastOmit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>[]): Interpolation<object> {
+    return `
+    body[data-browser="${browser}"] & {
+        ${content.join("")}
+    }
+    `
+}
+export function isNotBrowser(browser:"chrome", ...content: Interpolation<FastOmit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, never>>[]): Interpolation<object> {
+    return `
+    body[data-browser!="${browser}"] & {
+        ${content.join("")}
     }
     `
 }

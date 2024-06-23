@@ -10,7 +10,7 @@ import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { Section } from "../../../../../styles/Section";
-import { isMobile } from "../../../../../styles/GlobalStyles";
+import { isNotBrowser, isBrowser, isMobile } from "../../../../../styles/GlobalStyles";
 
 export default () => {
   return (
@@ -72,11 +72,15 @@ const Rooms = styled.div`
       flex-direction: column;
     `)}
     #double {
-      width: 200%;
       display: flex;
       gap: 10px;
+      min-width: 350px;
+      img {
+        width: 170px;
+      }
       ${isMobile(css`
         & {
+          min-width: 100%;
           width: 100%;
         }
         img {
@@ -86,11 +90,16 @@ const Rooms = styled.div`
       
     }
     img {
+      
+      box-sizing: border-box;
+      width: 260px;
       background-color: red;
       object-fit: cover;
       border-radius: 6px;
-      width: 100%;
       aspect-ratio: 3 / 2;
+      ${isMobile(css`
+        width: 100%;
+      `)}
     }
   }
 `

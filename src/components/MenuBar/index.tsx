@@ -69,7 +69,7 @@ export default () => {
             </dialog>
           </MenuDropdown>
           <Link href="/accommodations" onClick={(e:any)=>nav(e.target)}>Accommodations</Link>
-          <Link href="/gallery" onClick={(e:any)=>nav(e.target)}>Gallery</Link>
+          <Link href="/gallery" onClick={(e:any)=>nav(e.target)}>Photo Gallery</Link>
           <Link href="/area-guide" onClick={(e:any)=>nav(e.target)}>Area Guide</Link>
         </div>
         <Link id="book_now" href="https://www.airbnb.com/rooms/1043540721907281297">Book Now</Link>

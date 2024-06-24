@@ -42,7 +42,7 @@ export function ClientContent() {
                 <StyledDialogContent>
                     <DialogHeader id="header">
                         <DialogTitle>{photo_group_data[selectedPhoto.key]?.heading || "Photos"}</DialogTitle>
-                        <DialogDescription id="mobileMsg">To View More Slide Photos To The Left</DialogDescription>
+                        <DialogDescription id="mobileMsg">To View More Photos, Slide To The Left</DialogDescription>
                     </DialogHeader>
                     <FullGallary api={api} key={selectedPhoto.key} id={selectedPhoto.key} index={selectedPhoto.i} />
                 </StyledDialogContent>

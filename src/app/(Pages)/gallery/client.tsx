@@ -12,7 +12,7 @@ import { DetailedHTMLProps, Dispatch, HTMLAttributes, SetStateAction, useEffect,
 import styled, { css } from "styled-components";
 import { Section } from "../../../../styles/Section";
 import { photo_group_data } from "./data";
-import { isMobile, screenLessThan } from "../../../../styles/GlobalStyles";
+import { isMobile, isNotMobile, screenLessThan } from "../../../../styles/GlobalStyles";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { FastOmit, IStyledComponentBase } from "styled-components/dist/types";
  
@@ -40,8 +40,9 @@ export function ClientContent() {
             </Section>
             <Dialog open={open} onOpenChange={setOpen}>
                 <StyledDialogContent>
-                    <DialogHeader>
-                    <DialogTitle>{ photo_group_data[selectedPhoto.key]?.heading || "Photos"}</DialogTitle>
+                    <DialogHeader id="header">
+                        <DialogTitle>{photo_group_data[selectedPhoto.key]?.heading || "Photos"}</DialogTitle>
+                        <DialogDescription id="mobileMsg">Slide photos</DialogDescription>
                     </DialogHeader>
                     <FullGallary api={api} key={selectedPhoto.key} id={selectedPhoto.key} index={selectedPhoto.i} />
                 </StyledDialogContent>
@@ -52,6 +53,25 @@ export function ClientContent() {
 const StyledDialogContent = styled(DialogContent)`
     width: 100%;
     max-width: 90%;
+    background-color: var(--theme-color-5);
+    border: 0px;
+    & > button {
+        width: 30px;
+        height: 30px;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    #header {
+        align-items: start;
+    }
+    #mobileMsg {
+        color: white;
+        ${isNotMobile(css`
+            display: none;
+        `)}
+    }
     ${isMobile(css`
         max-width: 100%;
     `)}
@@ -97,7 +117,7 @@ function FullGallary(props: {
         <CarouselContent>
             {photo_group_data[props.id].imgs.map((img, index) => (
                 <CarouselItem key={index} style={{"flexBasis":"100%"}}>
-                <Card>
+                <Card className="Card">
                     <CardContent className="flex aspect-square items-center justify-center" includepadding={""}>
                         <img className="image" src={img.src}/>
                     </CardContent>
@@ -108,7 +128,7 @@ function FullGallary(props: {
         <CarouselPrevious className="prevButton"/>
         <CarouselNext className="nextButton" />
       </StyledCarousel>
-      <div className="py-2 text-center text-sm text-muted-foreground">
+      <div className="py-2 text-center text-sm">
         Slide {current} of {count}
       </div>
     </div>
@@ -118,12 +138,17 @@ function FullGallary(props: {
 const StyledCarousel = styled(Carousel)`
     width: 90%;
     ${isMobile(css`
-        width: 85%;
+        width: 110%;
     `)}
     & .image {
         width: 100%;
         height: 100%;
         object-fit: contain;
+    }
+    .Card {
+        background-color: var(--theme-color-5);
+        border: 0px;
+        color: black;
     }
     .prevButton {
         height: 100%;

@@ -267,7 +267,7 @@ const Bar = styled.div`
   right: 0px;
   height: 40px;
   background-color: var(--theme-color-5);
-  z-index: 100;
+  z-index: 49;
   box-shadow: 0px 0px 10px 0px black;
   display: flex;
   flex-direction: row;

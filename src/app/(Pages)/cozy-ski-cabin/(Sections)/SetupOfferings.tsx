@@ -15,7 +15,7 @@ import { Section } from "../../../../../styles/Section";
 export default () => {
   return (
     <>
-      <Section varient={1}>
+      <Section varient={2}>
         <h1 className="section-heading">View Other Experiences This Rental Offers</h1>
         <IntroArea data-coloralternate="1" data-direction="reverse">
           <img src="/AreaAttractions/Hiking_Trails_mountain_lake.jpg" loading="lazy"></img>

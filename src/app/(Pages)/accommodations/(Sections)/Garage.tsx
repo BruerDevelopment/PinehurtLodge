@@ -15,7 +15,7 @@ import { isMobile, isNotMobile } from "../../../../../styles/GlobalStyles";
 export default () => {
   return (
     <>
-      <Section varient={2}>
+      <Section varient={1}>
         <h1 className="section-heading">Garage</h1>
         <TwoColumns>
           <img src="/HousePhotos/garage/garage.jpg"/>
@@ -30,7 +30,7 @@ export default () => {
           </div>
         </TwoColumns>
         <MoreLink>
-          <Link href="/gallery#garage">View More Of the Crafting Setup <br /> In Our Photos Gallery</Link>
+          <Link href="/gallery#garage">View More Of The Garage <br /> In Our Photos Gallery</Link>
         </MoreLink>
       </Section>
     </>

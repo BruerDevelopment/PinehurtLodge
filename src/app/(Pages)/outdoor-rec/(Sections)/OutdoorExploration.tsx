@@ -16,7 +16,7 @@ import { isMobile } from "../../../../../styles/GlobalStyles";
 export default () => {
   return (
     <>
-      <Section varient={2}>
+      <Section varient={1}>
         <h1 className="section-heading">Close To A Plethora of Adventurous Outdoor Recreation</h1>
         <ToolBar>
           <Link href="/area-guide" target="_blank">Expore The Full Guide<BsBoxArrowUpRight /></Link>

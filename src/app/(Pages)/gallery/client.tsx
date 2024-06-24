@@ -5,16 +5,29 @@ import {
   CarouselApi,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
+    CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { useEffect, useState } from "react";
+import { DetailedHTMLProps, Dispatch, HTMLAttributes, SetStateAction, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { Section } from "../../../../styles/Section";
 import { photo_group_data } from "./data";
 import { isMobile, screenLessThan } from "../../../../styles/GlobalStyles";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { FastOmit, IStyledComponentBase } from "styled-components/dist/types";
  
 export function ClientContent() {
+    let [selectedPhoto, _setSelectedPhoto] = useState({ key: "", i: 0 });
+    const [open, setOpen] = useState(false);
+    const api = useState<CarouselApi>()
+
+    const setSelectedPhoto = (data:any) => {
+        setOpen(true);
+        _setSelectedPhoto(data)
+    }
+    useEffect(() => {
+        console.log("selectedPhoto", selectedPhoto)
+    }, [selectedPhoto])
     return (
         <>
             <main>
@@ -23,13 +36,115 @@ export function ClientContent() {
                 </Section>
             </main>
             <Section varient={1} maxSize={1200} align="left">
-                {Object.keys(photo_group_data).map(key => <PhotoCoursel key={ key} id={key} />)}
+                {Object.keys(photo_group_data).map(key => <PhotoCoursel key={key} id={key} setSelectedPhoto={ setSelectedPhoto} />)}
             </Section>
+            <Dialog open={open} onOpenChange={setOpen}>
+                <StyledDialogContent>
+                    <DialogHeader>
+                    <DialogTitle>{ photo_group_data[selectedPhoto.key]?.heading || "Photos"}</DialogTitle>
+                    </DialogHeader>
+                    <FullGallary api={api} key={selectedPhoto.key} id={selectedPhoto.key} index={selectedPhoto.i} />
+                </StyledDialogContent>
+            </Dialog>
         </>
   )
 }
+const StyledDialogContent = styled(DialogContent)`
+    width: 100%;
+    max-width: 90%;
+    ${isMobile(css`
+        max-width: 100%;
+    `)}
+    & > div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+`
 
-function PhotoCoursel(props:{id:string}) {
+function FullGallary(props: {
+    api:[CarouselApi | undefined, Dispatch<SetStateAction<CarouselApi | undefined>>],
+    id: string,
+    index?: number,
+}) {
+    const [api, setApi] = props.api;
+    const [current, setCurrent] = useState(props.index != undefined ? props.index : 0)
+  const [count, setCount] = useState(props.index != undefined ? props.index : 0)
+    useEffect(() => {
+        if (!api) {
+            return
+        }
+        if (props.index == undefined) return;
+        api.scrollTo(props.index)
+    }, [props])
+  useEffect(() => {
+    if (!api) {
+      return
+    }
+ 
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+ 
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
+ 
+  return (
+    <div>
+        <StyledCarousel setApi={setApi}>
+        <CarouselContent>
+            {photo_group_data[props.id].imgs.map((img, index) => (
+                <CarouselItem key={index} style={{"flexBasis":"100%"}}>
+                <Card>
+                    <CardContent className="flex aspect-square items-center justify-center" includepadding={""}>
+                        <img className="image" src={img.src}/>
+                    </CardContent>
+                </Card>
+                </CarouselItem>
+            ))}
+        </CarouselContent>
+        <CarouselPrevious className="prevButton"/>
+        <CarouselNext className="nextButton" />
+      </StyledCarousel>
+      <div className="py-2 text-center text-sm text-muted-foreground">
+        Slide {current} of {count}
+      </div>
+    </div>
+    )
+}
+
+const StyledCarousel = styled(Carousel)`
+    width: 90%;
+    ${isMobile(css`
+        width: 85%;
+    `)}
+    & .image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    .prevButton {
+        height: 100%;
+        border-radius: 6px;
+        left: 0;
+        transform: translate(calc(-100% - 10px), -50%);
+    }
+    .nextButton {
+        height: 100%;
+        border-radius: 6px;
+        right: 0;
+        transform: translate(calc(100% + 10px), -50%);
+    }
+`
+
+function PhotoCoursel(props: {
+    id: string,
+    index?: number,
+    useHeader?:boolean,
+    setSelectedPhoto?: Dispatch<SetStateAction<{ key: string; i: number; }>>
+}) {
     const [api, setApi] = useState<CarouselApi>()
     const [current, setCurrent] = useState(0);
     const [count, setCount] = useState(0);
@@ -48,40 +163,47 @@ function PhotoCoursel(props:{id:string}) {
     }, [api])
     return (
         <PhotoList key={key}>
-                        <h2 id={key}>{photo_group_data[key].heading}</h2>
-                        <div id="CarouselWrapper">
-                            <Carousel
-                                opts={{
-                                    align: "start",
-                                }}
-                                className=""
-                                setApi={setApi}
-                                >
-                                <CarouselContent className="content">
-                                    {photo_group_data[key].imgs.map((img, index) => (
-                                        <CarouselItem key={index} className="">
-                                            <Image src={img.src} />
-                                        </CarouselItem>
-                                ))}
-                                </CarouselContent>
-                                <CarouselPrevious className="prevButton"/>
-                                <CarouselNext className="nextButton" />
-                                <div className="scrollIndicator">
-                                {Array.from({ length: count }).map((_, index) => (
-                                    <span
-                                        key={index}
-                                        className={`indicator`}
-                                        style={{
-                                            "cursor":"pointer",
-                                            "backgroundColor":index + 1 === current ? "var(--theme-color-3)" : "var(--theme-color-4)"
-                                        }}
-                                        onClick={() => api && api.scrollTo(index)}
-                                    />
-                                ))}
-                                </div>
-                            </Carousel>
-                        </div>
-                    </PhotoList>
+            {props.useHeader != false &&
+                <h2 id={key}>{photo_group_data[key].heading}</h2>
+            }
+            <div id="CarouselWrapper">
+                <Carousel
+                    opts={{
+                        align: "start",
+                    }}
+                    className=""
+                    setApi={setApi}
+                    >
+                    <CarouselContent className="content">
+                        {photo_group_data[key].imgs.map((img, index) => (
+                            <CarouselItem key={index} className="">
+                                <Image src={img.src} onClick={() => {
+                                    props.setSelectedPhoto?.({
+                                        key,
+                                        i:index
+                                    })
+                                }}/>
+                            </CarouselItem>
+                    ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="prevButton"/>
+                    <CarouselNext className="nextButton" />
+                    <div className="scrollIndicator">
+                    {Array.from({ length: count }).map((_, index) => (
+                        <span
+                            key={index}
+                            className={`indicator`}
+                            style={{
+                                "cursor":"pointer",
+                                "backgroundColor":index + 1 === current ? "var(--theme-color-3)" : "var(--theme-color-4)"
+                            }}
+                            onClick={() => api && api.scrollTo(index)}
+                        />
+                    ))}
+                    </div>
+                </Carousel>
+            </div>
+        </PhotoList>
     )
 }
 

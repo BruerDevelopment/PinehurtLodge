@@ -64,7 +64,7 @@ export default () => {
             >
               <Link href="/outdoor-rec" onClick={(e:any)=>nav(e.target)}>Outdoor Recreation “Base-Camp”</Link>
               <Link href="/scrapbooking-retreat" onClick={(e:any)=>nav(e.target)}>Scrapbooking / Crafting Retreat</Link>
-              <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Ski Lodge</Link>
+              <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Cozy Ski Lodge</Link>
             </dialog>
           </MenuDropdown>
           <Link href="/accommodations" onClick={(e:any)=>nav(e.target)}>Accommodations</Link>

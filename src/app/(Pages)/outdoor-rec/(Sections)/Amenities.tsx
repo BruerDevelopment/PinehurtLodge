@@ -16,7 +16,7 @@ export default () => {
   
   return (
     <>
-      <Section varient={1}>
+      <Section varient={2}>
         <h1 className="section-heading">Amazing Amenities For All Kinds of Outdoor Recreation</h1>
         <IntroArea>
           <img src="/"></img>

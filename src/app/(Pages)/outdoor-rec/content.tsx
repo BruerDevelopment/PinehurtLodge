@@ -20,7 +20,7 @@ import { Section } from "../../../../styles/Section";
 export default () => {
   return (
     <>
-      <Section varient={1} maxSize={1200}>
+      <Section varient={2} maxSize={1200}>
         <h1 className="section-heading">The Pinehurst Lodge ~ Your Luxury Base Camp</h1>
         <h2 className="section-subheading">
           This cozy getaway is ideal for hikers, fishermen, rafters, mountain bikers and rock climbers 

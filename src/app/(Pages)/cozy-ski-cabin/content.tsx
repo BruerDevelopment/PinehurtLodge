@@ -20,7 +20,7 @@ import { Section } from "../../../../styles/Section";
 export default () => {
   return (
     <>
-      <Section varient={1} maxSize={1200}>
+      <Section varient={2} maxSize={1200}>
         <h1 className="section-heading">The Pinehurst Lodge ~ Cozy Ski Cabin</h1>
         <h2 className="section-subheading">
           This cozy getaway is ideal for scrapbooking, quilting, crafting, sewing & gaming, or groups of friends and family.
@@ -78,7 +78,7 @@ export default () => {
           </div>
         </IntroArea>
       </Section>
-      <CraftingArea />
+      <OutdoorExploration />
       <Amenities />
       <LocalActivities />
       <SetupOfferings />

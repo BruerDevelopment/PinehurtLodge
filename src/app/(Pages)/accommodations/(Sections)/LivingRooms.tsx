@@ -52,7 +52,7 @@ export default () => {
           </div>
         </TwoColumns>
         <MoreLink>
-          <Link href="/gallery#living_rooms">View More Of the Living Rooms <br /> In Our Photos Gallery</Link>
+          <Link href="/gallery#living_rooms">View More Of The Living Rooms <br /> In Our Photos Gallery</Link>
         </MoreLink>
       </Section>
     </>

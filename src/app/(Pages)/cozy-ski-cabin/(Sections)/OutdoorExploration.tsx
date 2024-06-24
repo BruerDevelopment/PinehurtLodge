@@ -16,22 +16,9 @@ import { isMobile } from "../../../../../styles/GlobalStyles";
 export default () => {
   return (
     <>
-      <Section>
-        <h1 className="section-heading">Outdoor Exploration</h1>
-        <Paragraph>
-          Whether you're seeking outdoor adventures, cultural exploration, or culinary delights,
-          our guide is your passport to discovering the hidden gems and cherished landmarks
-          that make our area so special. Each recommendation in our guide has been handpicked
-          to ensure you make the most of your stay. So, grab your map, lace up your hiking boots,
-          and get ready to embark on a journey of discovery in the enchanting surroundings of Pinehurst Lodge.
-        </Paragraph>
-        <Spacer />
-        <Paragraph>
-          Click the different locations to explore! (The map may take a minute or two to load on 4G LTE.)
-        </Paragraph>
-        <Spacer />
+      <Section varient={1}>
+        <h1 className="section-heading">Close to a Plethora of Colorado’s Finest Ski Resorts</h1>
         <ToolBar>
-
           <Link href="/area-guide" target="_blank">Expore The Full Guide<BsBoxArrowUpRight /></Link>
         </ToolBar>
         <IFrame src="/area-guide?hideNav" loading="lazy"></IFrame>
@@ -74,6 +61,6 @@ const IFrame = styled("iframe")`
   aspect-ratio: 3/2;
   ${isMobile(css`
     aspect-ratio: 3/4;
+    
   `)}
-  
 `

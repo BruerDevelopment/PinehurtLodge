@@ -15,7 +15,7 @@ import { isMobile, isNotMobile } from "../../../../../styles/GlobalStyles";
 export default () => {
   return (
     <>
-      <Section varient={1}>
+      <Section varient={2}>
         <Title className="section-heading">Two Full Laundries</Title>
         <Columns>
           <div>
@@ -43,12 +43,36 @@ export default () => {
           </div>
           
         </Columns>
+        <MoreLink>
+          <Link href="/gallery#laundries">View More Of The Living Rooms <br /> In Our Photos Gallery</Link>
+        </MoreLink>
       </Section>
     </>
   );
 }
 const Title = styled.h1`
   font-size: 21px;
+`
+const MoreLink = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  @media screen and (max-width: 810px) {
+    margin-top: 0px;
+  }
+  a {
+    background-color: var(--theme-color-3);
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 30px;
+    text-align: center;
+    
+  }
 `
 
 const Columns = styled.div`

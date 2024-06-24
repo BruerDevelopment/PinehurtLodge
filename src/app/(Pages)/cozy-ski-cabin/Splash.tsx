@@ -130,6 +130,7 @@ const Overlay = styled.div`
     ${isMobile(css`
       width: 90%;
       left: 50%;
+      top: 50%;
       transform: translateX(-50%);
       justify-content: center;
       align-items: center;
@@ -157,6 +158,7 @@ const Overlay = styled.div`
     span {
       margin-bottom: 24px;
       font-size: 20px;
+      text-align: center;
     }
     a {
       background-color: var(--theme-color-5);

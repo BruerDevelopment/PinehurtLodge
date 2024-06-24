@@ -156,6 +156,7 @@ const Overlay = styled.div`
     span {
       margin-top: 24px;
       font-size: 20px;
+      text-align: center;
     }
     a {
       background-color: var(--theme-color-5);

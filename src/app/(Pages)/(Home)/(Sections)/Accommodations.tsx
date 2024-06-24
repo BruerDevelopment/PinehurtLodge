@@ -100,7 +100,7 @@ export default () => {
     <div key="Amenities 4">
       <span>Hot Tub & Pool Table</span>
       <div className="images">
-        <img src="/HousePhotos/"  loading="lazy"></img>
+        <img src="/HousePhotos/downstairs_deck/hot_tub.jpg"  loading="lazy"></img>
         <img src="/HousePhotos/downstairs_living/pool_table3.jpg"  loading="lazy"></img>
       </div>
       <div id="more">
@@ -217,7 +217,7 @@ const PictureCollumns = styled.div`
         gap: 10px;
         img {
           width: 150px;
-          aspect-ratio: 3/2;
+          aspect-ratio: 5/4;
           border-radius: 6px;
           object-fit: cover;
           ${isMobile(css`

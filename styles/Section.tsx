@@ -53,6 +53,7 @@ const SectionVarient1 = styled.section<{$varient:number, $size:number, $align:"l
     }
 
     ${matchProp("$varient", 1, css`
+        --heading-color: white;
         background-color: var(--theme-color-5);
         color: white;
         .section-heading {
@@ -62,8 +63,9 @@ const SectionVarient1 = styled.section<{$varient:number, $size:number, $align:"l
     ${matchProp("$varient", 2, css`
         background-color: var(--theme-color-2);
         color: black;
+        --heading-color: var(--theme-color-5);
         .section-heading {
-            color: var(--theme-color-5);
+            color: var(--heading-color);
         }
     `)}
     & > div {

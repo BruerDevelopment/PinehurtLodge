@@ -23,57 +23,25 @@ export default () => {
       <Section varient={2} maxSize={1200}>
         <h1 className="section-heading">The Pinehurst Lodge ~ Cozy Ski Cabin</h1>
         <h2 className="section-subheading">
-          This cozy getaway is ideal for scrapbooking, quilting, crafting, sewing & gaming, or groups of friends and family.
+        This cozy getaway is ideal for skiers, snowboarders, snowshoers and groups of friends and family.
         </h2>
         <IntroArea>
-          <img src="/HousePhotos/craft_area/craft_1.jpg"></img>
+          <img src="/HousePhotos/downstairs_deck/hot_tub1.jpg"></img>
           <div id="text">
-            <h3>
-              Surrounded by the beautiful Rocky Mountains, enjoy the breathtaking view of the Continental Divide while you scrapbook, craft or sew with friends at the Pinehurst Scrapbooking Retreat.
+            <h3 className="section-heading">
+            Surrounded by the beautiful Front Range of the Rocky Mountains, with easy access to several of Colorado’s finest ski areas,
+            lies the Pinehurst Lodge. 
             </h3>
             <p>
-              Our setup includes 6 each:
-              </p>
-              <ul>
-                <li>
-                  3’x6’ folding resin table
-                </li>
-                <li>
-                  -padded folding chair
-                  
-                </li>
-                <li>
-                  -waste bin
-
-                </li>
-                <li>
-                  -magnifying ring craft light
-                </li>
-              </ul>
-
-            <p>
-              Our retreat features ultra amenities:
+              The Pinehurst Lodge is your perfect mountain getaway, easily accessible to both Denver and the slopes! High up in the
+              Front Range, but only a 1/4 mile off the Peak to Peak Scenic Byway, this mountain retreat is within driving distance
+              to numerous mountain adventures. Eldora Mountain is a mere 8.7 miles and offers downhill skiing & snowboarding as
+              well as over 40k of cross country trails. Winter Park, Breckenridge, Keystone,  Copper Mountain & Arapahoe Basin
+              are all within driving distance too!
             </p>
-              <ul>
-                <li>
-              -2 full kitchens
-                  
-                </li>
-                <li>
-              -2 laundries with washer & dryer
-
-                </li>
-                <li>
-              -garage parking for two vehicles
-
-                </li>
-                <li>
-              -many additional tables & work spaces
-
-                </li>
-              </ul>
-
-
+            <p>
+              Then return after a day in the mountains to soak in the hot tub, relax and enjoy time with friends and family.
+            </p>
   
           </div>
         </IntroArea>

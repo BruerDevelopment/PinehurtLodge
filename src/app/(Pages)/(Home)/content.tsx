@@ -23,7 +23,7 @@ export default () => {
         <h1 className="section-heading">Welcome to the Pinehurst Lodge</h1>
         <h2 className="section-subheading">Gather your friends, relax and enjoy the beautiful mountain environment.</h2>
         <IntroArea>
-          <img src="/HousePhotos/downstairs_living/downstairs_living_room_6.jpg"></img>
+          <img src="/HousePhotos/downstairs_deck/hot_tub1.jpg"></img>
           <div id="text">
             <h3>In the beautiful Rocky Mountains, with a fabulous view and a large, brand new Arctic Spas hot tub, awaits the Pinehurst Lodge. </h3>
             <p>

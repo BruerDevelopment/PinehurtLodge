@@ -19,7 +19,7 @@ export default () => {
       <Section varient={2}>
         <h1 className="section-heading">Amazing Amenities for your Perfect Ski Holiday</h1>
         <IntroArea>
-          <img src="/"></img>
+          <img src="/HousePhotos/downstairs_deck/hot_tub1.jpg"></img>
           <div id="text">
             <h3>
               7-Person Hot Tub!

@@ -5,7 +5,9 @@ import Content from "./content";
 import { Metadata } from "next";
 
 import { BuildPageMeta } from "@/app/metaDefaults";
-export const metadata: Metadata = BuildPageMeta({})
+export const metadata: Metadata = BuildPageMeta({
+  title:"Outdoor Recreation \"Base-Camp\""
+})
 
 export default function Home() {
   return (

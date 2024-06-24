@@ -42,7 +42,7 @@ export function ClientContent() {
                 <StyledDialogContent>
                     <DialogHeader id="header">
                         <DialogTitle>{photo_group_data[selectedPhoto.key]?.heading || "Photos"}</DialogTitle>
-                        <DialogDescription id="mobileMsg">Slide photos</DialogDescription>
+                        <DialogDescription id="mobileMsg">To View More Slide Photos To The Left</DialogDescription>
                     </DialogHeader>
                     <FullGallary api={api} key={selectedPhoto.key} id={selectedPhoto.key} index={selectedPhoto.i} />
                 </StyledDialogContent>
@@ -51,10 +51,15 @@ export function ClientContent() {
   )
 }
 const StyledDialogContent = styled(DialogContent)`
-    width: 100%;
-    max-width: 90%;
+    width: 90%;
+    max-height: 90%;
+    max-width: 1000px;
     background-color: var(--theme-color-5);
     border: 0px;
+    ${isMobile(css`
+        width: 100%;
+        max-width: 100%;
+    `)}
     & > button {
         width: 30px;
         height: 30px;
@@ -72,9 +77,7 @@ const StyledDialogContent = styled(DialogContent)`
             display: none;
         `)}
     }
-    ${isMobile(css`
-        max-width: 100%;
-    `)}
+    
     & > div:nth-child(2) {
         display: flex;
         flex-direction: column;
@@ -118,7 +121,7 @@ function FullGallary(props: {
             {photo_group_data[props.id].imgs.map((img, index) => (
                 <CarouselItem key={index} style={{"flexBasis":"100%"}}>
                 <Card className="Card">
-                    <CardContent className="flex aspect-square items-center justify-center" includepadding={""}>
+                    <CardContent className="flex items-center justify-center" includepadding={""}>
                         <img className="image" src={img.src}/>
                     </CardContent>
                 </Card>
@@ -143,12 +146,20 @@ const StyledCarousel = styled(Carousel)`
     & .image {
         width: 100%;
         height: 100%;
+        max-height: 90%;
         object-fit: contain;
     }
     .Card {
         background-color: var(--theme-color-5);
         border: 0px;
         color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & > div {
+            aspect-ratio: 3 / 2;
+            max-height: 70vh;
+        }
     }
     .prevButton {
         height: 100%;

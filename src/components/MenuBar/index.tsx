@@ -53,7 +53,8 @@ export default () => {
             }}
             
           >
-            <span>Experiences</span>
+            <Link href="/experiences" onClick={(e:any)=>nav(e.target)}>Experiences</Link>
+
             <dialog id="exper_dialog" open={false}
               onMouseEnter={() => {
                 getDialog("exper_dialog")?.show();
@@ -91,7 +92,7 @@ export default () => {
         </div>
         <Link href="/" onClick={(e: any) => nav(e.target)}>Home</Link>
         <div className="subtab">
-          <span>Experiences</span>
+          <Link id="header" href="/experiences" onClick={(e:any)=>nav(e.target)}>Experiences</Link>
           <Link href="/outdoor-rec" onClick={(e:any)=>nav(e.target)}>Outdoor Recreation “Base-Camp”</Link>
           <Link href="/scrapbooking-retreat" onClick={(e:any)=>nav(e.target)}>Scrapbooking / Crafting Retreat</Link>
           <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Ski Lodge</Link>
@@ -203,7 +204,7 @@ const MobileMenu = styled.div`
     padding-left: 20px;
   }
   .subtab {
-    span {
+    #header {
       cursor: pointer;
       width: 100%;
       height: 50px;

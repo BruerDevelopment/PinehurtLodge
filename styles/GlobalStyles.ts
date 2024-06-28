@@ -18,6 +18,7 @@ loadBrowser();
 
 const GlobalStyles = createGlobalStyle`
   body {
+    font-family: 'PT Sans';
     margin: 0px;
     position: absolute;
     top: 0px;
@@ -32,8 +33,15 @@ const GlobalStyles = createGlobalStyle`
       --theme-color-3: #CE5144;
       --theme-color-4: #233F4C;
       --theme-color-5: #2A7E77;
-
-      --theme-text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, -2px 4px 6px black;;
+      --outline-size: 2px;
+      --text-shadow: -5px 5px 4px black;
+      --theme-text-shadow: 
+        calc(-1 * var(--outline-size)) calc(-1 * var(--outline-size)) 0 #000, 
+        var(--outline-size) calc(-1 * var(--outline-size)) 0 #000, 
+        calc(-1 * var(--outline-size)) var(--outline-size) 0 #000, 
+        var(--outline-size) var(--outline-size) 0 #000, 
+        var(--text-shadow);
+      //--theme-text-shadow: -2px 2px 0px black;
     }
     
   }

@@ -63,7 +63,7 @@ export default () => {
                 getDialog("exper_dialog")?.close();
               }}
             >
-              <Link href="/outdoor-rec" onClick={(e:any)=>nav(e.target)}>Outdoor Recreation “Base-Camp”</Link>
+              <Link href="/outdoor-rec" onClick={(e:any)=>nav(e.target)}>Outdoor Recreation Base-Camp</Link>
               <Link href="/scrapbooking-retreat" onClick={(e:any)=>nav(e.target)}>Scrapbooking / Crafting Retreat</Link>
               <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Cozy Ski Lodge</Link>
             </dialog>
@@ -93,7 +93,7 @@ export default () => {
         <Link href="/" onClick={(e: any) => nav(e.target)}>Home</Link>
         <div className="subtab">
           <Link id="header" href="/experiences" onClick={(e:any)=>nav(e.target)}>Experiences</Link>
-          <Link href="/outdoor-rec" onClick={(e:any)=>nav(e.target)}>Outdoor Recreation “Base-Camp”</Link>
+          <Link href="/outdoor-rec" onClick={(e:any)=>nav(e.target)}>Outdoor Recreation Base-Camp</Link>
           <Link href="/scrapbooking-retreat" onClick={(e:any)=>nav(e.target)}>Scrapbooking / Crafting Retreat</Link>
           <Link href="/cozy-ski-cabin" onClick={(e:any)=>nav(e.target)}>Ski Lodge</Link>
         </div>

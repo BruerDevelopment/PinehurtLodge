@@ -31,7 +31,7 @@ export default () => {
             <div>
               <h3>Upstairs Bathroom</h3>
               <p>
-                The central bathroom upstairs has a tub/shower combination and a heater/temperature controlled tile floor. The shower offers shampoo, conditioner & body wash dispensers. The sink area offers hand soap, Q-tips & cotton swabs. A hairdryer is stored in the cabinet.
+                The central bathroom upstairs has a tub/shower combination and a heater/temperature controlled tile floor. The shower offers shampoo, conditioner & body wash dispensers. The sink area offers hand soap, Q-tips & cotton swabs.
               </p>
             </div>
             <img src="/HousePhotos/bathrooms/hallway_bathroom1.jpg"/>

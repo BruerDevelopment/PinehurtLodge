@@ -24,8 +24,8 @@ export default () => {
             <TwoColumns data-reverse="true">
               <CenterDiv>
                 <TwoImages>
-                  <img src="/AreaAttractions/Redrocks.jpg"  loading="lazy"></img>
-                  <img src="/AreaAttractions/Red-Rocks-Amphitheatre.jpeg"  loading="lazy"></img>
+                  <img src="/AreaAttractions/nordic_skier.jfif"  loading="lazy"></img>
+                  <img src="/AreaAttractions/NordicOverview_2.27.21.webp"  loading="lazy"></img>
                 </TwoImages>
                 <p>
                   Less than a 20 minute drive from the lodge!
@@ -130,7 +130,7 @@ const TwoColumns = styled.div`
   
   img {
     width: 100px;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 5 / 4;
   }
   & > div {
     flex: 1;

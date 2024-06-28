@@ -10,6 +10,7 @@ import { IoMdOptions } from "react-icons/io";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
+import { ImSpinner2 } from "react-icons/im";
 
 export const Map = (props: {
     places: (PlaceMeta & {
@@ -22,14 +23,62 @@ export const Map = (props: {
         googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY as string,
         libraries: ["places", "marker"],
     });
+
+    let searchParams = useSearchParams();
+    let filterPlacesByCategory = props.places.filter((place) => {
+        if (place.isHome) return true;
+        let val = searchParams.get("cat");
+        if (val == null || val == undefined) return true;
+        let cats = val.split("|");
+        if (cats.includes(place.type)) return true;
+        return false;
+    })
+    console.log(filterPlacesByCategory)
     
-    if (isLoaded == false) return (
-        <div>
-            Loading Map
-        </div>
-    )
-    return <MapComp {...props} />
+    if (isLoaded == false)
+        return (
+            <LoadingSection>
+                <h1>
+                    Pinehurst Lodge Local Area Guide
+                </h1>
+                <h2>
+                    Please wait as we load our guide
+                </h2>
+                <ImSpinner2 />
+            </LoadingSection>
+        )
+    return <MapComp selectedID={props.selectedID} places={filterPlacesByCategory} />
 }
+
+const LoadingSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--theme-color-5);
+    color: white;
+    h1 {
+        font-size: 28px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    svg {
+        margin-top: 40px;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s infinite linear;
+    }
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+`
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 type DirectionsResult = google.maps.DirectionsResult;
@@ -45,11 +94,11 @@ const MapComp = (props: {
 }) => {
     const mapRef = useRef<google.maps.Map>();
     let [selectedPlace, setSelectedPlace] = useState<string[]>(props.selectedID || [""])
-    let selectedMeta = useMemo(
+    let selectedMeta:any = useMemo(
         () => props.places.filter(p => p.id == selectedPlace.join("/") || `${p.id}/index` == selectedPlace.join("/"))[0]
         , [selectedPlace]
     )
-    let Details = useMemo(() => selectedMeta.PostComp, [selectedMeta])
+    let Details = useMemo(() => selectedMeta?.PostComp || undefined, [selectedMeta])
     const default_pos = useMemo<[number, number]>(()=>[39.85015455108784, -105.2], [])
     const center = useMemo<LatLngLiteral>(
         () => (selectedMeta != undefined
@@ -111,7 +160,6 @@ const MapComp = (props: {
     let router = useRouter();
     let searchParams = useSearchParams();
     let hideNav = searchParams.has("hideNav");
-    
     let nav = (path: string | undefined) => {
         if (mapRef.current == undefined) return;
         let map = mapRef.current;
@@ -121,14 +169,28 @@ const MapComp = (props: {
             map.panTo(convertLocationArrayToPos(nextSelected.location))
         } 
         if (path == undefined || path == "") {
-            let url = "/area-guide"+(hideNav ? "?hideNav" : "");
+            let url = "/area-guide?"+searchParams.toString();
             window.history.pushState(undefined, "", url)
+            
             return setSelectedPlace([""]);
         }
-        let url = "/area-guide/"+(path + (hideNav ? "?hideNav" : ""));
+        let url = "/area-guide/"+(path + "?"+searchParams.toString());
         window.history.pushState(undefined, "", url)
         setSelectedPlace(path.split("/"))
     }
+    useEffect(() => {
+        if (mapRef.current == undefined) return;
+        let map = mapRef.current;
+        if (selectedPlace.length == 1 && selectedPlace[0] == "") {
+            var markers = props.places.map(p=>new google.maps.LatLng(convertLocationArrayToPos(p.location)));//some array
+            var bounds = new google.maps.LatLngBounds();
+            for (var i = 0; i < markers.length; i++) {
+                bounds.extend(markers[i]);
+            }
+            
+            map.fitBounds(bounds);
+        }
+    }, [selectedPlace])
     useEffect(() => {
         
         window.addEventListener("popstate", (e) => {
@@ -139,10 +201,21 @@ const MapComp = (props: {
             if (mapRef.current == undefined) return;
             let map = mapRef.current;
             let nextSelected = props.places.filter(p => p.id == pID || `${p.id}/index` == pID)[0]
+            console.log("nextSelected", nextSelected)
             if (nextSelected) {
                 map.setZoom(nextSelected.zoom)
                 map.panTo(convertLocationArrayToPos(nextSelected.location))
-            } 
+            } else {
+                if (selectedPlace.length == 1 && selectedPlace[0] == "") {
+                    var markers = props.places.map(p=>new google.maps.LatLng(convertLocationArrayToPos(p.location)));//some array
+                    var bounds = new google.maps.LatLngBounds();
+                    for (var i = 0; i < markers.length; i++) {
+                        bounds.extend(markers[i]);
+                    }
+                    
+                    map.fitBounds(bounds);
+                }
+            }
             
             setSelectedPlace(pID.split("/"))
         })
@@ -194,7 +267,25 @@ const MapComp = (props: {
             >
                 {groups.map((g) => {
                     let groupMeta = props.places.filter(p => p.isGroup ==true && p.groupid == g)[0]
-                    let places = props.places.filter(p => p.isGroup !=true && p.group == g)
+                    let places = props.places.filter(p => p.isGroup != true && p.group == g)
+                    console.log("group", g, places)
+                    if (places.length == 0) return;
+                    if (places.length == 1) return (
+                        <Marker
+                            key={places[0].id}
+                            position={convertLocationArrayToPos(places[0].location)}
+                            onClick={() => {
+                                nav(places[0].id)
+                            }}
+                            
+                            label={{
+                                text: places[0].title,
+                                className: "marker_label " + (places[0].isHome == true ? "home_marker" : ""),
+                                color: "white",
+                            }}
+                            zIndex={Number(google.maps.Marker.MAX_ZINDEX) + 1}
+                        />
+                    )
                     return (
                         <Fragment key={g}>
                             <Marker
@@ -266,7 +357,7 @@ const MapComp = (props: {
                     />
                 ))}
             </GoogleMap>
-            <div id="details" key={selectedMeta.id}  className={(selectedMeta == undefined || selectedMeta.isGroup) ? "hidden" : ""}>
+            <div id="details" key={selectedMeta?.id || "details_id"}  className={(selectedMeta == undefined || selectedMeta.isGroup) ? "hidden" : ""}>
                 <div>{Details}</div>
             </div>
             

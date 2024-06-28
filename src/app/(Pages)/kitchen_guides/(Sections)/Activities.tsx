@@ -18,7 +18,7 @@ export default () => {
         <h1 className="section-heading" id="Activities">Games & Activities at the Pinehurst Lodge</h1>
         <Content>
           <div id="images">
-            <img alt="" src="/HousePhotos/downstairs_deck/hot_tub1.jpg"/>
+            <img alt="" src="/HousePhotos/downstairs_living/pool_table4.jpg"/>
             <img alt="" src="/HousePhotos/downstairs_living/game_shelf.jpg"/>
             <img alt="" src="/HousePhotos/downstairs_living/pool_20.jpg"/>
           </div>

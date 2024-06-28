@@ -44,7 +44,7 @@ export default () => {
           
         </Columns>
         <MoreLink>
-          <Link href="/gallery#laundries">View More Of The Laundry Rooms <br /> In Our Photos Gallery</Link>
+          <Link href="/gallery#laundries">View More Of The Living Rooms <br /> In Our Photos Gallery</Link>
         </MoreLink>
       </Section>
     </>

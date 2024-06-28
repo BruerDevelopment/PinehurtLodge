@@ -96,6 +96,7 @@ const IntroArea = styled.div`
     }
     p {
       flex: 1;
+      margin-top: 20px;
     }
     #link {
       display: flex;

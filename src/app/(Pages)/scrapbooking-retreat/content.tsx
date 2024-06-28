@@ -36,18 +36,18 @@ export default () => {
               </p>
               <ul>
                 <li>
-                  3’x6’ folding resin table
+                  - 3’x6’ folding resin table
                 </li>
                 <li>
-                  -padded folding chair
+                  - padded folding chair
                   
                 </li>
                 <li>
-                  -waste bin
+                  - waste bin
 
                 </li>
                 <li>
-                  -magnifying ring craft light
+                  - magnifying ring craft light
                 </li>
               </ul>
 
@@ -56,19 +56,19 @@ export default () => {
             </p>
               <ul>
                 <li>
-              -2 full kitchens
+              - 2 full kitchens
                   
                 </li>
                 <li>
-              -2 laundries with washer & dryer
+              - 2 laundries with washer & dryer
 
                 </li>
                 <li>
-              -garage parking for two vehicles
+              - garage parking for two vehicles
 
                 </li>
                 <li>
-              -many additional tables & work spaces
+              - many additional tables & work spaces
 
                 </li>
               </ul>
@@ -145,6 +145,7 @@ const IntroArea = styled.div`
       margin-top: 0px;
     }
     p {
+      margin-top: 20px;
     }
     #link {
       display: flex;

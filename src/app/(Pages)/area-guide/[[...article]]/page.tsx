@@ -8,6 +8,8 @@ import { getPlacesContent, getPlacesData, getPlaceMeta } from "@/hooks/getPostDa
 import dynamic from "next/dynamic";
 import { Map } from "./map";
 import { CONFIG } from "../../../../../site_config";
+import { useSearchParamState } from "@/hooks/useSerachParams";
+import { useSearchParams } from "next/navigation";
 type Props = {
     params: { article: string[] }
     searchParams: { [key: string]: string | string[] | undefined }
@@ -56,6 +58,7 @@ export default async (props: { params: any }) => {
             PostComp:PostComp == undefined ? undefined : <PostComp />
         }
     }))
+    
 
     return (
         <div>

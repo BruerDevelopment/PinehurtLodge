@@ -113,8 +113,10 @@ const IntroArea = styled.div`
       font-size: 21px;
       color: var(--heading-color);
       margin-top: 0px;
+      text-align: left;
     }
     p {
+      margin-top: 20px;
     }
     #link {
       display: flex;

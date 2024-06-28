@@ -112,7 +112,7 @@ export default () => {
   return (
     <>
       <Section varient={2}>
-        <h1 className="section-heading">Cozy Accommodations</h1>
+        <h1 className="section-heading">Deluxe Accommodations</h1>
         <PictureCollumns>
           <div id="column">
             {is_mobile == false ? (
@@ -156,7 +156,7 @@ export default () => {
          
         </PictureCollumns>
 
-        <h1 className="section-heading">With Top-Class Amenities</h1>
+        <MarginHeading className="section-heading">Top-Tier Amenities</MarginHeading>
         <PictureCollumns>
         <div id="column">
             {is_mobile == false ? (
@@ -189,7 +189,9 @@ export default () => {
     </>
   );
 }
-
+const MarginHeading = styled.h1`
+  margin-top: 40px;
+`
 const PictureCollumns = styled.div`
   max-width: 900px;
   width: 95%;
@@ -200,6 +202,9 @@ const PictureCollumns = styled.div`
   ${isMobile(css`
     flex-direction: column;
   `)}
+  h1.section-heading {
+    margin-top: 20px;
+  }
   #column {
     display: flex;
     flex-direction: column;
@@ -210,6 +215,9 @@ const PictureCollumns = styled.div`
       flex-direction: column;
       gap: 10px;
       font-weight: bold;
+      span {
+        text-align: center;
+      }
 
       .images {
         display: flex;
@@ -227,7 +235,7 @@ const PictureCollumns = styled.div`
       }
       #more {
         display: flex;
-        justify-content: end;
+        justify-content: center;
         flex-direction: row;
         a {
           background-color: var(--theme-color-3);

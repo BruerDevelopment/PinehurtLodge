@@ -35,8 +35,8 @@ export default () => {
           <div className="Card">
             <TwoColumns>
               <TwoImages>
-                <img src="/AreaAttractions/Redrocks.jpg"  loading="lazy"></img>
-                <img src="/AreaAttractions/Red-Rocks-Amphitheatre.jpeg"  loading="lazy"></img>
+                <img src="/AreaAttractions/Black_Hawk2.jpg"  loading="lazy"></img>
+                <img src="/AreaAttractions/Black_Hawk.jpg"  loading="lazy"></img>
               </TwoImages>
               <CenterColumn>
                 <h3>Black Hawk</h3>
@@ -65,7 +65,7 @@ export default () => {
           <div className="Card">
             <TwoColumns>
               <TwoImages>
-                <img src="/StockPhotos/rocky_mountain_state_park_1.jpg"  loading="lazy"></img>
+                <img src="/StockPhotos/rockymountain_fall.jpg"  loading="lazy"></img>
                 <img src="/StockPhotos/rocky_mountain_state_park.jpg"  loading="lazy"></img>
               </TwoImages>
               <CenterColumn>
@@ -115,7 +115,7 @@ const TwoColumns = styled.div`
   
   img {
     width: 100px;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 5 / 4;
   }
   div {
     flex: 1;

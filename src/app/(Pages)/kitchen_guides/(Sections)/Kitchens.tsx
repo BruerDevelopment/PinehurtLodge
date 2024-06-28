@@ -40,14 +40,6 @@ export default () => {
             <p>
               Amenities include: double door fridge with freezer drawer, double oven, deluxe cooktop, quiet dishwasher, microwave, deluxe toaster oven, coffee maker, espresso machine, press pot, manual coffee grinder, tea kettle, blender, crock pot, stoneware dishes for 8, flatware for 8, numerous utensils, bakeware, Granitestone nonstick cookware, glassware, wine glasses
             </p>
-            
-            {/* <KitchenGuides>
-              <p>
-                Want to plan out your meals and need to know what cookware will be here?
-                Or just want a full guide to all kitchen amenities?
-              </p>
-              <Link href="/kitchen_guides">Explore Our Kitchen Guides</Link>
-            </KitchenGuides> */}
           </div>
         </TwoColumns>
         <TwoColumns data-reverse="true" id="GrillDetails">
@@ -87,25 +79,6 @@ export default () => {
     </>
   );
 }
-
-const KitchenGuides = styled.div`
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  a {
-    background-color: var(--theme-color-3);
-    border-radius: 6px;
-    color: white;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 30px;
-    text-align: center;
-  }
-`
 const MoreLink = styled.div`
   display: flex;
   justify-content: center;

@@ -11,6 +11,7 @@ export type PlaceMeta = {
     ignore?:boolean,
     date: Date,
     title: string,
+    type: string,
     visibility: "public" | "unlisted" | "private",
     isGroup: boolean,
     isHome: boolean,

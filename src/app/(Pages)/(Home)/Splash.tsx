@@ -13,11 +13,11 @@ export default function Splash() {
     <SplashWrap>
       {isMobile == false ? (
         <DesktopSplash>
-          <img alt="Desktop Splash" src="/HousePhotos/exterior/exterior_from_back.jpg"/>
+          <img alt="Desktop Splash" src="/HousePhotos/exterior/C1YUIcCe.jpg"/>
         </DesktopSplash>
       ): (
         <MobileSplash>
-          <img alt="Mobile Splash" src="/HousePhotos/exterior/exterior_from_back_mobile.jpg"/>
+          <img alt="Mobile Splash" src="/HousePhotos/exterior/inline_porches.jpg"/>
         </MobileSplash>
       )}
       <Overlay>
@@ -37,7 +37,7 @@ export default function Splash() {
 
 const DesktopSplash = styled.div`
   img {
-    background-image: url("/HousePhotos/exterior/exterior_from_back_small.jpg");
+    background-image: url("/HousePhotos/exterior/inline_porches.jpg");
     &::before {
       color: transparent;
     }
@@ -72,7 +72,7 @@ const DesktopSplash = styled.div`
 `
 const MobileSplash = styled.div`
   img {
-    background-image: url("/HousePhotos/exterior/exterior_from_back_mobile_small.jpg");
+    background-image: url("/HousePhotos/exterior/inline_porches.jpg");
     &::before {
       color: transparent;
     }

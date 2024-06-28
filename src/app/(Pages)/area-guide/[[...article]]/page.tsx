@@ -9,6 +9,8 @@ import dynamic from "next/dynamic";
 import { Map } from "./map";
 import { CONFIG } from "../../../../../site_config";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+import LoadingCover from "./LoadingCover";
 type Props = {
     params: { article: string[] }
     searchParams: { [key: string]: string | string[] | undefined }
@@ -60,9 +62,8 @@ export default async (props: { params: any }) => {
     
 
     return (
-        <div>
-            <Map places={FullPlaces} selectedID={article} />
-                
+        <div>            
+            <Map places={FullPlaces} selectedID={article} /> 
         </div>
     );
 }

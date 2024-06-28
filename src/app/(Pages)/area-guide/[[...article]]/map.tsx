@@ -1,7 +1,7 @@
 "use client";
 
 import { PlaceMeta, getPlacesData } from "@/hooks/getPostData"
-import { ComponentType, Fragment, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { ComponentType, Fragment, ReactElement, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { GoogleMap, Marker, MarkerClusterer, useLoadScript } from "@react-google-maps/api";
 import styled from "styled-components";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -11,6 +11,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { ImSpinner2 } from "react-icons/im";
+import LoadingCover from "./LoadingCover";
 
 export const Map = (props: {
     places: (PlaceMeta & {
@@ -18,7 +19,18 @@ export const Map = (props: {
     })[],
     selectedID: string[],
 }) => {
-    
+    return (
+        <Suspense fallback={<LoadingCover />}>
+            <MapSuspensed {...props} />
+        </Suspense>
+    )
+}
+function MapSuspensed(props: {
+    places: (PlaceMeta & {
+        PostComp: JSX.Element | undefined;
+    })[],
+    selectedID: string[],
+}) {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY as string,
         libraries: ["places", "marker"],
@@ -36,49 +48,9 @@ export const Map = (props: {
     console.log(filterPlacesByCategory)
     
     if (isLoaded == false)
-        return (
-            <LoadingSection>
-                <h1>
-                    Pinehurst Lodge Local Area Guide
-                </h1>
-                <h2>
-                    Please wait as we load our guide
-                </h2>
-                <ImSpinner2 />
-            </LoadingSection>
-        )
+        return <LoadingCover/>
     return <MapComp selectedID={props.selectedID} places={filterPlacesByCategory} />
 }
-
-const LoadingSection = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: var(--theme-color-5);
-    color: white;
-    h1 {
-        font-size: 28px;
-    }
-    h2 {
-        font-size: 24px;
-    }
-    svg {
-        margin-top: 40px;
-        width: 50px;
-        height: 50px;
-        animation: spin 1s infinite linear;
-    }
-    @keyframes spin {
-        from {
-            transform: scale(1) rotate(0deg);
-        }
-        to {
-            transform: scale(1) rotate(360deg);
-        }
-    }
-`
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 type DirectionsResult = google.maps.DirectionsResult;

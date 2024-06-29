@@ -10,7 +10,7 @@ import { Map } from "./map";
 import { CONFIG } from "../../../../../site_config";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import LoadingCover from "./LoadingCover";
+import LoadingCover from "./loading_cover";
 type Props = {
     params: { article: string[] }
     searchParams: { [key: string]: string | string[] | undefined }

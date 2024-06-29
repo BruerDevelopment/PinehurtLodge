@@ -11,7 +11,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { ImSpinner2 } from "react-icons/im";
-import LoadingCover from "./LoadingCover";
+import LoadingCover from "./loading_cover";
 
 export const Map = (props: {
     places: (PlaceMeta & {

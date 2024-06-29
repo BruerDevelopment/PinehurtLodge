@@ -23,13 +23,21 @@ export const DefaultMeta = {
       { url:`${CONFIG.BASE_URL}/favicon.ico`, sizes:"any"}
     ]
 };
+const base_keywords = [
+    "pinehurst",
+    "lodge",
+    "retreat",
+    "airbnb",
+    "rental"
+]
   
 export const BuildPageMeta = (details: {
     title?: string,
     description?:string,
     url?: string,
     socialCover?:string,
-    og_description?:string,
+    og_description?: string,
+    keywords?:string[]
 }):Metadata => {
     const Title = details.title != undefined ? details.title : CONFIG.page_meta.title
     const Description = details.description != undefined
@@ -38,11 +46,14 @@ export const BuildPageMeta = (details: {
     const url_link = CONFIG.BASE_URL + (details.url != undefined ? details.url : "/")
     const socialCover = details.socialCover != undefined ? details.socialCover : `${CONFIG.BASE_URL}/default_social_card.png`
     const og_description = details.og_description != undefined ? details.og_description : Description
+    const _keywords: string[] = details.keywords != undefined ? details.keywords : [];
+    const keywords = [..._keywords, ...base_keywords].slice(0, 10);
     return {
         ...DefaultMeta,
         metadataBase: new URL(CONFIG.BASE_URL),
         title: Title,
         description: Description,
+        keywords,
         
         openGraph: {
             title: Title,

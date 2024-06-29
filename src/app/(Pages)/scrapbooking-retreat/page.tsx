@@ -7,7 +7,8 @@ import { Metadata } from "next";
 import { BuildPageMeta } from "@/app/metaDefaults";
 export const metadata: Metadata = BuildPageMeta({
   title: "Scrapbooking Retreat - Pinehurst Lodge",
-  description:""
+  description: "",
+  keywords:["Scrapbooking", "Retreat"]
 })
 
 export default function Home() {

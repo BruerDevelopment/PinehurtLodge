@@ -26,7 +26,7 @@ export default () => {
           This cozy getaway is ideal for scrapbooking, quilting, crafting, sewing & gaming, or groups of friends and family.
         </h2>
         <IntroArea>
-          <img src="/HousePhotos/craft_area/craft_22.jpg"></img>
+          <img alt="Pinehurst Lodge Scrapbooking Retreat Scrapbooking Area Work Station" src="/HousePhotos/craft_area/craft_22.jpg"></img>
           <div id="text">
             <h3>
               Surrounded by the beautiful Rocky Mountains, enjoy the breathtaking view of the Continental Divide while you scrapbook, craft or sew with friends at the Pinehurst Scrapbooking Retreat.

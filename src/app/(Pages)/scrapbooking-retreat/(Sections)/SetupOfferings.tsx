@@ -18,7 +18,7 @@ export default () => {
       <Section varient={2}>
         <h1 className="section-heading">View Other Experiences This Rental Offers</h1>
         <IntroArea data-coloralternate="1" data-direction="reverse">
-          <img src="/AreaAttractions/Hiking_Trails_mountain_lake.jpg" loading="lazy"></img>
+          <img alt="Pinehurst Lodge Mountain Exploration" src="/AreaAttractions/Hiking_Trails_mountain_lake.jpg" loading="lazy"></img>
           <div id="text">
             <h3>Perfect Mountain Escape</h3>
             <p>Offering dozens of trails in all directions, Pinehurst Lodge is a hikers’ paradise. Check out the trails around Mud Lake, Caribou Ranch, James Peak & Golden Gate Canyon State Park, or stroll the beautiful area out the door of the Lodge.</p>
@@ -27,7 +27,7 @@ export default () => {
         </IntroArea>
         <Spacer aria-hidden="true"></Spacer>
         <IntroArea data-coloralternate="1">
-          <img src="/AreaAttractions/CO_skiing.webp" loading="lazy"></img>
+          <img alt="Pinehurst Lodge Cozy Ski Cabin Experience" src="/AreaAttractions/CO_skiing.webp" loading="lazy"></img>
           <div id="text">
             <h3>Cozy Ski Cabin </h3>
             <p>Pinehurst Lodge sits in the high country of Colorado’s Front Range at approximately 8900’, thus offering easy access to Colorado’s many ski areas including Winter Park, Breckenridge, Arapahoe Basin, Keystone, Copper Mountain and just 20 minutes from Eldora.</p>

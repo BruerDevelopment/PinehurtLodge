@@ -23,14 +23,14 @@ export default () => {
 
               <h2>Ready For All Your Friends and Family</h2>
               <div className="singleImage">
-                <img src="/HousePhotos/craft_area/craft_9.jpg"></img>
+                <img alt="Pinehurst Lodge Scrapbooking Retreat Work Area" src="/HousePhotos/craft_area/craft_9.jpg"></img>
               </div>
             </div>
             <div>
               <h2>Work Stations just steps from a Full Laundry & Full Kitchen</h2>
               <div className="doubleImage">
-                <img src="/HousePhotos/downstairs_kitchen/down_kitchen2.jpg"></img>
-                <img src="/HousePhotos/laundry/downstairs_laundry.jpg"></img>
+                <img alt="Pinehurst Lodge Scrapbooking Retreat Kitchens" src="/HousePhotos/downstairs_kitchen/down_kitchen2.jpg"></img>
+                <img alt="Pinehurst Lodge Scrapbooking Retreat Laundries" src="/HousePhotos/laundry/downstairs_laundry.jpg"></img>
               </div>
             </div>
           </div>
@@ -39,15 +39,15 @@ export default () => {
               <h2>Comfy Gathering Space with Large Center Table</h2>
               <h3>great for shared scrapbooking, puzzles or even tabletop RPGs!</h3>
               <div className="singleImage">
-                <img src="/HousePhotos/craft_area/craft_20.jpg"></img>
+                <img alt="Pinehurst Lodge Scrapbooking Retreat Living Room" src="/HousePhotos/craft_area/craft_20.jpg"></img>
               </div>
             </div>
             <div>
               <h2>Plenty of Natural Light</h2>
               <h3>as well as 6 flex arm ring lights with magnifying lenses</h3>
               <div className="doubleImage">
-                <img src="/HousePhotos/craft_area/magnifying_lamp3.jpg"></img>
-                <img src="/HousePhotos/craft_area/craft_10.jpg"></img>
+                <img alt="Pinehurst Lodge Scrapbooking Retreat Amenities" src="/HousePhotos/craft_area/magnifying_lamp3.jpg"></img>
+                <img alt="Pinehurst Lodge Scrapbooking Retreat Craft Area" src="/HousePhotos/craft_area/craft_10.jpg"></img>
               </div>
             </div>
           </div>

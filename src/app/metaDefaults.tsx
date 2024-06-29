@@ -44,9 +44,15 @@ export const BuildPageMeta = (details: {
         ? details.description
         : CONFIG.page_meta.description;
     const url_link = CONFIG.BASE_URL + (details.url != undefined ? details.url : "/")
-    const socialCover = details.socialCover != undefined ? details.socialCover : `${CONFIG.BASE_URL}/default_social_card.png`
-    const og_description = details.og_description != undefined ? details.og_description : Description
-    const _keywords: string[] = details.keywords != undefined ? details.keywords : [];
+    const socialCover = details.socialCover != undefined
+        ? details.socialCover
+        : `${CONFIG.BASE_URL}/default_social_card.png`
+    const og_description = details.og_description != undefined
+        ? details.og_description
+        : Description
+    const _keywords: string[] = details.keywords != undefined
+        ? details.keywords
+        : [];
     const keywords = [..._keywords, ...base_keywords].slice(0, 10);
     return {
         ...DefaultMeta,

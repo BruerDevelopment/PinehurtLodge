@@ -24,7 +24,7 @@ export const DefaultMeta = {
     ]
 };
 const base_keywords = [
-    "pinehurst",
+    "pinehurst lodge",
     "lodge",
     "retreat",
     "airbnb",

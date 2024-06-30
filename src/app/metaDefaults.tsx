@@ -46,7 +46,7 @@ export const BuildPageMeta = (details: {
     const url_link = CONFIG.BASE_URL + (details.url != undefined ? details.url : "/")
     const socialCover = details.socialCover != undefined
         ? details.socialCover
-        : `${CONFIG.BASE_URL}/default_social_card.png`
+        : `${CONFIG.BASE_URL}/social_covers/default.png`
     const og_description = details.og_description != undefined
         ? details.og_description
         : Description

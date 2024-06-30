@@ -26,12 +26,12 @@ export const generateMetadata = async (
         return BuildPageMeta({
             title: meta.title +" - Local Area Guide - Pinehurst Lodge",
             description: "",
-            socialCover:`${CONFIG.BASE_URL}/area_guide_social_card.png`
+            socialCover:`${CONFIG.BASE_URL}/social_covers/area_guide.png`
         })
     return BuildPageMeta({
         title: "Local Area Guide - Pinehurst Lodge",
         description: "",
-        socialCover:`${CONFIG.BASE_URL}/area_guide_social_card.png`
+        socialCover:`${CONFIG.BASE_URL}/social_covers/area_guide.png`
     })
 
 }

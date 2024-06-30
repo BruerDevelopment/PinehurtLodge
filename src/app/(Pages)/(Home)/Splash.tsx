@@ -13,11 +13,11 @@ export default function Splash() {
     <SplashWrap>
       {isMobile == false ? (
         <DesktopSplash>
-          <img alt="Desktop Splash" src="/HousePhotos/exterior/C1YUIcCe.jpg"/>
+          <img alt="Desktop Splash" src="/HousePhotos/exterior/exterior_back_above.jpg"/>
         </DesktopSplash>
       ): (
         <MobileSplash>
-          <img alt="Mobile Splash" src="/HousePhotos/exterior/inline_porches.jpg"/>
+          <img alt="Mobile Splash" src="/HousePhotos/exterior/mobile.jpg"/>
         </MobileSplash>
       )}
       <Overlay>
@@ -37,7 +37,7 @@ export default function Splash() {
 
 const DesktopSplash = styled.div`
   img {
-    background-image: url("/HousePhotos/exterior/inline_porches.jpg");
+    background-image: url("/HousePhotos/exterior/exterior_back_above.jpg");
     &::before {
       color: transparent;
     }
@@ -72,7 +72,7 @@ const DesktopSplash = styled.div`
 `
 const MobileSplash = styled.div`
   img {
-    background-image: url("/HousePhotos/exterior/inline_porches.jpg");
+    background-image: url("/HousePhotos/exterior/mobile.jpg");
     &::before {
       color: transparent;
     }
@@ -86,9 +86,9 @@ const MobileSplash = styled.div`
   img, svg {
     object-fit: cover;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 0px;
+    bottom: 0px;
+    //transform: translate(-50%, -50%);
     height: 100%;
   }
 
@@ -118,7 +118,7 @@ const Overlay = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 50px;
     color: white;
     text-shadow: var(--theme-text-shadow);

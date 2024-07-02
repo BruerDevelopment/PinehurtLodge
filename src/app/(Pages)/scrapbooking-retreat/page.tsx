@@ -12,7 +12,7 @@ export const metadata: Metadata = BuildPageMeta({
     Pinehurst Lodge is a luxury, 4 bedroom scrapbooking retreat near Denver 
     with fabulous views of the Continental Divide from its hot tub and decks.  
   `),
-  keywords:["Scrapbooking", "Retreat", "Scrapbooking Retreat"]
+  keywords:["scrapbooking retreat", "scrapbooking retreat near denver"]
 })
 
 export default function Home() {

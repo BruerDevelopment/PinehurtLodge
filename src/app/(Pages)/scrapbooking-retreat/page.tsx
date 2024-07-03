@@ -6,7 +6,7 @@ import { Metadata } from "next";
 
 import { BuildPageMeta } from "@/app/metaDefaults";
 import cleanHTMLString from "@/lib/cleanHTMLString";
-export const metadata: Metadata = BuildPageMeta({
+export const generateMetadata = BuildPageMeta({
   title: "Scrapbooking Retreat - Pinehurst Lodge",
   description:cleanHTMLString(`
     Pinehurst Lodge is a luxury, 4 bedroom scrapbooking retreat near Denver 

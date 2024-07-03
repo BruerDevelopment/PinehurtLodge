@@ -22,7 +22,7 @@ export default () => {
           <div id="text">
             <h3>Perfect Mountain Escape</h3>
             <p>Offering dozens of trails in all directions, Pinehurst Lodge is a hikers’ paradise. Check out the trails around Mud Lake, Caribou Ranch, James Peak & Golden Gate Canyon State Park, or stroll the beautiful area out the door of the Lodge.</p>
-            <div id="link"><Link href="/outdoor-rec">Learn More</Link></div>
+            <div id="link"><Link href="/outdoor-rec">View Details Of The Mountain Escape</Link></div>
           </div>
         </IntroArea>
         <Spacer aria-hidden="true"></Spacer>
@@ -31,7 +31,7 @@ export default () => {
           <div id="text">
             <h3>Scrapbooking Retreat </h3>
             <p>Come scrapbookers, crafters, gamers & quilters! 6 tables (3’x6’), 6 padded chairs, 6 magnifying ring lamps & 6 waste bins offer optional creative and play spaces. Request the setup ahead of time and it will be ready for you. Alternately available to set up yourself if desired.</p>
-            <div id="link"><Link href="/scrapbooking-retreat">Learn More</Link></div>
+            <div id="link"><Link href="/scrapbooking-retreat">View Details Of The Scrapbooking Retreat</Link></div>
           </div>
         </IntroArea>
         <Spacer aria-hidden="true"></Spacer>
@@ -40,7 +40,7 @@ export default () => {
           <div id="text">
             <h3>Cozy Ski Cabin </h3>
             <p>Pinehurst Lodge sits in the high country of Colorado’s Front Range at approximately 8900’, thus offering easy access to Colorado’s many ski areas including Winter Park, Breckenridge, Arapahoe Basin, Keystone, Copper Mountain and just 20 minutes from Eldora.</p>
-            <div id="link"><Link href="/cozy-ski-cabin">Learn More</Link></div>
+            <div id="link"><Link href="/cozy-ski-cabin">View Details Of The Ski Cabin</Link></div>
           </div>
         </IntroArea>
       </Section>
@@ -124,7 +124,7 @@ const IntroArea = styled.div`
         color: white;
         padding: 10px;
         border-radius: 6px;
-        width: 160px;
+        width: 320px;
         text-align: center;
       }
     }

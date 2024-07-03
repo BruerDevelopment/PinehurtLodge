@@ -1,42 +1,42 @@
-
   
 
 import { Metadata, ResolvingMetadata } from "next";
 
 import { BuildPageMeta } from "@/app/metaDefaults";
-import { getPlacesContent, getPlacesData, getPlaceMeta } from "@/hooks/getPostData";
+import { getArticleContent, getArticleMeta, getArticlesData} from "@/hooks/getArticlesData";
 import dynamic from "next/dynamic";
-import { Map } from "./map";
-import { CONFIG } from "../../../../../site_config";
+import { CONFIG } from "../../../../../../site_config";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import LoadingCover from "./loading_cover";
+import { Section } from "../../../../../../styles/Section";
+import Content from "./content";
 type Props = {
     params: { article: string[] }
     searchParams: { [key: string]: string | string[] | undefined }
 }
 export const generateMetadata = async (
-    { params, searchParams }: Props,
+    props: Props,
     parent: ResolvingMetadata
-  ): Promise<Metadata> => {
+): Promise<Metadata> => {
+    const { params, searchParams } = props;
     // read route params
     const { article } = params
-    let meta = await getPlaceMeta(article)
+    let meta = await getArticleMeta(article)
     if (meta != undefined) 
         return BuildPageMeta({
             title: meta.title +" - Local Area Guide - Pinehurst Lodge",
             description: "",
             socialCover:`${CONFIG.BASE_URL}/social_covers/area_guide.png`
-        })
+        })(props, parent)
     return BuildPageMeta({
         title: "Local Area Guide - Pinehurst Lodge",
         description: "",
         socialCover:`${CONFIG.BASE_URL}/social_covers/area_guide.png`
-    })
+    })(props, parent)
 
 }
 export const generateStaticParams = async () => {
-    let posts = await getPlacesData(undefined, {visibilityOverride:true});
+    let posts = await getArticlesData(undefined, {visibilityOverride:true});
 
     let params = posts.map((post) => ({
         article: post.id.split("/"),
@@ -51,19 +51,11 @@ export const generateStaticParams = async () => {
 }
 export default async (props: { params: any }) => {
     const { article } = props.params
-    const places = await getPlacesData();
-    let FullPlaces = await Promise.all(places.map(async (p) => {
-        let PostComp = await getPlacesContent(p.id.split("/"));
-        return {
-            ...p,
-            PostComp:PostComp == undefined ? undefined : <PostComp />
-        }
-    }))
+    const ArticleContent = await getArticleContent(article);
     
-
     return (
         <div>            
-            <Map places={FullPlaces} selectedID={article} /> 
+            <Content ><ArticleContent/></Content>
         </div>
     );
 }

@@ -1,12 +1,18 @@
 
 import fs from 'fs';
 import path from 'path';
-import { useEffect } from 'react';
+import { ElementType, useEffect } from 'react';
 import dynamic, { LoaderComponent } from 'next/dynamic';
-const env:"development" | "production" | "test" = "production"//process.env.NODE_ENV//
-const postsDirectory = path.join(process.cwd(), '/src/area_guide_places');
+const env: "development" | "production" | "test" = "production"//process.env.NODE_ENV//
+const Dir = "/area_guide/places"
+const postsDirectory = path.join(process.cwd(), '/src/data' + Dir);
 
-export type PlaceMeta = {
+export type PlaceMeta = Meta;
+export const getPlacesData = getData;
+export const getPlacesContent = getContent;
+export const getPlaceMeta = getMeta;
+
+type Meta = {
     id: string,
     ignore?:boolean,
     date: Date,
@@ -21,7 +27,8 @@ export type PlaceMeta = {
     groupid: string,
     group:string
 }
-export async function getPlacesData(subPostDir?: string, options?:{visibilityOverride:boolean}): Promise<PlaceMeta[]> {
+
+async function getData(subPostDir?: string, options?:{visibilityOverride:boolean}): Promise<PlaceMeta[]> {
     "use client";
     // Get file names under /area_guide_places
     let dir = subPostDir == undefined ? "" : subPostDir;
@@ -32,7 +39,7 @@ export async function getPlacesData(subPostDir?: string, options?:{visibilityOve
         const fileName = fileNames[i];
         let fullPath = path.join(readPath, fileName)
         if (fs.statSync(fullPath).isDirectory()) {
-            let subposts: PlaceMeta[] = await getPlacesData(path.join(dir, fileName), options);
+            let subposts: PlaceMeta[] = await getData(path.join(dir, fileName), options);
             
             allPostsData.push(...subposts)
             continue;
@@ -40,7 +47,7 @@ export async function getPlacesData(subPostDir?: string, options?:{visibilityOve
         // Remove ".md" from file name to get id
         const id = path.join(dir, fileName).split("\\").join("/").replace(/\.md$/, '').replace(/\.mdx$/, '');
         // Read markdown file as jsx
-        const library = await import(`@/area_guide_places/${id}.mdx`);
+        const library = await import(`@/data${Dir}/${id}.mdx`);
         const meta = library.Meta
         
         // Combine the data with the id
@@ -112,15 +119,15 @@ export async function getPlacesData(subPostDir?: string, options?:{visibilityOve
         });
 }
 
-export async function getPlacesContent(article: string[]) {
+export async function getContent(article: string[]):Promise<ElementType> {
     let p = new Promise<LoaderComponent | undefined>((resolve, reject) => {
         try {
 
-            import(`@/area_guide_places/${article.join("/")}.mdx`).then((component) => {
+            import(`@/data${Dir}/${article.join("/")}.mdx`).then((component) => {
                 return resolve(component)
             }).catch(() => {
                 article.push("index")
-                import(`@/area_guide_places/${article.join("/")}.mdx`).then((component) => {
+                import(`@/data${Dir}/${article.join("/")}.mdx`).then((component) => {
                     return resolve(component)
                 }).catch(() => {
                     return resolve(undefined)
@@ -131,17 +138,17 @@ export async function getPlacesContent(article: string[]) {
         }
     })
     let loader = await p;
-    if (loader == undefined) return;
+    if (loader == undefined) return ()=><></>;
     return dynamic(async ()=> loader);
 }   
-export async function getPlaceMeta(article: string[]): Promise < PlaceMeta | undefined> {
+export async function getMeta(article: string[]): Promise < PlaceMeta | undefined> {
     let p = new Promise<PlaceMeta | undefined>((resolve, reject) => {
         try {
-            import(`@/area_guide_places/${article.join("/")}.mdx`).then((library) => {
+            import(`@/data${Dir}/${article.join("/")}.mdx`).then((library) => {
                 return resolve(library.Meta)
             }).catch(() => {
                 article.push("index")
-                import(`@/area_guide_places/${article.join("/")}.mdx`).then((library) => {
+                import(`@/data${Dir}/${article.join("/")}.mdx`).then((library) => {
                     return resolve(library.Meta)
                 })
             })

@@ -1,6 +1,6 @@
 "use client";
 
-import { PlaceMeta, getPlacesData } from "@/hooks/getPostData"
+import { PlaceMeta, getPlacesData } from "@/hooks/getPlacesData"
 import { ComponentType, Fragment, ReactElement, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { GoogleMap, Marker, MarkerClusterer, useLoadScript } from "@react-google-maps/api";
 import styled from "styled-components";
@@ -12,7 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Button } from "@/components/ui/button";
 import { ImSpinner2 } from "react-icons/im";
 import LoadingCover from "./loading_cover";
-
+const AreaGuideMapBase = "/area-guide/map"
 export const Map = (props: {
     places: (PlaceMeta & {
         PostComp: JSX.Element | undefined;
@@ -141,12 +141,12 @@ const MapComp = (props: {
             map.panTo(convertLocationArrayToPos(nextSelected.location))
         } 
         if (path == undefined || path == "") {
-            let url = "/area-guide?"+searchParams.toString();
+            let url = AreaGuideMapBase+"?"+searchParams.toString();
             window.history.pushState(undefined, "", url)
             
             return setSelectedPlace([""]);
         }
-        let url = "/area-guide/"+(path + "?"+searchParams.toString());
+        let url = AreaGuideMapBase+"/"+(path + "?"+searchParams.toString());
         window.history.pushState(undefined, "", url)
         setSelectedPlace(path.split("/"))
     }
@@ -168,7 +168,7 @@ const MapComp = (props: {
         window.addEventListener("popstate", (e) => {
             //@ts-expect-error
             let url = new URL(e.target.location);
-            let pID = url.pathname.replace("/area-guide/", "").replace("/area-guide", "")
+            let pID = url.pathname.replace(AreaGuideMapBase+"/", "").replace(AreaGuideMapBase, "")
             console.log(pID);
             if (mapRef.current == undefined) return;
             let map = mapRef.current;

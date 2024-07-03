@@ -10,7 +10,7 @@ import GAnalytics from "@/components/GAnalytics";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BuildPageMeta } from "./metaDefaults";
 
-export const metadata: Metadata = BuildPageMeta({})
+export const generateMetadata = BuildPageMeta({})
 
 export default function RootLayout({
   children,

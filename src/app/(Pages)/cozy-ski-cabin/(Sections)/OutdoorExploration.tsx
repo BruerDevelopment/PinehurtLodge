@@ -19,9 +19,9 @@ export default () => {
       <Section varient={1}>
         <h1 className="section-heading">Close to a Plethora of Colorado’s Finest Ski Resorts</h1>
         <ToolBar>
-          <Link href="/area-guide?cat=ski-mountain" target="_blank">Expore The Full Guide<BsBoxArrowUpRight /></Link>
+          <Link href="/area-guide" target="_blank">Expore The Full Guide<BsBoxArrowUpRight /></Link>
         </ToolBar>
-        <IFrame src="/area-guide?hideNav&cat=ski-mountain" loading="lazy"></IFrame>
+        <IFrame src="/area-guide/map?hideNav&cat=ski-mountain" loading="lazy"></IFrame>
       </Section>
     </>
   );

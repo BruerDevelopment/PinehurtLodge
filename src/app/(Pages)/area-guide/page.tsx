@@ -1,10 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
-import Splash from "./Splash";
-import Content from "./content";
 import { Metadata } from "next";
 
 import { BuildPageMeta } from "@/app/metaDefaults";
+import Content from "./content";
 export const generateMetadata = BuildPageMeta({
   description:`
     Pinehurst Lodge is a luxury, 4 bedroom mountain retreat near Denver 
@@ -15,7 +14,6 @@ export const generateMetadata = BuildPageMeta({
 export default function Home() {
   return (
     <div>
-      <Splash></Splash>
       <Content></Content>
     </div>
   );

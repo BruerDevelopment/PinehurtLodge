@@ -4,6 +4,7 @@ import Content from "./content";
 import { Metadata } from "next";
 
 import { BuildPageMeta } from "@/app/metaDefaults";
+import { getArticlesData } from "@/hooks/getArticlesData";
 export const generateMetadata = BuildPageMeta({
   title: "Local Area Guide - Pinehurst Lodge",
   description:`
@@ -12,10 +13,11 @@ export const generateMetadata = BuildPageMeta({
   `.replaceAll("\n", "").replaceAll("\t", "").replaceAll("  ", "")
 })
 
-export default function Home() {
+export default async function Home() {
+  const articles = await getArticlesData();
   return (
     <div>
-      <Content></Content>
+      <Content articles={articles}></Content>
     </div>
   );
 }

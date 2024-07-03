@@ -4,6 +4,7 @@ import { Metadata } from "next";
 
 import { BuildPageMeta } from "@/app/metaDefaults";
 import Content from "./content";
+import { getArticlesData } from "@/hooks/getArticlesData";
 export const generateMetadata = BuildPageMeta({
   description:`
     Pinehurst Lodge is a luxury, 4 bedroom mountain retreat near Denver 
@@ -11,10 +12,12 @@ export const generateMetadata = BuildPageMeta({
   `.replaceAll("\n", "").replaceAll("\t", "").replaceAll("  ", "")
 })
 
-export default function Home() {
+export default async function Home() {
+    const articles = await getArticlesData();
+
   return (
     <div>
-      <Content></Content>
+          <Content articles={articles}></Content>
     </div>
   );
 }

@@ -6,7 +6,7 @@ const nextConfig = {
     output: 'export',
     pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
     webpack(config) {
-        console.log(process.cwd())
+        console.log(`alias["@"]: ${process.cwd()}\\src`)
         config.resolve.alias["@"] = `${process.cwd()}\\src`
         config.module.rules.push({
           test: /\.svg$/,

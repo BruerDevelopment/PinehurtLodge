@@ -6,7 +6,8 @@ import { Metadata } from "next";
 
 import { BuildPageMeta } from "@/app/metaDefaults";
 export const generateMetadata = BuildPageMeta({
-  title:"Cozy Ski Cabin"
+  title:"Cozy Ski Cabin",
+  url:"/cozy-ski-cabin"
 })
 
 export default function Home() {

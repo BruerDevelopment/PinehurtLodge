@@ -12,7 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Button } from "@/components/ui/button";
 import { ImSpinner2 } from "react-icons/im";
 import LoadingCover from "./loading_cover";
-const AreaGuideMapBase = "/area-guide/map"
+const AreaGuideMapBase = "/area-guide"
 export const Map = (props: {
     places: (PlaceMeta & {
         PostComp: JSX.Element | undefined;

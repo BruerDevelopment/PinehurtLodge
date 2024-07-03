@@ -29,7 +29,7 @@ Please contact me through the following email:
 `,
   }
   let pathname = usePathname();
-  if (pathname.includes("/area-guide/map")) return
+  if (pathname.includes("/area-guide")) return
   return (
     <Footer>
       {/* <div>

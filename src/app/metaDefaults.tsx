@@ -40,14 +40,13 @@ export const BuildPageMeta = (details: {
     socialCover?:string,
     og_description?: string,
     keywords?:string[]
-}): (props: any,parent: ResolvingMetadata)=>Metadata => {
-    return (props: any, parent: ResolvingMetadata) => {
-        let pathname = processPathname(props);
+}): (props: any,parent: ResolvingMetadata)=>Promise<Metadata> => {
+    return async (props: any, parent: ResolvingMetadata) => {
         const Title = details.title != undefined ? details.title : CONFIG.page_meta.title
         const Description = details.description != undefined
             ? details.description
             : CONFIG.page_meta.description;
-        const url_link = CONFIG.BASE_URL + (details.url != undefined ? details.url : pathname)
+        const url_link = CONFIG.BASE_URL + (details.url != undefined ? details.url : "/")
         const socialCover = details.socialCover != undefined
             ? details.socialCover
             : `${CONFIG.BASE_URL}/social_covers/default.png`
@@ -81,19 +80,4 @@ export const BuildPageMeta = (details: {
         };
         
     }
-}
-
-
-function processPathname(props: any) {
-    let { params } = props;
-    var pathname = __dirname.split("(Pages)")?.[1]?.replaceAll("\\", "/");
-    let fillPlaces = pathname.split("[[...").join("[...").split("[...").join("]").split("]").filter(a => a.trim() != "")
-    let filledPath = pathname;
-    for (let i = 0; i < fillPlaces.length; i++) {
-        let key = fillPlaces[i];
-        filledPath = filledPath.replaceAll(`[[...${key}]]`, params[key]?.join("/"))
-        filledPath = filledPath.replaceAll(`[...${key}]`, params[key]?.join("/"))
-    }
-    console.log("Metadata props", params, fillPlaces, filledPath)
-    return filledPath;
 }

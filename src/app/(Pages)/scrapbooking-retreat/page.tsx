@@ -12,7 +12,8 @@ export const generateMetadata = BuildPageMeta({
     Pinehurst Lodge is a luxury, 4 bedroom scrapbooking retreat near Denver 
     with fabulous views of the Continental Divide from its hot tub and decks.  
   `),
-  keywords:["scrapbooking retreat", "scrapbooking retreat near denver"]
+  keywords: ["scrapbooking retreat", "scrapbooking retreat near denver"],
+  url:"/scrapbooking-retreat"
 })
 
 export default function Home() {

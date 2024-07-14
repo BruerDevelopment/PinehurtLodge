@@ -3,19 +3,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 import styled, { FastOmit, Interpolation, createGlobalStyle, css } from 'styled-components';
 
-function loadBrowser() {
-    try {
-        let body = document.body;
-        if (body == undefined) return;
-        if (navigator == undefined) return;
-        console.log(navigator.userAgent)
-        if (navigator.userAgent.includes("Chrome")) {
-            body.setAttribute("data-browser", "chrome")
-        }
-    } catch(e) {}
-}
-loadBrowser();
-
 const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'PT Sans';

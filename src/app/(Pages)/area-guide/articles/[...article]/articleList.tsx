@@ -7,9 +7,6 @@ import { isMobile, isNotMobile } from "../../../../../../styles/GlobalStyles"
 export default (props:{articles:any[], title:string}) => {
     const [api, setApi] = useState<CarouselApi>()
     const articles = props.articles || []
-    useEffect(() => {
-       console.log(articles) 
-    }, [])
     const [current, setCurrent] = useState(0)
     const [count, setCount] = useState(articles.length)
     

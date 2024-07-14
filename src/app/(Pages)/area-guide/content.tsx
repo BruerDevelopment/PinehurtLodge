@@ -151,7 +151,6 @@ const Splash = styled.div`
 const ArticleCardList = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 20px;
     width: 100%;
     .list {
         display: flex;
@@ -162,6 +161,7 @@ const ArticleCardList = styled.div`
         padding: 20px 0px;
         #mobile-desc {
             display: none;
+            font-size: 14px;
             ${isMobile(css`
                 display: flex;
             `)}
@@ -175,7 +175,7 @@ const ArticleCardList = styled.div`
             background-color: var(--theme-color-5);
             color: white;
             display: flex;
-            gap: 20px;
+            gap: 5px;
             position: relative;
             ${isNotMobile(css`
                 height: 220px;
@@ -190,6 +190,9 @@ const ArticleCardList = styled.div`
                 gap: 20px;
                 align-items: center;
                 width: 100%;
+                ${isMobile(css`
+                    gap: 10px;
+                `)}
             }
             #articleCover {
                 object-fit: cover;
@@ -199,7 +202,9 @@ const ArticleCardList = styled.div`
                 `)}
                 aspect-ratio: 3 / 2;
                 ${isMobile(css`
-                    width: 160px;
+                    min-width: 120px;
+                    width: 120px;
+                    height: 80px;
                 `)}
             }
             div#text {
@@ -211,13 +216,13 @@ const ArticleCardList = styled.div`
                 h2 {
                     font-size: 23px;
                     ${isMobile(css`
-                        font-size: 18px;
+                        font-size: 12px;
                     `)}
                 }
                 h3 {
                     font-size: 19px;
                     ${isMobile(css`
-                        font-size: 14px;
+                        font-size: 12px;
                     `)}
                 }
                 p {
@@ -271,13 +276,15 @@ const HighlistedCards = styled.div`
             background-color: var(--theme-color-5);
             color: white;
             gap: 10px;
+            align-items: center;
             img {
                 width: 100%;
                 aspect-ratio: 3 / 2;
                 object-fit: cover;
                 ${isMobile(css`
-                    min-width: 160px;
-                    width: 160px;
+                    min-width: 120px;
+                    width: 120px;
+                    height: 80px;
                 `)}
             }
             & > div {

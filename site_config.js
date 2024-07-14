@@ -1,5 +1,5 @@
 
-const HOSTNAME = "Pinehurst-Lodge.com";
+const HOSTNAME = "www.Pinehurst-Lodge.com";
 const BASE_PATH = "";
 const cleanHTMLString = require("./src/lib/cleanHTMLString")
 export const CONFIG = {

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { Section } from "../../../../../styles/Section";
 import { isMobile } from "../../../../../styles/GlobalStyles";
+import GoogleMap from "@/components/GoogleMap";
 
 export default () => {
   return (
@@ -21,7 +22,7 @@ export default () => {
         <ToolBar>
           <Link href="/area-guide" target="_blank">Expore The Full Guide<BsBoxArrowUpRight /></Link>
         </ToolBar>
-        <IFrame src="/area-guide?hideNav&cat=ski-mountain" loading="lazy"></IFrame>
+        <GoogleMap _type="ski-mountains"/>
       </Section>
     </>
   );
@@ -55,12 +56,4 @@ const Paragraph = styled.div`
   max-width: 900px;
   width: 90%;
 `
-const IFrame = styled("iframe")`
-  width: 90%;
-  max-width: 900px;
-  aspect-ratio: 3/2;
-  ${isMobile(css`
-    aspect-ratio: 3/4;
-    
-  `)}
-`
+

@@ -27,16 +27,17 @@ export default () => {
     setMenuOpen(false);
     getDialog("exper_dialog")?.close();
   }
-  if (searchParams.has("hideNav")) return;
+  let hideNav = false;
+  if (searchParams.has("hideNav")) hideNav = true;
   if (scroll == 0 && [
     "/",
     "/scrapbooking-retreat",
     "/cozy-ski-cabin",
     "/outdoor-rec",
-  ].includes(pathname)) return;
+  ].includes(pathname)) hideNav = true;
   return (
     <>
-      <Bar aria-hidden={!menuOpen}>
+      <Bar aria-hidden={!menuOpen} className={hideNav ? "hidden_menu" : ""}>
         <Link href="/"><h1>Pinehurst Lodge</h1></Link>
         <div id="spacer"></div>
         <div id="nav">
@@ -161,6 +162,7 @@ const Menu = styled.div`
 `
 
 const MobileMenu = styled.div`
+  
   position: fixed;
   top: 0px;
   left: 100%;
@@ -262,6 +264,7 @@ const MobileMenu = styled.div`
   }
 `
 const Bar = styled.div`
+  
   position: fixed;
   top: 0px;
   left: 0px;
@@ -274,6 +277,9 @@ const Bar = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 0px 10px;
+  &.hidden_menu {
+    display: none !important;
+  }
   h1 {
     text-shadow: var(--theme-text-shadow);
     padding: 0px;

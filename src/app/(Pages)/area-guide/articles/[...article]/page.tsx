@@ -1,16 +1,15 @@
-
   
 
 import { Metadata, ResolvingMetadata } from "next";
 
 import { BuildPageMeta } from "@/app/metaDefaults";
-import { getPlacesContent, getPlacesData, getPlaceMeta } from "@/hooks/getPlacesData";
+import { getArticleContent, getArticleMeta, getArticlesData} from "@/hooks/getArticlesData";
 import dynamic from "next/dynamic";
-import { Map } from "./map";
 import { CONFIG } from "../../../../../../site_config";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import LoadingCover from "./loading_cover";
+import { Section } from "../../../../../../styles/Section";
+import Content from "./content";
 type Props = {
     params: { article: string[] }
     searchParams: { [key: string]: string | string[] | undefined }
@@ -18,53 +17,48 @@ type Props = {
 export const generateMetadata = async (
     props: Props,
     parent: ResolvingMetadata
-  ): Promise<Metadata> => {
-    // read route params
+): Promise<Metadata> => {
     const { params, searchParams } = props;
+    // read route params
     const { article } = params
-    let meta = await getPlaceMeta(article)
-    if (meta != undefined) 
+    let meta = await getArticleMeta(article)
+    if (meta != undefined) {
+        let socialCover = `${CONFIG.BASE_URL}/social_covers/area_guide.png`;
+        if (meta.cover != undefined) {
+            socialCover =  meta.cover;
+        }
         return BuildPageMeta({
-            title: meta.title +" - Local Area Guide - Pinehurst Lodge",
-            description: "",
-            socialCover:`${CONFIG.BASE_URL}/social_covers/area_guide.png`
+            title: meta.title + (meta.subtitle != undefined ? `: ${meta.subtitle}` : "") +" - Local Area Guide - Pinehurst Lodge",
+            description: meta.description,
+            url:`/area-guide/articles/${article.join("/")}`,
+            socialCover
         })(props, parent)
+    }
     return BuildPageMeta({
         title: "Local Area Guide - Pinehurst Lodge",
         description: "",
+        url:`/area-guide`,
         socialCover:`${CONFIG.BASE_URL}/social_covers/area_guide.png`
     })(props, parent)
 
 }
 export const generateStaticParams = async () => {
-    let posts = await getPlacesData(undefined, {visibilityOverride:true});
+    let posts = await getArticlesData(undefined, {visibilityOverride:true});
 
     let params = posts.map((post) => ({
         article: post.id.split("/"),
     }))
-    params.push({
-        article:[""]
-    })
-    params.push({
-        article:[]
-    })
     return params;
 }
 export default async (props: { params: any }) => {
     const { article } = props.params
-    const places = await getPlacesData();
-    let FullPlaces = await Promise.all(places.map(async (p) => {
-        let PostComp = await getPlacesContent(p.id.split("/"));
-        return {
-            ...p,
-            PostComp:PostComp == undefined ? undefined : <PostComp />
-        }
-    }))
-    
+    const ArticleMeta = await getArticleMeta(article);
+    const ArticleContent = await getArticleContent(article);
+    const articles = await getArticlesData();
 
     return (
         <div>            
-            <Map places={FullPlaces} selectedID={article} /> 
+            <Content articles={articles} meta={ArticleMeta}><ArticleContent/></Content>
         </div>
     );
 }

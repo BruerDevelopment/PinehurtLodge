@@ -92,8 +92,6 @@ function FullGallary(props: {
     index?: number,
 }) {
     const [api, setApi] = props.api;
-    const [current, setCurrent] = useState(props.index != undefined ? props.index : 0)
-  const [count, setCount] = useState(props.index != undefined ? props.index : 0)
     useEffect(() => {
         if (!api) {
             return
@@ -101,18 +99,7 @@ function FullGallary(props: {
         if (props.index == undefined) return;
         api.scrollTo(props.index)
     }, [props])
-  useEffect(() => {
-    if (!api) {
-      return
-    }
- 
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap() + 1)
- 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    })
-  }, [api])
+  
  
   return (
     <div>
@@ -131,9 +118,6 @@ function FullGallary(props: {
         <CarouselPrevious className="prevButton"/>
         <CarouselNext className="nextButton" />
       </StyledCarousel>
-      <div className="py-2 text-center text-sm">
-        Slide {current} of {count}
-      </div>
     </div>
     )
 }
@@ -164,14 +148,18 @@ const StyledCarousel = styled(Carousel)`
     .prevButton {
         height: 100%;
         border-radius: 6px;
-        left: 0;
+        left: 5px;
         transform: translate(calc(-100% - 10px), -50%);
+        background-color: rgba(255, 255, 255, .25);
+        border: 0px;
     }
     .nextButton {
         height: 100%;
         border-radius: 6px;
-        right: 0;
+        right: 5px;
         transform: translate(calc(100% + 10px), -50%);
+        background-color: rgba(255, 255, 255, .25);
+        border: 0px;
     }
 `
 
@@ -181,22 +169,9 @@ function PhotoCoursel(props: {
     useHeader?:boolean,
     setSelectedPhoto?: Dispatch<SetStateAction<{ key: string; i: number; }>>
 }) {
-    const [api, setApi] = useState<CarouselApi>()
-    const [current, setCurrent] = useState(0);
-    const [count, setCount] = useState(0);
     let key = props.id;
-    useEffect(() => {
-        if (!api) {
-          return
-        }
-     
-        setCount(api.scrollSnapList().length);
-        setCurrent(api.selectedScrollSnap() + 1);
-        
-        api.on("select", () => {
-            setCurrent(api.selectedScrollSnap() + 1);
-        });
-    }, [api])
+    const [api, setApi] = useState<CarouselApi>()
+    
     return (
         <PhotoList key={key}>
             {props.useHeader != false &&
@@ -224,19 +199,6 @@ function PhotoCoursel(props: {
                     </CarouselContent>
                     <CarouselPrevious className="prevButton"/>
                     <CarouselNext className="nextButton" />
-                    <div className="scrollIndicator">
-                    {Array.from({ length: count }).map((_, index) => (
-                        <span
-                            key={index}
-                            className={`indicator`}
-                            style={{
-                                "cursor":"pointer",
-                                "backgroundColor":index + 1 === current ? "var(--theme-color-3)" : "var(--theme-color-4)"
-                            }}
-                            onClick={() => api && api.scrollTo(index)}
-                        />
-                    ))}
-                    </div>
                 </Carousel>
             </div>
         </PhotoList>
@@ -293,14 +255,18 @@ const PhotoList = styled.div`
     .prevButton {
         height: 100%;
         border-radius: 6px;
-        left: 0;
+        left: 5px;
         transform: translate(calc(-100% - 10px), -50%);
+        background-color: rgba(255, 255, 255, .25);
+        border: 0px;
     }
     .nextButton {
         height: 100%;
         border-radius: 6px;
-        right: 0;
+        right: 5px;
         transform: translate(calc(100% + 10px), -50%);
+        background-color: rgba(255, 255, 255, .25);
+        border: 0px;
     }
 `
 const Image = styled.img`

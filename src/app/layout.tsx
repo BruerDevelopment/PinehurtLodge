@@ -9,6 +9,7 @@ import { CONFIG } from "../../site_config";
 import GAnalytics from "@/components/GAnalytics";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BuildPageMeta } from "./metaDefaults";
+import { MDXProvider } from "@mdx-js/react";
 
 export const generateMetadata = BuildPageMeta({})
 
@@ -50,7 +51,7 @@ export default function RootLayout({
             crossOrigin="anonymous"
             ></script>
           )}
-        </StyledComponentsRegistry>
+          </StyledComponentsRegistry>
       </body>
     </html>
   );

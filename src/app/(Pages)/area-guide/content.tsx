@@ -265,8 +265,8 @@ const HighlistedCards = styled.div`
             padding: 10px;
             display: flex;
             width: 300px;
-            height: 120px;
             ${isMobile(css`
+                height: 120px;
                 width: 100%;
             `)}
             border: 1px solid black;

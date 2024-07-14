@@ -265,6 +265,7 @@ const HighlistedCards = styled.div`
             padding: 10px;
             display: flex;
             width: 300px;
+            height: 120px;
             ${isMobile(css`
                 width: 100%;
             `)}
@@ -290,6 +291,7 @@ const HighlistedCards = styled.div`
             & > div {
                 display: flex;
                 flex-direction: column;
+                width: 100%;
                 ${isMobile(css`
                     font-size: 12px;
                 `)}

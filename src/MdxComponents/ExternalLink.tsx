@@ -1,15 +1,15 @@
 "use client";
 
+import { AnchorHTMLAttributes, DetailedHTMLProps } from "react";
 import { FaLink } from "react-icons/fa";
 import styled from "styled-components";
 
 
-export default (props: {href:string, children:any}) => {
+export default (props: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) => {
     let url = props.href;
     let newTab = false;
     let linkIcon = false;
-    let spaceSplit = url.split("|").join("%7C").split("%7C")
-    console.log("spaceSplit", spaceSplit)
+    let spaceSplit = url == undefined ? [] : url.split("|").join("%7C").split("%7C")
     if (spaceSplit.length > 1) {
         let configs = spaceSplit[0]
         url = spaceSplit[1]

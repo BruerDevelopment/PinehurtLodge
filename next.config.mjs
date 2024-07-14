@@ -1,5 +1,10 @@
 import mdx from '@next/mdx';
-const withMDX = mdx()
+const withMDX = mdx({
+    options: {
+        remarkPlugins: [],
+        rehypePlugins: [],
+    },
+})
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

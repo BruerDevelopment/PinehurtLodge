@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 export default () => {
     useEffect(() => {
+        if (window.location.host.includes("localhost")) return;
         //@ts-ignore
         window.dataLayer = window.dataLayer || [];
         //@ts-ignore

@@ -5,6 +5,8 @@ export function Section(props: {
     children?: any,
     varient?: number,
     maxSize?: number,
+    fillSize?: number,
+    hasPadding?: boolean,
     align?:"left"|"center"
 }) {
     return (
@@ -12,6 +14,8 @@ export function Section(props: {
             $varient={props.varient != undefined ? props.varient : 1}
             $size={props.maxSize || 900}
             $align={props.align || "center"}
+            $hasPadding={props.hasPadding}
+            $fillSize={props.fillSize || 95}
         >
             <div>
                 {props.children}
@@ -19,7 +23,7 @@ export function Section(props: {
         </SectionVarient1>
     )
 }
-const SectionVarient1 = styled.section<{$varient:number, $size:number, $align:"left"|"center"}>`
+const SectionVarient1 = styled.section<{$varient:number, $size:number, $align:"left"|"center", $hasPadding?:boolean, $fillSize:number}>`
     width: 100%;
     display: flex;
     justify-content: center;
@@ -27,8 +31,10 @@ const SectionVarient1 = styled.section<{$varient:number, $size:number, $align:"l
     flex-direction: column;
     min-height: 100px;
     position: relative;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    ${props => props.$hasPadding != false ? css`
+        padding-top: 60px;
+        padding-bottom: 60px;
+    ` : ""}
     h1, h2, h3 {
         font-weight: bold;
 
@@ -69,7 +75,9 @@ const SectionVarient1 = styled.section<{$varient:number, $size:number, $align:"l
         }
     `)}
     & > div {
-        width: 95%;
+        ${props => css`
+            width: ${props.$fillSize}%;
+        `}
         max-width: ${props => props.$size}px;
         display: flex;
         flex-direction: column;

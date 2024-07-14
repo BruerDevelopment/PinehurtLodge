@@ -15,17 +15,17 @@ export const getArticleMeta = getMeta;
 type Meta = {
     id: string,
     ignore?:boolean,
+    unlisted?:boolean,
+    promotion?: "skiing" | "scrapbooking" | "default",
     date: Date,
     title: string,
-    type: string,
+    subtitle?: string,
     visibility: "public" | "unlisted" | "private",
-    isGroup: boolean,
-    isHome: boolean,
-    zoom:number,
-    location:[number, number],
     cover: string,
-    groupid: string,
-    group:string
+    author: string,
+    read_time?: string,
+    related_articles?: string[],
+    description?:string
 }
 
 async function getData(subPostDir?: string, options?:{visibilityOverride:boolean}): Promise<Meta[]> {
@@ -38,6 +38,7 @@ async function getData(subPostDir?: string, options?:{visibilityOverride:boolean
     for (let i = 0; i < fileNames.length; i++) {
         const fileName = fileNames[i];
         let fullPath = path.join(readPath, fileName)
+        if (fullPath.includes(".tsx")) continue;
         if (fs.statSync(fullPath).isDirectory()) {
             let subposts: Meta[] = await getData(path.join(dir, fileName), options);
             

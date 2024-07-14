@@ -12,6 +12,7 @@ import Link from "next/link";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { Section } from "../../../../../styles/Section";
 import { isMobile } from "../../../../../styles/GlobalStyles";
+import GoogleMap from "@/components/GoogleMap";
 
 export default () => {
   return (
@@ -21,7 +22,7 @@ export default () => {
         <ToolBar>
           <Link href="/area-guide" target="_blank">Expore The Full Guide<BsBoxArrowUpRight /></Link>
         </ToolBar>
-        <IFrame src="/area-guide/map?hideNav" loading="lazy"></IFrame>
+        <GoogleMap _type="outdoor-adventure"/>
       </Section>
     </>
   );

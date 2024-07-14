@@ -22,15 +22,22 @@ export const generateMetadata = async (
     // read route params
     const { article } = params
     let meta = await getArticleMeta(article)
-    if (meta != undefined) 
+    if (meta != undefined) {
+        let socialCover = `${CONFIG.BASE_URL}/social_covers/area_guide.png`;
+        if (meta.cover != undefined) {
+            socialCover =  meta.cover;
+        }
         return BuildPageMeta({
-            title: meta.title +" - Local Area Guide - Pinehurst Lodge",
-            description: "",
-            socialCover:`${CONFIG.BASE_URL}/social_covers/area_guide.png`
+            title: meta.title + (meta.subtitle != undefined ? `: ${meta.subtitle}` : "") +" - Local Area Guide - Pinehurst Lodge",
+            description: meta.description,
+            url:`/area-guide/articles/${article.join("/")}`,
+            socialCover
         })(props, parent)
+    }
     return BuildPageMeta({
         title: "Local Area Guide - Pinehurst Lodge",
         description: "",
+        url:`/area-guide`,
         socialCover:`${CONFIG.BASE_URL}/social_covers/area_guide.png`
     })(props, parent)
 
@@ -45,11 +52,13 @@ export const generateStaticParams = async () => {
 }
 export default async (props: { params: any }) => {
     const { article } = props.params
+    const ArticleMeta = await getArticleMeta(article);
     const ArticleContent = await getArticleContent(article);
-    
+    const articles = await getArticlesData();
+
     return (
         <div>            
-            <Content ><ArticleContent/></Content>
+            <Content articles={articles} meta={ArticleMeta}><ArticleContent/></Content>
         </div>
     );
 }

@@ -72,16 +72,19 @@ export default (props: { articles: ArticleMeta[] }) => {
                             const description = article.description?.replaceAll("\n", "").replaceAll("\t", "").replaceAll("  ", "").replaceAll(". ", ".").replaceAll(".", ". ")
                             return (
                                 <a key={`${article.id}`} href={`/area-guide/articles/${article.id}`}>
-                                    <img id="articleCover" src={article.cover}></img>
-                                    <div id="text">
-                                        <h2>{article.title}</h2>
-                                        <h3>{article.subtitle != undefined ? `${article.subtitle}`:""}</h3>
-                                        <div id="stats">
-                                            <span>{date_str} • {read_time} read</span>
-                                            <span><span style={{ "fontWeight": "bold" }}>By</span> {author}</span>
+                                    <div>
+                                        <img id="articleCover" src={article.cover}></img>
+                                        <div id="text">
+                                            <h2>{article.title}</h2>
+                                            <h3>{article.subtitle != undefined ? `${article.subtitle}`:""}</h3>
+                                            <div id="stats">
+                                                <span>{date_str} • {read_time} read</span>
+                                                <span><span style={{ "fontWeight": "bold" }}>By</span> {author}</span>
+                                            </div>
+                                            <p>{description}</p>
                                         </div>
-                                        <p>{description}</p>
                                     </div>
+                                    <p id="mobile-desc">{description}</p>
                                 </a>
                             )
                         })}
@@ -157,6 +160,12 @@ const ArticleCardList = styled.div`
         width: 100%;
         border-top: 1px solid black;
         padding: 20px 0px;
+        #mobile-desc {
+            display: none;
+            ${isMobile(css`
+                display: flex;
+            `)}
+        }
         a {
             border-radius: 6px;
             padding: 10px;
@@ -176,6 +185,12 @@ const ArticleCardList = styled.div`
                 flex-direction: column;
                 align-items: center;
             `)}
+            & > div {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                width: 100%;
+            }
             #articleCover {
                 object-fit: cover;
                 ${isNotMobile(css`
@@ -184,7 +199,7 @@ const ArticleCardList = styled.div`
                 `)}
                 aspect-ratio: 3 / 2;
                 ${isMobile(css`
-                    width: 100%;
+                    width: 160px;
                 `)}
             }
             div#text {
@@ -192,11 +207,23 @@ const ArticleCardList = styled.div`
                 display: flex;
                 flex-direction: column;
                 padding-right: 20px;
+                
                 h2 {
                     font-size: 23px;
+                    ${isMobile(css`
+                        font-size: 18px;
+                    `)}
                 }
                 h3 {
                     font-size: 19px;
+                    ${isMobile(css`
+                        font-size: 14px;
+                    `)}
+                }
+                p {
+                    ${isMobile(css`
+                        display: none;
+                    `)} 
                 }
             }
             div#stats {
@@ -204,7 +231,9 @@ const ArticleCardList = styled.div`
                 justify-content: space-between;
                 color: #cfcfcf;
                 ${isMobile(css`
+                    margin-top: auto;
                     font-size: 12px;
+                    flex-direction: column;
                 `)}
             }
         }

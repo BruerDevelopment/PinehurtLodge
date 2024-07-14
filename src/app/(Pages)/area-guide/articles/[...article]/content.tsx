@@ -128,6 +128,15 @@ const StylingDiv = styled.div`
     strong {
         position: relative;
     }
+    .youtube-embed {
+        width: 560px;
+        height: 315px;
+        ${isMobile(css`
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 2;
+        `)}
+    }
 `
 
 const HighlistedCards = styled.div`

@@ -27,7 +27,7 @@ export default (props: { articles: ArticleMeta[] }) => {
                                 author_data = AUTHORS["PinehurstLodge"];
                             }
                             const author = author_data.name
-                            const description = article.description?.replaceAll("\n", "").replaceAll("\t", "").replaceAll("  ", "").replaceAll(". ", ".").replaceAll(".", ". ")
+                            const description = article.description?.replaceAll("\n", "").replaceAll("\t", "").replaceAll("  ", "").replaceAll(". ", ".").replaceAll(".", ". ").replaceAll(", ", ",").replaceAll(",", ", ")
                             return (
                                 <a key={`${article.id}`} href={`/area-guide/articles/${article.id}`}>
                                     <img id="articleCover" src={article.cover}></img>

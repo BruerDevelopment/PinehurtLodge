@@ -13,7 +13,7 @@ export const generateMetadata = BuildPageMeta({
   description:`
     Pinehurst Lodge is a luxury, 4 bedroom mountain retreat near Denver 
     with fabulous views of the Continental Divide from its hot tub, decks and living areas.  
-  `.replaceAll("\n", "").replaceAll("\t", "").replaceAll("  ", "")
+  `
 })
 
 export default async function Home() {

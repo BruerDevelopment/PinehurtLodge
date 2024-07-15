@@ -43,9 +43,10 @@ export const BuildPageMeta = (details: {
 }): (props: any,parent: ResolvingMetadata)=>Promise<Metadata> => {
     return async (props: any, parent: ResolvingMetadata) => {
         const Title = details.title != undefined ? details.title : CONFIG.page_meta.title
-        const Description = details.description != undefined
+        const RawDescription = details.description != undefined
             ? details.description
             : CONFIG.page_meta.description;
+        const Description = RawDescription.replaceAll("\n", "").replaceAll("\t", "").replaceAll("  ", "")
         const url_link = CONFIG.BASE_URL + (details.url != undefined ? details.url : "/")
         const socialCover = details.socialCover != undefined
             ? details.socialCover

@@ -28,14 +28,14 @@ export const generateMetadata = async (
             socialCover =  meta.cover;
         }
         return BuildPageMeta({
-            title: meta.title + (meta.subtitle != undefined ? `: ${meta.subtitle}` : "") +" - Local Area Guide - Pinehurst Lodge",
+            title: meta.title + (meta.subtitle != undefined ? `: ${meta.subtitle}` : "") +" | Local Area Guide | Pinehurst Lodge",
             description: meta.description,
             url:`/area-guide/articles/${article.join("/")}`,
             socialCover
         })(props, parent)
     }
     return BuildPageMeta({
-        title: "Local Area Guide - Pinehurst Lodge",
+        title: "Local Area Guide Article | Pinehurst Lodge",
         description: "",
         url:`/area-guide`,
         socialCover:`${CONFIG.BASE_URL}/social_covers/area_guide.png`

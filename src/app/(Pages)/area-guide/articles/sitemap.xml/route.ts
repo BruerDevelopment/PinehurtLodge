@@ -3,8 +3,8 @@ import { CONFIG } from "../../../../../../site_config";
 
 async function getSitemap() {
   const articles = await getArticlesData();
-
-  const map = articles.map(article => ({
+  const indexableArticles = articles.filter(a => a.ignore != true && a.unlisted != true);
+  const map = indexableArticles.map(article => ({
     url: `${CONFIG.BASE_URL}/area-guide/articles/${article.id}`,
     lastModified: article.date,
     changeFrequency: 'daily',

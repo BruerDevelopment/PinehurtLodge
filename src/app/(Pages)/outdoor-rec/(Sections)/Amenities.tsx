@@ -11,6 +11,7 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { isMobile, isNotMobile } from "../../../../../styles/GlobalStyles";
 import { Section } from "../../../../../styles/Section";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   
@@ -19,7 +20,13 @@ export default () => {
       <Section varient={2}>
         <h1 className="section-heading">Amazing Amenities For All Kinds of Outdoor Recreation</h1>
         <IntroArea>
-          <img src="/HousePhotos/downstairs_deck/hot_tub1.jpg"></img>
+          <ExportedImage
+            src="/images/pro_house/photo_0033.jpg"
+            alt="Scrapbooking Photo"
+            width={400}
+            height={300}
+            loading="lazy"
+          />
           <div id="text">
             <h3>
               7-Person Hot Tub!
@@ -31,7 +38,13 @@ export default () => {
           </div>
         </IntroArea>
         <IntroArea data-direction="reverse">
-          <img src="/HousePhotos/craft_area/craft_10.jpg"></img>
+          <ExportedImage
+            src="/images/pro_house/photo_0031.jpg"
+            alt="Scrapbooking Photo"
+            width={400}
+            height={300}
+            loading="lazy"
+          />
           <div id="text">
             <h3>
               Pool Table and Game Room

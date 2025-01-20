@@ -11,6 +11,7 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { Section } from "../../../../../styles/Section";
 import { isMobile } from "../../../../../styles/GlobalStyles";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   return (
@@ -20,12 +21,36 @@ export default () => {
         <TwoColumns data-reverse="true">
           <div>
             <div>
-              <img src="/HousePhotos/upstairs_living/main.jpg" />
-              <img src="/HousePhotos/upstairs_living/living_room_entrance5.jpg" />
+              <ExportedImage
+                src="/images/pro_house/photo_0012.png"
+                alt="Coffee Bar Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/pro_house/photo_0011.png"
+                alt="Coffee Bar Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
             </div>
             <div>
-              <img src="/HousePhotos/upstairs_kitchen/upstairs_dining_table.jpg" />
-              <img src="/HousePhotos/upstairs_living/living_room_dining_area.jpg" />
+              <ExportedImage
+                src="/images/pro_house/photo_0009.png"
+                alt="Coffee Bar Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/pro_house/photo_0010.png"
+                alt="Coffee Bar Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
             </div>
           </div>
           <div>
@@ -39,8 +64,20 @@ export default () => {
         <TwoColumns>
           <div>
             <TwoStackedImages>
-              <img src="/HousePhotos/craft_area/craft_20.jpg" />
-              <img src="/HousePhotos/craft_area/craft_1.jpg" />
+              <ExportedImage
+                src="/images/pro_house/photo_0031.png"
+                alt="Coffee Bar Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/pro_house/photo_0036.png"
+                alt="Coffee Bar Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
             </TwoStackedImages>
           </div>
           <div>

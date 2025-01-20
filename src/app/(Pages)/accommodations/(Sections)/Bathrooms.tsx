@@ -11,6 +11,7 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { Section } from "../../../../../styles/Section";
 import { isNotBrowser, isBrowser, isMobile } from "../../../../../styles/GlobalStyles";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   return (
@@ -25,7 +26,13 @@ export default () => {
               The Master Bedroom comes with an en suite bathroom which features a glass shower, two sinks and a fabulous view! The shower offers shampoo, conditioner & body wash dispensers. The sink area offers handsoap, Q-tips & cotton swabs.
               </p>
             </div>
-            <img src="/HousePhotos/bathrooms/master_bath1.jpg"/>
+            <ExportedImage
+              src="/images/pro_house/photo_0028.jpg"
+              alt="Private Upstairs Master Bathroom Photo"
+              width={260}
+              height={173}
+              loading="lazy"
+            />
           </div>
           <div>
             <div>
@@ -34,7 +41,13 @@ export default () => {
                 The central bathroom upstairs has a tub/shower combination and a heater/temperature controlled tile floor. The shower offers shampoo, conditioner & body wash dispensers. The sink area offers hand soap, Q-tips & cotton swabs. A hairdryer is stored in the cabinet.
               </p>
             </div>
-            <img src="/HousePhotos/bathrooms/hallway_bathroom1.jpg"/>
+            <ExportedImage
+              src="/images/pro_house/photo_0030.jpg"
+              alt="upstairs Bathroom Photo"
+              width={260}
+              height={173}
+              loading="lazy"
+            />
           </div>
           <div>
             <div>
@@ -43,11 +56,13 @@ export default () => {
                 The downstairs bathroom has a tub/shower combination and a heater/temperature controlled tile floor. The shower offers shampoo, conditioner & body wash dispensers. The sink area offers hand soap, Q-tips & cotton swabs.
               </p>
             </div>
-            <div id="double">
-
-              <img style={{"aspectRatio":"3 / 4"}} src="/HousePhotos/bathrooms/DownstairsBathroom2.png"/>
-              <img style={{"aspectRatio":"3 / 4"}} src="/HousePhotos/bathrooms/DownstairsBathroom.png"/>
-            </div>
+            <ExportedImage
+              src="/images/pro_house/photo_0042.jpg"
+              alt="Downstairs Bathroom Photo"
+              width={260}
+              height={173}
+              loading="lazy"
+            />
           </div>
         </Rooms>
         <MoreLink>
@@ -93,7 +108,6 @@ const Rooms = styled.div`
       
       box-sizing: border-box;
       width: 260px;
-      background-color: red;
       object-fit: cover;
       border-radius: 6px;
       aspect-ratio: 3 / 2;

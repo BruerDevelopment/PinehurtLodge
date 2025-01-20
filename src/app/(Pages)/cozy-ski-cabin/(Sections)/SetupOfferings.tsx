@@ -11,6 +11,8 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { isMobile } from "../../../../../styles/GlobalStyles";
 import { Section } from "../../../../../styles/Section";
+import OutdoorRec from "@/components/SettupOfferings/OutdoorRec";
+import ScrapbookingRetreat from "@/components/SettupOfferings/ScrapbookingRetreat";
 
 export default () => {
   return (
@@ -18,21 +20,11 @@ export default () => {
       <Section varient={2}>
         <h1 className="section-heading">View Other Experiences This Rental Offers</h1>
         <IntroArea data-coloralternate="1" data-direction="reverse">
-          <img src="/AreaAttractions/Hiking_Trails_mountain_lake.jpg" loading="lazy"></img>
-          <div id="text">
-            <h3>Perfect Mountain Escape</h3>
-            <p>Offering dozens of trails in all directions, Pinehurst Lodge is a hikers’ paradise. Check out the trails around Mud Lake, Caribou Ranch, James Peak & Golden Gate Canyon State Park, or stroll the beautiful area out the door of the Lodge.</p>
-            <div id="link"><Link href="/outdoor-rec">View Details Of The Mountain Escape</Link></div>
-          </div>
+          <OutdoorRec />
         </IntroArea>
         <Spacer aria-hidden="true"></Spacer>
         <IntroArea data-coloralternate="1" >
-          <img src="/HousePhotos/craft_area/craft_6.jpg" loading="lazy"></img>
-          <div id="text">
-            <h3>Scrapbooking Retreat </h3>
-            <p>Come scrapbookers, crafters, gamers & quilters! 6 tables (3’x6’), 6 padded chairs, 6 magnifying ring lamps & 6 waste bins offer optional creative and play spaces. Request the setup ahead of time and it will be ready for you. Alternately available to set up yourself if desired.</p>
-            <div id="link"><Link href="/scrapbooking-retreat">View Details Of The Scrapbooking Retreat</Link></div>
-          </div>
+          <ScrapbookingRetreat />
         </IntroArea>
       </Section>
     </>

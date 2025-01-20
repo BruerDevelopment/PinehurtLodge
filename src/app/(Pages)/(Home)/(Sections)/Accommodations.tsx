@@ -12,14 +12,27 @@ import Link from "next/link";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { Section } from "../../../../../styles/Section";
 import { isMobile } from "../../../../../styles/GlobalStyles";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   let Accom = [
     <div key="Accom 1">
       <span>Upstairs Master Suite</span>
       <div className="images">
-        <img src="/HousePhotos/bedroom1/master_with_moons.jpg" loading="lazy"></img>
-        <img src="/HousePhotos/bedroom1/master_2.jpg" loading="lazy"></img>
+        <ExportedImage
+          src="/images/pro_house/photo_0027.jpg"
+          alt="Upstairs Master Suite"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
+        <ExportedImage
+          src="/images/pro_house/photo_0025.jpg"
+          alt="Upstairs Master Suite"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
       </div>
       <div id="more">
         <Link href="/accommodations#UpstairsBedrooms">Learn More</Link>
@@ -28,8 +41,20 @@ export default () => {
     <div key="Accom 2">
       <span>Upstairs Queen</span>
       <div className="images">
-        <img src="/HousePhotos/bedroom2/queen_1.jpg" loading="lazy"></img>
-        <img src="/HousePhotos/bedroom2/queen_2.jpg" loading="lazy"></img>
+        <ExportedImage
+          src="/images/pro_house/photo_0029.jpg"
+          alt="Upstairs Master Suite"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
+        <ExportedImage
+          src="/images/am_house/photo_0001.jpg"
+          alt="Upstairs Queen"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
       </div>
       <div id="more">
         <Link href="/accommodations#UpstairsBedrooms">Learn More</Link>
@@ -38,8 +63,20 @@ export default () => {
     <div key="Accom 3">
     <span>Downstairs Master</span>
     <div className="images">
-      <img src="/HousePhotos/bedroom3/down_master_8.jpg" loading="lazy"></img>
-      <img src="/HousePhotos/bedroom3/down_master_1.jpg" loading="lazy"></img>
+      <ExportedImage
+        src="/images/am_house/photo_0002.jpg"
+        alt="Downstairs Master Suite"
+        width={150}
+        height={120}
+        loading="lazy"
+      />
+      <ExportedImage
+        src="/images/pro_house/photo_0041.jpg"
+        alt="Downstairs Master Suite"
+        width={150}
+        height={120}
+        loading="lazy"
+      />
     </div>
     <div id="more">
       <Link href="/accommodations#DownstairsBedrooms">Learn More</Link>
@@ -48,8 +85,20 @@ export default () => {
     <div key="Accom 4">
       <span>Downstairs Queen & Bunks</span>
       <div className="images">
-        <img src="/HousePhotos/bedroom4/dorm_3.jpg" loading="lazy"></img>
-        <img src="/HousePhotos/bedroom4/dorm_1.jpg" loading="lazy"></img>
+        <ExportedImage
+          src="/images/pro_house/photo_0039.jpg"
+          alt="Upstairs Master Suite"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
+        <ExportedImage
+          src="/images/pro_house/photo_0040.jpg"
+          alt="Upstairs Master Suite"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
       </div>
       <div id="more">
         <Link href="/accommodations#DownstairsBedrooms">Learn More</Link>
@@ -58,8 +107,20 @@ export default () => {
     <div key="Accom 5" style={{"marginTop":"40px"}}>
       <span style={{"justifyContent":"center", "display":"flex"}}>Trundled Twins to King</span>
       <div className="images">
-        <img src="/HousePhotos/downstairs_living/trundle_2.jpg" loading="lazy"></img>
-        <img src="/HousePhotos/downstairs_living/trundle_6.jpg" loading="lazy"></img>
+        <ExportedImage
+          src="/images/am_house/photo_0005.jpg"
+          alt="Trundled Bed Photo"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
+        <ExportedImage
+          src="/images/am_house/photo_0006.jpg"
+          alt="Trundled Bed Photo"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
       </div>
       <div id="more">
         <Link href="/accommodations#DownstairsBedrooms">Learn More</Link>
@@ -70,8 +131,20 @@ export default () => {
     <div key="Amenities 1">
       <span>2 Fully Equipped Kitchens</span>
       <div className="images">
-        <img src="/HousePhotos/upstairs_kitchen/kitchen_main.jpg" loading="lazy"></img>
-        <img src="/HousePhotos/downstairs_kitchen/kitchen_main.jpg" loading="lazy"></img>
+        <ExportedImage
+          src="/images/am_house/photo_0007.jpg"
+          alt="Upstairs Kitchen Photo"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
+        <ExportedImage
+          src="/images/pro_house/photo_0038.jpg"
+          alt="Downstairs Kitchen Photo"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
       </div>
       <div id="more">
         <Link href="/accommodations#Kitchens">Learn More</Link>
@@ -80,8 +153,20 @@ export default () => {
     <div key="Amenities 2">
       <span>2 Spacious Living Rooms</span>
       <div className="images">
-        <img src="/HousePhotos/upstairs_living/main.jpg" loading="lazy"></img>
-        <img src="/HousePhotos/craft_area/craft_20.jpg" loading="lazy"></img>
+        <ExportedImage
+          src="/images/pro_house/photo_0036.jpg"
+          alt="Upstairs Living Room Photo"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
+        <ExportedImage
+          src="/images/pro_house/photo_0011.jpg"
+          alt="Downstairs Living Room Photo"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
       </div>
       <div id="more">
         <Link href="/accommodations#LivingRooms">Learn More</Link>
@@ -90,8 +175,20 @@ export default () => {
     <div key="Amenities 3">
     <span>Scrapbooking / Crafting Area</span>
     <div className="images">
-      <img src="/HousePhotos/craft_area/craft_21.jpg" loading="lazy"></img>
-      <img src="/HousePhotos/craft_area/magnifying_lamp_2.jpg" loading="lazy"></img>
+      <ExportedImage
+        src="/images/am_house/photo_0009.jpg"
+        alt="Scrapbooking Photo"
+        width={150}
+        height={120}
+        loading="lazy"
+      />
+      <ExportedImage
+        src="/images/am_house/photo_0008.jpg"
+        alt="Crafting Area Photo"
+        width={150}
+        height={120}
+        loading="lazy"
+      />
     </div>
     <div id="more">
       <Link href="/accommodations#Scrapbooking">Learn More</Link>
@@ -100,8 +197,20 @@ export default () => {
     <div key="Amenities 4">
       <span>Hot Tub & Pool Table</span>
       <div className="images">
-        <img src="/HousePhotos/downstairs_deck/hot_tub.jpg"  loading="lazy"></img>
-        <img src="/HousePhotos/downstairs_living/pool_table3.jpg"  loading="lazy"></img>
+        <ExportedImage
+          src="/images/pro_house/photo_0033.jpg"
+          alt="Hot Tub Photo"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
+        <ExportedImage
+          src="/images/pro_house/photo_0031.jpg"
+          alt="Pool Table Photo"
+          width={150}
+          height={120}
+          loading="lazy"
+        />
       </div>
       <div id="more">
         <Link href="/accommodations#Activities">Learn More</Link>

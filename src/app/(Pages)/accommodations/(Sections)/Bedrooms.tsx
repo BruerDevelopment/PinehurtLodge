@@ -11,6 +11,7 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { Section } from "../../../../../styles/Section";
 import { isMobile } from "../../../../../styles/GlobalStyles";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   return (
@@ -22,13 +23,37 @@ export default () => {
           <div>
             <h3>Upstairs Master Suite</h3>
             <div>
-              <img src="/HousePhotos/bedroom1/master_with_moons.jpg" loading="lazy"></img>
-              <img src="/HousePhotos/bedroom1/master_2.jpg" loading="lazy"></img>
+              <ExportedImage
+                src="/images/pro_house/photo_0027.jpg"
+                alt="Upstairs Master Suite"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/pro_house/photo_0025.jpg"
+                alt="Upstairs Master Suite"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
             </div>
             <h3>Upstairs Queen Bedroom</h3>
             <div>
-              <img src="/HousePhotos/bedroom2/queen_1.jpg" loading="lazy"></img>
-              <img src="/HousePhotos/bedroom2/queen_2.jpg" loading="lazy"></img>
+              <ExportedImage
+                src="/images/pro_house/photo_0029.jpg"
+                alt="Upstairs Queen Bedroom"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/am_house/photo_0018.jpg"
+                alt="Upstairs Queen Bedroom"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
             </div>
           </div>
           <div>
@@ -48,18 +73,54 @@ export default () => {
           <div>
             <h3>Downstairs Master Suite</h3>
             <div>
-              <img src="/HousePhotos/bedroom3/down_master_8.jpg" loading="lazy"></img>
-              <img src="/HousePhotos/bedroom3/down_master_1.jpg" loading="lazy"></img>
+            <ExportedImage
+                src="/images/am_house/photo_0019.jpg"
+                alt="Upstairs Queen Bedroom"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/pro_house/photo_0041.jpg"
+                alt="Upstairs Queen Bedroom"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
             </div>
             <h3>Downstairs Queen & Bunks</h3>
             <div>
-              <img src="/HousePhotos/bedroom4/dorm_3.jpg" loading="lazy"></img>
-              <img src="/HousePhotos/bedroom4/dorm_1.jpg" loading="lazy"></img>
+              <ExportedImage
+                src="/images/pro_house/photo_0039.jpg"
+                alt="Downstairs Queen & Bunks Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/pro_house/photo_0040.jpg"
+                alt="Downstairs Queen & Bunks Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
             </div>
             <h3>Trundle Bed in Downstairs Living Room</h3>
             <div>
-              <img src="/HousePhotos/downstairs_living/trundle_2.jpg" loading="lazy"></img>
-              <img src="/HousePhotos/downstairs_living/trundle_6.jpg" loading="lazy"></img>
+              <ExportedImage
+                src="/images/am_house/photo_0005.jpg"
+                alt="Trundle Bed Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/am_house/photo_0006.jpg"
+                alt="Trundle Bed Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
             </div>
           </div>
           <div>
@@ -139,7 +200,6 @@ const TwoColumns = styled.div`
   img {
     //flex: 1;
     max-height: 130px;
-    background-color: red;
     //width: 100%;
     object-fit: cover;
     border-radius: 6px;

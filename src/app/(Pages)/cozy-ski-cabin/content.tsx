@@ -16,6 +16,7 @@ import OutdoorExploration from "./(Sections)/OutdoorExploration";
 import CraftingArea from "./(Sections)/CraftingArea";
 import { isMobile } from "../../../../styles/GlobalStyles";
 import { Section } from "../../../../styles/Section";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   return (
@@ -26,7 +27,12 @@ export default () => {
         This cozy getaway is ideal for skiers, snowboarders, snowshoers and groups of friends and family.
         </h2>
         <IntroArea>
-          <img src="/HousePhotos/downstairs_deck/hot_tub1.jpg"></img>
+          <ExportedImage
+            src="/images/pro_house/photo_0033.jpg"
+            alt="Hot Tub Photo"
+            width={530}
+            height={400}
+          />
           <div id="text">
             <h3 className="section-heading">
             Surrounded by the beautiful Front Range of the Rocky Mountains, with easy access to several of Colorado’s finest ski areas,

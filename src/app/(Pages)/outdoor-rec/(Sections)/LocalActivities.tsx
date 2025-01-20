@@ -12,6 +12,11 @@ import Link from "next/link";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { isMobile } from "../../../../../styles/GlobalStyles";
 import { Section } from "../../../../../styles/Section";
+import ExportedImage from "next-image-export-optimizer";
+import RockyMountainNationalPark from "@/components/LocalActivities/RockyMountainNationalPark";
+import GoldDirt from "@/components/LocalActivities/GoldDirt";
+import Nederland from "@/components/LocalActivities/Nederland";
+import TossPizza from "@/components/LocalActivities/TossPizza";
 
 export default () => {
   return (
@@ -21,60 +26,22 @@ export default () => {
         <CardWrapper>
           <div className="Card">
             <TwoColumns data-reverse="true">
-              <TwoImages>
-                <img src="/AreaAttractions/Toss_Pizza.jpg"  loading="lazy"></img>
-                <img src="/AreaAttractions/Toss_Pizza_exterior.png"  loading="lazy"></img>
-              </TwoImages>
-              <CenterColumn>
-                <h3>Toss Pizza </h3>
-                <p>Within walking distance on Main Street in Rollinsville is the best pizza in the surrounding area, Toss Wood Fired Pizza. Featuring fresh ingredients, salads, small plate veggies, local beverages and more. It’s a dining delight not to be missed and a gift to be so nearby!</p>
-                <Link href="https://www.tosswoodfired.com/" target="_blank">View The Toss Website <BsBoxArrowUpRight /></Link>
-              </CenterColumn>
+              <TossPizza />
             </TwoColumns>
           </div>
           <div className="Card">
             <TwoColumns>
-              <TwoImages>
-                <img src="/AreaAttractions/Nederland_bridge.jpg"  loading="lazy"></img>
-                <img src="/AreaAttractions/Nederland.jpg"  loading="lazy"></img>
-              </TwoImages>
-              <CenterColumn>
-                <h3>The Town of Nederland</h3>
-                <p>
-                  This scenic mountain town, located 17 miles west of Boulder, is the gateway to the Indian Peaks Wilderness Area. There are many recreational, historical, dining and retail opportunities that await the Colorado visitor.
-                </p>
-                <Link href="https://www.redrocksonline.com/" target="_blank">Visit Nederland <BsBoxArrowUpRight /></Link>
-              </CenterColumn>
+              <Nederland />
             </TwoColumns>
           </div>
           <div className="Card">
             <TwoColumns data-reverse="true">
-              <TwoImages>
-                <img src="/AreaAttractions/GoldDirtDistillery3.jpg"  loading="lazy"></img>
-                <img src="/AreaAttractions/GoldDirtBuilding.webp"  loading="lazy"></img>
-              </TwoImages>
-              <CenterColumn>
-                <h3>Gold Dirt Distillery </h3>
-                <p>
-                  Located just down the street from Pinehurst Lodge sits one of the finest distilleries of quality craft spirits. Open Wed - Sun, they offer a delicious variety of hand crafted cocktails and an array of spirits including Rose Gin, Lavender Infused Gin, Honey Spirit, High & Dry Gin and more.
-                </p>
-                <Link href="https://www.golddirtdistillery.com/" target="_blank">Explore Gold Dirt's Website<BsBoxArrowUpRight /></Link>
-              </CenterColumn>
+              <GoldDirt />
             </TwoColumns>
           </div>
           <div className="Card">
             <TwoColumns>
-              <TwoImages>
-                <img src="/StockPhotos/rockymountain_fall.jpg"  loading="lazy"></img>
-                <img src="/StockPhotos/rocky_mountain_state_park.jpg"  loading="lazy"></img>
-              </TwoImages>
-              <CenterColumn>
-                <h3>Rocky Mountain National Park </h3>
-                <p>
-                  33 miles north of the PInehurst Lodge lies the spectacular Rocky Mountain National Park. With over 300 miles of hiking trails, abundant wildlife, towering peaks and glistening alpine lakes, there is something for everyone to explore and enjoy!
-                </p>
-                <Link href="#" target="_blank">Checkout The Park's Website  <BsBoxArrowUpRight /></Link>
-              </CenterColumn>
+              <RockyMountainNationalPark />
             </TwoColumns>
           </div>
          

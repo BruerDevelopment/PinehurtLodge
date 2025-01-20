@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { isMobile } from "../../../../../styles/GlobalStyles";
 import { Section } from "../../../../../styles/Section";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   
@@ -22,8 +23,20 @@ export default () => {
         <TwoColumns>
           <div>
             <TwoStackedImages>
-              <img src="/HousePhotos/laundry/downstairs_laundry.jpg" />
-              <img src="/HousePhotos/laundry/upstairs_laundry2.jpg" />
+              <ExportedImage
+                src="/images/pro_house/photo_0043.jpg"
+                alt="Scrapbooking Photo"
+                width={200}
+                height={133}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/pro_house/photo_0044.jpg"
+                alt="Scrapbooking Photo"
+                width={246}
+                height={164}
+                loading="lazy"
+              />
             </TwoStackedImages>
           </div>
           <div>
@@ -37,13 +50,46 @@ export default () => {
         <TwoColumns data-reverse="true">
           <div>
             <div>
-              <img src="/HousePhotos/upstairs_kitchen/kitchen_main.jpg" />
-              <img src="/HousePhotos/downstairs_kitchen/kitchen_main.jpg" />
+              <ExportedImage
+                src="/images/am_house/photo_0007.jpg"
+                alt="Scrapbooking Photo"
+                width={195}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/pro_house/photo_0037.jpg"
+                alt="Scrapbooking Photo"
+                width={195}
+                height={130}
+                loading="lazy"
+              />
             </div>
             <div>
-              <img style={{"width":"45%"}} src="/HousePhotos/upstairs_kitchen/upstairs_dining_table.jpg" />
-              <img style={{ "width": "25%" }} src="/HousePhotos/upstairs_kitchen/coffee_area.jpg" />
-              <img style={{"width":"25%"}} src="/HousePhotos/upstairs_kitchen/BeverageFridge.png" />
+            <ExportedImage
+                src="/images/am_house/photo_0015.jpg"
+                alt="Dining Table Photo"
+                width={175}
+                height={130}
+                loading="lazy"
+                
+              />
+              <ExportedImage
+                src="/images/am_house/photo_0016.jpg"
+                alt="Beverage Fridge Photo"
+                width={97}
+                height={130}
+                loading="lazy"
+                style={{"width":"25%"}}
+              />
+              <ExportedImage
+                src="/images/am_house/photo_0017.png"
+                alt="Coffee Bar Photo"
+                width={97}
+                height={130}
+                loading="lazy"
+                style={{"width":"25%"}}
+              />
             </div>
           </div>
           <div>
@@ -119,7 +165,6 @@ const TwoColumns = styled.div`
       justify-content: center;
       img {
         max-height: 130px;
-        background-color: red;
         object-fit: cover;
         border-radius: 6px;
         width: 50%;
@@ -136,7 +181,6 @@ const TwoStackedImages = styled.div`
   img {
     aspect-ratio: 3 / 2;
     max-height: none !important;
-    background-color: red;
     object-fit: cover;
     border-radius: 6px;
     width: 100%;

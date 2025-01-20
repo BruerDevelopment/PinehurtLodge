@@ -15,6 +15,7 @@ import LocalActivities from "./(Sections)/LocalActivities";
 import OutdoorExploration from "./(Sections)/OutdoorExploration";
 import { Section } from "../../../../styles/Section";
 import { isMobile } from "../../../../styles/GlobalStyles";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   return (
@@ -23,7 +24,12 @@ export default () => {
         <h1 className="section-heading">Welcome to the Pinehurst Lodge</h1>
         <h2 className="section-subheading">Gather your friends, relax and enjoy the beautiful mountain environment.</h2>
         <IntroArea>
-          <img src="/HousePhotos/downstairs_deck/hot_tub1.jpg"></img>
+          <ExportedImage
+            src="/images/pro_house/photo_0033.jpg"
+            alt="Hot Tub Photo"
+            width={530}
+            height={400}
+          />
           <div id="text">
             <h3>In the beautiful Rocky Mountains, with a fabulous view and a large, brand new Arctic Spas hot tub, awaits the Pinehurst Lodge. </h3>
             <p>

@@ -11,6 +11,9 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { isMobile } from "../../../../../styles/GlobalStyles";
 import { Section } from "../../../../../styles/Section";
+import ExportedImage from "next-image-export-optimizer";
+import CozySkiCabin from "@/components/SettupOfferings/CozySkiCabin";
+import ScrapbookingRetreat from "@/components/SettupOfferings/ScrapbookingRetreat";
 
 export default () => {
   return (
@@ -18,21 +21,11 @@ export default () => {
       <Section varient={2}>
         <h1 className="section-heading">View Other Experiences This Rental Offers</h1>
         <IntroArea data-coloralternate="1" data-direction="reverse">
-          <img src="/HousePhotos/craft_area/craft_6.jpg" loading="lazy"></img>
-          <div id="text">
-            <h3>Scrapbooking Retreat </h3>
-            <p>Come scrapbookers, crafters, gamers & quilters! 6 tables (3’x6’), 6 padded chairs, 6 magnifying ring lamps & 6 waste bins offer optional creative and play spaces. Request the setup ahead of time and it will be ready for you. Alternately available to set up yourself if desired.</p>
-            <div id="link"><Link href="/scrapbooking-retreat">View Details Of The Scrapbooking Retreat</Link></div>
-          </div>
+          <ScrapbookingRetreat />
         </IntroArea>
         <Spacer aria-hidden="true"></Spacer>
         <IntroArea data-coloralternate="1">
-          <img src="/AreaAttractions/CO_skiing.webp" loading="lazy"></img>
-          <div id="text">
-            <h3>Cozy Ski Cabin </h3>
-            <p>Pinehurst Lodge sits in the high country of Colorado’s Front Range at approximately 8900’, thus offering easy access to Colorado’s many ski areas including Winter Park, Breckenridge, Arapahoe Basin, Keystone, Copper Mountain and just 20 minutes from Eldora.</p>
-            <div id="link"><Link href="/cozy-ski-cabin">View Details Of The Ski Cabin</Link></div>
-          </div>
+          <CozySkiCabin />
         </IntroArea>
       </Section>
     </>

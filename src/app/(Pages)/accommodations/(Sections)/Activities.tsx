@@ -10,6 +10,7 @@ import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { Section } from "../../../../../styles/Section";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   return (
@@ -18,9 +19,27 @@ export default () => {
         <h1 className="section-heading" id="Activities">Games & Activities at the Pinehurst Lodge</h1>
         <Content>
           <div id="images">
-            <img alt="" src="/HousePhotos/downstairs_deck/hot_tub1.jpg"/>
-            <img alt="" src="/HousePhotos/downstairs_living/game_shelf.jpg"/>
-            <img alt="" src="/HousePhotos/downstairs_living/pool_20.jpg"/>
+            <ExportedImage
+              src="/images/pro_house/photo_0033.jpg"
+              alt="Hot Tub Photo"
+              width={173}
+              height={130}
+              loading="lazy"
+            />
+            <ExportedImage
+              src="/images/am_house/photo_0021.jpg"
+              alt="Game Shelf Photo"
+              width={173}
+              height={130}
+              loading="lazy"
+            />
+            <ExportedImage
+              src="/images/pro_house/photo_0031.jpg"
+              alt="Pool Table Photo"
+              width={173}
+              height={130}
+              loading="lazy"
+            />
           </div>
           <div id="text">
             <h2 className="section-heading">Pool Table, 7-Person Hot Tub, Board-Games, and Two Smart TVs</h2>
@@ -68,7 +87,6 @@ const Content = styled.div`
       flex: 1;
       aspect-ratio: 3 / 2;
       max-height: 200px;
-      background-color: red;
       width: 30%;
       object-fit: cover;
       border-radius: 6px;

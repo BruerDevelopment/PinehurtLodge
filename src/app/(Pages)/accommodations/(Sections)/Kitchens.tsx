@@ -11,6 +11,7 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { Section } from "../../../../../styles/Section";
 import { isMobile } from "../../../../../styles/GlobalStyles";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   return (
@@ -27,12 +28,40 @@ export default () => {
         <TwoColumns>
           <div className="centerImages">
             <div>
-              <img src="/HousePhotos/upstairs_kitchen/kitchen_main.jpg" style={{"maxHeight":"275px"}} />
+            <ExportedImage
+                src="/images/am_house/photo_0007.jpg"
+                alt="Upstairs Kitchen Photo"
+                width={260}
+                height={173}
+                loading="lazy"
+                style={{"maxHeight":"275px"}}
+              />
             </div>
             <div>
-              <img src="/HousePhotos/upstairs_kitchen/coffee_area.jpg" style={{"maxWidth":"85px"}} />
-              <img src="/HousePhotos/upstairs_kitchen/upstairs_dining_table.jpg" />
-              <img src="/HousePhotos/upstairs_kitchen/BigFridge.png" style={{"maxWidth":"85px"}}/>
+              <ExportedImage
+                src="/images/am_house/photo_0017.png"
+                alt="Coffee Bar Photo"
+                width={97}
+                height={130}
+                loading="lazy"
+                style={{"maxWidth":"85px"}}
+              />
+              <ExportedImage
+                src="/images/am_house/photo_0015.jpg"
+                alt="Dining Table Photo"
+                width={175}
+                height={130}
+                loading="lazy"
+                
+              />
+              <ExportedImage
+                src="/images/am_house/photo_0020.png"
+                alt="Big Kitchen Fridge Photo"
+                width={97}
+                height={130}
+                loading="lazy"
+                style={{"maxWidth":"85px"}}
+              />
             </div>
           </div>
           <div>
@@ -53,8 +82,20 @@ export default () => {
         <TwoColumns data-reverse="true" id="GrillDetails">
           <div className="centerImages">
             <div>
-              <img src="/HousePhotos/upstairs_deck/up_deck1.jpg" />
-              <img src="/HousePhotos/upstairs_deck/upstairs_deck1.jpg" />
+              <ExportedImage
+                src="/images/pro_house/photo_0023.png"
+                alt="Coffee Bar Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/pro_house/photo_0018.png"
+                alt="Coffee Bar Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
             </div>
           </div>
           <div id="grillText">
@@ -67,8 +108,20 @@ export default () => {
         <TwoColumns>
           <div className="centerImages">
             <div>
-              <img src="/HousePhotos/downstairs_kitchen/kitchen_main.jpg" />
-              <img src="/HousePhotos/downstairs_kitchen/down_kitchen2.jpg" />
+              <ExportedImage
+                src="/images/pro_house/photo_0037.png"
+                alt="Grill On The Deck Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
+              <ExportedImage
+                src="/images/pro_house/photo_0038.png"
+                alt="Grill On The Deck Photo"
+                width={173}
+                height={130}
+                loading="lazy"
+              />
             </div>
             
           </div>
@@ -169,7 +222,6 @@ const TwoColumns = styled.div`
     display: flex;
   }
   img {
-    background-color: red;
     object-fit: cover;
     flex: 1;
     //aspect-ratio: 3 / 2;

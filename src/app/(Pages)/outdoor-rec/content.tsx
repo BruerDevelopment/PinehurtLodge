@@ -16,6 +16,7 @@ import OutdoorExploration from "./(Sections)/OutdoorExploration";
 import CraftingArea from "./(Sections)/CraftingArea";
 import { isMobile } from "../../../../styles/GlobalStyles";
 import { Section } from "../../../../styles/Section";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   return (
@@ -27,7 +28,13 @@ export default () => {
           or groups of friends and family.
         </h2>
         <IntroArea>
-          <img src="/AreaAttractions/Railroad_4.jpeg"></img>
+          <ExportedImage
+            src="/images/local_attractions/railroad/photo_0004.jpg"
+            alt="Railroad and Train Photo"
+            width={530}
+            height={400}
+            loading="lazy"
+          />
           <div id="text">
             <h3>
               Surrounded by the beautiful Rocky Mountains, enjoy the breathtaking view of the Continental Divide while you relax, soak in the hot tub and plan the next days’ adventures!

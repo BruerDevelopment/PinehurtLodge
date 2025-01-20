@@ -11,6 +11,7 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { Section } from "../../../../../styles/Section";
 import { isMobile, isNotMobile } from "../../../../../styles/GlobalStyles";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   return (
@@ -18,7 +19,12 @@ export default () => {
       <Section varient={1}>
         <h1 className="section-heading">Garage</h1>
         <TwoColumns>
-          <img src="/HousePhotos/garage/garage.jpg"/>
+          <ExportedImage
+            src="/images/pro_house/photo_0045.jpg"
+            alt="Garage Photo"
+            width={390}
+            height={280}
+          />
           <div>
             <h2>Indoor Parking for 2 Vehicles!</h2>
             <p>
@@ -75,7 +81,6 @@ const TwoColumns = styled.div`
     flex: 1;
     aspect-ratio: 3 / 2;
     border-radius: 6px;
-    background-color: red;
     object-fit: cover;
     margin: 20px;
     box-sizing: border-box;

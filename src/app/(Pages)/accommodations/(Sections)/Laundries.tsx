@@ -11,6 +11,7 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 import Link from "next/link";
 import { Section } from "../../../../../styles/Section";
 import { isMobile, isNotMobile } from "../../../../../styles/GlobalStyles";
+import ExportedImage from "next-image-export-optimizer";
 
 export default () => {
   return (
@@ -27,7 +28,13 @@ export default () => {
             </div>
 
             <div className="singleImage">
-              <img src="/HousePhotos/laundry/upstairs_laundry2.jpg"></img>
+              <ExportedImage
+                src="/images/pro_house/photo_0043.jpg"
+                alt="Upstairs Laundry Photo"
+                width={440}
+                height={394}
+                loading="lazy"
+              />  
             </div>
           </div>
           <div className="reverse">
@@ -38,7 +45,13 @@ export default () => {
               </p>
             </div>
             <div className="singleImage">
-              <img src="/HousePhotos/laundry/downstairs_laundry.jpg"></img>
+              <ExportedImage
+                src="/images/pro_house/photo_0044.jpg"
+                alt="Downstairs Laundry Photo"
+                width={440}
+                height={394}
+                loading="lazy"
+              />
             </div>
           </div>
           

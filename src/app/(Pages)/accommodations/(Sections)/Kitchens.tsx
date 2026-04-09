@@ -70,13 +70,13 @@ export default () => {
               Amenities include: double door fridge with freezer drawer, double oven, deluxe cooktop, quiet dishwasher, microwave, deluxe toaster oven, coffee maker, espresso machine, press pot, manual coffee grinder, tea kettle, blender, crock pot, stoneware dishes for 8, flatware for 8, numerous utensils, bakeware, Granitestone nonstick cookware, glassware, wine glasses
             </p>
             
-            {/* <KitchenGuides>
+            <KitchenGuides>
               <p>
                 Want to plan out your meals and need to know what cookware will be here?
                 Or just want a full guide to all kitchen amenities?
               </p>
-              <Link href="/kitchen_guides">Explore Our Kitchen Guides</Link>
-            </KitchenGuides> */}
+              <Link href="/kitchen_guide">Explore Our Kitchen Guide</Link>
+            </KitchenGuides>
           </div>
         </TwoColumns>
         <TwoColumns data-reverse="true" id="GrillDetails">

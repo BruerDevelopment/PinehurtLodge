@@ -129,11 +129,12 @@ const CHECKLIST_DATA: MainSection[] = [
         id: "living-room",
         title: "Living Room",
         items: [
-          { id: "living-glass-tables", text: "Wipe Glass Tables", completed: false },
+          { id: "collect-trash", text: "Check For Trash Under Furniture and On The Ground", completed: false },
           { id: "living-tissues", text: "Check For Tissues & Moisturizer", completed: false },
-          { id: "living-remotes", text: "Stage TV & Light Remotes", completed: false },
           { id: "living-blankets", text: "Fold & Stage Blankets", completed: false },
           { id: "living-accounts", text: "Signout of Personal Accounts", completed: false },
+          { id: "living-glass-tables", text: "Wipe Glass Tables", completed: false },
+          { id: "living-remotes", text: "Stage TV & Light Remotes", completed: false },
         ],
       },
       {
@@ -169,7 +170,6 @@ const CHECKLIST_DATA: MainSection[] = [
       {
         id: "towels",
         title: "Towels",
-        description:"Clean: Mirrors, Counter, Sink, Toilet, Bath / Shower \nCheck: Hand soap, shower soaps, toilet paper (replace low rolls) \n\nLeave one bathroom until the very end for disposing of the mop water",
         items: [
           { id: "towels-upstair-master", text: "Upstairs Master Bathrooms", completed: false },
           { id: "towels-downstairs", text: "Downstairs Bathrooms", completed: false },
@@ -206,6 +206,28 @@ const CHECKLIST_DATA: MainSection[] = [
       },
     ],
   },
+  {
+    id: "deep_clean",
+    title: "Deep / Comprehensive Clean",
+    subsections: [
+      {
+        id: "deep-clean-items",
+        title: "Deep Cleaning",
+        items: [
+          { id: "check-baseboards", text: "Check / Clean Baseboards", completed: false },
+          { id: "clean-upper-deck", text: "Check / Clean the Upper Deck", completed: false },
+          { id: "clean-lower-deck", text: "Check / Clean the Lower Deck", completed: false },
+          { id: "clean-windows", text: "Check / Clean Windows and Glass Doors", completed: false },
+          { id: "central-staircase", text: "Vacuum and Mop Centeral Staircase", completed: false },
+          { id: "wash-bathmats", text: "Wash Bathroom Mats", completed: false },
+          { id: "wash-comforters", text: "Wash Bedroom Comforters", completed: false },
+          { id: "hottub-water", text: "Drain & Refil Hot-tub Water", completed: false },
+          { id: "dusting", text: "Dust Extra Surfaces", completed: false },
+
+        ],
+      },
+    ]
+  }
 ];
 
 function useChecklistState(storageKey: string) {

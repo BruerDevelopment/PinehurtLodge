@@ -202,6 +202,7 @@ const CHECKLIST_DATA: MainSection[] = [
         items: [
           { id: "recycling", text: "Empty Recycling Bin", completed: false },
           { id: "garage-trash", text: "Check Garage Trash Bins", completed: false },
+          { id: "hiking-cooler", text: "Check / Clean Hiking Cooler", completed: false },
         ],
       },
     ],

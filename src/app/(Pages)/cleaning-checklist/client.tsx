@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Section } from "../../../../styles/Section";
 
@@ -290,6 +290,9 @@ const SubSectionTitle = styled.h3`
   font-size: 18px;
   font-weight: 600;
   color: #333;
+  &.collapsed {
+    margin: 0px;
+  }
 `;
 
 const Description = styled.pre`
@@ -298,6 +301,10 @@ const Description = styled.pre`
   line-height: 1.6;
   color: black;
   text-wrap: wrap;
+  &.collapsed {
+    height: 0px;
+    overflow: hidden;
+  }
 `;
 
 const Image = styled.img`
@@ -312,6 +319,10 @@ const ItemsList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+  &.collapsed {
+    height: 0px;
+    overflow: hidden;
+  }
 `;
 
 const ListItem = styled.li<{ completed: boolean }>`
@@ -337,6 +348,7 @@ const ItemText = styled.span`
 `;
 
 const ControlsBar = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -366,7 +378,18 @@ const ResetBtn = styled.button`
 `;
 
 export function ClientContent() {
-  const { state, mounted, toggleItem, resetAll } = useChecklistState("cleaning-checklist-v2");
+  const { state, mounted, toggleItem, resetAll:resetAllChecklist } = useChecklistState("cleaning-checklist-v2");
+  const [collapsed, _setCollapsed] = useState<{[key:string]:boolean|undefined}>({})
+  const setCollapsed = useCallback((id: string, val:boolean) => {
+    _setCollapsed({
+      ...collapsed,
+      [id]: val
+    })
+  }, [collapsed])
+  const resetAll = useCallback(() => {
+    resetAllChecklist()
+    _setCollapsed({});
+  }, [resetAllChecklist])
 
   if (!mounted) return null;
 
@@ -384,33 +407,52 @@ export function ClientContent() {
         <Section varient={2}>
           <h1 className="section-heading">Pinehurst Lodge Cleaning Checklist</h1>
         </Section>
-
         <Section varient={2}>
+          <ControlsBar>
+            <Stats>
+              {completedItems} of {totalItems} items completed
+            </Stats>
+            {completedItems > 0 && (
+              <ResetBtn onClick={resetAll}>Reset All</ResetBtn>
+            )}
+          </ControlsBar>
           {CHECKLIST_DATA.map((mainSection) => (
             <div key={mainSection.id} style={{width:"100%"}}>
               <MainSectionTitle>{mainSection.title}</MainSectionTitle>
 
-              {mainSection.subsections.map((subsection) => (
-                <SubSectionContainer key={subsection.id}>
-                  <SubSectionTitle>{subsection.title}</SubSectionTitle>
-                  {subsection.description && (
-                    <Description>{subsection.description}</Description>
-                  )}
-                  {subsection.image && <Image src={subsection.image} alt={subsection.title} />}
-                  <ItemsList>
-                    {subsection.items.map((item) => (
-                      <ListItem key={item.id} completed={!!state[item.id]}>
-                        <Checkbox
+              {mainSection.subsections.map((subsection) => {
+                const isComplete = subsection.items.filter(item => !state[item.id]).length === 0;
+                if (isComplete) console.log("isComplete", subsection.title)
+                const isCollapsed = collapsed[subsection.id] === undefined ? isComplete : collapsed[subsection.id];
+                return (
+                  <SubSectionContainer key={subsection.id} className={isCollapsed ? "collapsed" : ""} onClick={() => setCollapsed(subsection.id, !isCollapsed)}>
+                    <SubSectionTitle className={isCollapsed ? "collapsed" : ""}>
+                      <Checkbox
                           type="checkbox"
-                          checked={!!state[item.id]}
-                          onChange={() => toggleItem(item.id)}
+                        checked={isComplete}
+                        style={{marginRight:10}}
                         />
-                        <ItemText>{item.text}</ItemText>
-                      </ListItem>
-                    ))}
-                  </ItemsList>
-                </SubSectionContainer>
-              ))}
+                      {subsection.title}
+                    </SubSectionTitle>
+                    {subsection.description && (
+                      <Description className={isCollapsed ? "collapsed" : ""}>{subsection.description}</Description>
+                    )}
+                    {subsection.image && <Image src={subsection.image} alt={subsection.title} />}
+                    <ItemsList className={isCollapsed ? "collapsed" : ""} onClick={(e)=>e.stopPropagation()}>
+                      {subsection.items.map((item) => (
+                        <ListItem key={item.id} completed={!!state[item.id]}>
+                          <Checkbox
+                            type="checkbox"
+                            checked={!!state[item.id]}
+                            onChange={() => toggleItem(item.id)}
+                          />
+                          <ItemText>{item.text}</ItemText>
+                        </ListItem>
+                      ))}
+                    </ItemsList>
+                  </SubSectionContainer>
+                )
+              })}
             </div>
           ))}
 

@@ -329,9 +329,16 @@ const ListItem = styled.li<{ completed: boolean }>`
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 8px 0;
+  padding: 8px 12px;
+  margin: 0 -12px;
   text-decoration: ${(p) => (p.completed ? "line-through" : "none")};
   color: ${(p) => (p.completed ? "#999" : "#333")};
+  cursor: pointer;
+  border-radius: 4px;
+
+  &:hover {
+    background: #f0f0f0;
+  }
 `;
 
 const Checkbox = styled.input`
@@ -377,6 +384,47 @@ const ResetBtn = styled.button`
   }
 `;
 
+const RemainingTasksSection = styled.div`
+  width: 100%;
+  margin-top: 32px;
+  padding: 20px;
+  background: #f0f0f0;
+  border-radius: 8px;
+`;
+
+const RemainingTasksTitle = styled.h2`
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+`;
+
+const RemainingTasksList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+const RemainingTaskItem = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: white;
+  border-left: 3px solid #999;
+  border-radius: 2px;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+
+  &:hover {
+    background: #f5f5f5;
+  }
+`;
+
 export function ClientContent() {
   const { state, mounted, toggleItem, resetAll:resetAllChecklist } = useChecklistState("cleaning-checklist-v2");
   const [collapsed, _setCollapsed] = useState<{[key:string]:boolean|undefined}>({})
@@ -400,6 +448,14 @@ export function ClientContent() {
   );
 
   const completedItems = Object.values(state).filter(Boolean).length;
+
+  const remainingTasks = CHECKLIST_DATA.flatMap((section) =>
+    section.subsections.flatMap((subsection) =>
+      subsection.items
+        .filter((item) => !state[item.id])
+        .map((item) => ({ ...item, sectionTitle: section.title, subsectionTitle: subsection.title }))
+    )
+  );
 
   return (
     <>
@@ -440,11 +496,12 @@ export function ClientContent() {
                     {subsection.image && <Image src={subsection.image} alt={subsection.title} />}
                     <ItemsList className={isCollapsed ? "collapsed" : ""} onClick={(e)=>e.stopPropagation()}>
                       {subsection.items.map((item) => (
-                        <ListItem key={item.id} completed={!!state[item.id]}>
+                        <ListItem key={item.id} completed={!!state[item.id]} onClick={() => toggleItem(item.id)}>
                           <Checkbox
                             type="checkbox"
                             checked={!!state[item.id]}
                             onChange={() => toggleItem(item.id)}
+                            onClick={(e) => e.stopPropagation()}
                           />
                           <ItemText>{item.text}</ItemText>
                         </ListItem>
@@ -464,6 +521,25 @@ export function ClientContent() {
               <ResetBtn onClick={resetAll}>Reset All</ResetBtn>
             )}
           </ControlsBar>
+           {remainingTasks.length > 0 && (
+            <RemainingTasksSection>
+              <RemainingTasksTitle>Remaining Tasks ({remainingTasks.length})</RemainingTasksTitle>
+              <RemainingTasksList>
+                {remainingTasks.map((task) => (
+                  <RemainingTaskItem key={task.id} onClick={() => toggleItem(task.id)}>
+                    <Checkbox
+                      type="checkbox"
+                      checked={!!state[task.id]}
+                      onChange={() => toggleItem(task.id)}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                    <span>{task.text}</span>
+                    <span style={{ fontSize: '12px', color: '#666', marginLeft: 'auto' }}>{task.subsectionTitle}</span>
+                  </RemainingTaskItem>
+                ))}
+              </RemainingTasksList>
+            </RemainingTasksSection>
+          )}
         </Section>
       </main>
     </>

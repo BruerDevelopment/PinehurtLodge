@@ -73,7 +73,7 @@ export default () => {
           <Link href="/gallery" onClick={(e:any)=>nav(e.target)}>Photo Gallery</Link>
           <Link href="/area-guide" onClick={(e:any)=>nav(e.target)}>Area Guide</Link>
         </div>
-        <Link id="book_now" href="https://www.airbnb.com/rooms/1043540721907281297">Book Now</Link>
+        <Link id="book_now" href="https://checkout.lodgify.com/pinehurst-lodge/846898/reservation?currency=USD">Book Now</Link>
         <Menu onClick={() => {
           setMenuOpen(!menuOpen);
         }}>
@@ -103,7 +103,7 @@ export default () => {
         <Link href="/area-guide" onClick={(e: any) => nav(e.target)}>Area Guide</Link>
         <div id="link_buttons">
 
-          <Link href="https://www.airbnb.com/rooms/1043540721907281297" id="book_now">Book Now</Link>
+          <Link href="https://checkout.lodgify.com/pinehurst-lodge/846898/reservation?currency=USD" id="book_now">Book Now</Link>
           <Link href="https://www.instagram.com/pinehurst_lodge_co?igsh=eXo2YmRmY3U5N3pr" id="instagram"><FaInstagram />Follow Us</Link>
         </div>
       </MobileMenu>

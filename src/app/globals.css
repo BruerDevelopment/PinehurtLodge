@@ -54,6 +54,7 @@
     }
     #lodgify-book-now-box {    
       width: 100%;
+      padding-top: 40px;
     }
     #lodgify-book-now-box > div {
       justify-content: start;

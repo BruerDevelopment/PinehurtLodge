@@ -24,8 +24,9 @@ export default function Splash() {
         <div id="title">
           <h1>Pinehurst Lodge</h1>
           <h2>The Perfect Mountain Getaway</h2>
-          {/* <Link href="https://www.airbnb.com/rooms/1043540721907281297">Book Your Next Adventure Now!</Link>
+          {/* <Link href="https://checkout.lodgify.com/pinehurst-lodge/846898/reservation?currency=USD">Book Your Next Adventure Now!</Link>
            */}
+          <script src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js" defer></script>
           <div
             id="lodgify-book-now-box"
             data-rental-id="846898"

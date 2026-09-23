@@ -27,7 +27,7 @@ export default function Splash() {
           <h1>Pinehurst Lodge</h1>
           <span>The Ideal Luxury Base Camp for your next </span>
           <h2>Outdoor Adventure</h2>
-          <Link href="https://www.airbnb.com/rooms/1043540721907281297">Book Your Next Adventure Now!</Link>
+          <Link href="https://checkout.lodgify.com/pinehurst-lodge/846898/reservation?currency=USD">Book Your Next Adventure Now!</Link>
         </div>
         <div id="scrollIndicator">
           <h1>Explore</h1>

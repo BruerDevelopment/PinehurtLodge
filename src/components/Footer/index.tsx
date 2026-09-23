@@ -41,7 +41,7 @@ Please contact me through the following email:
         >Contact US</a>
       </div> */}
       <div id="socials_links">
-        <Link href="https://www.airbnb.com/rooms/1043540721907281297" target="_blank">
+        <Link href="https://checkout.lodgify.com/pinehurst-lodge/846898/reservation?currency=USD" target="_blank">
           <FaAirbnb />
         </Link>
         <Link href="https://www.instagram.com/pinehurst_lodge_co" target="_blank">

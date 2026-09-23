@@ -158,8 +158,6 @@ const Overlay = styled.div`
     position: absolute;
     top: 20%;
     left: 50px;
-    color: white;
-    text-shadow: var(--theme-text-shadow);
     ${isMobile(css`
       width: 90%;
       left: 50%;
@@ -169,6 +167,9 @@ const Overlay = styled.div`
     `)}
     
     h1 {
+        
+      color: white;
+      text-shadow: var(--theme-text-shadow);
       margin: 0px;
       font-size: 48px;
       ${isMobile(css`
@@ -177,13 +178,16 @@ const Overlay = styled.div`
       
     }
     h2 {
+        
+      color: white;
+      text-shadow: var(--theme-text-shadow);
       font-size: 30px;
       ${isMobile(css`
         font-size: 18px;
       `)}
       
     }
-    a {
+    /* a {
       background-color: var(--theme-color-5);
       text-decoration: none;
       color: white;
@@ -197,7 +201,7 @@ const Overlay = styled.div`
         font-size: 18px;
       `)}
       
-    }
+    } */
   }
   #scrollIndicator {
     display: flex;

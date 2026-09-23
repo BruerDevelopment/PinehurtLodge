@@ -24,7 +24,45 @@ export default function Splash() {
         <div id="title">
           <h1>Pinehurst Lodge</h1>
           <h2>The Perfect Mountain Getaway</h2>
-          <Link href="https://www.airbnb.com/rooms/1043540721907281297">Book Your Next Adventure Now!</Link>
+          {/* <Link href="https://www.airbnb.com/rooms/1043540721907281297">Book Your Next Adventure Now!</Link>
+           */}
+          <div
+            id="lodgify-book-now-box"
+            data-rental-id="846898"
+            data-website-id="675498"
+            data-slug="pinehurst-lodge"
+            data-language-code="en"
+            data-new-tab="true"
+            data-version="stable"
+          
+          
+            data-has-guests-breakdown
+          
+            data-check-in-label='Check-in'
+            data-check-out-label='Check-out'
+            data-guests-label='Guests'
+            data-guests-singular-label='{{NumberOfGuests}} guest'
+            data-guests-plural-label='{{NumberOfGuests}} guests'
+            data-location-input-label='Location'
+            data-total-price-label='Total price:'
+            data-select-dates-to-see-price-label='Select dates to see total price'
+            data-minimum-price-per-night-first-label='From'
+            data-minimum-price-per-night-second-label='per night'
+            data-book-button-label='Book Now'
+            data-guests-breakdown-label='Guests'
+            data-adults-label='{"one":"adult","other":"adults"}'
+            data-adults-description='Ages {minAge} or above'
+            data-children-label='{"one":"child","other":"children"}'
+            data-children-description='Ages {minAge}-{maxAge}'
+            data-children-not-allowed-label='Not suitable for children'
+            data-infants-label='{"one":"infant","other":"infants"}'
+            data-infants-description='Under {maxAge}'
+            data-infants-not-allowed-label='Not suitable for infants'
+            data-pets-label='{"one":"pet","other":"pets"}'
+            data-pets-not-allowed-label='Not allowed'
+            data-done-label='Done'
+          
+          ></div>
         </div>
         <div id="scrollIndicator">
           <h1>Explore</h1>

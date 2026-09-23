@@ -34,6 +34,27 @@
 
       --radius: 0.5rem;
     }
+    :root {
+      --ldg-bnb-background: #ffffff;
+      --ldg-bnb-border-radius: 0.42em;
+      --ldg-bnb-box-shadow: 0px 24px 54px 0px rgba(0, 0, 0, 0.1);
+      --ldg-bnb-padding: 14px;
+      --ldg-bnb-input-background: #ffffff;
+      --ldg-bnb-button-border-radius: 3.58em;
+
+      --ldg-bnb-color-primary: #2a7e77;
+      --ldg-bnb-color-primary-lighter:#95bfbb;
+      --ldg-bnb-color-primary-darker: #153f3c;
+      --ldg-bnb-color-primary-contrast: #ffffff;
+      --ldg-component-calendar-cell-selection-bg-color: #2a7e77;
+      --ldg-component-calendar-cell-selection-color: #ffffff;
+      --ldg-component-calendar-cell-selected-bg-color: #95bfbb;
+      --ldg-component-calendar-cell-selected-color: #ffffff;
+      --ldg-bnb-font-family: inherit;
+    }
+    #lodgify-book-now-box {    
+      width: 100%;
+    }
 
     .dark {
       --background: 224 71.4% 4.1%;

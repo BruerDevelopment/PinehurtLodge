@@ -55,6 +55,9 @@
     #lodgify-book-now-box {    
       width: 100%;
     }
+    #lodgify-book-now-box > div {
+      justify-content: start;
+    }
 
     .dark {
       --background: 224 71.4% 4.1%;

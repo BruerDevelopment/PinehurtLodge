@@ -24,9 +24,9 @@ export default function Splash() {
         <div id="title">
           <h1>Pinehurst Lodge</h1>
           <h2>The Perfect Mountain Getaway</h2>
-          {/* <Link href="https://checkout.lodgify.com/pinehurst-lodge/846898/reservation?currency=USD">Book Your Next Adventure Now!</Link>
-           */}
-          <script src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js" defer></script>
+          <Link id="book_now" href="https://checkout.lodgify.com/pinehurst-lodge/846898/reservation?currency=USD">Book Your Next Adventure Now!</Link>
+          
+          {/* <script src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js" defer></script>
           <div
             id="lodgify-book-now-box"
             data-rental-id="846898"
@@ -63,7 +63,7 @@ export default function Splash() {
             data-pets-not-allowed-label='Not allowed'
             data-done-label='Done'
           
-          ></div>
+          ></div> */}
         </div>
         <div id="scrollIndicator">
           <h1>Explore</h1>
@@ -188,7 +188,7 @@ const Overlay = styled.div`
       `)}
       
     }
-    /* a {
+    a#book_now {
       background-color: var(--theme-color-5);
       text-decoration: none;
       color: white;
@@ -202,7 +202,7 @@ const Overlay = styled.div`
         font-size: 18px;
       `)}
       
-    } */
+    }
   }
   #scrollIndicator {
     display: flex;
